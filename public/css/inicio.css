@@ -1,0 +1,271 @@
+
+body{
+ background-color: #f8f9fa!important;
+}
+
+
+.parallax {
+  /* The image used */
+  /*background-image: url("https://images.unsplash.com/photo-1540393866204-76e22cfcef22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80");*/
+  /* background-image: url("https://images.unsplash.com/photo-1559692984-576c4679298e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");*/
+/*background-image: url("https://cdn.pixabay.com/photo/2015/09/23/22/24/tattoo-expo-954465_960_720.jpg");*/
+/*background-image: url("https://cdn.pixabay.com/photo/2015/09/23/22/24/tattoo-expo-954465_960_720.jpg");*/
+/*background-image: url("https://images.unsplash.com/photo-1513078094721-e7b6e0394a6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80");*//*
+background-image: url("https://images.unsplash.com/photo-1482329033286-79a3d24413b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");*/
+
+/*background-image: url("https://images.unsplash.com/photo-1521322714240-ee1d383eab62?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");
+*/
+ /* height: 450px;*/
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.encontre-servico{
+  font-family: 'Kulim Park', sans-serif;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #FFF;
+  font-weight: 400;
+  font-size: 1.5em;
+  display: inline block;
+  margin: 0px auto 2%;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.encontre-servico{
+  padding: 48px 79px;
+          background: rgba(0,0,0,0.8);
+          text-align: center;
+}
+
+
+
+
+.encontre-servico .busca{
+  border-radius: 20px;
+  background-color: #FFF;
+  border: 3px solid #754026;
+  color: green;
+  font-weight: bold;
+}
+
+.encontre-servico .onde{
+  background-color: #111111;
+  border: 0px solid rgba(255,255,255,.9);
+  color: #FFF;
+  font-weight: bold;
+}
+
+
+.slider-cursos .titulo{
+  margin: 0;
+  font-family: 'Roboto Slab',serif;color: #FDE06B;
+  text-transform: uppercase;
+  font-size: 16px;font-weight: 800;
+}
+
+
+.slider-cursos .subtitulo{
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+
+.slider-cursos .data{
+  font-weight: 700;
+  font-size: 14px;
+  font-family: 'Roboto Slab',serif;
+}
+
+
+
+
+.slider-cursos .btn{
+  background: #FDE06B;
+  display: inline-block;
+  text-align: center;
+  height: 44px;
+  line-height: 42px;
+  border-bottom: 5px solid #F0D464;
+  color: #2b2b2b;
+  width: 70%;
+  font-family: 'Roboto Slab',serif;
+  font-weight: 700;
+}
+
+
+.slider-cursos .bg{
+ padding: 45px 20px;
+ background: rgba(0,0,0,.6);
+ text-align: center;
+ height: 254px;
+}
+
+
+.btn-veja-mais{
+  display: inline-block;
+  padding: 12px 50px;
+  border: 1px solid #fff;
+  color: #fff;
+  font-family: 'Roboto Slab',serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.bd-placeholder-img {
+ font-size: 1.125rem;
+ text-anchor: middle;
+ -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
+}
+
+@media (min-width: 768px) {
+ .bd-placeholder-img-lg {
+  font-size: 3.5rem;
+}
+}
+
+:root {
+ --jumbotron-padding-y: 2rem;
+}
+
+.jumbotron {
+ padding-top: var(--jumbotron-padding-y);
+ padding-bottom: var(--jumbotron-padding-y);
+ margin-bottom: 0;
+ background-color: #343434;
+}
+@media (min-width: 768px) {
+ .jumbotron {
+  padding-top: calc(var(--jumbotron-padding-y) * 1);
+  padding-bottom: calc(var(--jumbotron-padding-y) * 1);
+}
+}
+
+.jumbotron p:last-child {
+ margin-bottom: 0;
+}
+
+.jumbotron-heading {
+ font-weight: 300;
+}
+
+.jumbotron .container {
+ max-width: 58rem;
+}
+
+footer {
+ padding-top: 3rem;
+ padding-bottom: 3rem;
+}
+
+footer p {
+ margin-bottom: .25rem;
+}
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.contratando{
+ color: #FFF;
+ position: relative;
+ background-color: #090b0c;
+ padding: 15px 0;
+ font-weight: 300;
+ text-align: center;
+}
+
+
+.contratando .titulo{
+  font-family: 'Kulim Park', sans-serif;
+  color: #FFF;
+  position: relative;
+  background-color: #090b0c;
+  padding: 40px 0;
+  font-weight: 300;
+}
+
+
+
+
+.box-item{
+  font-family: 'Kulim Park', sans-serif;
+  border-top: 5px solid #ffffff;
+  border-bottom: 5px solid #754026;
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  border-radius: 0px;
+  height: 250px;
+}
+
+
+.box-item .subtitulo{
+  text-transform: uppercase;
+}
+
+.blog .text{
+  background: rgba(0,0,0,.6);
+  padding-top: 30px;
+}
+
+
+.blog .text h3{
+ text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+ font-family: 'Kulim Park', sans-serif;
+ color: #fff;
+ padding: 25px;
+}
+
+
+.blog .text .category{
+ color:#754026;
+ text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+ font-weight: 700;
+ font-size: 24px;
+}
+
+
+.blog{
+-webkit-box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
+-moz-box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
+box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
+}
+
+
+
+.vagas-destaque .titulo{
+  text-transform: uppercase;
+  font-family: 'Kulim Park', sans-serif;
+}
+
+
+
+.vagas-destaque .vaga{
+    font-family: 'Kulim Park', sans-serif;
+  /*-webkit-box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
+-moz-box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
+box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);*/
+}
+
+
+
+.vagas-destaque .img{
+ height: 140px;
+ background-size: cover;
+ background-repeat: round;
+}
+
+.vagas-destaque .slick-track{
+padding: 0px 0px 40px;
+}
+
+
+ .cadastre{
+  animation-duration: 10s;
+  animation-delay: 2s;
+}

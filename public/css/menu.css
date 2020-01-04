@@ -1,0 +1,21 @@
+.menu{
+	box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
+	 font-family: 'Kulim Park', sans-serif;
+	 font-size: 18px;
+}
+
+
+
+.menu .logo{
+	font-family: 'Shadows Into Light', cursive;
+}
+
+.menu .logo-redes i{
+	font-size: 30px;
+}
+
+
+.menu .cacto{
+	animation-duration: 2s;
+	animation-delay: 3s;
+}
