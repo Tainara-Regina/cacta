@@ -269,3 +269,11 @@ padding: 0px 0px 40px;
   animation-duration: 10s;
   animation-delay: 2s;
 }
+
+ .conteudo-pesquisa {
+    height: 0px;
+  -webkit-transition-property: height; /* Safari */
+  -webkit-transition-duration: 3s; /* Safari */
+  transition-property: height;
+  transition-duration: 3s;
+}

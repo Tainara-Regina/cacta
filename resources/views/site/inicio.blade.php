@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="utf-8">
@@ -35,64 +35,140 @@
        box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
        padding: 8px 25px;
        font-family: 'Kulim Park', sans-serif;" class="btn mb-5 cadastre animated rubberBand">cadastre-se clicando aqui</a>
-     </div>
+   </div>
 
-     <div  class="container encontre-servico">
+   <div  class="container encontre-servico">
       <h2 class="mb-3">{!!$procurar_vaga->titulo!!}</h2>
       <form>
         <div class="form-row">
           <div class="col">
-            <input  type="text" style="width: 60%" class="form-control busca mx-auto" placeholder="Pesquise aqui. Ex: barbeiro, fotografo, barman,etc.">
+            <input id="buscar"  type="text" style="width: 60%" class="form-control busca mx-auto" placeholder="Pesquise aqui. Ex: barbeiro, fotografo, barman,etc.">
             {!!$procurar_vaga->subtitulo_1!!}
             {!!$procurar_vaga->subtitulo_2!!}
-          </div>
         </div>
-      </form>
     </div>
-    <p class="float-right" style="color: #fff"><i>{!!$fundo_vaga->titulo!!}</i></p>
-  </section>
-  @include('site.includes.menu')
+</form>
+</div>
+<p class="float-right" style="color: #fff"><i>{!!$fundo_vaga->titulo!!}</i></p>
+</section>
+@include('site.includes.menu')
 
 
-  <section class="contratando">
+<section class="conteudo-pesquisa" >
+    <div id="filtro" class="d-none">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table">
+              <tbody>
+                <tr>
+                  <td>Estou procurando:</td>
+                  <td>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                      <label class="form-check-label" for="inlineCheckbox1">Fixo</label>
+                  </div>
+              </td>
+              <td>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1">Temporario</label>
+              </div>
+          </td>
+      </tr>
+      <tr>
+          <td>Area:</td>
+          <td>
+           <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+              <label class="form-check-label" for="inlineCheckbox1">Barbeiro</label>
+          </div>
+      </td>
+      <td>
+         <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          <label class="form-check-label" for="inlineCheckbox1">Tatuador</label>
+      </div>
+  </td>
+</tr>
+<tr>
+  <td></td>
+  <td> 
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1">Fotográfo</label>
+  </div>
+</td>
+<td>
+   <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1">Barista</label>
+  </div>
+</td>
+
+
+
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="col-md-3">
+    <label class="form-check-label" for="inlineCheckbox1">Em qual região?</label><br>
+    <input type="text" name="">
+</div>
+
+
+<div class="col-md-3">
+    <p class="text-center">Encontramos: <b>332</b> vagas.</p>
+</div>
+
+
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="contratando">
     <div class="container">
       <div class="row">
         <div class="col text-center py-4 titulo">
           <h2>{!!$contratar->titulo!!}</h2>
           <p>{!!$contratar->texto!!}
           </p>
-        </div>
       </div>
+  </div>
 
 
-      <div class="row text-center my-5">
-        <div class="col-md-4">
-          <div class="box-item p-3">
-           {!!$contratar->box_1!!}
-         </div>
-       </div>
-       <div class="col-md-4">
-        <div class="box-item p-3">
-         {!!$contratar->box_2!!}
-       </div>
-     </div>
-     <div class="col-md-4">
+  <div class="row text-center my-5">
+    <div class="col-md-4">
       <div class="box-item p-3">
-       {!!$contratar->box_3!!}
-     </div>
+       {!!$contratar->box_1!!}
    </div>
+</div>
+<div class="col-md-4">
+    <div class="box-item p-3">
+     {!!$contratar->box_2!!}
  </div>
+</div>
+<div class="col-md-4">
+  <div class="box-item p-3">
+   {!!$contratar->box_3!!}
+</div>
+</div>
+</div>
 </div>
 </section>
 
 <section class="blog text-center">
-
   <a class="navbar-brand mx-auto text-center" href="#"> <img style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
    <p style="color:black;font-family: 'Shadows Into Light', cursive;" class="text-center mb-0 pb-0 logo">Cacta blog</p>
- </a>
+</a>
 
 
- <div class="slider">
+<div class="slider">
   <div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2017/08/06/09/32/people-2590677__340.jpg")'>
     <a target="_blank" class="content" href="http://tutano.trampos.co/22918-mudar-de-emprego-em-2020/">
       <div class="background" ></div>
@@ -100,61 +176,61 @@
         <span class="category">CATEGORIA</span>
         <h3>
           Devo mudar de emprego em 2020?
-        </h3>
-      </div>
-    </a>
+      </h3>
   </div>
+</a>
+</div>
 
 
-  <div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761__340.jpg")'>
+<div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761__340.jpg")'>
     <a target="_blank" class="content" href="http://tutano.trampos.co/22918-mudar-de-emprego-em-2020/">
       <div class="background" ></div>
       <div class="text">
         <span class="category">CATEGORIA</span>
         <h3>
           Devo mudar de emprego em 2020?
-        </h3>
-      </div>
-    </a>
+      </h3>
   </div>
+</a>
+</div>
 
 
-  <div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2017/08/07/19/48/guy-2607136__340.jpg")'>
+<div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2017/08/07/19/48/guy-2607136__340.jpg")'>
     <a target="_blank" class="content" href="http://tutano.trampos.co/22918-mudar-de-emprego-em-2020/">
       <div class="background" ></div>
       <div class="text">
         <span class="category">CATEGORIA</span>
         <h3>
           Devo mudar de emprego em 2020?
-        </h3>
-      </div>
-    </a>
+      </h3>
   </div>
+</a>
+</div>
 
-  <div class="m-0 p-0" style='height: 338px; background-image: url("https://cdn.pixabay.com/photo/2019/12/02/05/54/bartender-4666995__340.jpg")'>
+<div class="m-0 p-0" style='height: 338px; background-image: url("https://cdn.pixabay.com/photo/2019/12/02/05/54/bartender-4666995__340.jpg")'>
     <a target="_blank" class="content" href="http://tutano.trampos.co/22918-mudar-de-emprego-em-2020/">
       <div class="background" ></div>
       <div class="text">
         <span class="category">CATEGORIA</span>
         <h3>
           Devo mudar de emprego em 2020?
-        </h3>
-      </div>
-    </a>
+      </h3>
   </div>
+</a>
+</div>
 
 
-  <div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2015/09/05/20/14/guy-925008__340.jpg")'>
+<div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2015/09/05/20/14/guy-925008__340.jpg")'>
     <a target="_blank" class="content" href="http://tutano.trampos.co/22918-mudar-de-emprego-em-2020/">
       <div class="background" ></div>
       <div class="text">
         <span class="category">CATEGORIA</span>
         <h3>
           Devo mudar de emprego em 2020?
-        </h3>
-      </div>
-    </a>
+      </h3>
   </div>
+</a>
+</div>
 </section>
 
 
@@ -169,36 +245,36 @@
      <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
      Barbeiro</h4>
      <p>São Paulo,SP</p>
-   </div>
+ </div>
 
 
-   <div class="text-center vaga">
+ <div class="text-center vaga">
     <div class="img" style="background-image: url('https://cdn.pixabay.com/photo/2015/09/23/22/24/tattoo-expo-954463__340.jpg');">
     </div>
     <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
     Tatuador</h4>
     <p>São Paulo,SP</p>
-  </div>
+</div>
 
 
-  <div class="text-center vaga">
+<div class="text-center vaga">
    <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
    </div>
    <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
    Barbeiro</h4>
    <p>São Paulo,SP</p>
- </div>
+</div>
 
 
- <div class="text-center vaga">
+<div class="text-center vaga">
    <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
    </div>
    <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
    Fotografo</h4>
    <p>São Paulo,SP</p>
- </div>
+</div>
 
- <div class="text-center vaga">
+<div class="text-center vaga">
   <div class="img" style="background-image: url('https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg');">
   </div>
   <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
@@ -255,11 +331,36 @@
 
 
 
+
+
+
 @include('site.includes.rodape')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="{{asset('js/slick.js')}}"></script>
+
+
+
+<script>
+  $(document).ready(function(){
+    $("#buscar").focus(function(){
+      $("#topNav").removeClass("sticky-top");
+      $("#topNav").addClass("fixed-top");
+  });
+
+
+ $("#buscar").keyup(function(){
+      $("#filtro").addClass("d-block");
+      $(".conteudo-pesquisa").css("height","300px");
+
+  });
+
+
+});
+</script>
+
+
 </body>
 </html>
 

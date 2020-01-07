@@ -10,10 +10,10 @@
         <a class="nav-link" href="#"><b style="color: green">Logar</b><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Procurando uma vaga?</a>
+        <a class="nav-link" href="#">Cadastre-se</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Quer contratar?</a>
+        <a class="nav-link" href="#">Contrate</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Cacta blog</a>
