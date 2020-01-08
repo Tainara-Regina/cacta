@@ -58,10 +58,10 @@
     <div id="filtro" class="d-none">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 mt-5">
           <table class="table">
               <tbody>
-                <tr>
+                <tr style="line-height: 67px;">
                   <td>Estou procurando:</td>
                   <td>
                     <div class="form-check form-check-inline">
@@ -92,14 +92,14 @@
   </td>
 </tr>
 <tr>
-  <td></td>
-  <td> 
+  <td style="border-top: unset;"></td>
+  <td style="border-top: unset;"> 
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
       <label class="form-check-label" for="inlineCheckbox1">Fotográfo</label>
   </div>
 </td>
-<td>
+<td style="border-top: unset;">
    <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
       <label class="form-check-label" for="inlineCheckbox1">Barista</label>
@@ -114,14 +114,14 @@
 </div>
 
 
-<div class="col-md-3">
-    <label class="form-check-label" for="inlineCheckbox1">Em qual região?</label><br>
-    <input type="text" name="">
+<div class="col-md-3 text-center">
+    <p class="form-check-label mt-4 mb-2" for="inlineCheckbox1">Onde?</p>
+    <input type="text" class="form-control" id="" placeholder="Ex: São Paulo, Zona Sul" name="">
 </div>
 
 
 <div class="col-md-3">
-    <p class="text-center">Encontramos: <b>332</b> vagas.</p>
+    <p class="text-center mt-5">Encontramos: <b>332</b> vagas.</p>
 </div>
 
 

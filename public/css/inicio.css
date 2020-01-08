@@ -271,6 +271,7 @@ padding: 0px 0px 40px;
 }
 
  .conteudo-pesquisa {
+  font-family: 'Kulim Park', sans-serif;
     height: 0px;
   -webkit-transition-property: height; /* Safari */
   -webkit-transition-duration: 3s; /* Safari */
