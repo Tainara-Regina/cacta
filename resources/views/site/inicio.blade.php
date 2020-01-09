@@ -56,57 +56,70 @@
 
 <section class="conteudo-pesquisa" >
     <div id="filtro" class="d-none">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mt-5">
-          <table class="table">
-              <tbody>
-                <tr style="line-height: 67px;">
-                  <td>Estou procurando:</td>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-7 mt-5">
+              <table class="table">
+                  <tbody>
+                    <tr style="line-height: 67px;">
+                      <td style="line-height: 18px;"><b>Estou procurando:</b></td>
+                      <td>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                          <label class="form-check-label" for="inlineCheckbox1">Fixo</label>
+                      </div>
+                  </td>
                   <td>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      <label class="form-check-label" for="inlineCheckbox1">Fixo</label>
+                      <label class="form-check-label" for="inlineCheckbox1">Temporario</label>
                   </div>
               </td>
+
+              <td></td>
+          </tr>
+          <tr>
+              <td><b>Area:</b></td>
               <td>
-                <div class="form-check form-check-inline">
+               <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                  <label class="form-check-label" for="inlineCheckbox1">Temporario</label>
+                  <label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
               </div>
           </td>
-      </tr>
-      <tr>
-          <td>Area:</td>
           <td>
-           <div class="form-check form-check-inline">
+             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-              <label class="form-check-label" for="inlineCheckbox1">Barbeiro</label>
+              <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
           </div>
       </td>
+
       <td>
-         <div class="form-check form-check-inline">
+             <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+              <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
+          </div>
+      </td>
+  </tr>
+  <tr>
+      <td style="border-top: unset;"></td>
+      <td style="border-top: unset;"> 
+        <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-          <label class="form-check-label" for="inlineCheckbox1">Tatuador</label>
+          <label class="form-check-label" for="inlineCheckbox1">Fotográfo(a)</label>
       </div>
   </td>
-</tr>
-<tr>
-  <td style="border-top: unset;"></td>
-  <td style="border-top: unset;"> 
-    <div class="form-check form-check-inline">
+  <td style="border-top: unset;">
+   <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">Fotográfo</label>
+      <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
   </div>
 </td>
 <td style="border-top: unset;">
    <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">Barista</label>
+      <label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
   </div>
 </td>
-
-
 
 </tr>
 </tbody>
@@ -114,19 +127,118 @@
 </div>
 
 
-<div class="col-md-3 text-center">
-    <p class="form-check-label mt-4 mb-2" for="inlineCheckbox1">Onde?</p>
+<div class="col-md-2 text-center">
+    <p class="form-check-label mt-4 mb-2" for="inlineCheckbox1"><b>Onde?</b></p>
     <input type="text" class="form-control" id="" placeholder="Ex: São Paulo, Zona Sul" name="">
 </div>
 
 
-<div class="col-md-3">
+<div class="col-md-2">
     <p class="text-center mt-5">Encontramos: <b>332</b> vagas.</p>
 </div>
 
 
 </div>
 </div>
+
+
+<div class="container mt-5">
+ <table class="table text-center">
+    <tbody>
+      <tr>
+        <td><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
+        <td>
+            <p><b>Barbeiro</b></p>
+            <p>Barbearia Dona Navalha</p>
+        </td>
+        <td>
+            <p><b>Fixo</b></p>
+            <p>São Paulo</p>
+        </td>
+        <td>
+            <p style="background-color: green;color: #fff;border-radius: 10px;padding: 0px 15px;">Destaque</p>
+        </td>
+    </tr>
+
+
+ <tr>
+        <td><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
+        <td>
+            <p><b>Barbeiro</b></p>
+            <p>Barbearia Dona Navalha</p>
+        </td>
+        <td>
+            <p><b>Fixo</b></p>
+            <p>São Paulo</p>
+        </td>
+        <td>
+            <p style="background-color: green;color: #fff;border-radius: 10px;padding: 0px 15px;">Destaque</p>
+        </td>
+    </tr>
+
+
+     <tr>
+        <td><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
+        <td>
+            <p><b>Barbeiro</b></p>
+            <p>Barbearia Dona Navalha</p>
+        </td>
+        <td>
+            <p><b>Fixo</b></p>
+            <p>São Paulo</p>
+        </td>
+        <td>
+            <p style="background-color: green;color: #fff;border-radius: 10px;padding: 0px 15px;">Destaque</p>
+        </td>
+    </tr>
+
+     <tr>
+        <td><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
+        <td>
+            <p><b>Barbeiro</b></p>
+            <p>Barbearia Dona Navalha</p>
+        </td>
+        <td>
+            <p><b>Fixo</b></p>
+            <p>São Paulo</p>
+        </td>
+        <td>
+            <p style="background-color: green;color: #fff;border-radius: 10px;padding: 0px 15px;">Destaque</p>
+        </td>
+    </tr>
+
+     <tr>
+        <td><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
+        <td>
+            <p><b>Barbeiro</b></p>
+            <p>Barbearia Dona Navalha</p>
+        </td>
+        <td>
+            <p><b>Fixo</b></p>
+            <p>São Paulo</p>
+        </td>
+        <td>
+            <p style="background-color: green;color: #fff;border-radius: 10px;padding: 0px 15px;">Destaque</p>
+        </td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+
+
+    <div class="col text-center">
+        <a style="    background-color: #fff;
+       font-weight: 700;
+       color: #000000;
+       font-size: 17px;
+       text-transform: uppercase;
+       box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
+       padding: 8px 25px;
+       font-family: 'Kulim Park', sans-serif;" class="btn mb-5 cadastre animated rubberBand">cadastre-se clicando aqui</a>
+    </div>
+
+
 </div>
 </section>
 
@@ -350,9 +462,9 @@
   });
 
 
- $("#buscar").keyup(function(){
+    $("#buscar").keyup(function(){
       $("#filtro").addClass("d-block");
-      $(".conteudo-pesquisa").css("height","300px");
+      $(".conteudo-pesquisa").css("height","950px");
 
   });
 
