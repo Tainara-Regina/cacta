@@ -40,7 +40,6 @@
 
        <div  class="container encontre-servico">
           <h2 class="mb-3">{!!$procurar_vaga->titulo!!}</h2>
-          <form>
             <div class="form-row">
               <div class="col">
                 <input id="buscar"  type="text" style="width: 60%" class="form-control busca mx-auto" placeholder="Pesquise aqui. Ex: barbeiro, fotografo, barman,etc.">
@@ -48,7 +47,6 @@
                 {!!$procurar_vaga->subtitulo_2!!}
             </div>
         </div>
-    </form>
 </div>
 <p class="m-0 p-0 text-right d-none d-sm-block" style="color: #fff"><i>{!!$fundo_vaga->titulo!!}</i></p>
 </section>
