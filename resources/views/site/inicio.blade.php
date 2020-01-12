@@ -50,7 +50,7 @@
         </div>
     </form>
 </div>
-<p class="float-right" style="color: #fff"><i>{!!$fundo_vaga->titulo!!}</i></p>
+<p class="m-0 p-0 text-right d-none d-sm-block" style="color: #fff"><i>{!!$fundo_vaga->titulo!!}</i></p>
 </section>
 @include('site.includes.menu')
 
