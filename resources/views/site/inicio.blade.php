@@ -551,7 +551,7 @@
   });
 
 
-    $("#buscar").keyup(function(){
+    $("#buscar").focus(function(){
       $("#filtro").addClass("d-block");
       $(".conteudo-pesquisa").css("height","100%");
 
