@@ -211,6 +211,7 @@ footer p {
 .blog .text{
   background: rgba(0,0,0,.6);
   padding-top: 30px;
+  height: 100%!important;
 }
 
 

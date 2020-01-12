@@ -19,3 +19,8 @@
 	animation-duration: 2s;
 	animation-delay: 3s;
 }
+
+.navbar-collapse {
+    flex-grow: 0!important;
+  
+}
