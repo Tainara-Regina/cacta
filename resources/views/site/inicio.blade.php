@@ -58,7 +58,7 @@
     <div id="filtro" class="d-none">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-7 mt-2">
+            <div class="col-md-7 mt-2 table-responsive">
               <table class="table d-none d-sm-block">
                   <tbody>
                     <tr style="line-height: 67px;">
@@ -155,7 +155,7 @@
   </div>
 </td>
 
-<td></td>
+
 </tr>
 <tr>
   <td><b>Area:</b></td>
