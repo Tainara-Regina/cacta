@@ -235,7 +235,7 @@
  <table class="table text-center">
     <tbody>
       <tr>
-        <td><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
+        <td class="d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
         <td>
             <p><b>Barbeiro</b></p>
             <p>Barbearia Dona Navalha</p>
@@ -251,7 +251,7 @@
 
 
     <tr>
-        <td><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
+        <td class="d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
         <td>
             <p><b>Barbeiro</b></p>
             <p>Barbearia Dona Navalha</p>
@@ -267,7 +267,7 @@
 
 
     <tr>
-        <td><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
+        <td class="d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
         <td>
             <p><b>Barbeiro</b></p>
             <p>Barbearia Dona Navalha</p>
@@ -282,7 +282,7 @@
     </tr>
 
     <tr>
-        <td><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
+        <td class="d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
         <td>
             <p><b>Barbeiro</b></p>
             <p>Barbearia Dona Navalha</p>
@@ -297,7 +297,7 @@
     </tr>
 
     <tr>
-        <td><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
+        <td class="d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
         <td>
             <p><b>Barbeiro</b></p>
             <p>Barbearia Dona Navalha</p>
