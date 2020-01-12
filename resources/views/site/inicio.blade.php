@@ -10,7 +10,7 @@
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
-  <meta name="theme-color" content="#563d7c">
+  <meta name="theme-color" content="#754026">
   <link rel="stylesheet" href="{{asset('/css/inicio.css')}}">
   <link rel="stylesheet" href="{{asset('/css/menu.css')}}">
   <link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
