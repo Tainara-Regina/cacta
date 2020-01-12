@@ -304,7 +304,7 @@ box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);*/
   margin-bottom: 0px;
   border-radius: 0px;
   height: 250px;
-  padding-top: 44px!important;
+ padding: 44px 0px!important;
 } 
 
 }
