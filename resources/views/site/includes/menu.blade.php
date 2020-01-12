@@ -23,20 +23,6 @@
   </ul>
 
 
-    <!-- <ul class="navbar-nav">
-       <li class="nav-item active ml-2">
-        <a class="nav-link" href="#"><b style="color: green">Logar</b><span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Cadastre-se</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contrate</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Cacta blog</a>
-      </li>
-    </ul> -->
   </div>
   <a class="navbar-brand mx-auto text-center" href="#"> <img class="animated rubberBand cacto" style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
    <p class="text-center mb-0 pb-0 logo">Cacta</p>
@@ -57,23 +43,7 @@
       </li>
     </ul>
 
-
-
- <!--  <ul class="nav navbar-nav ml-auto logo-redes">
-    <li class="nav-item">
-      <a class="nav-link" href="#"> <a class="nav-link" href="#">
-        <i class="fa fa-instagram"></i>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#"> <a class="nav-link" href="#"><i class="fa fa-facebook"></i>
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link" href="#"> <a class="nav-link" href="#"><i class="fa fa-pinterest"></i>
-      </a>
-    </li>
-  </ul> -->
 </div>
 </nav>
+
+

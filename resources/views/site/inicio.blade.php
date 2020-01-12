@@ -24,30 +24,31 @@
 
 
 <body>
-  <main role="main">
-    <section class="jumbotron text-center parallax" style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});">
-      <div class="text-left">
-       <a style="    background-color: #fff;
-       font-weight: 700;
-       color: #000000;
-       font-size: 17px;
-       text-transform: uppercase;
-       box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
-       padding: 8px 25px;
-       font-family: 'Kulim Park', sans-serif;" class="btn mb-5 cadastre animated rubberBand">cadastre-se clicando aqui</a>
-   </div>
+    @include('site.includes.menu-mobile')
+    <main role="main">
+        <section class="jumbotron text-center parallax" style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});">
+          <div class="text-left  d-none d-sm-block">
+           <a style="    background-color: #fff;
+           font-weight: 700;
+           color: #000000;
+           font-size: 17px;
+           text-transform: uppercase;
+           box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
+           padding: 8px 25px;
+           font-family: 'Kulim Park', sans-serif;" class="btn mb-5 cadastre animated rubberBand">cadastre-se clicando aqui</a>
+       </div>
 
-   <div  class="container encontre-servico">
-      <h2 class="mb-3">{!!$procurar_vaga->titulo!!}</h2>
-      <form>
-        <div class="form-row">
-          <div class="col">
-            <input id="buscar"  type="text" style="width: 60%" class="form-control busca mx-auto" placeholder="Pesquise aqui. Ex: barbeiro, fotografo, barman,etc.">
-            {!!$procurar_vaga->subtitulo_1!!}
-            {!!$procurar_vaga->subtitulo_2!!}
+       <div  class="container encontre-servico">
+          <h2 class="mb-3">{!!$procurar_vaga->titulo!!}</h2>
+          <form>
+            <div class="form-row">
+              <div class="col">
+                <input id="buscar"  type="text" style="width: 60%" class="form-control busca mx-auto" placeholder="Pesquise aqui. Ex: barbeiro, fotografo, barman,etc.">
+                {!!$procurar_vaga->subtitulo_1!!}
+                {!!$procurar_vaga->subtitulo_2!!}
+            </div>
         </div>
-    </div>
-</form>
+    </form>
 </div>
 <p class="float-right" style="color: #fff"><i>{!!$fundo_vaga->titulo!!}</i></p>
 </section>
@@ -58,7 +59,18 @@
     <div id="filtro" class="d-none">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-7 mt-2 table-responsive">
+
+            <div class="col-md-2 text-center">
+                <p class="form-check-label mt-4 mb-2" for="inlineCheckbox1"><b>Onde?</b></p>
+                <input type="text" class="form-control" id="" placeholder="Ex: São Paulo, Zona Sul" name="">
+            </div>
+
+
+            <div class="col-md-2">
+                <p class="text-center mt-5">Encontramos: <b>332</b> vagas.</p>
+            </div>
+
+            <div class="col-md-8 mt-2 table-responsive">
               <table class="table d-none d-sm-block">
                   <tbody>
                     <tr style="line-height: 67px;">
@@ -81,20 +93,20 @@
           <tr>
               <td><b>Area:</b></td>
               <td>
-               <div class="form-check form-check-inline">
+                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                   <label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
               </div>
           </td>
           <td>
-             <div class="form-check form-check-inline">
+           <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
               <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
           </div>
       </td>
 
       <td>
-         <div class="form-check form-check-inline">
+       <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
           <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
       </div>
@@ -109,16 +121,16 @@
   </div>
 </td>
 <td style="border-top: unset;">
-   <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
-  </div>
+ <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
+</div>
 </td>
 <td style="border-top: unset;">
-   <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
-  </div>
+ <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
+</div>
 </td>
 
 </tr>
@@ -160,16 +172,16 @@
 <tr>
   <td><b>Area:</b></td>
   <td>
-   <div class="form-check form-check-inline">
+     <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
       <label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
   </div>
 </td>
 <td>
- <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
-</div>
+   <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
+  </div>
 </td>
 </tr>
 <tr>
@@ -181,10 +193,10 @@
   </div>
 </td>
 <td style="border-top: unset;">
-   <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
-  </div>
+ <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
+</div>
 </td>
 </tr>
 
@@ -192,14 +204,14 @@
 
 <tr>
     <td style="border-top: unset;"></td>
+    <td style="border-top: unset;">
+       <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
+      </div>
+  </td>
   <td style="border-top: unset;">
      <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
-  </div>
-</td>
-<td style="border-top: unset;">
-   <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
       <label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
   </div>
@@ -214,18 +226,6 @@
 
 
 </div>
-
-
-<div class="col-md-2 text-center">
-    <p class="form-check-label mt-4 mb-2" for="inlineCheckbox1"><b>Onde?</b></p>
-    <input type="text" class="form-control" id="" placeholder="Ex: São Paulo, Zona Sul" name="">
-</div>
-
-
-<div class="col-md-2">
-    <p class="text-center mt-5">Encontramos: <b>332</b> vagas.</p>
-</div>
-
 
 </div>
 </div>

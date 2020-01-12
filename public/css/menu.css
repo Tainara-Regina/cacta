@@ -1,7 +1,7 @@
 .menu{
 	box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
-	 font-family: 'Kulim Park', sans-serif;
-	 font-size: 18px;
+	font-family: 'Kulim Park', sans-serif;
+	font-size: 18px;
 }
 
 
@@ -21,6 +21,22 @@
 }
 
 .navbar-collapse {
-    flex-grow: 0!important;
-  
+	flex-grow: 0!important;
+
 }
+
+
+@media only screen and (max-width: 990px) {
+	#topNav{
+		display: none;
+	}
+}
+
+
+
+@media only screen and (min-width: 990px) {
+	#NavMobile{
+		display: none;
+	}
+}
+
