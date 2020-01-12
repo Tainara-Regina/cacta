@@ -371,12 +371,12 @@
 
 <div class="slider">
   <div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2017/08/06/09/32/people-2590677__340.jpg")'>
-    <a target="_blank" class="content" href="#">
+    <a target="_blank"   href="#">
       <div class="background" ></div>
       <div class="text">
         <span class="category">CATEGORIA</span>
         <h3>
-          Devo mudar de emprego em 2020?
+          Titulo do Post
       </h3>
   </div>
 </a>
@@ -384,12 +384,12 @@
 
 
 <div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2015/01/21/14/14/apple-606761__340.jpg")'>
-    <a target="_blank" class="content" href="#">
+    <a target="_blank"   href="#">
       <div class="background" ></div>
       <div class="text">
         <span class="category">CATEGORIA</span>
         <h3>
-          Devo mudar de emprego em 2020?
+          Titulo do Post
       </h3>
   </div>
 </a>
@@ -397,24 +397,24 @@
 
 
 <div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2017/08/07/19/48/guy-2607136__340.jpg")'>
-    <a target="_blank" class="content" href="#">
+    <a target="_blank"   href="#">
       <div class="background" ></div>
       <div class="text">
         <span class="category">CATEGORIA</span>
         <h3>
-          Devo mudar de emprego em 2020?
+          Titulo do Post
       </h3>
   </div>
 </a>
 </div>
 
 <div class="m-0 p-0" style='height: 338px; background-image: url("https://cdn.pixabay.com/photo/2019/12/02/05/54/bartender-4666995__340.jpg")'>
-    <a target="_blank" class="content" href="#">
+    <a target="_blank"   href="#">
       <div class="background" ></div>
       <div class="text">
         <span class="category">CATEGORIA</span>
         <h3>
-          Devo mudar de emprego em 2020?
+          Titulo do Post
       </h3>
   </div>
 </a>
@@ -422,12 +422,12 @@
 
 
 <div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2015/09/05/20/14/guy-925008__340.jpg")'>
-    <a target="_blank" class="content" href="#">
+    <a target="_blank"   href="#">
       <div class="background" ></div>
       <div class="text">
         <span class="category">CATEGORIA</span>
         <h3>
-          Devo mudar de emprego em 2020?
+          Titulo do Post
       </h3>
   </div>
 </a>
