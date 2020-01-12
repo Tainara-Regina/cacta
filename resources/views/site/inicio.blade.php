@@ -324,7 +324,7 @@
     text-transform: uppercase;
     box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
     padding: 8px 25px;
-    font-family: 'Kulim Park', sans-serif;" class="btn mb-5 cadastre animated rubberBand">Carregar mais vagas</a>
+    font-family: 'Kulim Park', sans-serif;" class="btn mb-5 cadastre animated rubberBand">Ver mais vagas</a>
 </div>
 
 
