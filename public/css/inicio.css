@@ -285,28 +285,30 @@ box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);*/
   padding: 9px 0px;
   background: rgba(0,0,0,0.8);
   text-align: center;
-    }
-
-    .encontre-servico h2{
-      font-size: 25px;
-    }
 }
 
+.encontre-servico h2{
+  font-size: 25px;
+}
 
-@media only screen and (max-width: 600px) {
+.contratando {
+  padding: 15px 15px;
+}
 
 .box-item {
-    font-family: 'Kulim Park', sans-serif;
-    border-top: 5px solid #ffffff;
-    border-bottom: none;
-    position: relative;
-    /* padding-bottom: 20px; */
-    margin-bottom: 0px;
-    border-radius: 0px;
-    height: 250px;
-    padding-top: 44px!important;
+  font-family: 'Kulim Park', sans-serif;
+  border-top: 5px solid #ffffff;
+  border-bottom: none;
+  position: relative;
+  /* padding-bottom: 20px; */
+  margin-bottom: 0px;
+  border-radius: 0px;
+  height: 250px;
+  padding-top: 44px!important;
 } 
- 
+
 }
+
+
 
 
