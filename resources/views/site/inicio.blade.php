@@ -59,11 +59,11 @@
           <div class="row">
 
             <div class="col-md-2">
-                <p class="text-center mt-5">Encontramos: <b>332</b> vagas.</p>
+                <p class="text-center mt-2 mt-sm-5">Encontramos: <b>332</b> vagas.</p>
             </div>
 
             <div class="col-md-2 text-center">
-                <p class="form-check-label mt-4 mb-2" for="inlineCheckbox1"><b>Onde?</b></p>
+                <p class="form-check-label mt-2 mt-sm-4 mb-2" for="inlineCheckbox1"><b>Onde?</b></p>
                 <input type="text" class="form-control" id="" placeholder="Ex: São Paulo, Zona Sul" name="">
             </div>
 
@@ -545,15 +545,15 @@
     $("#buscar").focus(function(){
       $("#topNav").removeClass("sticky-top");
       $("#topNav").addClass("fixed-top");
-  });
-
-
-    $("#buscar").focus(function(){
-        $('html, body').animate({scrollTop:90}, 1000);
+      $('html, body').animate({scrollTop:90}, 1000);
       $("#filtro").addClass("d-block");
       $(".conteudo-pesquisa").css("height","100%");
-
   });
+
+
+    $("#buscar").keyup(function(){ 
+        $('html, body').animate({scrollTop:90}, 1000);
+    });
 
 
 });
