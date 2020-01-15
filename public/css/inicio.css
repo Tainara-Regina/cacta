@@ -292,13 +292,8 @@ box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);*/
   text-align: center;
 }
 
-.encontre-servico h2{
- font-size: 18px;
-}
-
-
-.encontre-servico h6{
- font-size: 13px;
+h2{
+  font-size: 25px;
 }
 
 .contratando {
@@ -313,8 +308,8 @@ box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);*/
   /* padding-bottom: 20px; */
   margin-bottom: 0px;
   border-radius: 0px;
-  height: 250px;
- padding: 44px 0px!important;
+  height: auto;
+ padding: 35px 0px!important;
 } 
 
 }
