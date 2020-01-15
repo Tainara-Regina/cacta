@@ -40,15 +40,15 @@
 
        <div  class="container encontre-servico">
           <h2 class="mb-3">{!!$procurar_vaga->titulo!!}</h2>
-            <div class="form-row">
+          <div class="form-row">
               <div class="col">
                 <input id="buscar"  type="text" style="width: 60%" class="form-control busca mx-auto" placeholder="Pesquise aqui. Ex: barbeiro, fotografo, barman,etc.">
                 {!!$procurar_vaga->subtitulo_1!!}
                 {!!$procurar_vaga->subtitulo_2!!}
             </div>
         </div>
-</div>
-<p class="m-0 p-0 text-right d-none d-sm-block" style="color: #fff"><i>{!!$fundo_vaga->titulo!!}</i></p>
+    </div>
+    <p class="m-0 p-0 text-right d-none d-sm-block" style="color: #fff"><i>{!!$fundo_vaga->titulo!!}</i></p>
 </section>
 @include('site.includes.menu')
 
@@ -58,14 +58,13 @@
         <div class="container-fluid">
           <div class="row">
 
+            <div class="col-md-2">
+                <p class="text-center mt-5">Encontramos: <b>332</b> vagas.</p>
+            </div>
+
             <div class="col-md-2 text-center">
                 <p class="form-check-label mt-4 mb-2" for="inlineCheckbox1"><b>Onde?</b></p>
                 <input type="text" class="form-control" id="" placeholder="Ex: São Paulo, Zona Sul" name="">
-            </div>
-
-
-            <div class="col-md-2">
-                <p class="text-center mt-5">Encontramos: <b>332</b> vagas.</p>
             </div>
 
             <div class="col-md-8 mt-2 table-responsive">
@@ -550,6 +549,7 @@
 
 
     $("#buscar").focus(function(){
+        $('html, body').animate({scrollTop:90}, 1000);
       $("#filtro").addClass("d-block");
       $(".conteudo-pesquisa").css("height","100%");
 
