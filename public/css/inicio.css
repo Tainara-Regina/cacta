@@ -293,7 +293,12 @@ box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);*/
 }
 
 .encontre-servico h2{
-  font-size: 25px;
+ font-size: 18px;
+}
+
+
+.encontre-servico h6{
+ font-size: 13px;
 }
 
 .contratando {
