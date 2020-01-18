@@ -552,7 +552,7 @@
 
 
     $("#buscar").keyup(function(){ 
-        $('html, body').animate({scrollTop:110}, 1000);
+        $('html, body').stop().animate({scrollTop:150}, 1000);
     });
 
 
