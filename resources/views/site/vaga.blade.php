@@ -128,7 +128,7 @@
 				<div class="w-100">
 					<h4>Onde?</h4>
 					<p>
-						<a target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;origin=&amp;destination=Av. República do Líbano, 331, Ibirapuera - São Paulo, SP&amp;travelmode=transit"> lobortis eleifend commodo magna nisl maecenas ullamcorper elementum - São Paulo, SP</a>
+						<a target="_blank" href="link do google  maps aqui"> lobortis eleifend commodo magna nisl maecenas ullamcorper elementum - São Paulo, SP</a>
 					</p>
 				</div>
 
