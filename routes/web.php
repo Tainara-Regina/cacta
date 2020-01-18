@@ -17,6 +17,7 @@
 
 
 Route::get('/', 'InicioController@inicio')->name('site.inicio');
+Route::get('/vaga', 'VagaController@vaga')->name('site.vaga');
 
 
 Route::group(['prefix' => 'admin'], function () {

@@ -30,15 +30,15 @@
  <div class="navbar-collapse collapse">
  <ul class="navbar-nav">
        <li class="nav-item active ml-2">
-        <a class="nav-link" href="#"><b style="color: green">Logar</b><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#"><b style="color: green">Entrar</b><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="#">Cadastre-se</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="#">Contrate</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="#">Cacta blog</a>
       </li>
     </ul>

@@ -5,8 +5,8 @@ jQuery(document).ready(function($) {
         speed: 990,
         slidesToShow: 4,
         slidesToScroll: 1,
-        autoplay: false,
-        autoplaySpeed: 3000,
+        autoplay: true,
+        autoplaySpeed: 2000,
         arrows: true,
         responsive: [{
           breakpoint: 600,
@@ -35,8 +35,8 @@ jQuery(document).ready(function($) {
         speed: 990,
         slidesToShow: 4,
         slidesToScroll: 1,
-        autoplay: false,
-        autoplaySpeed: 2000,
+        autoplay: true,
+        autoplaySpeed: 1700,
         arrows: true,
         responsive: [{
           breakpoint: 600,
