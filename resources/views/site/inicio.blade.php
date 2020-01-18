@@ -28,17 +28,17 @@
     <main role="main">
         <section class="jumbotron text-center parallax" style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});">
           <div class="text-left  d-none d-sm-block">
-           <a style="    background-color: #fff;
-           font-weight: 700;
-           color: #000000;
-           font-size: 17px;
-           text-transform: uppercase;
-           box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
-           padding: 8px 25px;
-           font-family: 'Kulim Park', sans-serif;" class="btn mb-5 cadastre animated rubberBand">cadastre-se clicando aqui</a>
-       </div>
+             <a style="    background-color: #fff;
+             font-weight: 700;
+             color: #000000;
+             font-size: 17px;
+             text-transform: uppercase;
+             box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
+             padding: 8px 25px;
+             font-family: 'Kulim Park', sans-serif;" class="btn mb-5 cadastre animated rubberBand">cadastre-se clicando aqui</a>
+         </div>
 
-       <div  class="container encontre-servico">
+         <div  class="container encontre-servico">
           <h2 class="mb-3">{!!$procurar_vaga->titulo!!}</h2>
           <div class="form-row">
               <div class="col">
@@ -65,49 +65,54 @@
             <div class="col-md-2 text-center">
                 <p class="form-check-label mt-2 mt-sm-4 mb-2" for="inlineCheckbox1"><b>Onde?</b></p>
                 <input type="text" class="form-control" id="" placeholder="Ex: São Paulo, Zona Sul" name="">
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input id="filtrar" type="checkbox" class="form-check-input" value="">Filtrar
+                </label>
             </div>
+        </div>
 
-            <div class="col-md-8 mt-2 table-responsive">
-              <table class="table d-none d-sm-block">
-                  <tbody>
-                    <tr style="line-height: 67px;">
-                      <td style="line-height: 18px;"><b>Estou procurando:</b></td>
-                      <td>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                          <label class="form-check-label" for="inlineCheckbox1">Fixo</label>
-                      </div>
-                  </td>
+        <div id="filtro-mobile" class="col-md-8 mt-2 table-responsive" style="display: none">
+          <table class="table d-none d-sm-block">
+              <tbody>
+                <tr style="line-height: 67px;">
+                  <td style="line-height: 18px;"><b>Estou procurando:</b></td>
                   <td>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      <label class="form-check-label" for="inlineCheckbox1">Temporario</label>
+                      <label class="form-check-label" for="inlineCheckbox1">Fixo</label>
                   </div>
               </td>
-
-              <td></td>
-          </tr>
-          <tr>
-              <td><b>Area:</b></td>
               <td>
-                 <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                  <label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
+                  <label class="form-check-label" for="inlineCheckbox1">Temporario</label>
               </div>
           </td>
+
+          <td></td>
+      </tr>
+      <tr>
+          <td><b>Area:</b></td>
           <td>
            <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-              <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
+              <label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
           </div>
       </td>
-
       <td>
-       <div class="form-check form-check-inline">
+         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-          <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
+          <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
       </div>
   </td>
+
+  <td>
+     <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
+  </div>
+</td>
 </tr>
 <tr>
   <td style="border-top: unset;"></td>
@@ -118,16 +123,16 @@
   </div>
 </td>
 <td style="border-top: unset;">
- <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
-</div>
+   <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
+  </div>
 </td>
 <td style="border-top: unset;">
- <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  <label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
-</div>
+   <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
+  </div>
 </td>
 
 </tr>
@@ -169,16 +174,16 @@
 <tr>
   <td><b>Area:</b></td>
   <td>
-     <div class="form-check form-check-inline">
+   <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
       <label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
   </div>
 </td>
 <td>
-   <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
-  </div>
+ <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
+</div>
 </td>
 </tr>
 <tr>
@@ -190,10 +195,10 @@
   </div>
 </td>
 <td style="border-top: unset;">
- <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
-</div>
+   <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
+  </div>
 </td>
 </tr>
 
@@ -202,13 +207,13 @@
 <tr>
     <td style="border-top: unset;"></td>
     <td style="border-top: unset;">
-       <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-          <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
-      </div>
-  </td>
-  <td style="border-top: unset;">
      <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
+  </div>
+</td>
+<td style="border-top: unset;">
+   <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
       <label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
   </div>
@@ -229,7 +234,7 @@
 
 
 <div class="container mt-5">
- <table class="table text-center">
+   <table class="table text-center">
     <tbody>
       <tr>
         <td class="d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
@@ -343,18 +348,18 @@
   <div class="row text-center my-5">
     <div class="col-md-4">
       <div class="box-item p-3">
-       {!!$contratar->box_1!!}
+         {!!$contratar->box_1!!}
+     </div>
+ </div>
+ <div class="col-md-4">
+    <div class="box-item p-3">
+       {!!$contratar->box_2!!}
    </div>
 </div>
 <div class="col-md-4">
-    <div class="box-item p-3">
-     {!!$contratar->box_2!!}
- </div>
-</div>
-<div class="col-md-4">
   <div class="box-item p-3">
-   {!!$contratar->box_3!!}
-</div>
+     {!!$contratar->box_3!!}
+ </div>
 </div>
 </div>
 </div>
@@ -362,11 +367,11 @@
 
 <section class="blog text-center">
   <a class="navbar-brand mx-auto text-center" href="#"> <img style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
-   <p style="color:black;font-family: 'Shadows Into Light', cursive;" class="text-center mb-0 pb-0 logo">Cacta blog</p>
-</a>
+     <p style="color:black;font-family: 'Shadows Into Light', cursive;" class="text-center mb-0 pb-0 logo">Cacta blog</p>
+ </a>
 
 
-<div class="slider">
+ <div class="slider">
   <div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2017/08/06/09/32/people-2590677__340.jpg")'>
     <a target="_blank"   href="#">
       <div class="background" ></div>
@@ -437,16 +442,16 @@
 
   <div class="slider-vagas">
 
+     <div class="text-center vaga">
+       <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
+       </div>
+       <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
+       Barbeiro</h4>
+       <p>São Paulo,SP</p>
+   </div>
+
+
    <div class="text-center vaga">
-     <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
-     </div>
-     <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
-     Barbeiro</h4>
-     <p>São Paulo,SP</p>
- </div>
-
-
- <div class="text-center vaga">
     <div class="img" style="background-image: url('https://cdn.pixabay.com/photo/2015/09/23/22/24/tattoo-expo-954463__340.jpg');">
     </div>
     <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
@@ -456,20 +461,20 @@
 
 
 <div class="text-center vaga">
-   <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
-   </div>
-   <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
-   Barbeiro</h4>
-   <p>São Paulo,SP</p>
+ <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
+ </div>
+ <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
+ Barbeiro</h4>
+ <p>São Paulo,SP</p>
 </div>
 
 
 <div class="text-center vaga">
-   <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
-   </div>
-   <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
-   Fotografo</h4>
-   <p>São Paulo,SP</p>
+ <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
+ </div>
+ <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
+ Fotografo</h4>
+ <p>São Paulo,SP</p>
 </div>
 
 <div class="text-center vaga">
@@ -481,11 +486,11 @@
 </div>
 
 <div class="text-center vaga">
- <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
- </div>
- <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
- Barbeiro</h4>
- <p>São Paulo,SP</p>
+   <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
+   </div>
+   <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
+   Barbeiro</h4>
+   <p>São Paulo,SP</p>
 </div>
 </div>
 </section>
@@ -551,8 +556,20 @@
   });
 
 
+
+$("#filtrar").change(function() {
+    if(this.checked) {
+        $("#filtro-mobile").css("display","block");
+    }
+     if(!this.checked) {
+        $("#filtro-mobile").css("display","none");
+    }
+});
+
+
+
     $("#buscar").keyup(function(){ 
-        $('html, body').stop().animate({scrollTop:150}, 1000);
+        $('html, body').stop().animate({scrollTop:130}, 1000);
     });
 
 
