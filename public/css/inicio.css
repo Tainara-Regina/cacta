@@ -201,6 +201,30 @@ footer p {
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 
+
+.vagas a{
+  color: #000;
+}
+
+.voltar a{
+  color: #000;
+  font-weight: bold;
+  font-family: 'Kulim Park', sans-serif;
+  letter-spacing: -1px;
+}
+
+
+.vaga .titulo{
+  font-weight: 600;
+   font-family: 'Kulim Park', sans-serif;
+}
+
+
+
+.vaga{
+   font-family: 'Kulim Park', sans-serif;
+}
+
 .contratando{
  color: #FFF;
  position: relative;
