@@ -317,10 +317,18 @@ box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);*/
 
 
 @media only screen and (max-width: 600px) {
+
+
+.jumbotron {
+    padding: 0px;
+}
+
+
  .encontre-servico {
   padding: 9px 0px;
   background: rgba(0,0,0,0.8);
   text-align: center;
+  margin: 0px;
 }
 
 h2{
