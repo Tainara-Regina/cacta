@@ -44,6 +44,19 @@
 @include('site.includes.menu')
 
 
+
+<section class="mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                 <a class="btn mb-2 cadastre animated rubberBand btn-experimente">Cadastre-se</a>
+                <p class="text-center">Cadastre-se e fique disponivel para varias empresas</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <section class="conteudo-pesquisa" >
     <div id="filtro" class="d-none">
         <div class="container-fluid" style="background-color: #eeeeeeb3;">

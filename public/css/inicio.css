@@ -44,7 +44,7 @@ background-size: cover;
 .btn-experimente{
   background-color: green;
   font-weight: 700;
-  color: #fff;
+  color: #fff!important;
   font-size: 17px;
   text-transform: uppercase;
   box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
@@ -344,13 +344,13 @@ box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);*/
 
 
 .jumbotron {
-    padding: 0px;
+       padding: 15px;
 }
 
 
  .encontre-servico {
   padding: 9px 0px;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.6);
   text-align: center;
   margin: 0px;
 }
