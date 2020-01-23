@@ -46,16 +46,6 @@
 
 
 
-<section class="mt-3">
-    <div class="container">
-        <div class="row">
-            <div class="col text-center py-3">
-               <a class="btn mb-3 cadastre animated rubberBand btn-experimente">Cadastre-se aqui</a>
-               <h4 class="text-center cadastre-se-mobile">Cadastre-se e fique disponivel para varias empresas. É de graça!</h4>
-           </div>
-       </div>
-   </div>
-</section>
 
 
 <section class="conteudo-pesquisa" >
@@ -300,6 +290,21 @@
 
 </div>
 </section>
+
+
+
+<section style="background-color: #fccb07">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center pt-4 pb-5">
+               <a class="btn mb-3 cadastre animated rubberBand btn-experimente">Cadastre-se aqui</a>
+               <h4 class="text-center cadastre-se-mobile">Cadastre-se e fique disponivel para varias empresas. <strong>É de graça!</strong></h4>
+           </div>
+       </div>
+   </div>
+</section>
+
+
 
 
 <section class="contratando">
