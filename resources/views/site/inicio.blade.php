@@ -26,14 +26,15 @@
     <main role="main">
         <section class="jumbotron text-center parallax" style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});">
           <div class="text-left  d-none d-sm-block">
-             <a class="btn mb-5 cadastre animated rubberBand btn-cadastre-se">cadastre-se clicando aqui</a>
-         </div>
+           <a class="btn mb-5 cadastre animated rubberBand btn-cadastre-se">cadastre-se clicando aqui</a>
+       </div>
 
-         <div  class="container encontre-servico">
+       <div  class="container encontre-servico">
           <h2 class="mb-3">{!!$procurar_vaga->titulo!!}</h2>
           <div class="form-row">
-              <div class="col">
-                <input id="buscar"  type="text" style="width: 60%" class="form-control busca mx-auto" placeholder="Pesquise aqui. Ex: barbeiro, fotografo, barman,etc.">
+              <div class="col px-5  has-search">
+                <span class="fa fa-search form-control-feedback"></span>
+                <input id="buscar"  type="text" class="form-control busca mx-auto" placeholder="Pesquise aqui. Ex: barbeiro, fotografo, barman,etc.">
                 {!!$procurar_vaga->subtitulo_1!!}
                 {!!$procurar_vaga->subtitulo_2!!}
             </div>
@@ -48,12 +49,12 @@
 <section class="mt-3">
     <div class="container">
         <div class="row">
-            <div class="col text-center">
-                 <a class="btn mb-2 cadastre animated rubberBand btn-experimente">Cadastre-se</a>
-                <p class="text-center">Cadastre-se e fique disponivel para varias empresas</p>
-            </div>
-        </div>
-    </div>
+            <div class="col text-center py-3">
+               <a class="btn mb-3 cadastre animated rubberBand btn-experimente">Cadastre-se aqui</a>
+               <h4 class="text-center cadastre-se-mobile">Cadastre-se e fique disponivel para varias empresas. É de graça!</h4>
+           </div>
+       </div>
+   </div>
 </section>
 
 
@@ -100,20 +101,20 @@
       <tr>
           <td><b>Area:</b></td>
           <td>
-           <div class="form-check form-check-inline">
+             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
               <label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
           </div>
       </td>
       <td>
-         <div class="form-check form-check-inline">
+       <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
           <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
       </div>
   </td>
 
   <td>
-     <div class="form-check form-check-inline">
+   <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
       <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
   </div>
@@ -128,16 +129,16 @@
   </div>
 </td>
 <td style="border-top: unset;">
-   <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
-  </div>
+ <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
+</div>
 </td>
 <td style="border-top: unset;">
-   <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
-  </div>
+ <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
+</div>
 </td>
 
 </tr>
@@ -168,16 +169,16 @@
 <tr>
   <td><b>Area:</b></td>
   <td>
-   <div class="form-check form-check-inline">
+     <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
       <label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
   </div>
 </td>
 <td>
- <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
-</div>
+   <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
+  </div>
 </td>
 </tr>
 <tr>
@@ -189,10 +190,10 @@
   </div>
 </td>
 <td style="border-top: unset;">
-   <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
-  </div>
+ <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
+</div>
 </td>
 </tr>
 
@@ -201,13 +202,13 @@
 <tr>
     <td style="border-top: unset;"></td>
     <td style="border-top: unset;">
+       <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
+      </div>
+  </td>
+  <td style="border-top: unset;">
      <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
-  </div>
-</td>
-<td style="border-top: unset;">
-   <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
       <label class="form-check-label" for="inlineCheckbox1">Músico(a)</label>
   </div>
@@ -227,25 +228,25 @@
 </div>
 
 <div class="container vagas">
- <a href="{{route('site.vaga')}}">
+   <a href="{{route('site.vaga')}}">
     <div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
         <div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
         </div>
 
         <div class="col">
-         <p><b>Barbeiro</b></p>
-         <p>Barbearia Dona Navalha</p>  
+           <p><b>Barbeiro</b></p>
+           <p>Barbearia Dona Navalha</p>  
+       </div>
+
+       <div class="col">
+          <p><b>Fixo</b></p>
+          <p>São Paulo</p> 
+      </div>
+
+      <div class="col mt-4">
+         <p class="vaga-destaque">Destaque</p>
      </div>
-
-     <div class="col">
-      <p><b>Fixo</b></p>
-      <p>São Paulo</p> 
-  </div>
-
-  <div class="col mt-4">
-   <p class="vaga-destaque">Destaque</p>
-</div>
-</div>
+ </div>
 </a>
 
 <a href="{{route('site.vaga')}}">
@@ -254,19 +255,19 @@
         </div>
 
         <div class="col">
-         <p><b>Barbeiro</b></p>
-         <p>Barbearia Dona Navalha</p>  
+           <p><b>Barbeiro</b></p>
+           <p>Barbearia Dona Navalha</p>  
+       </div>
+
+       <div class="col">
+          <p><b>Fixo</b></p>
+          <p>São Paulo</p> 
+      </div>
+
+      <div class="col mt-4">
+         <p class="vaga-destaque">Destaque</p>
      </div>
-
-     <div class="col">
-      <p><b>Fixo</b></p>
-      <p>São Paulo</p> 
-  </div>
-
-  <div class="col mt-4">
-   <p class="vaga-destaque">Destaque</p>
-</div>
-</div>
+ </div>
 </a>
 
 
@@ -315,18 +316,18 @@
   <div class="row text-center my-3">
     <div class="col-md-4">
       <div class="box-item p-3">
-         {!!$contratar->box_1!!}
-     </div>
- </div>
- <div class="col-md-4">
-    <div class="box-item p-3">
-       {!!$contratar->box_2!!}
+       {!!$contratar->box_1!!}
    </div>
 </div>
 <div class="col-md-4">
-  <div class="box-item p-3">
-     {!!$contratar->box_3!!}
+    <div class="box-item p-3">
+     {!!$contratar->box_2!!}
  </div>
+</div>
+<div class="col-md-4">
+  <div class="box-item p-3">
+   {!!$contratar->box_3!!}
+</div>
 </div>
 </div>
 
@@ -341,11 +342,11 @@
 
 <section class="blog text-center">
   <a class="navbar-brand mx-auto text-center" href="#"> <img style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
-     <p style="color:black;font-family: 'Shadows Into Light', cursive;" class="text-center mb-0 pb-0 logo">Cacta blog</p>
- </a>
+   <p style="color:black;font-family: 'Shadows Into Light', cursive;" class="text-center mb-0 pb-0 logo">Cacta blog</p>
+</a>
 
 
- <div class="slider">
+<div class="slider">
   <div class="m-0 p-0" style='height: 338px;background-image: url("https://cdn.pixabay.com/photo/2017/08/06/09/32/people-2590677__340.jpg")'>
     <a target="_blank"   href="#">
       <div class="background" ></div>
@@ -416,16 +417,16 @@
 
   <div class="slider-vagas">
 
-     <div class="text-center vaga">
-       <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
-       </div>
-       <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
-       Barbeiro</h4>
-       <p>São Paulo,SP</p>
-   </div>
-
-
    <div class="text-center vaga">
+     <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
+     </div>
+     <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
+     Barbeiro</h4>
+     <p>São Paulo,SP</p>
+ </div>
+
+
+ <div class="text-center vaga">
     <div class="img" style="background-image: url('https://cdn.pixabay.com/photo/2015/09/23/22/24/tattoo-expo-954463__340.jpg');">
     </div>
     <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
@@ -435,20 +436,20 @@
 
 
 <div class="text-center vaga">
- <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
- </div>
- <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
- Barbeiro</h4>
- <p>São Paulo,SP</p>
+   <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
+   </div>
+   <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
+   Barbeiro</h4>
+   <p>São Paulo,SP</p>
 </div>
 
 
 <div class="text-center vaga">
- <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
- </div>
- <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
- Fotografo</h4>
- <p>São Paulo,SP</p>
+   <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
+   </div>
+   <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
+   Fotografo</h4>
+   <p>São Paulo,SP</p>
 </div>
 
 <div class="text-center vaga">
@@ -460,11 +461,11 @@
 </div>
 
 <div class="text-center vaga">
-   <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
-   </div>
-   <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
-   Barbeiro</h4>
-   <p>São Paulo,SP</p>
+ <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
+ </div>
+ <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
+ Barbeiro</h4>
+ <p>São Paulo,SP</p>
 </div>
 </div>
 </section>

@@ -22,6 +22,27 @@ background-repeat: no-repeat;
 background-size: cover;
 }
 
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #754026;
+}
+
+
+
+
+
 .encontre-servico{
   font-family: 'Kulim Park', sans-serif;
   text-transform: uppercase;
@@ -45,7 +66,7 @@ background-size: cover;
   background-color: green;
   font-weight: 700;
   color: #fff!important;
-  font-size: 17px;
+  font-size: 18px;
   text-transform: uppercase;
   box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);
   padding: 8px 30px;
@@ -53,7 +74,10 @@ background-size: cover;
 }
 
 
-
+.cadastre-se-mobile{
+   font-family: 'Kulim Park', sans-serif;
+    font-weight: 700;
+}
 
 .btn-cadastre-se{
  background-color: #fff;
@@ -235,6 +259,19 @@ footer p {
 }
 
 
+
+
+.encontre-servico .busca {
+    border-radius: 20px;
+    background-color: #FFF;
+    border: 3px solid #754026;
+    color: green;
+    font-weight: bold;
+    /*width: 60%;*/
+}
+
+
+
 .contratando .titulo{
   font-family: 'Kulim Park', sans-serif;
   color: #FFF;
@@ -347,6 +384,16 @@ box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);*/
        padding: 15px;
 }
 
+
+
+.encontre-servico .busca {
+    border-radius: 20px;
+    background-color: #FFF;
+    border: 3px solid #754026;
+    color: green;
+    font-weight: bold;
+    /*width: 80%;*/
+}
 
  .encontre-servico {
   padding: 9px 0px;
