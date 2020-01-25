@@ -18,6 +18,7 @@
 
 Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/vaga', 'VagaController@vaga')->name('site.vaga');
+Route::get('/lista-vagas', 'VagaController@listaVaga')->name('site.lista-vaga');
 
 
 Route::group(['prefix' => 'admin'], function () {

@@ -3,47 +3,62 @@
 <nav id="topNav" class="navbar navbar-expand-lg navbar-light bg-light m-0 p-0 menu sticky-top">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".navbar-collapse">
     ☰
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown"  style="width:27%;">
- <ul class="nav navbar-nav logo-redes">
+</button>
+<div class="collapse navbar-collapse" id="navbarNavDropdown"  style="width:27%;">
+   <ul class="nav navbar-nav logo-redes">
     <li class="nav-item">
       <a class="nav-link" href="#"> <a class="nav-link" href="#">
         <i class="fa fa-instagram"></i>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#"> <a class="nav-link" href="#"><i class="fa fa-facebook"></i>
-      </a>
-    </li>
+    </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#"> <a class="nav-link" href="#"><i class="fa fa-facebook"></i>
+  </a>
+</li>
 
-    <li class="nav-item">
-      <a class="nav-link" href="#"> <a class="nav-link" href="#"><i class="fa fa-pinterest"></i>
+<li class="nav-item">
+  <a class="nav-link" href="#"> <a class="nav-link" href="#"><i class="fa fa-pinterest"></i>
+  </a>
+</li>
+</ul>
+
+
+</div>
+<a class="navbar-brand mx-auto text-center" href="#"> <img class="animated rubberBand cacto" style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
+ <p class="text-center mb-0 pb-0 logo">Cacta</p>
+</a>
+<div class="navbar-collapse collapse">
+   <ul class="navbar-nav">
+
+
+     <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <b style="color: green">Entrar</b>
       </a>
-    </li>
-  </ul>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalCandidato">Área do candidato</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalContratante">Área do contratante</a>
+      </div>
+  </li>
+
+  <li class="nav-item active">
+    <a class="nav-link" href="#">Cadastre-se</a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="#">Contrate</a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="#">Cacta blog</a>
+</li>
 
 
-  </div>
-  <a class="navbar-brand mx-auto text-center" href="#"> <img class="animated rubberBand cacto" style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
-   <p class="text-center mb-0 pb-0 logo">Cacta</p>
- </a>
- <div class="navbar-collapse collapse">
- <ul class="navbar-nav">
-       <li class="nav-item active ml-2">
-        <a class="nav-link" href="#"><b style="color: green">Entrar</b><span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Cadastre-se</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Contrate</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Cacta blog</a>
-      </li>
-    </ul>
+
+</ul>
 
 </div>
 </nav>
 
+@include('site.includes.modal.modal-login-contratante')
 
+@include('site.includes.modal.modal-login-candidato')

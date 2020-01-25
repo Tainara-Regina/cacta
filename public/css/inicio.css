@@ -24,23 +24,20 @@ background-size: cover;
 
 
 .has-search .form-control {
-    padding-left: 2.375rem;
+  padding-left: 2.375rem;
 }
 
 .has-search .form-control-feedback {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    width: 2.375rem;
-    height: 2.375rem;
-    line-height: 2.375rem;
-    text-align: center;
-    pointer-events: none;
-    color: #754026;
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #754026;
 }
-
-
-
 
 
 .encontre-servico{
@@ -76,7 +73,7 @@ background-size: cover;
 
 .cadastre-se-mobile{
  /*  font-family: 'Kulim Park', sans-serif;
-    font-weight: 700;*/
+ font-weight: 700;*/
 }
 
 .btn-cadastre-se{
@@ -240,13 +237,13 @@ footer p {
 
 .vaga .titulo{
   font-weight: 600;
-   font-family: 'Kulim Park', sans-serif;
+  font-family: 'Kulim Park', sans-serif;
 }
 
 
 
 .vaga{
-   font-family: 'Kulim Park', sans-serif;
+ font-family: 'Kulim Park', sans-serif;
 }
 
 .contratando{
@@ -262,12 +259,12 @@ footer p {
 
 
 .encontre-servico .busca {
-    border-radius: 20px;
-    background-color: #FFF;
-    border: 3px solid #754026;
-    color: green;
-    font-weight: bold;
-    /*width: 60%;*/
+  border-radius: 20px;
+  background-color: #FFF;
+  border: 3px solid #754026;
+  color: green;
+  font-weight: bold;
+  /*width: 60%;*/
 }
 
 
@@ -380,22 +377,22 @@ box-shadow: 10px 10px 25px -7px rgba(0,0,0,0.59);*/
 @media only screen and (max-width: 600px) {
 
 
-.jumbotron {
-       padding: 15px;
+  .jumbotron {
+   padding: 15px;
+ }
+
+
+
+ .encontre-servico .busca {
+  border-radius: 20px;
+  background-color: #FFF;
+  border: 3px solid #754026;
+  color: green;
+  font-weight: bold;
+  /*width: 80%;*/
 }
 
-
-
-.encontre-servico .busca {
-    border-radius: 20px;
-    background-color: #FFF;
-    border: 3px solid #754026;
-    color: green;
-    font-weight: bold;
-    /*width: 80%;*/
-}
-
- .encontre-servico {
+.encontre-servico {
   padding: 9px 0px;
   background: rgba(0,0,0,0.6);
   text-align: center;

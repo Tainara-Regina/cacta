@@ -23,4 +23,20 @@ class VagaController extends Controller
 		return view('site.vaga',compact('contratar','fundo_vaga','procurar_vaga'));
 
 	}
+
+
+
+
+public function listaVaga(){
+		
+		$contratar     = ContratarHome::select()->first();
+		$fundo_vaga    = DB::table('fundo_vaga_home')
+		->inRandomOrder()
+		->first();
+		$procurar_vaga = ProcurarVagaHome::select()->first();
+		//dd($contratar->all());
+		return view('site.lista-vagas',compact('contratar','fundo_vaga','procurar_vaga'));
+
+	}
+
 }
