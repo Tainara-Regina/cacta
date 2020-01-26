@@ -26,7 +26,7 @@
     <main role="main">
         <section class="jumbotron text-center parallax" style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});">
           <div class="text-left  d-none d-sm-block">
-           <a class="btn mb-5 cadastre animated rubberBand btn-cadastre-se">cadastre-se clicando aqui</a>
+           <a class="btn mb-5 cadastre animated rubberBand btn-cadastre-se">cadastre-se clicando aqui/ colocar botão de logar aqui/ colocar o botão de contrate aqui </a>
        </div>
 
        <div  class="container encontre-servico">

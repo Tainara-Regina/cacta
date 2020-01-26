@@ -15,7 +15,7 @@
  								<h4 class="text-center">Cacta</h4>
  							</div>
  							<div class="col-md-8">
- 								<form class="form-signin">
+ 								<form class="form-signin" >
  									<input type="text" class="form-control mb-2" placeholder="Email" required autofocus>
  									<input type="password" class="form-control mb-2" placeholder="Password" required>
  									<button class="btn btn-lg btn-primary btn-block mb-1" type="submit">ENTRAR</button>

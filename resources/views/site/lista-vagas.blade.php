@@ -29,10 +29,11 @@
 	<section class="jumbotron text-center parallax" style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});">
 
 		<div  class="container encontre-servico">
-			<h2 class="mb-3">{!!$procurar_vaga->titulo!!}</h2>
+			<!-- <h2 class="mb-3">{!!$procurar_vaga->titulo!!}</h2> -->
 			<div class="col px-5  has-search">
 				<span class="fa fa-search form-control-feedback"></span>
 				<input id="buscar"  type="text" class="form-control busca mx-auto" placeholder="Pesquise aqui. Ex: barbeiro, fotografo, barman,etc.">
+				<h5 class="mt-3">Encontramos estas <strong>vagas</strong> listadas abaixo para você!</h5>
 
 			</div>
 		</div>
