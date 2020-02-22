@@ -17,6 +17,7 @@ class VagaController extends Controller
 		$contratar     = ContratarHome::select()->first();
 		$fundo_vaga    = DB::table('fundo_vaga_home')
 		->inRandomOrder()
+		->where('disponivel', 1)
 		->first();
 		$procurar_vaga = ProcurarVagaHome::select()->first();
 		//dd($contratar->all());
