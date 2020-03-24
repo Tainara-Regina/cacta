@@ -41,6 +41,13 @@ return [
             'provider' => 'users',
         ],
 
+
+        'cacta' => [
+            'driver' => 'session',
+            'provider' => 'cactausers',
+        ],
+
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -71,6 +78,11 @@ return [
             'model' => App\User::class,
         ],
 
+        'cactausers' => [
+            'driver' => 'eloquent',
+            'model' => App\CactaUsers::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -94,6 +106,12 @@ return [
 
     'passwords' => [
         'users' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'cactausers' => [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,

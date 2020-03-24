@@ -18,10 +18,28 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
+
+
+        switch ($guard) {
+            case 'cacta':
+            if (Auth::guard($guard)->check()) {
+                return redirect()->route('site.admin-contratante');
+         }
+
+         break;
+
+         default:
+         if (Auth::guard($guard)->check()) {
             return redirect(RouteServiceProvider::HOME);
         }
-
-        return $next($request);
+        break;
     }
+
+
+        // if (Auth::guard($guard)->check()) {
+        //     return redirect(RouteServiceProvider::HOME);
+        // }
+
+    return $next($request);
+}
 }

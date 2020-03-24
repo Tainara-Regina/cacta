@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\ContratarHome;
 use App\FundoVagaHome;
 use App\ProcurarVagaHome;
+use App\Segmento;
 use DB;
+use Auth;
 
 class InicioController extends Controller
 {
@@ -20,4 +22,17 @@ class InicioController extends Controller
 		//dd($contratar->all());
 		return view('site.inicio',compact('contratar','fundo_vaga','procurar_vaga'));
 	}
+
+
+
+ public function formularioContratante(){
+ 	 $segmentos = Segmento::select('id','segmento')->get();
+      return view('site.formularioContratante-1',compact('segmentos'));
+    }
+
+    public function formularioContratanteAdd(Request $request){
+
+    }
+
+
 }

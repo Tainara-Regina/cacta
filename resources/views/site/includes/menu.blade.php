@@ -32,19 +32,32 @@
 
 
      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+        @if(Request::session()->get('menu'))
+        <a class="nav-link" href="{{route('site.admin-contratante')}}" id="navbarDropdown" >
+          <b style="color: green">Acessar painel</b>
+      </a>
+      @else
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <b style="color: green">Entrar</b>
       </a>
+
+
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalCandidato">Área do candidato</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalContratante">Área do contratante</a>
       </div>
-  </li>
 
+      @endif
+
+
+  </li>
+ @if(!Request::session()->get('menu'))
   <li class="nav-item active">
     <a class="nav-link" href="#">Cadastre-se</a>
 </li>
+@endif
 <li class="nav-item active">
     <a class="nav-link" href="#">Contrate</a>
 </li>

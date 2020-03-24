@@ -290,15 +290,13 @@
 							<div class="form-group">
 								<div class="main">
 									<label for="pwd"><b>Selecione o segmento da sua empresa</b></label>
+
+
 									<select name="segmento">
-										<option value="0">Barbeiro(a)</option>
-										<option value="0">Barista(a)</option>
-										<option value="0">Recepcionista</option>
-										<option value="0">Cozinheiro(a)</option>
-										<option value="0">Chef de cozinha</option>
-										<option value="0">Barista</option>
-										<option value="0">Tatuador(a)</option>
-										<option value="0">Auxuliar</option>
+										
+										@foreach ($segmentos as $segmento)
+										<option value="{{ $segmento->id }}">{{ $segmento->segmento }}</option>
+										@endforeach
 									</select>
 								</div>
 							</div>

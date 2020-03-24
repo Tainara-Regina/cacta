@@ -315,14 +315,13 @@
 								<div class="main">
 									<label for="pwd"><b>Título da vaga:</b></label>
 									<select name="titulo">
-										<option value="0">Barbeiro(a)</option>
-										<option value="0">Barista(a)</option>
-										<option value="0">Recepcionista</option>
-										<option value="0">Cozinheiro(a)</option>
-										<option value="0">Chef de cozinha</option>
-										<option value="0">Barista</option>
-										<option value="0">Tatuador(a)</option>
-										<option value="0">Auxuliar</option>
+
+										@foreach($titulos_vaga as $titulo_vaga)
+
+										<option value="{{$titulo_vaga->id}}">{{$titulo_vaga->titulo}}</option>
+
+										@endforeach
+										
 									</select>
 								</div>
 							</div>

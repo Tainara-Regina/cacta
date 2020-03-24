@@ -14,8 +14,23 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
+        
+        // $guard = array_get($exception->guards(),0);
+
+        // switch ($guard) {
+        //     case 'cacta':
+        //     $login = 'site.inicio';
+        //     break;
+
+        //     default:
+        //     $login = 'login';
+        //     break;
+        // }
+
         if (! $request->expectsJson()) {
-            return route('login');
+            return route('site.inicio');
         }
+
+        
     }
 }

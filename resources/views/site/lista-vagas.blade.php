@@ -41,14 +41,7 @@
 	</section>
 
 
-
-
-
-
-
-
-
-	<section class="conteudo-pesquisa" >
+	<section class="conteudo-pesquisa">
 		<div id="filtro" class="">
 			<div class="container-fluid" style="background-color: #eeeeeeb3;">
 				<div class="row">
@@ -619,6 +612,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="{{asset('js/slick.js')}}"></script>
 <script src="{{asset('js/lista-vagas.js')}}"></script>
+
+
+
+
+
+
+
 
 </body>
 </html>
