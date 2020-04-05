@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
+use App\CadastrarVaga;
+use App\CactaUsers;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -25,6 +28,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('permissao_vagas',function(CactaUsers $user, CadastrarVaga $vagas){
+
+           return  $user->id == $vagas->id_usuario;
+
+        });
     }
 }
+

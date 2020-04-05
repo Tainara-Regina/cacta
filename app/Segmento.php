@@ -11,8 +11,8 @@ class Segmento extends Model
      public $table ="segmento";  
 
 
- public function rola(){
-     	return $this->hasOne(TituloVaga::class,'id_segmento','id');
+ public function segmento(){
+     	return $this->hasMany(TituloVaga::class,'id_segmento','id');
      }
 
 }

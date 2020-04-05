@@ -236,25 +236,16 @@
 
 			<div class="container-fluid mb-5">
 				<div class="row">
-					<div class="col text-center mb-5">
-
-
-						@if(session()->has('message'))
-						<div class="alert alert-success alert-dismissible py-4">
-							<button type="button" class="close" data-dismiss="alert">&times;</button>
-							<h4>{{ session()->get('message') }}</h4>
-						</div>
-						@endif
-
-
-						<h2>DIVULGAR VAGAS</h2>
-						<p>Aqui você pode divulgas suas vagas e ver quantas vagas ainda pode divulgar no mês.</p>
-					</div>	
+					<div class="col">
+						<h2 class="text-center">Limite atingido</h2>
+						<h4 class="text-center">Mude de plano para aumentar seu limite e aproveite as outras vantagens.</h4>
+						<h4 class="text-center">Se preferir visualize suas vagas <a href="{{route('site.candidatos-vaga')}}">clicando aqui</a></h4>
+					</div>
 				</div>
 
 
 				<div class="row">
-				<div class="col-sm-6 mx-auto">
+					<div class="col-sm-6 mx-auto">
 						<div class="card card-inverse card-success">
 							<div class="card-block bg-dark text-center">
 								<div class="rotate">
@@ -265,6 +256,7 @@
 							</div>
 						</div>
 					</div>
+
 
 					<div class="col">
 						<div class="card card-inverse card-success">
@@ -277,178 +269,126 @@
 							</div>
 						</div>
 					</div>
+
+
 				</div>
 
 				<div class="row">
 					<div class="col">
-						<div class="text-center mt-5">
-							<button type="button" class="btn btn-dark">DIVULGAR NOVA VAGA</button>
+						<h2 class="my-5 text-center">Outros planos disponiveis</h2>
+					</div>
+				</div>
+
+
+				<div class="row">
+					@foreach($planos as $plano)
+					<div class="col-lg-4 col-8 mx-auto" >
+						<div class="card mb-5 mb-lg-0 plano" data-plano="${{$plano->id}}">
+							<div class="card-body">
+								<h5 class="card-title text-muted text-uppercase text-center">{{$plano->plano}}</h5>
+								<h6 class="card-price text-center">${{$plano->preco}}<!-- <span class="period">/mês</span> --></h6>
+								<hr>
+								<ul class="fa-ul">
+
+									<li><span class="fa-li"><i class="fa fa-check"></i></span> {{$plano->quantidade_vagas}} vaga(s) para divulgar por mês <small>(inclui renovar vagas existentes)</small></li>
+
+									@if($plano->vagas_em_destaque == 0)
+									<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Permite destacar suas vagas</li>
+
+									@else
+									<li><span class="fa-li"><i class="fa fa-check"></i></span> Permite destacar {{$plano->vagas_em_destaque}} de suas vagas </li>
+									@endif
+
+
+									@if($plano->banco_de_candidatos == 0)
+									<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Banco de candidatos</li>
+
+									@else
+									<li><span class="fa-li"><i class="fa fa-check"></i></span> Banco de candidatos</li>
+									@endif
+
+
+
+									@if($plano->materiais_exclusivos == 0)
+									<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+
+									@else
+									<li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+									@endif
+
+
+								</ul>
+								<span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
+							</div>
+						</div>
+					</div>
+					@endforeach
+
+				</div>
+
+
+				<div class="row">
+					<div class="col">
+						<h2 class="text-center mt-5">Seu plano atual</h2>
+
+						<div class="col-lg-4 col-8 mx-auto" >
+							<div class="card mb-5 mb-lg-0 plano">
+								<div class="card-body">
+									<h5 class="card-title text-muted text-uppercase text-center">{{$plano_atual->plano}}</h5>
+									<h6 class="card-price text-center">${{$plano_atual->preco}}<!-- <span class="period">/mês</span> --></h6>
+									<hr>
+									<ul class="fa-ul">
+
+										<li><span class="fa-li"><i class="fa fa-check"></i></span> {{$plano_atual->quantidade_vagas}} vaga(s) para divulgar por mês <small>(inclui renovar vagas existentes)</small></li>
+
+										@if($plano_atual->vagas_em_destaque == 0)
+										<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Permite destacar suas vagas</li>
+
+										@else
+										<li><span class="fa-li"><i class="fa fa-check"></i></span> Permite destacar {{$plano_atual->vagas_em_destaque}} de suas vagas </li>
+										@endif
+
+
+										@if($plano_atual->banco_de_candidatos == 0)
+										<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Banco de candidatos</li>
+
+										@else
+										<li><span class="fa-li"><i class="fa fa-check"></i></span> Banco de candidatos</li>
+										@endif
+
+
+
+										@if($plano_atual->materiais_exclusivos == 0)
+										<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+
+										@else
+										<li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+										@endif
+
+
+									</ul>
+									<span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 
-
-
-
-
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-7">
-						<!-- 	<h3>Criar nova vaga</h3> -->
-						<p style="font-size: 20px;" class="text-center mb-5">Insira abaixo todas as informações para a nova vaga</p>
-
-						<form action="{{route('site.cadastrar-vaga')}}" method="POST">
-
-							@csrf
-
-
-
-
-							@error('titulo')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-							<div class="form-group">
-								<div class="main">
-									<label for="pwd"><b>Título da vaga:</b></label>
-									<select name="titulo">
-
-										@foreach($titulos_vaga as $titulo_vaga)
-
-										<option value="{{$titulo_vaga->id}}">{{$titulo_vaga->titulo}}</option>
-
-										@endforeach
-										
-									</select>
-								</div>
-							</div>
-
-
-
-
-							<div class="form-group">
-								<label for="pwd"><b>Faixa salarial de:</b></label>
-
-								<input type="number" name="faixa_salarial_de" class="form-control" min="1" max="10000" id="pwd" placeholder="Ex: 2.000">
-								<label><b>até:</b></label>
-								<input type="number" name="faixa_salarial_ate" class="form-control"  min="1" max="10000" id="pwd" placeholder="Ex: 3.000">
-							</div>
-
-							<div class="form-group form-check">
-								<label class="form-check-label">
-									<input name="a_combinar" class="form-check-input" type="checkbox" name="remember"> A combinar
-								</label>
-							</div>
-
-
-							@error('contratacao')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-
-							<div class="form-group">
-								<label for="pwd"><b>Contratação:</b></label>
-
-								<div class="form-check">
-									<label class="form-check-label" for="radio1">
-										<input type="radio" class="form-check-input" id="radio1" name="contratacao" value="fixo">Fixo
-									</label>
-								</div>
-								<div class="form-check">
-									<label class="form-check-label" for="radio2">
-										<input type="radio" class="form-check-input" id="radio2" name="contratacao" value="temporario">Temporario
-									</label>
-								</div>
-							</div>
-
-
-
-							@error('quantidade_vaga')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-
-							<div class="form-group row">
-								<label for="example-number-input" class="col col-form-label"><b>Quantidade de vaga:</b></label>
-								<div class="col">
-									<input name="quantidade_vaga" class="form-control w-50" min="1" max="99" type="number" value="1" id="example-number-input">
-								</div>
-							</div>
-
-
-							@error('descricao')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-							<div class="form-group">
-								<label for="email"><b>Descrição:</b></label>
-								<textarea name="descricao" placeholder='Conte um pouco sobre a empresa, fale sobre a vaga e as habilidades que procura no candidato. Ex: A empresa "Exemplo" está procurando de pessoas que se identificam  com os valores da empresa para compor nossa equipe. As principais atividades realizadas são...'  class="form-control" rows="5" id="comment"></textarea>
-							</div>
-
-							@error('requisitos')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-							<div class="form-group">
-								<label for="pwd"><b>Requisitos:</b></label>
-								<textarea name="requisitos" placeholder="Descreva aqui todas as habilidades e experiencias necessarias para ocupar a vaga." class="form-control" rows="5" id="comment"></textarea>
-							</div>
-
-							@error('desejavel')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-							<div class="form-group">
-								<label for="comment"><b>Desejável:</b></label>
-								<textarea name="desejavel" placeholder="Descreva aqui habilidades que não são obrigatórias para a vaga mas seriam consideradas um diferencialcaso o candidato possua."class="form-control" rows="5" id="comment"></textarea>
-							</div> 
-
-
-							@error('beneficios')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-							<div class="form-group">
-								<label for="comment"><b>Beneficios:</b></label>
-								<textarea name="beneficios" placeholder="Descreva os beneficios da vaga."class="form-control" rows="5" id="comment"></textarea>
-							</div> 
-
-							<div class="form-check mb-5">
-								@if($utrapassou_limite_destaque == true)
-								<label class="form-check-label" for="check1">
-									<input name="vaga_em_destaque" type="checkbox" class="form-check-input" disabled>Deixar vaga em destaque?<br>
-									<small>Atualize seu plano para poder destacar esta vaga nas primeiras páginas.</small>
-								</label>
-								@else
-								<label class="form-check-label" for="check1">
-									<input name="vaga_em_destaque" type="checkbox" class="form-check-input">Deixar vaga em destaque?
-								</label>
-								@endif
-							</div>
-
-							<button type="submit" class="btn btn-primary mb-3">Salvar</button>
-						</form>
-					</div>
-
-					<div class="col-md-5">
-						<div class="w-100 bg-dark" style="height: 200px">
-							<p class="text-center">
-								Banner
-							</p>
-						</div>
-
-						<div class="w-100 bg-dark mt-5" style="height: 200px">
-							<p class="text-center">
-								Banner
-							</p>
-						</div>
-
-					</div>
-
-
-				</div>
-			</div> 
-
-
-
 		</div>
-	</main>
 
-	<!-- page-content" -->
+
+
+
+
+
+
+
+	</div>
+</main>
+
+<!-- page-content" -->
 </div>
 <!-- page-wrapper -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -17,7 +17,7 @@
 
 
 Route::get('/', 'InicioController@inicio')->name('site.inicio');
-Route::get('/vaga', 'VagaController@vaga')->name('site.vaga');
+Route::get('/vaga/{id}', 'VagaController@vaga')->name('site.vaga');
 Route::get('/lista-vagas', 'VagaController@listaVaga')->name('site.lista-vaga');
 Route::get('/admin-contratante', 'AdminContratanteController@home')->name('site.admin-contratante');
 
@@ -28,6 +28,24 @@ Route::get('/admin-contratante/divulgar-vaga', 'AdminContratanteController@divul
 
 
 Route::post('/admin-contratante/cadastrar-vaga', 'AdminContratanteController@cadastrarVaga')->name('site.cadastrar-vaga');
+
+
+
+Route::get('/admin-contratante/editar-vaga/{id}', 'AdminContratanteController@editarVaga')->name('site.editar-vaga');
+
+
+
+Route::get('/admin-contratante/deleta-vaga/{id}', 'AdminContratanteController@deletaVaga')->name('site.deleta-vaga');
+
+
+Route::get('/admin-contratante/ver-vaga/{id}', 'AdminContratanteController@verVaga')->name('site.ver-vaga');
+
+
+
+Route::post('/admin-contratante/update-vaga', 'AdminContratanteController@updateVaga')->name('site.update-vaga');
+
+
+
 
 
 Route::get('/admin-contratante/meus-dados', 'AdminContratanteController@meusDados')->name('site.meus-dados');
@@ -51,6 +69,7 @@ Route::get('/cacta-logout', 'Auth\CactaLogoutController@logout')->name('cactalog
 Route::post('/vagas-inicio', 'AdminContratanteControllerAjax@vagasInicio')->name('vagasInicio');
 
 Route::get('/cadastro-contratante', 'InicioController@formularioContratante')->name('formularioContratante');
+
 
 
 Route::post('/confirme-email-cadastrante','CadastrarLoginController@formularioContratanteParte1')->name('site.formularioContratanteParte1');

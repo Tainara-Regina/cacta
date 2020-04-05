@@ -173,6 +173,14 @@
                 <input type="hidden" name="id" value="{{$usuario->id}}">
                 <input type="hidden" value="{{old('plano')}}" name="plano" id="plano" value="">
 
+                <input type="hidden" id="logradouro" name="logradouro" value="">
+                <input type="hidden" id="bairro" name="bairro" value="">
+                <input type="hidden" id="localidade" name="localidade" value="">
+                <input type="hidden" id="uf" name="uf" value="">
+
+
+
+
                 @error('logo')
                 <span style="color: red">{{ $message }}</span>
                 @enderror
@@ -201,6 +209,10 @@
 
 
                 @error('cep')
+                <span style="color: red">{{ $message }}</span> <br>
+                @enderror
+
+                @error('endereco')
                 <span style="color: red">{{ $message }}</span>
                 @enderror
 
@@ -208,13 +220,19 @@
                   <label for="email"><b>Endereço</b></label>
                   <input type="text" value="{{old('cep')}}" name="cep" placeholder="Digite o CEP" type="text" class="form-control cep">
 
-                  <textarea class="mt-2 form-control endereco"  rows="5" id="comment" disabled></textarea>
+                  <input name="endereco" value="{{old('endereco')}}" class="mt-2 form-control endereco"  rows="5" id="comment">
+
+                  @error('numero')
+                  <div class="mt-3">
+                    <span style="color: red">{{ $message }}</span>
+                  </div>
+                  @enderror
 
                   <input style="width: 100px!important" type="text" value="{{old('numero')}}" name="numero" placeholder="Número" type="text" class="form-control mt-3" maxlength="5">
                 </div>
 
                 <div class="form-group">
-                  
+
                 </div>
 
 
@@ -262,7 +280,7 @@
                 <div class="row">
                   <div class="col">
                     <h2 class="text-center mb-3  mt-5">Dados do cartão</h2>
-                    <p><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preucupe.</p>
+                    <p><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preocupe.</p>
 
                   </div>
                 </div>
@@ -273,7 +291,7 @@
                 <span style="color: red">{{ $message }}</span>
                 @enderror
                 <div class="form-group">
-                  <input name="nome_cartao" placeholder="Nome que esta no cartão" value="{{old('nome_cartao')}}" type="text" class="form-control name"></input>
+                  <input name="nome_cartao" placeholder="Nome" value="{{old('nome_cartao')}}" type="text" class="form-control name"></input>
                 </div>
 
                 @error('numero_cartao')
@@ -307,7 +325,7 @@
               <div class="row">
                 <div class="col">
                   <h2 class="text-center mt-5 mb-3">Escolha o plano que deseja</h2>
-                  <p class="text-center"><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preucupe.</p>
+                  <p class="text-center"><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preocupe.</p>
                 </div>
               </div>
 
@@ -320,45 +338,63 @@
              </div>
 
              <div class="row pricing">
-               <!-- Free Tier -->
-               <div class="col-lg-4 col-8 mx-auto" >
-                <div class="card mb-5 mb-lg-0 plano" data-plano="1">
-                  <div class="card-body">
-                    <h5 class="card-title text-muted text-uppercase text-center">Gratuito</h5>
-                    <h6 class="card-price text-center">$0<span class="period">/month</span></h6>
-                    <hr>
-                    <ul class="fa-ul">
 
-                      <li><span class="fa-li"><i class="fa fa-check"></i></span>Unlimited Public Projects</li>
-                      <li><span class="fa-li"><i class="fa fa-check"></i></span>Community Access</li>
-                      <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Unlimited Private Projects</li>
-                      <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Dedicated Phone Support</li>
 
-                    </ul>
-                    <span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Plus Tier -->
-              <div class="col-lg-4 col-8 mx-auto"  >
-                <div class="card mb-5 mb-lg-0 plano" data-plano="2">
-                  <div class="card-body">
-                    <h5 class="card-title text-muted text-uppercase text-center">Plus</h5>
-                    <h6 class="card-price text-center">$9<span class="period">/month</span></h6>
-                    <hr>
-                    <ul class="fa-ul">
-                      <li><span class="fa-li"><i class="fa fa-check"></i></span><strong>5 Users</strong></li>
-                      <li><span class="fa-li"><i class="fa fa-check"></i></span>50GB Storage</li>
-                      <li><span class="fa-li"><i class="fa fa-check"></i></span>Unlimited Public Projects</li>
-                      <li><span class="fa-li"><i class="fa fa-check"></i></span>Community Access</li>
+              @foreach($planos as $plano)
 
-                    </ul>
-                    <span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Pro Tier -->
+              
               <div class="col-lg-4 col-8 mx-auto" >
+                <div class="card mb-5 mb-lg-0 plano" data-plano="{{$plano->id}}">
+                  <div class="card-body">
+                    <h5 class="card-title text-muted text-uppercase text-center">{{$plano->plano}}</h5>
+                    <h6 class="card-price text-center">${{$plano->preco}}<!-- <span class="period">/mês</span> --></h6>
+                    <hr>
+                    <ul class="fa-ul">
+
+                      <li><span class="fa-li"><i class="fa fa-check"></i></span> {{$plano->quantidade_vagas}} vaga(s) para divulgar por mês <small>(inclui renovar vagas existentes)</small></li>
+
+                      @if($plano->vagas_em_destaque == 0)
+                      <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Permite destacar suas vagas</li>
+
+                      @else
+                      <li><span class="fa-li"><i class="fa fa-check"></i></span> Permite destacar {{$plano->vagas_em_destaque}} de suas vagas </li>
+                      @endif
+
+
+
+
+
+
+                      @if($plano->banco_de_candidatos == 0)
+                      <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Banco de candidatos</li>
+
+                      @else
+                      <li><span class="fa-li"><i class="fa fa-check"></i></span> Banco de candidatos</li>
+                      @endif
+
+
+
+                      @if($plano->materiais_exclusivos == 0)
+                      <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+
+                      @else
+                      <li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+                      @endif
+
+
+                    </ul>
+                    <span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
+                  </div>
+                </div>
+              </div>
+              @endforeach
+
+
+
+
+
+
+              <!-- <div class="col-lg-4 col-8 mx-auto" >
                 <div class="card plano" data-plano="3">
                   <div class="card-body">
                     <h5 class="card-title text-muted text-uppercase text-center">Pro</h5>
@@ -374,7 +410,11 @@
                     <span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
                   </div>
                 </div>
-              </div>
+              </div> -->
+
+
+
+
             </div>
 
 
@@ -430,10 +470,22 @@ $('#plano').val($(this).attr("data-plano"));
 <script type="text/javascript">
   $(".cep").keyup(function(){
     var cep = $('.cep').val();
-    $('.endereco').val(" ");
+
+    $('.endereco').val(null);
     $.get("https://viacep.com.br/ws/"+cep+"/json/", function(data, status){
 
-     $('.endereco').val(data['logradouro']+", "+data['bairro']+" "+data['localidade']+" - "+data['uf']);
+      if(data['erro'] == true){
+       $('.endereco').val(null);
+     }else{
+
+       console.log(data);
+       $('#logradouro').val(data['logradouro']);
+       $('#bairro').val(data['bairro']);
+       $('#localidade').val(data['localidade']);
+       $('#uf').val(data['uf']);
+
+       $('.endereco').val(data['logradouro']+", "+data['bairro']+" "+data['localidade']+" - "+data['uf']);
+     }
    });
   });
 </script>
@@ -441,15 +493,7 @@ $('#plano').val($(this).attr("data-plano"));
 </body>
 </html>
 
-"cep": "05868-820",
-"logradouro": "Rua dos Jeribás",
-"complemento": "",
-"bairro": "Conjunto Habitacional Instituto Adventista",
-"localidade": "São Paulo",
-"uf": "SP",
-"unidade": "",
-"ibge": "3550308",
-"gia": "1004"
+
 }
 
 

@@ -36,27 +36,34 @@
 				</div>
 
 				<div class="row my-3 mb-5">
+
+
+					@foreach($vagas as $vaga)
+					
 					<div class="col">
 						<div class="card card-inverse mh-100 h-100">
 							<div class="card-block bg-secondary">
 								<div class="rotate">
 									<i class="fa fa-share fa-5x"></i>
 								</div>
-								<h4 class="text-uppercase">vaga para barbeiro</h4>
+								<h4 class="text-uppercase">{{$vaga->titulo}}</h4>
 
-								<p><i>Disponivel até 02/04/2020</i></p>
-								<h6 class="text-uppercase mb-5">3 Pessoas se cadidtaram</h6>
-								
-								<ul class="p-0" style="position: absolute;bottom: 0px;list-style: none;">
-									<li>Ver todos candidatos</li>
-									<li>Editar</li>
+								<p><i>Disponivel de {{ Carbon\Carbon::parse($vaga->data_de_criacao)->format('d/m/Y')}} de até {{ Carbon\Carbon::parse($vaga->data_de_expiracao)->format('d/m/Y') }} </i></p>
+								<h6 class="text-uppercase mb-3">3 Pessoas se cadidtaram</h6>
+								<ul class="p-0" style="/*position: absolute;*/bottom: 0px;list-style: none;">
+									<a href=""><li> Ver candidatos</li></a>
+									<li><a href="{{route('site.ver-vaga',$vaga->id)}}"> Ver vaga</a></li>
+									<li><a href="{{route('site.editar-vaga',$vaga->id)}}">Editar vaga</a></li>
+									<li><a href="{{route('site.deleta-vaga',$vaga->id)}}">Deletar vaga</a></li>
+
 								</ul>
-
 							</div>
 						</div>
 					</div>
-
-					<div class="col">
+						
+					@endforeach
+				
+		<!-- 			<div class="col">
 						<div class="card card-inverse mh-100 h-100">
 							<div class="card-block bg-dark">
 								<div class="rotate">
@@ -74,10 +81,10 @@
 
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 
-					<div class="col">
+				<!-- 	<div class="col">
 						<div class="card card-inverse mh-100 h-100">
 							<div class="card-block bg-dark">
 								<div class="rotate">
@@ -95,14 +102,13 @@
 
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 
 
-				<div class="row">
+	<!-- 			<div class="row">
 					<div class="col">
-						<!-- <h5 class="text-center mb-3 mt-5">VAGA PARA BARBEIRO</h5> -->
 						<table class="table mb-3 mt-5">
 							<thead class="thead-dark">
 								<tr>
@@ -141,7 +147,7 @@
 						</table>
 
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</main>
 
@@ -155,8 +161,8 @@
 	crossorigin="anonymous"></script>
 
 
-@include('adminContratante.includes.modal-contratante')
-<script type="text/javascript" src="{{asset('/js/admin/admin-menu.js')}}"></script>
+	@include('adminContratante.includes.modal-contratante')
+	<script type="text/javascript" src="{{asset('/js/admin/admin-menu.js')}}"></script>
 
 </body>
 </html>

@@ -236,7 +236,7 @@
 
 			<div class="container-fluid mb-5">
 				<div class="row">
-					<div class="col text-center mb-5">
+					<div class="col text-center ">
 
 
 						@if(session()->has('message'))
@@ -247,45 +247,11 @@
 						@endif
 
 
-						<h2>DIVULGAR VAGAS</h2>
-						<p>Aqui você pode divulgas suas vagas e ver quantas vagas ainda pode divulgar no mês.</p>
+						<h2>EDITAR VAGA</h2>
+						<p>Edite os dados da vaga</p>
 					</div>	
 				</div>
 
-
-				<div class="row">
-				<div class="col-sm-6 mx-auto">
-						<div class="card card-inverse card-success">
-							<div class="card-block bg-dark text-center">
-								<div class="rotate">
-									<i class="fa fa-user fa-5x"></i>
-								</div>
-								<h6 class="text-uppercase">Vagas divulgadas</h6>
-								<h1 class="display-1">{{$quantidade_de_vagas_cadastradas}}<span style="font-size: 34px">/{{$quantidade_maxima_vagas_permitidas}}</span></h1>
-							</div>
-						</div>
-					</div>
-
-					<div class="col">
-						<div class="card card-inverse card-success">
-							<div class="card-block bg-dark text-center">
-								<div class="rotate">
-									<i class="fa fa-user fa-5x"></i>
-								</div>
-								<h6 class="text-uppercase">Vagas em destaque</h6>
-								<h1 class="display-1">{{$quantidade_destaque_cadastrado}}<span style="font-size: 34px">/{{$quantidade_maxima_destaque_permitido}}</span></h1>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col">
-						<div class="text-center mt-5">
-							<button type="button" class="btn btn-dark">DIVULGAR NOVA VAGA</button>
-						</div>
-					</div>
-				</div>
 			</div>
 
 
@@ -296,15 +262,11 @@
 				<div class="row">
 					<div class="col-md-7">
 						<!-- 	<h3>Criar nova vaga</h3> -->
-						<p style="font-size: 20px;" class="text-center mb-5">Insira abaixo todas as informações para a nova vaga</p>
+						<p style="font-size: 20px;" class="text-center mb-5">Edite as informações abaixo</p>
 
-						<form action="{{route('site.cadastrar-vaga')}}" method="POST">
-
+						<form action="{{route('site.update-vaga')}}" method="POST">
 							@csrf
-
-
-
-
+							<input type="hidden" value="{{$id_vaga}}" name="id_vaga">
 							@error('titulo')
 							<span style="color: red">{{ $message }}</span>
 							@enderror
@@ -315,7 +277,13 @@
 
 										@foreach($titulos_vaga as $titulo_vaga)
 
+
+										@if($titulo_vaga->id == $vagas->titulo)
+										<option value="{{$titulo_vaga->id}}" selected>{{$titulo_vaga->titulo}}</option>
+
+										@else
 										<option value="{{$titulo_vaga->id}}">{{$titulo_vaga->titulo}}</option>
+										@endif
 
 										@endforeach
 										
@@ -329,9 +297,9 @@
 							<div class="form-group">
 								<label for="pwd"><b>Faixa salarial de:</b></label>
 
-								<input type="number" name="faixa_salarial_de" class="form-control" min="1" max="10000" id="pwd" placeholder="Ex: 2.000">
+								<input type="number" value="{{$vagas->faixa_salarial_de}}" name="faixa_salarial_de" class="form-control" min="1" max="10000" id="pwd" placeholder="Ex: 2.000">
 								<label><b>até:</b></label>
-								<input type="number" name="faixa_salarial_ate" class="form-control"  min="1" max="10000" id="pwd" placeholder="Ex: 3.000">
+								<input type="number" value="{{$vagas->faixa_salarial_ate}}" name="faixa_salarial_ate" class="form-control"  min="1" max="10000" id="pwd" placeholder="Ex: 3.000">
 							</div>
 
 							<div class="form-group form-check">
@@ -350,12 +318,24 @@
 
 								<div class="form-check">
 									<label class="form-check-label" for="radio1">
+
+										@if($vagas->contratacao == "fixo") 
+										<input type="radio" class="form-check-input" id="radio1" name="contratacao" value="fixo" checked>Fixo
+
+										@else
 										<input type="radio" class="form-check-input" id="radio1" name="contratacao" value="fixo">Fixo
+										@endif
+
 									</label>
 								</div>
 								<div class="form-check">
 									<label class="form-check-label" for="radio2">
+										@if($vagas->contratacao == "temporario")
+										<input type="radio" class="form-check-input" id="radio2" name="contratacao" value="temporario" checked>Temporario
+										@else
 										<input type="radio" class="form-check-input" id="radio2" name="contratacao" value="temporario">Temporario
+
+										@endif										
 									</label>
 								</div>
 							</div>
@@ -369,7 +349,7 @@
 							<div class="form-group row">
 								<label for="example-number-input" class="col col-form-label"><b>Quantidade de vaga:</b></label>
 								<div class="col">
-									<input name="quantidade_vaga" class="form-control w-50" min="1" max="99" type="number" value="1" id="example-number-input">
+									<input name="quantidade_vaga"  value="{{$vagas->quantidade_vaga}}" class="form-control w-50" min="1" max="99" type="number" value="1" id="example-number-input">
 								</div>
 							</div>
 
@@ -379,7 +359,7 @@
 							@enderror
 							<div class="form-group">
 								<label for="email"><b>Descrição:</b></label>
-								<textarea name="descricao" placeholder='Conte um pouco sobre a empresa, fale sobre a vaga e as habilidades que procura no candidato. Ex: A empresa "Exemplo" está procurando de pessoas que se identificam  com os valores da empresa para compor nossa equipe. As principais atividades realizadas são...'  class="form-control" rows="5" id="comment"></textarea>
+								<textarea  name="descricao" placeholder='Conte um pouco sobre a empresa, fale sobre a vaga e as habilidades que procura no candidato. Ex: A empresa "Exemplo" está procurando de pessoas que se identificam  com os valores da empresa para compor nossa equipe. As principais atividades realizadas são...'  class="form-control" rows="5" id="comment">{{$vagas->descricao}}</textarea>
 							</div>
 
 							@error('requisitos')
@@ -387,7 +367,7 @@
 							@enderror
 							<div class="form-group">
 								<label for="pwd"><b>Requisitos:</b></label>
-								<textarea name="requisitos" placeholder="Descreva aqui todas as habilidades e experiencias necessarias para ocupar a vaga." class="form-control" rows="5" id="comment"></textarea>
+								<textarea name="requisitos" placeholder="Descreva aqui todas as habilidades e experiencias necessarias para ocupar a vaga." class="form-control" rows="5" id="comment">{{$vagas->requisitos}}</textarea>
 							</div>
 
 							@error('desejavel')
@@ -395,7 +375,7 @@
 							@enderror
 							<div class="form-group">
 								<label for="comment"><b>Desejável:</b></label>
-								<textarea name="desejavel" placeholder="Descreva aqui habilidades que não são obrigatórias para a vaga mas seriam consideradas um diferencialcaso o candidato possua."class="form-control" rows="5" id="comment"></textarea>
+								<textarea name="desejavel" placeholder="Descreva aqui habilidades que não são obrigatórias para a vaga mas seriam consideradas um diferencialcaso o candidato possua."class="form-control" rows="5" id="comment">{{$vagas->desejavel}}</textarea>
 							</div> 
 
 
@@ -404,23 +384,32 @@
 							@enderror
 							<div class="form-group">
 								<label for="comment"><b>Beneficios:</b></label>
-								<textarea name="beneficios" placeholder="Descreva os beneficios da vaga."class="form-control" rows="5" id="comment"></textarea>
+								<textarea name="beneficios" placeholder="Descreva os beneficios da vaga."class="form-control" rows="5" id="comment">{{$vagas->beneficios}}</textarea>
 							</div> 
 
 							<div class="form-check mb-5">
-								@if($utrapassou_limite_destaque == true)
+
+								@if($vagas->vaga_em_destaque == "on")
 								<label class="form-check-label" for="check1">
-									<input name="vaga_em_destaque" type="checkbox" class="form-check-input" disabled>Deixar vaga em destaque?<br>
+									<input name="vaga_em_destaque" type="checkbox" class="form-check-input" checked>Deixar vaga em destaque?<br>
+									
+								</label>
+								@elseif($utrapassou_limite_destaque == true)
+								<label class="form-check-label" for="check1">
+									<input name="vaga_em_destaque" type="checkbox" class="form-check-input" disabled>Deixar vaga em destaque? <br>
 									<small>Atualize seu plano para poder destacar esta vaga nas primeiras páginas.</small>
 								</label>
-								@else
+
+								@elseif($utrapassou_limite_destaque == false)
 								<label class="form-check-label" for="check1">
-									<input name="vaga_em_destaque" type="checkbox" class="form-check-input">Deixar vaga em destaque?
+									<input name="vaga_em_destaque" type="checkbox" class="form-check-input">Deixar vaga em destaque? 
 								</label>
+
 								@endif
 							</div>
 
 							<button type="submit" class="btn btn-primary mb-3">Salvar</button>
+							<a class="btn btn-primary mb-3" href="{{ URL::previous() }}">Voltar</a>
 						</form>
 					</div>
 

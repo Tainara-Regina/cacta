@@ -11,8 +11,10 @@ use App\CadastrarVaga;
 use App\CactaUsers;
 use App\Segmento;
 use App\TituloVaga;
+use App\PlanosContratante;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+ use Illuminate\Support\Facades\Storage;
 use DB;
 
 
@@ -107,7 +109,12 @@ class CadastrarLoginController extends Controller
      $user->verificado = 1;
      $user->save();
 
-     return view('site.formularioContratante-2',compact('segmentos','nome','usuario','usuario'));
+
+$planos = PlanosContratante::all();
+
+
+
+     return view('site.formularioContratante-2',compact('segmentos','nome','usuario','usuario','planos'));
 
    }else{
     echo 'Desculpe, mas esta verificação é invalida ou foi expirada.';
@@ -124,7 +131,10 @@ public function formularioContratanteParte2(Request $request){
    'logo' => 'required|image',
    'segmento' => 'required',
    'cep' => 'required',
+   'numero' => 'required',
+   'complemento' => 'required',
    'sobre' => 'required',
+   'endereco' => 'required',
    'plano' => 'required',
 
    'nome_cartao' => 'required',
@@ -137,25 +147,37 @@ public function formularioContratanteParte2(Request $request){
   // 'site' => 'required',
  ],
  [
+   'endereco.required' => 'Insira um CEP válido.',
    'logo.required' => 'Insira o logo da sua em presa.',
    'segmento.required'  => 'Selecione o segmento da sua empresa.',  
    'sobre.required' => 'Escreva sobre sua empresa.',
-   'cep.required' => 'insira o CEP',
-    'plano.required' => 'Escolha o plano que deseja'
+   'cep.required' => 'insira o CEP.',
+   'plano.required' => 'Escolha o plano que deseja.'
  ]);
 
 
 
  if($request->file('logo')->isValid())
  {
-  $nome_imagem = $request->file('logo')->store('contratante/logo');
+$upload =  Storage::put('public/logo_usuario', $request->file('logo'));
+$teste = explode('/',$upload);
+array_shift($teste);
+$nome_imagem = implode('/',$teste);
 }
-
 
 $dados = CactaUsers::find($request->id);
 $dados->id_segmento = $request->segmento;
 $dados->logo =  $nome_imagem;
+
+
 $dados->cep = $request->cep;
+$dados->numero = $request->numero;
+$dados->complemento = $request->complemento;
+$dados->logradouro = $request->logradouro;
+$dados->bairro = $request->bairro;
+$dados->localidade = $request->localidade;
+$dados->uf = $request->uf;
+
 $dados->sobre = $request->sobre;
 $dados->facebook = $request->facebook;
 $dados->instagram = $request->instagram;
@@ -172,7 +194,7 @@ $dados->codigo_seguranca_cartao = $request->codigo_seguranca_cartao;
 $dados->completou_cadastro = 1;
 $dados->save();
 
-dd('cadastrou');
+dd($dados->logo);
 }
 
 }
