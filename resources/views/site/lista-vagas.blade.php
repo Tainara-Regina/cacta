@@ -377,7 +377,7 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('html, body').stop().animate({scrollTop:300}, 800);
+			$('html, body').stop().animate({scrollTop:600}, 800);
 		});
 	</script>
 

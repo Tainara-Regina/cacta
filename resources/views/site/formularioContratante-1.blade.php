@@ -30,11 +30,12 @@
         <div class="col mt-5 col-10 mx-auto">
           <h2 class="text-h3 text-center" >Olá!</h2>
           <h5 class="text-h3 text-center"> <b>Seja muito bem vindo(a) ao Cacta vagas!</b></h5>
+          <h5 class="text-h3 text-center"> <b>Bora encontrar as pessoas certa para sua equipe.</b></h5>
 
-          <p class="text-h3" style="font-size: 20px;">
+          <p class="text-h3 mt-4" style="font-size: 20px;">
             Nós vamos te ajudar a encontrar as pessoas certas para compor sua equipe. Pessoas que realmente combinam com a sua empresa. Aqui você consegue analizar o perfil completo do candidato antes da entrevista pessoal. 
             Chega de contratar do modo antigo, "as cegas".
-            E mais uma vez, seja bem vindo(a) ao Cacta vagas!
+            E mais uma vez, seja muito bem vindo(a) ao Cacta vagas!
           </p>
           <p class="text-h3 mt-5 text-center" style="font-size: 20px;"><b>Para começar a contratar, realize seu cadastro preenchendo os dados a seguir:</b></p>
         </div>
