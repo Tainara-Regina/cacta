@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head> 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="cacta">
-  <title>{!!$procurar_vaga->title!!}</title>
+@extends('site.base')
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+@section('css')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
   <meta name="theme-color" content="#754026">
   <link rel="stylesheet" href="{{asset('/css/inicio.css')}}">
@@ -19,27 +12,64 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
+@stop
+
+@section('titulo')
+<title>{!!$procurar_vaga->title!!}</title>
+@stop
+
+@section('conteudo')
+<main role="main">
+  <section class="text-center parallax" 
+
+  @if(isset($fundo_vaga->imagem))
+  style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
+  @endif
+">
+
+  <div class="text-left  d-none d-sm-block">
+    <!-- A grey horizontal navbar that becomes vertical on small screens -->
+    <nav class="navbar navbar-expand-sm p-0 m-0 menu-top">
+      <!-- Links -->
+      <ul class="navbar-nav"> 
+        <li class="nav-item">
+          <a class="nav-link" href="#">Cadastre-se </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="{{route('formularioContratante')}}">Contrate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Cacta blog</a>
+        </li>
 
 
-<body>
-  @include('site.includes.menu-mobile')
-  <main role="main">
-    <section class="jumbotron text-center parallax" 
+        <li class="nav-item dropdown">
 
-    @if(isset($fundo_vaga->imagem))
-    style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
-    @endif
+          @if(Request::session()->get('menu'))
+          <a class="nav-link" href="{{route('site.admin-contratante')}}" id="navbarDropdown" >
+            <b style="color: green">Acessar painel</b>
+          </a>
+          @else
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <b>Entrar</b>
+          </a>
 
-    ">
+
+          <div class="dropdown-menu dropdown-menu-2" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalCandidato">Área do candidato</a>
+            <div class="dropdown-divider" style="border-top: 1px solid green;"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalContratante">Área do contratante</a>
+          </div>
+          @endif
+        </li>
 
 
+      </ul>
+    </nav>
+  </div>
 
-    <div class="text-left  d-none d-sm-block">
-     <a class="btn mb-5 cadastre animated rubberBand btn-cadastre-se">cadastre-se clicando aqui/ colocar botão de logar aqui/ colocar o botão de contrate aqui </a>
-   </div>
 
-   <div  class="container encontre-servico">
+  <div  class="container encontre-servico">
     <h2 class="mb-3">{!!$procurar_vaga->titulo!!}</h2>
     <div class="form-row">
       <div class="col px-5  has-search">
@@ -50,19 +80,19 @@
       </div>
     </div>
   </div>
+
+
   <p class="m-0 p-0 text-right d-none d-sm-block" style="color: #fff"><i>
     @if(isset($fundo_vaga->imagem))
     {!!$fundo_vaga->titulo!!}
     @endif
   </i></p>
 </section>
+
 @include('site.includes.menu')
 
 
-
-
-
-<section class="conteudo-pesquisa" >
+<section class="conteudo-pesquisa">
   <div id="filtro" class="d-none">
     <div class="container-fluid" style="background-color: #eeeeeeb3;">
       <div class="row">
@@ -202,7 +232,6 @@
 </tr>
 
 
-
 <tr>
   <td style="border-top: unset;"></td>
   <td style="border-top: unset;">
@@ -219,56 +248,25 @@
 </td>  
 </tr>
 
-
-
 </tbody>
 </table>
 
 
-
-</div>
-
 </div>
 </div>
-
-<div class="container vagas">
- 
-
-
-
- <!-- <table class="table text-center">
-    <tbody>
-      <tr>
-        <td class="d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
-        <td>
-            <p><b>Barbeiro</b></p>
-            <p>Barbearia Dona Navalha</p>
-        </td>
-        <td>
-            <p><b>Fixo</b></p>
-            <p>São Paulo</p>
-        </td>
-        <td>
-            <p class="vaga-destaque">Destaque</p>
-        </td>
-    </tr>
-</tbody>
-</table> -->
 </div>
 
-
+<div class="container vagas"></div>
 
 <div class="col text-center">
-  <a class="btn my-3 cadastre animated rubberBand btn-cadastre-se" href="{{route('site.lista-vaga')}}">Ver mais vagas</a>
+  <a class="btn my-3 cadastre animated rubberBand btn-cadastre-se" href="{{route('site.lista-vaga')}}">Carregar mais vagas!</a>
 </div>
-
 
 </div>
 </section>
 
 
-
-<section style="background-color: #fccb07">
+<section>
   <div class="container">
     <div class="row">
       <div class="col text-center pt-4 pb-5">
@@ -313,7 +311,7 @@
 
 <div class="row">
   <div class="col text-center">
-    <a class="btn mb-5 cadastre animated rubberBand btn-experimente">Clique aqui e experimente grátis!</a>
+    <a class="btn mb-5 cadastre animated rubberBand btn-experimente"  href="{{route('formularioContratante')}}">Clique aqui e comece a contratar grátis!</a>
   </div>
 </div>
 
@@ -397,124 +395,37 @@
 
   <div class="slider-vagas">
 
-   <div class="text-center vaga">
-     <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
-     </div>
-     <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
-     Barbeiro</h4>
-     <p>São Paulo,SP</p>
-   </div>
+    @foreach($ultimas_vagas as $vagas)
+    <a href="/vaga/{{$vagas->id}}">
+      <div class="text-center vaga">
 
+       <div class="img" style="background-image: url('storage/{{$vagas->logo}}');">
+       </div>
+       <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
+         {{$vagas->titulo}}</h4>
+         <p> {{$vagas->localidade}},
+          {{$vagas->uf}}</p>
 
-   <div class="text-center vaga">
-    <div class="img" style="background-image: url('https://cdn.pixabay.com/photo/2015/09/23/22/24/tattoo-expo-954463__340.jpg');">
+        </div>
+      </a>
+      @endforeach
     </div>
-    <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
-    Tatuador</h4>
-    <p>São Paulo,SP</p>
-  </div>
-
-
-  <div class="text-center vaga">
-   <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
-   </div>
-   <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
-   Barbeiro</h4>
-   <p>São Paulo,SP</p>
- </div>
-
-
- <div class="text-center vaga">
-   <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
-   </div>
-   <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
-   Fotografo</h4>
-   <p>São Paulo,SP</p>
- </div>
-
- <div class="text-center vaga">
-  <div class="img" style="background-image: url('https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg');">
-  </div>
-  <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
-  Barbeiro</h4>
-  <p>São Paulo,SP</p>
-</div>
-
-<div class="text-center vaga">
- <div class="img" style="background-image: url('https://www.maggiesadler.com/wp-content/uploads/2015/10/1168617_1435408473368301_409182770_n.jpg');">
- </div>
- <h4 class="pt-2 m-0"  style="font-size: 1em;font-family: 'Roboto Slab',sans-serif;font-weight: 600;">
- Barbeiro</h4>
- <p>São Paulo,SP</p>
-</div>
-</div>
-</section>
-<!-- future include -->
+  </section>
+  <!-- future include -->
 </main>
+@stop
 
 
 
-
-
-
+@section('rodape')
 @include('site.includes.rodape')
+@stop
+
+
+@section('js')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="{{asset('js/slick.js')}}"></script>
 <script src="{{asset('js/home.js')}}"></script>
-
-
-
-
-
-<script type="text/javascript">
-  $(document).ready(function(){
-
-$('#buscar').on('keyup keypress blur change focus', function(e) {
-
-   // $("#buscar").keyup(function(){
-
-     $.post("/vagas-inicio",
-     {
-      buscar:  $("#buscar").val(),
-    },
-
-    function(data, status){
-      $(".vagas").html("");
-      for (var i = 0; i < data.length; i++) {
-
-
-        var top = "<a href='/vaga/"+data[i].id+"'><div class='row text-center py-3' style='border-bottom: 1px solid #bdbdbd'><div class='col d-none d-sm-block'><img width='125px' src='storage/"+data[i].logo+"'></div><div class='col'><p><b>"+data[i].titulo+"</b></p><p>"+data[i].nome_empresa+"</p></div><div class='col'><p><b>"+data[i].contratacao+"</b></p><p>"+data[i].localidade+"</p></div>";
-
- var d = new Date(data[i].data_de_criacao);
-       
-
-        if(data[i].vaga_em_destaque == 'on'){
-          top += "<div class='col mt-4'><p><span class='vaga-destaque'>Destaque</span></p></div></div></a>";
-        }else{
-          top += "<div class='col mt-4'><p class=''>Divulgada em "+d.toLocaleDateString()+"</p></div></div></a>";
-        }
-        $(".vagas").append(top);   
-
-      }
-
-    });
-
-
-
-
-   });
-  });
-
-
-
-</script>
-
-
-</body>
-</html>
-
-
-
-
+@stop

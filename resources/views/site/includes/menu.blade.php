@@ -48,7 +48,6 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalContratante">Área do contratante</a>
       </div>
-
       @endif
 
 
@@ -59,7 +58,7 @@
 </li>
 @endif
 <li class="nav-item active">
-    <a class="nav-link" href="#">Contrate</a>
+    <a class="nav-link"  href="{{route('formularioContratante')}}">Contrate</a>
 </li>
 <li class="nav-item active">
     <a class="nav-link" href="#">Cacta blog</a>

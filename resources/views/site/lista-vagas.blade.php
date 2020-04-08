@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -211,411 +212,174 @@
 			</div>
 
 			<div class="container vagas">
-				<a href="{{route('site.vaga')}}">
-					<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-						<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-						</div>
+				<div class="row">
+					<div class="col-md-8 col-sm-12">
+						<a href="#">
+							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
+								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
+								</div>
 
-						<div class="col">
-							<p><b>Barbeiro</b></p>
-							<p>Barbearia Dona Navalha</p>  
-						</div>
+								<div class="col">
+									<p><b>Barbeiro</b></p>
+									<p>Barbearia Dona Navalha</p>  
+								</div>
 
-						<div class="col">
-							<p><b>Fixo</b></p>
-							<p>São Paulo</p> 
-						</div>
+								<div class="col">
+									<p><b>Fixo</b></p>
+									<p>São Paulo</p> 
+								</div>
 
-						<div class="col mt-4">
-							<p class="vaga-destaque">Destaque</p>
-						</div>
+								<div class="col mt-4">
+									<p class="vaga-destaque">Destaque</p>
+								</div>
+							</div>
+						</a>
+
+
+
+						<a href="#">
+							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
+								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
+								</div>
+
+								<div class="col">
+									<p><b>Barbeiro</b></p>
+									<p>Barbearia Dona Navalha</p>  
+								</div>
+
+								<div class="col">
+									<p><b>Fixo</b></p>
+									<p>São Paulo</p> 
+								</div>
+
+								<div class="col mt-4">
+									<p class="vaga-destaque">Destaque</p>
+								</div>
+							</div>
+						</a>
+
+
+
+
+
+						<a href="#">
+							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
+								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
+								</div>
+
+								<div class="col">
+									<p><b>Barbeiro</b></p>
+									<p>Barbearia Dona Navalha</p>  
+								</div>
+
+								<div class="col">
+									<p><b>Fixo</b></p>
+									<p>São Paulo</p> 
+								</div>
+
+								<div class="col mt-4">
+									<p class="vaga-destaque">Destaque</p>
+								</div>
+							</div>
+						</a>
+
+
+						<a href="#">
+							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
+								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
+								</div>
+
+								<div class="col">
+									<p><b>Barbeiro</b></p>
+									<p>Barbearia Dona Navalha</p>  
+								</div>
+
+								<div class="col">
+									<p><b>Fixo</b></p>
+									<p>São Paulo</p> 
+								</div>
+
+								<div class="col mt-4">
+									<p class="vaga-destaque">Destaque</p>
+								</div>
+							</div>
+						</a>
+
+
+
+						<a href="#">
+							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
+								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
+								</div>
+
+								<div class="col">
+									<p><b>Barbeiro</b></p>
+									<p>Barbearia Dona Navalha</p>  
+								</div>
+
+								<div class="col">
+									<p><b>Fixo</b></p>
+									<p>São Paulo</p> 
+								</div>
+
+								<div class="col mt-4">
+									<p class="vaga-destaque">Destaque</p>
+								</div>
+							</div>
+						</a>
+						<a href="#">
+							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
+								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
+								</div>
+
+								<div class="col">
+									<p><b>Barbeiro</b></p>
+									<p>Barbearia Dona Navalha</p>  
+								</div>
+
+								<div class="col">
+									<p><b>Fixo</b></p>
+									<p>São Paulo</p> 
+								</div>
+
+								<div class="col mt-4">
+									<p class="vaga-destaque">Destaque</p>
+								</div>
+							</div>
+						</a>
 					</div>
-				</a>
 
 
-
-	<a href="{{route('site.vaga')}}">
-					<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-						<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
+					<div class="col-md-4 d-none d-sm-block" style="padding-top: 100px">
+						<div class="ml-5 w-100 bg-danger sticky-top">
+							<p class="p-5 my-5">Publicidade aqui</p>
 						</div>
-
-						<div class="col">
-							<p><b>Barbeiro</b></p>
-							<p>Barbearia Dona Navalha</p>  
-						</div>
-
-						<div class="col">
-							<p><b>Fixo</b></p>
-							<p>São Paulo</p> 
-						</div>
-
-						<div class="col mt-4">
-							<p class="vaga-destaque">Destaque</p>
-						</div>
-					</div>
-				</a>
-
-
-
-
-
-	<a href="{{route('site.vaga')}}">
-					<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-						<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-						</div>
-
-						<div class="col">
-							<p><b>Barbeiro</b></p>
-							<p>Barbearia Dona Navalha</p>  
-						</div>
-
-						<div class="col">
-							<p><b>Fixo</b></p>
-							<p>São Paulo</p> 
-						</div>
-
-						<div class="col mt-4">
-							<p class="vaga-destaque">Destaque</p>
-						</div>
-					</div>
-				</a>
-
-
-
-
-	<a href="{{route('site.vaga')}}">
-					<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-						<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-						</div>
-
-						<div class="col">
-							<p><b>Barbeiro</b></p>
-							<p>Barbearia Dona Navalha</p>  
-						</div>
-
-						<div class="col">
-							<p><b>Fixo</b></p>
-							<p>São Paulo</p> 
-						</div>
-
-						<div class="col mt-4">
-							<p class="vaga-destaque">Destaque</p>
-						</div>
-					</div>
-				</a>
-
-
-
-				<a href="{{route('site.vaga')}}">
-					<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-						<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-						</div>
-
-						<div class="col">
-							<p><b>Barbeiro</b></p>
-							<p>Barbearia Dona Navalha</p>  
-						</div>
-
-						<div class="col">
-							<p><b>Fixo</b></p>
-							<p>São Paulo</p> 
-						</div>
-
-						<div class="col mt-4">
-							<p class="vaga-destaque">Destaque</p>
-						</div>
-					</div>
-				</a>
-	<a href="{{route('site.vaga')}}">
-					<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-						<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-						</div>
-
-						<div class="col">
-							<p><b>Barbeiro</b></p>
-							<p>Barbearia Dona Navalha</p>  
-						</div>
-
-						<div class="col">
-							<p><b>Fixo</b></p>
-							<p>São Paulo</p> 
-						</div>
-
-						<div class="col mt-4">
-							<p class="vaga-destaque">Destaque</p>
-						</div>
-					</div>
-				</a>
-
- <!-- <table class="table text-center">
-    <tbody>
-      <tr>
-        <td class="d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg"></td>
-        <td>
-            <p><b>Barbeiro</b></p>
-            <p>Barbearia Dona Navalha</p>
-        </td>
-        <td>
-            <p><b>Fixo</b></p>
-            <p>São Paulo</p>
-        </td>
-        <td>
-            <p class="vaga-destaque">Destaque</p>
-        </td>
-    </tr>
-</tbody>
-</table> -->
-</div>
-
-
-
-<div class="col text-center">
-	<a class="btn my-3 cadastre animated rubberBand btn-cadastre-se" href="{{route('site.inicio')}}">Ver mais vagas</a>
-</div>
-
-
-</div>
-</section>
-
-
-
-<section class="conteudo-pesquisa" >
-	<div id="filtro" class="d-none">
-		<div class="container-fluid" style="background-color: #eeeeeeb3;">
-			<div class="row">
-
-				<div class="col-md-2">
-					<h5 class="text-center mt-2 mt-sm-5">Encontramos: <b>332</b> vagas.</h5>
-				</div>
-
-				<div class="col-md-2 text-center">
-					<p class="form-check-label mt-2 mt-sm-4 mb-2" for="inlineCheckbox1"><b>Onde?</b></p>
-					<input type="text" class="form-control" id="" placeholder="Ex: São Paulo, Zona Sul" name="">
-					<div class="form-check-inline  d-sm-none">
-						<label class="form-check-label">
-							<input id="filtrar" type="checkbox" class="form-check-input my-3" value=""> <strong>Deseja filtrar a busca?</strong> 
-						</label>
 					</div>
 				</div>
-
-				<div class="col-md-8 mt-2 table-responsive">
-					<!-- desktop -->
-					<table class="table d-none d-sm-block">
-						<tbody>
-							<tr style="line-height: 67px;">
-								<td style="line-height: 18px;"><b>Estou procurando:</b></td>
-								<td>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Fixo</label>
-									</div>
-								</td>
-								<td>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Temporario</label>
-									</div>
-								</td>
-
-								<td></td>
-							</tr>
-							<tr>
-								<td><b>Area:</b></td>
-								<td>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
-									</div>
-								</td>
-								<td>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
-									</div>
-								</td>
-
-								<td>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td style="border-top: unset;"></td>
-								<td style="border-top: unset;"> 
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Fotográfo(a)</label>
-									</div>
-								</td>
-								<td style="border-top: unset;">
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Bartender</label>
-									</div>
-								</td>
-								<td style="border-top: unset;">
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
-									</div>
-								</td>
-
-							</tr>
-						</tbody>
-					</table>
-
-
-
-					<!-- mobile -->
-					<table class="table  d-sm-none" style="display: none" id="filtro-mobile">
-						<tbody>
-							<tr style="line-height: 67px;">
-								<td style="line-height: 18px;"><b>Estou procurando:</b></td>
-								<td>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Fixo</label>
-									</div>
-								</td>
-								<td>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Temporario</label>
-									</div>
-								</td>
-
-							</tr>
-							<tr>
-								<td><b>Area:</b></td>
-								<td>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
-									</div>
-								</td>
-								<td>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td style="border-top: unset;"></td>
-								<td style="border-top: unset;"> 
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Fotográfo(a)</label>
-									</div>
-								</td>
-								<td style="border-top: unset;">
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Bartender</label>
-									</div>
-								</td>
-							</tr>
-
-
-
-							<tr>
-								<td style="border-top: unset;"></td>
-								<td style="border-top: unset;">
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
-									</div>
-								</td>
-								<td style="border-top: unset;">
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">Músico(a)</label>
-									</div>
-								</td>  
-							</tr>
-
-
-
-						</tbody>
-					</table>
-
-
-
-				</div>
-
 			</div>
-		</div>
 
-		<div class="container vagas">
-			<a href="{{route('site.vaga')}}">
-				<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-					<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-					</div>
-
-					<div class="col">
-						<p><b>Barbeiro</b></p>
-						<p>Barbearia Dona Navalha</p>  
-					</div>
-
-					<div class="col">
-						<p><b>Fixo</b></p>
-						<p>São Paulo</p> 
-					</div>
-
-					<div class="col mt-4">
-						<p class="vaga-destaque">Destaque</p>
-					</div>
-				</div>
-			</a>
-
-			<a href="{{route('site.vaga')}}">
-				<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-					<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-					</div>
-
-					<div class="col">
-						<p><b>Barbeiro</b></p>
-						<p>Barbearia Dona Navalha</p>  
-					</div>
-
-					<div class="col">
-						<p><b>Fixo</b></p>
-						<p>São Paulo</p> 
-					</div>
-
-					<div class="col mt-4">
-						<p class="vaga-destaque">Destaque</p>
-					</div>
-				</div>
-			</a>
+			<div class="col text-center">
+				<a class="btn my-3 cadastre animated rubberBand btn-cadastre-se" href="">Carregar mais vagas</a>
+			</div>
 
 		</div>
+	</section>
 
 
 
-		<div class="col text-center">
-			<a class="btn my-3 cadastre animated rubberBand btn-cadastre-se" href="{{route('site.inicio')}}">Ver mais vagas</a>
-		</div>
-
-
-	</div>
-</section>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="{{asset('js/slick.js')}}"></script>
+	<script src="{{asset('js/lista-vagas.js')}}"></script>
 
 
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="{{asset('js/slick.js')}}"></script>
-<script src="{{asset('js/lista-vagas.js')}}"></script>
-
-
-
-
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('html, body').stop().animate({scrollTop:300}, 800);
+		});
+	</script>
 
 
 
