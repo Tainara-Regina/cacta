@@ -211,9 +211,18 @@
 				</div>
 			</div>
 
-			<div class="container vagas">
+			<div class="container-fluid vagas">
 				<div class="row">
-					<div class="col-md-8 col-sm-12">
+
+
+				<!-- 	<div class="col-md-2 d-none d-sm-block" style="padding-top: 100px"> -->
+						<div class="col-md-2" style="padding-top: 100px">
+						<div class=" w-100 bg-danger sticky-top">
+							<p class="p-5 my-5">Publicidade aqui</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-sm-12">
 						<a href="#">
 							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
 								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
@@ -350,8 +359,9 @@
 					</div>
 
 
-					<div class="col-md-4 d-none d-sm-block" style="padding-top: 100px">
-						<div class="ml-5 w-100 bg-danger sticky-top">
+					<!-- <div class="col-md-4 d-none d-sm-block" style="padding-top: 100px"> -->
+						<div class="col-md-4" style="padding-top: 100px">
+						<div class="w-100 bg-danger sticky-top">
 							<p class="p-5 my-5">Publicidade aqui</p>
 						</div>
 					</div>

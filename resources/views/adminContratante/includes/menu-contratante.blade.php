@@ -1,10 +1,9 @@
 <nav id="sidebar" class="sidebar-wrapper">
 	<div class="sidebar-content">
 		<div class="sidebar-brand text-center py-4">
-			<a href="#">Cacta<br>admin do contratante</a>
+			<a href="#">{{\Auth::user()->nome_empresa}}</a>
 			<div id="close-sidebar">
-				<i class="fas fa-times"></i>
-			</div>
+				<i class="fas fa-arrow-circle-left"></i> </div>
 		</div>
 
 
@@ -23,6 +22,16 @@
 						<span class="badge badge-pill badge-primary">novo</span>
 					</a>
 				</li>
+
+
+				<li>
+					<a href="{{route('site.meus-dados')}}">
+						<i class="fa fa-book"></i>
+						<span>Meus dados pessoais</span>
+						<span class="badge badge-pill badge-primary">novo</span>
+					</a>
+				</li>
+
 
 
 				<li class="header-menu">

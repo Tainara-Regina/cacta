@@ -36,7 +36,7 @@ $(document).ready(function(){
     $(".vagas").html("");
     for (var i = 0; i < data.length; i++) {
 
-      var top = "<a href='/vaga/"+data[i].id+"'><div class='row text-center py-3' style='border-bottom: 1px solid #bdbdbd'><div class='col d-none d-sm-block'><img width='80px' src='storage/"+data[i].logo+"'></div><div class='col'><p><b>"+data[i].titulo+"</b></p><p>"+data[i].nome_empresa+"</p></div><div class='col'><p><b>"+data[i].contratacao+"</b></p><p>"+data[i].localidade+"</p></div>";
+      var top = "<a href='/vaga/"+data[i].id+"'><div class='row  text-center py-3' style='border-bottom: 1px solid #bdbdbd'><div class='col d-none d-sm-block'><img width='80px' src='storage/"+data[i].logo+"'></div><div class='col'><p><b>"+data[i].titulo+"</b></p><p>"+data[i].nome_empresa+"</p></div><div class='col'><p><b>"+data[i].contratacao+"</b></p><p>"+data[i].localidade+"</p></div>";
 
       var d = new Date(data[i].data_de_criacao);
 

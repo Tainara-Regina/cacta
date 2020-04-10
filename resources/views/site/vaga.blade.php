@@ -33,7 +33,7 @@
 	">
 
 	<div  class="container encontre-servico">
-		<h2 class="mb-3 py-2">{{$vaga->nome_empresa}} - {{$vaga->titulo}}</h2>
+		<h2 class="mb-3 py-2">{{$vaga->titulo}} - {{$vaga->nome_empresa}}</h2>
 	</div>
 	<p class="m-0 p-0 text-right d-none d-sm-block" style="color: #fff"><i>
 		@if(isset($fundo_vaga->imagem))

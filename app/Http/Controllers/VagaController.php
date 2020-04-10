@@ -16,6 +16,11 @@ class VagaController extends Controller
 	$vaga = DB::table('cadastrar_vaga')
 		->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
 		->join('cacta_users', 'cadastrar_vaga.id_usuario', '=', 'cacta_users.id')
+	//	->join('titulo_vaga', 'cadastrar_vaga.id_segmento', '=', 'cacta_users.plano')
+
+//->join('segmento', 'titulo_vaga.id_segmento', '=', 'segmento.id')
+
+
 		->select('cadastrar_vaga.contratacao',
 			'cadastrar_vaga.vaga_em_destaque','cadastrar_vaga.id','cadastrar_vaga.data_de_criacao',
 			'titulo_vaga.titulo','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade','cacta_users.nome_empresa',

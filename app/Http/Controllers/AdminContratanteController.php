@@ -13,6 +13,8 @@ use App\Segmento;
 use App\TituloVaga;
 use App\PlanosContratante;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use DB;
 
 
@@ -46,11 +48,11 @@ class AdminContratanteController extends Controller
 //fazer um join para trazer o nome das vagas no model
 
 
-$vagas = DB::table('cadastrar_vaga')
-            ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
-            ->select('cadastrar_vaga.*', 'titulo_vaga.titulo')
-            ->where('cadastrar_vaga.id_usuario',Auth::user()->id)
-            ->get();
+      $vagas = DB::table('cadastrar_vaga')
+      ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
+      ->select('cadastrar_vaga.*', 'titulo_vaga.titulo')
+      ->where('cadastrar_vaga.id_usuario',Auth::user()->id)
+      ->get();
 
 
  //$segmento =  CadastrarVaga::where('id_usuario',Auth::user()->id)->first();
@@ -208,7 +210,7 @@ public function verVaga($id){
  $vagas = cadastrarVaga::find($id);
  $autorizacao = $this->authorize('permissao_vagas',$vagas);
  
-return view('adminContratante.ver-vaga',compact('vagas'));
+ return view('adminContratante.ver-vaga',compact('vagas'));
 
 
 }
@@ -308,65 +310,83 @@ return redirect()->back()->with('message', 'Vaga cadastrada com sucesso!');
 
 
 public function meusDados(){
- $segmentos = Segmento::select('id','segmento')->get();
- return view('adminContratante.meus-dados',compact('segmentos'));
+  $cadastro = CactaUsers::where('id',\Auth::user()->id)->first();
+//dd($cadastro);
+  $segmentos = Segmento::select('id','segmento')->get();
+  $planos = PlanosContratante::all();
+
+  return view('adminContratante.meus-dados',compact('segmentos','planos','cadastro'));
 }
+
+
 
 
 public function cadastrarMeusDados(Request $request){
+
  $validator = $request->validate([
-      // 'nome' => 'required',
-      // 'logo' => 'required|image',
-      // 'segmento' => 'required',
-      // 'cep' => 'required',
-      // 'sobre' => 'required',
-  'senha' =>'required|confirmed',
-      // 'facebook' => 'required',
-      // 'instagram' => 'required',
-      // 'twitter' => 'required',
-      // 'site' => 'required',
-],
-[
-      // 'logo.required' => 'Insira o logo da sua em presa.',
-      // 'segmento.required'  => 'Selecione o segmento da sua empresa.',	
-      // 'descricao.required' => 'Preencha a descrição da vaga.',
-      // 'sobre.required' => 'Escreva sobre sua empresa.',
-]);
+  // 'logo_atualizar' => 'required|image',
+   'id_segmento' => 'required',
+   'cep' => 'required',
+   'numero' => 'required',
+   'complemento' => 'required',
+   'sobre' => 'required',
+   'endereco' => 'required',
+   'id_plano' => 'required',
 
-
-  //  if($request->file('logo')->isValid()){
-  //     $nome_imagem =$request->file('logo')->store('contratante/logo');
-  // }
-
-
-
-
-
-
-
- $dados = CactaUsers::find(\Auth::user()->id);
-  // $dados->nome_contratante = $request->nome_contratante;
-  // $dados->nome_empresa = $request->nome_empresa;
-  // $dados->email_empresa = $email_empresa;
-  // $dados->telefone = $telefone;
-  // $dados->senha = $request->$password;
+   'nome_cartao' => 'required',
+   'numero_cartao' => 'required',
+   'expira_cartao' => 'required',
+   'codigo_seguranca_cartao' => 'required',
+  // 'facebook' => 'required',
+  // 'instagram' => 'required',
+  // 'twitter' => 'required',
+  // 'site' => 'required',
+ ],
+ [
+   'endereco.required' => 'Insira um CEP válido.',
+   //'logo_atualizar.required' => 'Insira o logo da sua em presa.',
+   'id_segmento.required'  => 'Selecione o segmento da sua empresa.',  
+   'sobre.required' => 'Escreva sobre sua empresa.',
+   'cep.required' => 'insira o CEP.',
+   'id_plano.required' => 'Escolha o plano que deseja.'
+ ]);
 
 
 
- $dados->create($request->all());
+ if(isset($request->logo_atualizar)) {
 
 
-  // $dados->segmento = $request->id_segmento;
-  // $dados->cep = $request->cep;
-  // $dados->sobre = $request->sobre;
-  // $dados->facebook = $request->facebook;
-  // $dados->instagram = $request->instagram;
-  // $dados->twitter = $request->twitter;
-  // $dados->site = $request->site;
-  // $dados->save();
- dd($dados);
- return redirect()->back()->with('message', 'Dados cadastrada com sucesso!');	
+ if($request->file('logo_atualizar')->isValid())
+ {
+  $upload =  Storage::put('public/logo_usuario', $request->file('logo_atualizar'));
+  $teste = explode('/',$upload);
+  array_shift($teste);
+  $nome_imagem = implode('/',$teste);
+  $request->merge(['logo' => $nome_imagem]);
+
 }
+
+}
+
+//Ao trocar o segmento, esta query exclui todos as vagas cadastradas que não pertencem a este segmento
+$vagas_diferente_do_novo_id = DB::table('cadastrar_vaga')
+->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
+->select('*')
+->where('cadastrar_vaga.id_usuario',\Auth::user()->id)
+->where('titulo_vaga.id_segmento','!=',$request->id_segmento)
+->delete();
+
+
+
+CactaUsers::where('id',\Auth::user()->id)->update(request()->except(['_token','logo_atualizar']));
+return redirect()->back()->with('message', 'Dados atualizados com sucesso!');	
+}
+
+
+
+
+
+
 
 
 //Verifica o qual o plano do cliente e retorna qual a quantidade de vagas permitida pelo plano dele

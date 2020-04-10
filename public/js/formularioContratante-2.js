@@ -10,7 +10,6 @@ $(".plano").click(function(){
 $('.plano').css('border','none');
 $(this).css('border','4px solid green');
 $('#plano').val($(this).attr("data-plano"));
-
 });
 
 
