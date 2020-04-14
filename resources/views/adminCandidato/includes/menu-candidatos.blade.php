@@ -1,11 +1,10 @@
 <nav id="sidebar" class="sidebar-wrapper">
 	<div class="sidebar-content">
 		<div class="sidebar-brand text-center py-4">
-			<a href="#">{{\Auth::user()->nome_empresa}}</a>
+			<a href="#">{{\Auth::user()->nome}}</a>
 			<div id="close-sidebar">
 				<i class="fas fa-arrow-circle-left"></i> </div>
 		</div>
-
 
 
 		<!-- sidebar-search  -->
@@ -13,71 +12,46 @@
 			<ul>
 
 				<li class="header-menu">
-					<span>MINHA EMPRESA</span>
+					<span>MEUS DADOS</span>
 				</li>
 				<li>
 					<a href="{{route('site.meus-dados')}}">
 						<i class="fa fa-book"></i>
-						<span>Meus dados</span>
-						<span class="badge badge-pill badge-primary">novo</span>
+						<span>Meus dados pessoais</span>
 					</a>
 				</li>
-
 
 				<li>
 					<a href="{{route('site.meus-dados-pessoais')}}">
 						<i class="fa fa-book"></i>
-						<span>Meus dados pessoais</span>
-						<span class="badge badge-pill badge-primary">novo</span>
+						<span>Meu perfil</span>
 					</a>
 				</li>
 
 
 
 				<li class="header-menu">
-					<span>CONTRATE</span>
+					<span>VAGAS</span>
 				</li>
+
+				<li>
+					<a href="{{route('site.lista-vaga')}}">
+						<i class="fa fa-book"></i>
+						<span>Encontrar vagas</span>
+						
+					</a>
+				</li>
+
 				<li>
 					<a href="{{route('site.divulgar-vaga')}}">
 						<i class="fa fa-book"></i>
-						<span>Divulgar vaga</span>
-						<span class="badge badge-pill badge-primary">novo</span>
+						<span>Vagas que me candidatei</span>
+						
 					</a>
 				</li>
-				<li>
-					<a href="{{route('site.candidatos-vaga')}}">
-						<i class="fa fa-tachometer-alt"></i>
-						<span>Minhas vagas</span>
-						<span class="badge badge-pill badge-warning">novo</span>
-					</a>
-				</li>
+				
 
-				<li class="sidebar-dropdown">
-					<a href="#">
-						<i class="fa fa-shopping-cart"></i>
-						<span>Banco de candidatos</span>
-						<span class="badge badge-pill badge-danger">3</span>
-					</a>
-					<div class="sidebar-submenu">
-						<ul>
-							<li>
-								<a href="#">Encontrar por área
-								</a>
-							</li>
-
-							<li>
-								<a href="#">Mais bem avaliados
-
-								</a>
-							</li>
-							<li>
-								<a href="#">Temporários</a>
-							</li>
-						</ul>
-					</div>
-				</li>
-
-
+				
 				<li class="header-menu">
 					<span>MATERIAIS EXCLUSIVOS</span>
 				</li>
@@ -85,11 +59,9 @@
 					<a href="#">
 						<i class="fa fa-book"></i>
 						<span>Materiais</span>
-						<span class="badge badge-pill badge-primary">novo</span>
+						
 					</a>
 				</li>
-
-
 
 
 
@@ -100,7 +72,7 @@
 					<a href="#">
 						<i class="fa fa-book"></i>
 						<span>Aperfeiçoamentos</span>
-						<span class="badge badge-pill badge-primary">novo</span>
+						
 					</a>
 				</li>
 
@@ -109,7 +81,7 @@
 					<a href="#">
 						<i class="fa fa-book"></i>
 						<span>cursos</span>
-						<span class="badge badge-pill badge-primary">novo</span>
+						
 					</a>
 				</li>
 
@@ -119,7 +91,7 @@
 					<a href="#">
 						<i class="fa fa-book"></i>
 						<span>workshop</span>
-						<span class="badge badge-pill badge-primary">novo</span>
+						
 					</a>
 				</li>
 			</ul>

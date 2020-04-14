@@ -274,10 +274,6 @@
 		}
 	</style>
 
-
-
-
-
 </head>
 
 
@@ -320,131 +316,170 @@
 
 						
 
-						<form action="{{route('site.cadastrar-meus-dados')}}" method="POST" enctype="multipart/form-data">
+						<form action="{{route('site.cadastrar-meus-dados-pessoais')}}" id="formPart1" method="POST" enctype="multipart/form-data">
 							@csrf
 
-							<section style="padding: 0 10%">
-								
-								<input type="hidden" id="logradouro" name="logradouro" value="{{$cadastro->logradouro}}">
-								<input type="hidden" id="bairro" name="bairro" value="{{$cadastro->bairro}}">
-								<input type="hidden" id="localidade" name="localidade" value="{{$cadastro->localidade}}">
-								<input type="hidden" id="uf" name="uf" value="{{$cadastro->uf}}">
+
+							<input type="hidden" value="{{$cadastro->id_plano}}" name="id_plano" id="plano" value="{{$cadastro->id_plano}}">
+
+
+							@error('nome_contratante')
+							<span style="color: red">{{ $message }}</span>
+							@enderror
+							<div class="form-group">
+								<label for="nome_contratante"><b>Insira seu nome completo</b></label>
+								<input placeholder="Qual o seu nome?" value="{{$cadastro->nome_contratante}}" type="text" name="nome_contratante" class="form-control">
+							</div>
+
+							@error('nome_empresa')
+							<span style="color: red">{{ $message }}</span>
+							@enderror
+							<div class="form-group">
+								<label for="email"><b>Nome da empresa</b></label>
+								<input placeholder="Insira o nome da sua empresa"  value="{{$cadastro->nome_empresa}}" type="text" name="nome_empresa" class="form-control">
+							</div>
 
 
 
-								@error('logo_atualizar')
-								<span style="color: red">{{ $message }}</span>
-								@enderror
-								<div class="form-group">
-									<p for="email"><b>Logo da empresa</b> <br> </p>
-									<span class="btn btn-primary btn-file">
-										Trocar logo <input name="logo_atualizar" type='file' placeholder="Insira o logo da empresa" onchange="readURL(this);" />
-									</span>
 
-									<img id="blah" style="max-width:180px; max-height: 180px;     margin-left: 15px;" src="/storage/{{$cadastro->logo}}" alt="your image" />
+							@error('telefone')
+							<span style="color: red">{{ $message }}</span>
+							@enderror
+							<div class="form-group">
+								<label for="telefone"><b>Telefone</b></label>
+								<input type="text" value="{{$cadastro->telefone}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control">
+							</div>
 
-								</div>
+							@error('password_atualizar')
+							<span style="color: red">{{ $message }}</span>
+							@enderror
+							<div class="form-group">
+								<label for="password"><b>Atualizar senha de login</b></label>
+								<input type="password" name="password_atualizar" value="{{old('password')}}" placeholder="Defina uma nova senha" type="text" class="form-control">
+							</div>
 
-
-								@error('id_segmento')
-								<span style="color: red">{{ $message }}</span>
-								@enderror
-								<div class="form-group my-5">
-									<div class="main">
-										<label for="pwd"><b>Selecione o segmento da sua empresa</b></label>
-
-
-										<select id="id_segmento" value="{{$cadastro->id_plano}}" name="id_segmento">
-											
-											@foreach ($segmentos as $segmento)
-
-											@if($segmento->id == $cadastro->id_segmento)
-											<option  value="{{ $cadastro->id_segmento }}" selected>{{ $segmento->segmento }}</option>
-											@else
-											<option  value="{{ $segmento->id }}">{{ $segmento->segmento }}</option>
-
-											@endif
+							@error('password_confirmation')
+							<span style="color: red">{{ $message }}</span>
+							@enderror
+							<div class="form-group">
+								<label for="repetir_senha"><b>Repita nova senha de login</b></label>
+								<input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control">
+							</div>
 
 
 
-											@endforeach
-										</select>
-									</div>
-								</div>
+							<div class="row">
+								<div class="col">
+									<h2 class="text-center mb-3  mt-5">Dados do cartão</h2>
+									<p><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preocupe.</p>
 
-
-								@error('cep')
-								<span style="color: red">{{ $message }}</span> <br>
-								@enderror
-
-								@error('endereco')
-								<span style="color: red">{{ $message }}</span>
-								@enderror
-
-								<div class="form-group">
-									<label for="email"><b>Endereço</b></label>
-									<input type="text" value="{{ $cadastro->cep }}" name="cep" placeholder="Digite o CEP" type="text" class="form-control cep">
-
-									<input name="endereco" value="{{ $cadastro->endereco }}" class="mt-2 form-control endereco"  rows="5" id="comment">
-
-									@error('numero')
-									<div class="mt-3">
-										<span style="color: red">{{ $message }}</span>
-									</div>
-									@enderror
-
-									<input style="width: 100px!important" type="text" value="{{ $cadastro->numero }}" name="numero" placeholder="Número" type="text" class="form-control mt-3" maxlength="5">
-								</div>
-
-								<div class="form-group">
-
-								</div>
-
-
-								<div class="form-group">
-									<label for="email"><b>Complemento</b></label>
-									<textarea class="mt-2 form-control" name="complemento" placeholder='Digite o complemento do endereço.' rows="5" id="comment"> {{ $cadastro->complemento }}</textarea>
-								</div>
-
-
-								@error('sobre')
-								<span style="color: red">{{ $message }}</span>
-								@enderror
-								<div class="form-group">
-									<label for="pwd"><b>Fale sobre sua empresa</b></label>
-									<textarea name="sobre" value="{{old('sobre')}}" placeholder="Faça um resumo sobre sua empresa.Tente falar sobre a tragetoria, missão, visão e valores." class="form-control" rows="5" id="comment"> {{ $cadastro->sobre }}</textarea>
-								</div>
-
-
-								<label for="comment"><b>Redes sociais:</b></label>
-
-								<div class="form-group">
-									<input name="facebook" value="{{ $cadastro->facebook }}" type="text" class="form-control" placeholder="Facebook"></input>
-								</div>
-
-								<div class="form-group">
-									<input name="instagram" value="{{ $cadastro->instagram }}" placeholder="Instagram" type="text" class="form-control"></input>
-								</div>
-
-								<div class="form-group">
-									<input name="twitter" value="{{ $cadastro->twitter }}" placeholder="Twitter" type="text" class="form-control"></input>
-								</div>
-
-								<div class="form-group">
-									<input name="site" placeholder="Site" value="{{ $cadastro->site }}" type="text" class="form-control"></input>
-								</div>
-
-
-							</section>
-
-							
-							<div class="row"> 
-								<div class="col text-center"> 
-									<button type="submit" class="btn btn-success my-5 text-center py-3 px-5 text-uppercase"> <b>Concluir e começar a contratar!</b></button>
 								</div>
 							</div>
-						</form>
 
+
+
+							@error('nome_cartao')
+							<span style="color: red">{{ $message }}</span>
+							@enderror
+							<div class="form-group">
+								<input name="nome_cartao" placeholder="Nome" value="{{ $cadastro->nome_cartao }}" type="text" class="form-control name"></input>
+							</div>
+
+							@error('numero_cartao')
+							<span style="color: red">{{ $message }}</span>
+							@enderror
+							<div class="form-group">
+								<input name="numero_cartao" placeholder="Número do cartão" value="{{$cadastro->numero_cartao}}" maxlength="20" type="text" class="form-control cartao"></input>
+							</div>
+
+
+							@error('expira_cartao')
+							<span style="color: red">{{ $message }}</span>
+							@enderror
+							<div class="form-group">
+								<input name="expira_cartao" placeholder="Data de expiração do cartão" value="{{$cadastro->expira_cartao}}" type="text" class="form-control selectonfocus"></input>
+							</div>
+
+
+							@error('codigo_seguranca_cartao')
+							<span style="color: red">{{ $message }}</span>
+							@enderror
+							<div class="form-group">
+								<input name="codigo_seguranca_cartao" placeholder="Código de segurança do cartão" value="{{$cadastro->codigo_seguranca_cartao}}" type="text" class="form-control cvv"></input>
+							</div>
+
+
+
+
+
+							<div class="row">
+								<div class="col">
+									<h2 class="text-center mt-5 mb-3">Escolha o plano que deseja</h2>
+									<p class="text-center"><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preocupe.</p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col text-center mb-3">
+									@error('plano')
+									<span style="color: red">{{ $message }}</span>
+									@enderror
+								</div>
+							</div>
+
+							<div class="row pricing">
+
+								@foreach($planos as $plano)
+
+								<div class="col-lg-4 col-8 mx-auto" >
+									<div class="card mb-5 mb-lg-0 plano" data-plano="{{$plano->id}}">
+										<div class="card-body">
+											<h5 class="card-title text-muted text-uppercase text-center">{{$plano->plano}}</h5>
+											<h6 class="card-price text-center">${{$plano->preco}}<!-- <span class="period">/periodo</span> --></h6>
+											<hr>
+											<ul class="fa-ul">
+
+												<li><span class="fa-li"><i class="fa fa-check"></i></span> {{$plano->quantidade_vagas}} vaga(s) para divulgar por mês <small>(inclui renovar vagas existentes)</small></li>
+
+												@if($plano->vagas_em_destaque == 0)
+												<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Permite destacar suas vagas</li>
+
+												@else
+												<li><span class="fa-li"><i class="fa fa-check"></i></span> Permite destacar {{$plano->vagas_em_destaque}} de suas vagas </li>
+												@endif
+
+
+												@if($plano->banco_de_candidatos == 0)
+												<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Banco de candidatos</li>
+
+												@else
+												<li><span class="fa-li"><i class="fa fa-check"></i></span> Banco de candidatos</li>
+												@endif
+
+
+
+												@if($plano->materiais_exclusivos == 0)
+												<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+
+												@else
+												<li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+												@endif
+
+
+											</ul>
+											<span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
+										</div>
+									</div>
+								</div>
+								@endforeach
+
+
+							</div>
+
+
+
+							<button type="submit" class="btn btn-primary mb-5">Prosseguir</button>
+						</form>
 
 					</div>
 

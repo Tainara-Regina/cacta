@@ -189,10 +189,6 @@ return redirect()->back()->with('message', 'Vaga atualizada com sucesso!');
 
 
 
-
-
-
-
 public function deletaVaga($id){
  $vagas = cadastrarVaga::find($id);
  $autorizacao = $this->authorize('permissao_vagas',$vagas);
@@ -200,9 +196,6 @@ public function deletaVaga($id){
  $vagas->delete();
  dd('deletou');
 }
-
-
-
 
 
 
@@ -214,10 +207,6 @@ public function verVaga($id){
 
 
 }
-
-
-
-
 
 
 
@@ -269,8 +258,6 @@ $validator = $request->validate([
 
 
 
-
-
 $mytime = \Carbon\Carbon::now();
 $quantidade_dias_vaga_plano = $this->verificaPlano(Auth::user()->id_plano)->tempo_disponivel_vaga;
 
@@ -298,9 +285,6 @@ $vaga->vaga_em_destaque = false;
 $vaga->save();
 
 
-
-
-
 return redirect()->back()->with('message', 'Vaga cadastrada com sucesso!');	
 }
 
@@ -321,6 +305,21 @@ public function meusDados(){
 
 
 
+
+public function meusDadosPessoais(){
+  $cadastro = CactaUsers::where('id',\Auth::user()->id)->first();
+
+  $segmentos = Segmento::select('id','segmento')->get();
+  $planos = PlanosContratante::all();
+
+  return view('adminContratante.meus-dados-pessoais',compact('segmentos','planos','cadastro'));
+}
+
+
+
+
+
+
 public function cadastrarMeusDados(Request $request){
 
  $validator = $request->validate([
@@ -331,16 +330,7 @@ public function cadastrarMeusDados(Request $request){
    'complemento' => 'required',
    'sobre' => 'required',
    'endereco' => 'required',
-   'id_plano' => 'required',
 
-   'nome_cartao' => 'required',
-   'numero_cartao' => 'required',
-   'expira_cartao' => 'required',
-   'codigo_seguranca_cartao' => 'required',
-  // 'facebook' => 'required',
-  // 'instagram' => 'required',
-  // 'twitter' => 'required',
-  // 'site' => 'required',
  ],
  [
    'endereco.required' => 'Insira um CEP válido.',
@@ -348,7 +338,7 @@ public function cadastrarMeusDados(Request $request){
    'id_segmento.required'  => 'Selecione o segmento da sua empresa.',  
    'sobre.required' => 'Escreva sobre sua empresa.',
    'cep.required' => 'insira o CEP.',
-   'id_plano.required' => 'Escolha o plano que deseja.'
+   
  ]);
 
 
@@ -356,15 +346,15 @@ public function cadastrarMeusDados(Request $request){
  if(isset($request->logo_atualizar)) {
 
 
- if($request->file('logo_atualizar')->isValid())
- {
-  $upload =  Storage::put('public/logo_usuario', $request->file('logo_atualizar'));
-  $teste = explode('/',$upload);
-  array_shift($teste);
-  $nome_imagem = implode('/',$teste);
-  $request->merge(['logo' => $nome_imagem]);
+   if($request->file('logo_atualizar')->isValid())
+   {
+    $upload =  Storage::put('public/logo_usuario', $request->file('logo_atualizar'));
+    $teste = explode('/',$upload);
+    array_shift($teste);
+    $nome_imagem = implode('/',$teste);
+    $request->merge(['logo' => $nome_imagem]);
 
-}
+  }
 
 }
 
@@ -386,6 +376,36 @@ return redirect()->back()->with('message', 'Dados atualizados com sucesso!');
 
 
 
+public function cadastrarMeusDadosPessoais(Request $request){
+
+ $validator = $request->validate([
+   'nome_contratante' => 'required',
+   'nome_empresa' => 'required',
+   'telefone' => 'required',
+   'password_confirmation' =>'same:password_atualizar',
+   'id_plano' => 'required',
+    'nome_cartao' => 'required',
+   'numero_cartao' => 'required',
+   'expira_cartao' => 'required',
+   'codigo_seguranca_cartao' => 'required',
+ ],
+ [
+      // 'logo.required' => 'Insira o logo da sua em presa.',
+      // 'segmento.required'  => 'Selecione o segmento da sua empresa.',  
+      // 'descricao.required' => 'Preencha a descrição da vaga.',
+      // 'sobre.required' => 'Escreva sobre sua empresa.',
+ ]);
+
+
+ if(isset($request->password_atualizar)){
+   $senha = Hash::make($request->password_atualizar);
+   $request->merge(['password' => $senha]);
+ }
+
+ 
+ CactaUsers::where('id',\Auth::user()->id)->update(request()->except(['_token','password_atualizar','password_confirmation']));
+ return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
+}
 
 
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+use Session;
+use Redirect;
 use App\CactaUser;
 
 class CactaLogoutController extends Controller
@@ -14,10 +16,10 @@ class CactaLogoutController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-    	$this->middleware('auth:cacta');
-    }
+    // public function __construct()
+    // {
+    // 	$this->middleware('auth:cacta');
+    // }
 
     /**
      * Show the application dashboard.
@@ -27,9 +29,15 @@ class CactaLogoutController extends Controller
 
 
     public function logout(Request $request){
-    	Auth::logout();
-        $request->session()->forget('menu');
-    	return  redirect()->back();
+        Auth::logout();
+        Auth::guard('cacta')->logout();
+        Auth::guard('candidatos')->logout();
+         $request->session()->forget('menu');
+         $request->session()->forget('menu_contratante');
+         $request->session()->forget('menu_candidato');
+         Session::flush();
+        
+    	return  Redirect::to('/');
     }
 
 }

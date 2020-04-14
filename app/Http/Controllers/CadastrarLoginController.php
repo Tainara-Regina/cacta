@@ -14,7 +14,7 @@ use App\TituloVaga;
 use App\PlanosContratante;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
- use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 use DB;
 
 
@@ -61,8 +61,6 @@ class CadastrarLoginController extends Controller
 
      $dados->save();
 
-
-
      $nome = explode(' ',$request->nome_contratante);
      $nome = $nome[0];
      
@@ -71,7 +69,6 @@ class CadastrarLoginController extends Controller
 
      return view('site.confirmeEmailContratante',compact('nome'));	
    }
-
 
 
 
@@ -110,9 +107,7 @@ class CadastrarLoginController extends Controller
      $user->save();
 
 
-$planos = PlanosContratante::all();
-
-
+     $planos = PlanosContratante::all();
 
      return view('site.formularioContratante-2',compact('segmentos','nome','usuario','usuario','planos'));
 
@@ -159,10 +154,10 @@ public function formularioContratanteParte2(Request $request){
 
  if($request->file('logo')->isValid())
  {
-$upload =  Storage::put('public/logo_usuario', $request->file('logo'));
-$teste = explode('/',$upload);
-array_shift($teste);
-$nome_imagem = implode('/',$teste);
+  $upload =  Storage::put('public/logo_usuario', $request->file('logo'));
+  $teste = explode('/',$upload);
+  array_shift($teste);
+  $nome_imagem = implode('/',$teste);
 }
 
 $dados = CactaUsers::find($request->id);

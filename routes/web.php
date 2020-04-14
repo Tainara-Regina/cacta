@@ -12,17 +12,42 @@
 */
 
 
-
-
-
-
 Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/vaga/{id}', 'VagaController@vaga')->name('site.vaga');
+
+
+
+
+
+
+
+
+
+Route::get('/candidatar-se/{id}', 'AdminCandidatoController@candidatarVaga')->name('candidatar-se');
+
+
+
+
+
+
+
+
 Route::get('/lista-vagas', 'VagaController@listaVaga')->name('site.lista-vaga');
 Route::get('/admin-contratante', 'AdminContratanteController@home')->name('site.admin-contratante');
 
-
 Route::get('/admin-contratante/candidatos-vaga', 'AdminContratanteController@candidatosVaga')->name('site.candidatos-vaga');
+
+
+
+
+
+Route::get('/admin-candidato', 'AdminCandidatoController@home')->name('site.admin-candidato');
+
+
+
+
+
+
 
 Route::get('/admin-contratante/divulgar-vaga', 'AdminContratanteController@divulgarVaga')->name('site.divulgar-vaga');
 
@@ -45,13 +70,23 @@ Route::get('/admin-contratante/ver-vaga/{id}', 'AdminContratanteController@verVa
 Route::post('/admin-contratante/update-vaga', 'AdminContratanteController@updateVaga')->name('site.update-vaga');
 
 
-
-
-
 Route::get('/admin-contratante/meus-dados', 'AdminContratanteController@meusDados')->name('site.meus-dados');
 
 
+Route::get('/admin-contratante/meus-dados-pessoais', 'AdminContratanteController@meusDadosPessoais')->name('site.meus-dados-pessoais');
+
+
+
+
 Route::post('/admin-contratante/meus-dados', 'AdminContratanteController@cadastrarMeusDados')->name('site.cadastrar-meus-dados');
+
+
+
+
+Route::post('/admin-contratante/meus-dados-pessoais', 'AdminContratanteController@cadastrarMeusDadosPessoais')->name('site.cadastrar-meus-dados-pessoais');
+
+
+
 
 Route::group(['prefix' => 'admin'], function () {
 	Voyager::routes();
@@ -63,6 +98,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::post('/cacta-login', 'Auth\CactaLoginController@login')->name('cactalogin');
+
+
+
+
+// login candidato
+Route::post('/cacta-login-candidato', 'Auth\CactaLoginCandidatoController@login')->name('cactalogin-candidato');
+
+
 
 Route::get('/cacta-logout', 'Auth\CactaLogoutController@logout')->name('cactalogout');
 

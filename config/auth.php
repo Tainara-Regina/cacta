@@ -47,6 +47,11 @@ return [
             'provider' => 'cactausers',
         ],
 
+ 'candidatos' => [
+            'driver' => 'session',
+            'provider' => 'cactacandidatos'
+             ],
+             
 
         'api' => [
             'driver' => 'token',
@@ -83,6 +88,10 @@ return [
             'model' => App\CactaUsers::class,
         ],
 
+'cactacandidatos' => [
+            'driver' => 'eloquent',
+            'model' => App\CactaCandidatos::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

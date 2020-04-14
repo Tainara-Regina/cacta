@@ -31,12 +31,24 @@
    <ul class="navbar-nav">
 
 
+<li class="nav-item active">
+    <a class="nav-link" href="{{route('site.lista-vaga')}}">Vagas</a>
+</li>
+
+
      <li class="nav-item dropdown">
 
-        @if(Request::session()->get('menu'))
+        @if(Request::session()->get('menu_contratante'))
         <a class="nav-link" href="{{route('site.admin-contratante')}}" id="navbarDropdown" >
           <b style="color: green">Acessar painel</b>
       </a>
+
+
+       @elseif(Request::session()->get('menu_candidato'))
+        <a class="nav-link" href="{{route('site.admin-candidato')}}" id="navbarDropdown" >
+          <b style="color: green">Acessar painel</b>
+      </a>
+
       @else
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <b style="color: green">Entrar</b>
@@ -49,17 +61,23 @@
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalContratante">Área do contratante</a>
       </div>
       @endif
-
-
   </li>
- @if(!Request::session()->get('menu'))
+
+
+
+
+ @if(!Request::session()->get('menu_candidato'))
   <li class="nav-item active">
     <a class="nav-link" href="#">Cadastre-se</a>
 </li>
 @endif
+
+ @if(!Request::session()->get('menu_contratante'))
 <li class="nav-item active">
     <a class="nav-link"  href="{{route('formularioContratante')}}">Contrate</a>
 </li>
+@endif
+
 <li class="nav-item active">
     <a class="nav-link" href="#">Cacta blog</a>
 </li>

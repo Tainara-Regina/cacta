@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\CactaUser;
 
-class CactaLoginController extends Controller
+class CactaLoginCandidatoController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -16,7 +16,7 @@ class CactaLoginController extends Controller
      */
     public function __construct()
     {
-    	$this->middleware('guest:cacta');
+    	$this->middleware('guest:candidatos');
     }
 
     /**
@@ -35,11 +35,11 @@ class CactaLoginController extends Controller
     	]);
 
     	
-    	if (Auth::guard('cacta')->attempt(['email'=> $request->email_login,'password'=> $request->password_login,'completou_cadastro'=> 1], $request->remember)) {
-          $request->session()->put('menu_contratante', true);
+    	if (Auth::guard('candidatos')->attempt(['email'=> $request->email_login,'password'=> $request->password_login], $request->remember)) {
+          $request->session()->put('menu_candidato', true);
             
-    		// se sucesso redirecionar para o lugar certo
-    		return redirect()->intended(route('site.admin-contratante'));
+    		// se sucesso redirecionar para o lugar certo 
+    		return redirect()->intended(route('site.admin-candidato'));
     	}
     	// se falhar, redirect back
     	return redirect()->back()->withImput($request->only('email','remember'))->with('message', 'Verifique se digitou os dados corretamente');

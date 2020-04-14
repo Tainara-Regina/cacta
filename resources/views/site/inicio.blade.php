@@ -2,16 +2,16 @@
 
 @section('css')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
-  <meta name="theme-color" content="#754026">
-  <link rel="stylesheet" href="{{asset('/css/inicio.css')}}">
-  <link rel="stylesheet" href="{{asset('/css/menu.css')}}">
-  <link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
-  <link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Kulim+Park&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
+<meta name="theme-color" content="#754026">
+<link rel="stylesheet" href="{{asset('/css/inicio.css')}}">
+<link rel="stylesheet" href="{{asset('/css/menu.css')}}">
+<link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kulim+Park&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 @stop
 
 @section('titulo')
@@ -25,13 +25,19 @@
   @if(isset($fundo_vaga->imagem))
   style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
   @endif
-">
+  ">
 
   <div class="text-left  d-none d-sm-block">
     <!-- A grey horizontal navbar that becomes vertical on small screens -->
     <nav class="navbar navbar-expand-sm p-0 m-0 menu-top">
       <!-- Links -->
       <ul class="navbar-nav"> 
+
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{{route('site.lista-vaga')}}">Vagas</a>
+          </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#">Cadastre-se </a>
         </li>
@@ -45,10 +51,19 @@
 
         <li class="nav-item dropdown">
 
-          @if(Request::session()->get('menu'))
+          @if(Request::session()->get('menu_contratante'))
           <a class="nav-link" href="{{route('site.admin-contratante')}}" id="navbarDropdown" >
             <b style="color: green">Acessar painel</b>
           </a>
+
+
+
+          @elseif(Request::session()->get('menu_candidato'))
+          <a class="nav-link" href="{{route('site.admin-candidato')}}" id="navbarDropdown" >
+            <b style="color: green">Acessar painel</b>
+          </a>
+
+
           @else
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <b>Entrar</b>

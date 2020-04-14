@@ -18,12 +18,16 @@
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalContratante">Área do contratante</a>
       </div>
   </li>
+   @if(!Request::session()->get('menu_candidato'))
   <li class="nav-item active">
     <a class="nav-link" href="#">Cadastre-se</a>
 </li>
-<li class="nav-item">
-    <a class="nav-link" href="#">Contrate</a>
+@endif
+ @if(!Request::session()->get('menu_contratante'))
+<li class="nav-item active">
+    <a class="nav-link"  href="{{route('formularioContratante')}}">Contrate</a>
 </li>
+@endif
 <li class="nav-item">
     <a class="nav-link" href="#">Cacta blog</a>
 </li>

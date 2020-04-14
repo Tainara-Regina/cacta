@@ -98,7 +98,7 @@
 
 				<div class="w-100  py-5">
 					<p  class="m-0 p-0">Se identificou com a vaga?</p>
-					<button type="button" class="btn btn-primary">Candidate-se</button>
+					<a class="btn btn-primary" href="#">Candidate-se</a>
 					<p  class="m-0 p-0">13 pessoas se candidataram</p>
 				</div>
 			</div>
@@ -198,9 +198,34 @@
 				</div>
 
 				<div class="w-100  py-5">
+					
+
+					@if($id_candidato)
+					@if($candidatou_se == "não")
 					<p class="m-0 p-0">Se identificou com a vaga?</p>
-					<button type="button" class="btn btn-primary">Candidate-se</button>
-					<p class="m-0 p-0">13 pessoas se candidataram</p>
+
+					<a class="btn btn-primary"  href="{{route('candidatar-se',['id' => $id_candidato])}}">Candidate-seei</a>
+					@else
+					<p>Você já se candidatou para esta vaga. <a href="#">Clique aqui para visualizar suas cadidaturas.</a></p>
+					@endif
+
+
+					@else
+
+
+					@if($candidatou_se == "não")
+					<a class="btn btn-primary"  data-toggle="modal" data-target="#modalCandidato" href="{{route('candidatar-se',['id' => $id_candidato])}}">Candidate-seei</a>
+					@else
+					<p>Você já se candidatou para esta vaga. <a href="#">Clique aqui para visualizar suas cadidaturas.</a></p>
+					@endif
+					@endif
+
+
+					@if($total_cadidaturas == 1)
+					<p class="m-0 p-0">{{$total_cadidaturas}} pessoas se candidatou</p>
+					@else
+					<p class="m-0 p-0">{{$total_cadidaturas}} pessoas se candidataram</p>
+					@endif
 				</div>
 			</div>
 
@@ -218,7 +243,7 @@
 				<div class="w-100">
 					<h4 class="titulo mt-3">{{$vaga->nome_empresa}}</h4>
 
-<div>{{$vaga->sobre}}</div>
+					<div>{{$vaga->sobre}}</div>
 					
 				</div>
 
