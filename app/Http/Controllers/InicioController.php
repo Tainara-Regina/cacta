@@ -40,6 +40,16 @@ class InicioController extends Controller
 		return view('site.formularioContratante-1',compact('segmentos'));
 	}
 
+
+
+
+public function formularioCandidato(){
+		$segmentos = Segmento::select('id','segmento')->get();
+		return view('site.formularioCandidato-1',compact('segmentos'));
+	}
+
+
+
 	public function formularioContratanteAdd(Request $request){
 
 	}

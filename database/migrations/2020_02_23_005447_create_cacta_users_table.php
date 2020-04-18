@@ -36,7 +36,7 @@ class CreateCactaUsersTable extends Migration
             $table->string('uf')->nullable();
             $table->string('numero')->nullable();
             $table->string('complemento')->nullable();
-             $table->string('endereco')->nullable();
+            $table->string('endereco')->nullable();
 
 
             $table->text('sobre')->nullable();
@@ -50,6 +50,7 @@ class CreateCactaUsersTable extends Migration
             $table->string('expira_cartao')->nullable();
             $table->string('codigo_seguranca_cartao')->nullable();
             $table->timestamp('ultimo_acesso')->nullable();
+            $table->boolean('cadastro_ativo')->default(true);
             $table->timestamps();
         });
     }

@@ -33,13 +33,12 @@
       <!-- Links -->
       <ul class="navbar-nav"> 
 
-
           <li class="nav-item active">
             <a class="nav-link" href="{{route('site.lista-vaga')}}">Vagas</a>
           </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Cadastre-se </a>
+          <a class="nav-link" href="{{route('formularioCandidato')}}">Cadastre-se </a>
         </li>
         <li class="nav-item">
           <a class="nav-link"  href="{{route('formularioContratante')}}">Contrate</a>

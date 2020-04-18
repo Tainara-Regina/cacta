@@ -154,7 +154,7 @@
 				<h1 class="titulo">{{$vaga->titulo}}
 				</h1>
 				<p class="address">
-					{{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}
+				<span style="font-size: 20px; font-weight: bold"> {{$vaga->nome_empresa}}</span> | {{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}
 				</p>
 
 
@@ -174,6 +174,17 @@
 						<p>{{$vaga->quantidade_vaga}}</p>
 					</div>
 				</div>
+
+
+				<div class="row">
+					<div class="col">
+						<div class="w-75 bg-danger">
+					<p class="p-5 my-3">Publicidade aquiii</p>
+				</div>
+					</div>
+				</div>
+
+
 
 
 				<div class="w-100">
@@ -204,9 +215,9 @@
 					@if($candidatou_se == "não")
 					<p class="m-0 p-0">Se identificou com a vaga?</p>
 
-					<a class="btn btn-primary"  href="{{route('candidatar-se',['id' => $id_candidato])}}">Candidate-seei</a>
+					<a class="btn btn-primary"  href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-seei</a>
 					@else
-					<p>Você já se candidatou para esta vaga. <a href="#">Clique aqui para visualizar suas cadidaturas.</a></p>
+					<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
 					@endif
 
 
@@ -214,15 +225,17 @@
 
 
 					@if($candidatou_se == "não")
-					<a class="btn btn-primary"  data-toggle="modal" data-target="#modalCandidato" href="{{route('candidatar-se',['id' => $id_candidato])}}">Candidate-seei</a>
+					<a class="btn btn-primary"  data-toggle="modal" data-target="#modalCandidato" href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-seei</a>
 					@else
-					<p>Você já se candidatou para esta vaga. <a href="#">Clique aqui para visualizar suas cadidaturas.</a></p>
+					<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
 					@endif
 					@endif
 
 
 					@if($total_cadidaturas == 1)
-					<p class="m-0 p-0">{{$total_cadidaturas}} pessoas se candidatou</p>
+					<p class="m-0 p-0">{{$total_cadidaturas}} pessoa se candidatou</p>
+					@elseif($total_cadidaturas == 0)
+					<p class="m-0 p-0">Nenhuma pessoa se candidatou ainda, seja o primeiro e aumete sua chance!</p>
 					@else
 					<p class="m-0 p-0">{{$total_cadidaturas}} pessoas se candidataram</p>
 					@endif

@@ -11,7 +11,9 @@ use App\CadastrarVaga;
 use App\CactaUsers;
 use App\Segmento;
 use App\TituloVaga;
+use App\Candidaturas;
 use App\PlanosContratante;
+use App\CactaCandidatos;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -36,30 +38,18 @@ class AdminContratanteController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-
-
-
     public function home(){
     	return view('adminContratante.home-admin');
     }
 
-
     public function candidatosVaga(){
 //fazer um join para trazer o nome das vagas no model
-
 
       $vagas = DB::table('cadastrar_vaga')
       ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
       ->select('cadastrar_vaga.*', 'titulo_vaga.titulo')
       ->where('cadastrar_vaga.id_usuario',Auth::user()->id)
       ->get();
-
-
- //$segmento =  CadastrarVaga::where('id_usuario',Auth::user()->id)->first();
-  //$vagas = $segmento->nomeVagas()->get();
-
-//dd($vagas);
-     // $vagas = CadastrarVaga::all();
       return view('adminContratante.vagas',compact('vagas'));
     }
 
@@ -68,8 +58,8 @@ class AdminContratanteController extends Controller
     public function divulgarVaga(){
 
       $quantidade_maxima_vagas_permitidas = $this->verificaPlano(Auth::user()->id_plano)->quantidade_vagas;
-      $quantidade_de_vagas_cadastradas = CadastrarVaga::where('id_usuario',Auth::user()->id)->count();
 
+      $quantidade_de_vagas_cadastradas = CadastrarVaga::where('id_usuario',Auth::user()->id)->count();
 
       $quantidade_maxima_destaque_permitido = $this->verificaPlano(Auth::user()->id_plano)->vagas_em_destaque;
 
@@ -84,7 +74,6 @@ class AdminContratanteController extends Controller
       $utrapassou_limite_destaque = false;
     }
 
-
     if($quantidade_de_vagas_cadastradas >= $quantidade_maxima_vagas_permitidas){
 
       $planos = PlanosContratante::where('quantidade_vagas', '>=' , $quantidade_maxima_vagas_permitidas)->
@@ -94,9 +83,7 @@ class AdminContratanteController extends Controller
       $plano_atual = PlanosContratante::where('id', Auth::user()->id_plano)->first();
 
       return view('adminContratante.limite-vaga-atingido',compact('planos','plano_atual','quantidade_maxima_vagas_permitidas','quantidade_de_vagas_cadastradas','quantidade_maxima_destaque_permitido','quantidade_destaque_cadastrado','utrapassou_limite_destaque')); 
-
     }
-
 
     $segmento = Segmento::where('id',Auth::user()->id_segmento)->first();
     $titulos_vaga = $segmento->segmento()->get();
@@ -108,12 +95,9 @@ class AdminContratanteController extends Controller
 
 
   public function editarVaga($id){
-
 //verifica se o usuario tem direito a vagas em destaque, se não tiver, passa a variavel utrapassou_limite_destaque true para que o campo fique desabilitado 
 
-
     $quantidade_maxima_destaque_permitido = $this->verificaPlano(Auth::user()->id_plano)->vagas_em_destaque;
-
     $quantidade_destaque_cadastrado = CadastrarVaga::where('id_usuario',Auth::user()->id)
     ->where('vaga_em_destaque','on')
     ->count();
@@ -123,10 +107,6 @@ class AdminContratanteController extends Controller
    }else{
     $utrapassou_limite_destaque = false;
   }
-
-
-
-
 
   $segmento = Segmento::where('id',Auth::user()->id_segmento)->first();
   $titulos_vaga = $segmento->segmento()->get();
@@ -148,7 +128,6 @@ public function updateVaga(Request $request){
 
 // caso o usuario tente modifirar o valor do campo destaque disable para enable, esta pagina de advertencia é acionada
 $quantidade_maxima_destaque_permitido = $this->verificaPlano(Auth::user()->id_plano)->vagas_em_destaque;
-
 $quantidade_destaque_cadastrado = CadastrarVaga::where('id_usuario',Auth::user()->id)
 ->where('vaga_em_destaque','on')
 ->count();
@@ -188,24 +167,12 @@ return redirect()->back()->with('message', 'Vaga atualizada com sucesso!');
 
 
 
-
-public function deletaVaga($id){
- $vagas = cadastrarVaga::find($id);
- $autorizacao = $this->authorize('permissao_vagas',$vagas);
-
- $vagas->delete();
- dd('deletou');
-}
-
-
-
 public function verVaga($id){
  $vagas = cadastrarVaga::find($id);
  $autorizacao = $this->authorize('permissao_vagas',$vagas);
- 
- return view('adminContratante.ver-vaga',compact('vagas'));
 
-
+ $total = Candidaturas::where('vaga_id',$id)->count();
+ return view('adminContratante.ver-vaga',compact('vagas','total'));
 }
 
 
@@ -216,7 +183,6 @@ public function cadastrarVaga(Request $request){
 }else{
  $request['vaga_em_destaque'] = "on";
 };
-
 
 // caso o usuario tente modifirar o valor do campo destaque disable para enable, esta pagina de advertencia é acionada
 $quantidade_maxima_destaque_permitido = $this->verificaPlano(Auth::user()->id_plano)->vagas_em_destaque;
@@ -230,8 +196,6 @@ if($quantidade_destaque_cadastrado >= $quantidade_maxima_destaque_permitido){
   return view('erro.nao-burle-o-sistema');
 }
 }
-
-
 
 
 $validator = $request->validate([
@@ -284,9 +248,59 @@ $vaga->titulo = $request->titulo;
 $vaga->vaga_em_destaque = false;
 $vaga->save();
 
-
 return redirect()->back()->with('message', 'Vaga cadastrada com sucesso!');	
 }
+
+
+
+public function verCandidatos($id){
+ $vagas = cadastrarVaga::find($id);
+ $autorizacao = $this->authorize('permissao_vagas',$vagas);
+
+ $vaga_nome = DB::table('cadastrar_vaga')
+ ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
+ ->select('titulo_vaga.titulo','titulo_vaga.id')
+ ->where('cadastrar_vaga.id',$id)
+ ->first();
+
+ $candidatos = DB::table('candidaturas')
+ ->join('cacta_candidatos', 'candidaturas.candidato_id', '=', 'cacta_candidatos.id')
+ ->select('cacta_candidatos.nome','cacta_candidatos.sobrenome','cacta_candidatos.id','candidaturas.canditatura_em')
+ ->where('candidaturas.vaga_id',$id)
+ ->get();
+
+ $total = Candidaturas::where('vaga_id',$id)->count();
+
+ return view('adminContratante.ver-candidatos',compact('candidatos','vaga_nome','total'));
+}
+
+
+
+
+
+
+
+public function detalhesCandidato($id_candidato,$id_vaga){
+
+  $candidatura = Candidaturas::where('candidato_id',$id_candidato)
+  ->where('vaga_id',$id_vaga)->count();
+
+  if ($candidatura > 0) {
+
+    $candidato = CactaCandidatos::select('nome','sobrenome','email','telefone','data_nascimento','sonhos_objetivos',
+      'sua_historia','livros','hobbies','cursos_gostaria','cep','logradouro','bairro','localidade','uf','numero','complemento','endereco','facebook','instagram','twitter','site')->where('id',$id_candidato)->first();
+
+    return view('adminContratante.detalhes-candidato',compact('candidato'));
+
+  }else{
+   return back();
+ }
+}
+
+
+
+
+
 
 
 
@@ -384,7 +398,7 @@ public function cadastrarMeusDadosPessoais(Request $request){
    'telefone' => 'required',
    'password_confirmation' =>'same:password_atualizar',
    'id_plano' => 'required',
-    'nome_cartao' => 'required',
+   'nome_cartao' => 'required',
    'numero_cartao' => 'required',
    'expira_cartao' => 'required',
    'codigo_seguranca_cartao' => 'required',
@@ -414,6 +428,32 @@ public function verificaPlano($id_plano){
   $quantidade = PlanosContratante::select('plano','quantidade_vagas','vagas_em_destaque','tempo_disponivel_vaga')->where('id',$id_plano)->first();
   return $quantidade;
 }
+
+
+
+//Preferencias
+public function preferencias(){
+  $preferencias = CactaUsers::where('id',\Auth::user()->id)->first();
+
+//dd($preferencias);
+
+  return view('adminContratante.preferencias',compact($preferencias));
+}
+
+//Cadastrar Preferencias
+public function cadastrarPreferencias(Request $request){
+  CactaUsers::where('id',\Auth::user()->id)->update(request()->except(['_token']));
+
+ return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
+}
+
+
+//Excluir conta permanentemente
+public function excluirConta(){
+ CactaUsers::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false]);
+ return \Redirect::to('/cacta-logout');
+}
+
 
 
 }

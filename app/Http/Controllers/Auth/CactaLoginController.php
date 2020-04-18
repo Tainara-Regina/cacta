@@ -33,9 +33,9 @@ class CactaLoginController extends Controller
     		'email_login' => 'required',
     		'password_login' => 'required|min:4',
     	]);
-
+ 
     	
-    	if (Auth::guard('cacta')->attempt(['email'=> $request->email_login,'password'=> $request->password_login,'completou_cadastro'=> 1], $request->remember)) {
+    	if (Auth::guard('cacta')->attempt(['email'=> $request->email_login,'password'=> $request->password_login,'completou_cadastro'=> 1,'cadastro_ativo'=> true], $request->remember)) {
           $request->session()->put('menu_contratante', true);
             
     		// se sucesso redirecionar para o lugar certo

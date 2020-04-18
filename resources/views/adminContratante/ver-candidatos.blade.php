@@ -30,97 +30,66 @@
 
 				<div class="row text-center">
 					<div class="col my-3">
-						<h2>DETALHE DA VAGA</h2>
-						<p>Veja os detalhes da vaga.</p>
+						<h2>Vaga {{$vaga_nome->titulo}}</h2>
+						<p>Veja os candidatos da vaga.</p>
+
+						<h2>Total de candidatos: {{$total}}</h2>
 					</div>
 				</div>
+			</div>
 
 
+
+
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th scope="col">Nome do candidato</th>
+									<th scope="col">Data de candidatura</th>
+									<th scope="col">Ver detalhes</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								@foreach($candidatos as $candidato)
+								<tr>
+									<td>{{$candidato->nome}} {{$candidato->sobrenome}}</td>
+									<td>{{ Carbon\Carbon::parse($candidato->canditatura_em)->format('d/m/Y')}}</td>
+									<td class="text-center">
+<a href="{{route('site.detalhes-candidato',['id_candidato' => $candidato->id ,'id_vaga' => $vaga_nome->id ])}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+										<!-- <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+										<button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button> -->
+									</td>
+								</tr>
+								@endforeach
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="container-fluid">
 				<div class="row">
 					<div class="col">
-						<h3>Total de candidatos cadastrados</h3>
-						<p>{{$total}}</p>
+						<a class="btn btn-primary" href="{{route('site.candidatos-vaga')}}">Voltar</a>
 					</div>
 				</div>
-
-				<div class="row">
-					<div class="col">
-						<h3>Titúlo da vaga</h3>
-						<p>{{$vagas->titulo}}</p>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col">
-						<h3>Faixa salarial</h3>
-						<p>De: {{$vagas->faixa_salarial_de}} até: {{$vagas->faixa_salarial_ate}}</p>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col">
-						<h3>Contratação</h3>
-						<p>{{$vagas->contratacao}}</p>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col">
-						<h3>Quantidade de vagas</h3>
-						<p>{{$vagas->quantidade_vaga}}</p>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col">
-						<h3>A vaga está em destaque</h3>
-						@if($vagas->vaga_em_destaque == 'off')
-						<p>Não</p>
-						@elseif($vagas->vaga_em_destaque == 'on')
-						<p>Sim</p>
-						@endif
-
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col">
-						<h3>Descrição</h3>
-						<p>{{$vagas->descricao}}</p>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col">
-						<h3>Requisitos</h3>
-						<p>{{$vagas->requisitos}}</p>
-					</div>
-				</div>
-
-
-				<div class="row">
-					<div class="col">
-						<h3>Desejável</h3>
-						<p>{{$vagas->desejavel}}</p>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col">
-						<h3>Benefícios</h3>
-						<p>{{$vagas->beneficios}}</p>
-					</div>
-				</div>
-
-<div class="row">
-	<div class="col">
-		<a class="btn btn-primary" href="{{route('site.candidatos-vaga')}}">Voltar</a>
-		<a class="btn btn-primary" href="{{route('site.editar-vaga',$vagas->id)}}">Editar</a>
-		<a class="btn btn-primary" href="{{route('site.deleta-vaga',$vagas->id)}}">Deletar</a>
-	</div>
-</div>
 
 			</div>
+
+
+
+
+
+
+
 		</main>
 
 		<!-- page-content" -->

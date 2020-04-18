@@ -20,7 +20,7 @@
   </li>
    @if(!Request::session()->get('menu_candidato'))
   <li class="nav-item active">
-    <a class="nav-link" href="#">Cadastre-se</a>
+    <a class="nav-link" href="{{route('formularioCandidato')}}">Cadastre-se</a>
 </li>
 @endif
  @if(!Request::session()->get('menu_contratante'))

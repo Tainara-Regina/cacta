@@ -12,6 +12,31 @@
 
 	<link rel="stylesheet" href="{{asset('/css/adminContrate/menu-admin.css')}}">
 	<link rel="stylesheet" href="{{asset('/css/adminContrate/home-admin.css')}}">
+	
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+	<script src="{{asset('/js/mascara.js')}}"></script>
+
+
+	<script type="text/javascript">
+
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function (e) {
+					$('#blah')
+					.attr('src', e.target.result);
+				};
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+
+	</script>
 
 
 	<style type="text/css">
@@ -220,23 +245,52 @@
 
 	</style>
 
+
+
+
+
+
+
+
+
+	<style type="text/css">
+		.btn-file {
+			position: relative;
+			overflow: hidden;
+		}
+		.btn-file input[type=file] {
+			position: absolute;
+			top: 0;
+			right: 0;
+			min-width: 100%;
+			min-height: 100%;
+			font-size: 100px;
+			text-align: right;
+			filter: alpha(opacity=0);
+			opacity: 0;
+			outline: none;   
+			cursor: inherit;
+			display: block;
+		}
+	</style>
+
 </head>
 
 
 <body>
 	<div class="page-wrapper chiller-theme toggled">
-		<a id="show-sidebar" class="btn btn-sm btn-dark py-3" href="#">
-			<i class="fas fa-bars"></i>
+		<a id="show-sidebar" class="btn btn-sm btn-dark px-3 py-2" href="#">
+			<i style="font-size: 25px;" class="fas fa-caret-right"></i>
 		</a>
 
-		@include('adminContratante.includes.menu-contratante')
+		@include('adminCandidato.includes.menu-candidatos')
 
 		<!-- sidebar-wrapper  -->
 		<main class="page-content">
 
-			<div class="container-fluid mb-5">
+			<div class="container-fluid">
 				<div class="row">
-					<div class="col text-center mb-5">
+					<div class="col text-center mb-3">
 
 
 						@if(session()->has('message'))
@@ -247,184 +301,53 @@
 						@endif
 
 
-						<h2>DIVULGAR VAGAS</h2>
-						<p>Aqui você pode divulgas suas vagas e ver quantas vagas ainda pode divulgar no mês.</p>
+						<h2>Preferencias</h2>
+						
 					</div>	
-				</div>
-
-
-				<div class="row">
-				<div class="col-sm-6 mx-auto">
-						<div class="card card-inverse card-success">
-							<div class="card-block bg-dark text-center">
-								<div class="rotate">
-									<i class="fa fa-user fa-5x"></i>
-								</div>
-								<h6 class="text-uppercase">Vagas divulgadas</h6>
-								<h1 class="display-1">{{$quantidade_de_vagas_cadastradas}}<span style="font-size: 34px">/{{$quantidade_maxima_vagas_permitidas}}</span></h1>
-							</div>
-						</div>
-					</div>
-
-					<div class="col">
-						<div class="card card-inverse card-success">
-							<div class="card-block bg-dark text-center">
-								<div class="rotate">
-									<i class="fa fa-user fa-5x"></i>
-								</div>
-								<h6 class="text-uppercase">Vagas em destaque</h6>
-								<h1 class="display-1">{{$quantidade_destaque_cadastrado}}<span style="font-size: 34px">/{{$quantidade_maxima_destaque_permitido}}</span></h1>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col">
-						<div class="text-center mt-5">
-							<button type="button" class="btn btn-dark">DIVULGAR NOVA VAGA</button>
-						</div>
-					</div>
 				</div>
 			</div>
 
 
-
-
-
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-7">
+					<div class="col-md-9">
 						<!-- 	<h3>Criar nova vaga</h3> -->
-						<p style="font-size: 20px;" class="text-center mb-5">Insira abaixo todas as informações para a nova vaga</p>
+						
 
-						<form action="{{route('site.cadastrar-vaga')}}" method="POST">
+						
 
+						<form action="{{route('cadastrar-preferencias')}}" id="formPart1" method="POST" enctype="multipart/form-data">
 							@csrf
 
 
+							<div class="form-group">
+								<label for="email"><b>Excluir permanentemente seu cadastro</b></label>
+								<a href="{{route('excluir-conta')}}">Excluir permanentemente sua conta?</a>
+							</div>
 
 
-							@error('titulo')
+							@error('disponivel_banco_candidatos')
 							<span style="color: red">{{ $message }}</span>
 							@enderror
-							<div class="form-group">
-								<div class="main">
-									<label for="pwd"><b>Título da vaga:</b></label>
-									<select name="titulo">
-
-										@foreach($titulos_vaga as $titulo_vaga)
-
-										<option value="{{$titulo_vaga->id}}">{{$titulo_vaga->titulo}}</option>
-
-										@endforeach
-										
-									</select>
-								</div>
-							</div>
+							
+							@if($preferencias->disponivel_banco_candidatos == true)
+							<label class="form-check-label" for="check1">
+								<input name="disponivel_banco_candidatos" type="checkbox" class="form-check-input" checked="">Ficar disponivel no banco de candidatos?
+							</label>
+							@elseif($preferencias->disponivel_banco_candidatos == false)
+							<label class="form-check-label" for="check1">
+								<input name="disponivel_banco_candidatos" type="checkbox" class="form-check-input">Ficar disponivel no banco de candidatos?
+							</label>
+							@endif
 
 
 
-
-							<div class="form-group">
-								<label for="pwd"><b>Faixa salarial de:</b></label>
-
-								<input type="number" name="faixa_salarial_de" class="form-control" min="1" max="10000" id="pwd" placeholder="Ex: 2.000">
-								<label><b>até:</b></label>
-								<input type="number" name="faixa_salarial_ate" class="form-control"  min="1" max="10000" id="pwd" placeholder="Ex: 3.000">
-							</div>
-
-							<div class="form-group form-check">
-								<label class="form-check-label">
-									<input name="a_combinar" class="form-check-input" type="checkbox" name="remember"> A combinar
-								</label>
-							</div>
-
-
-							@error('contratacao')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-
-							<div class="form-group">
-								<label for="pwd"><b>Contratação:</b></label>
-
-								<div class="form-check">
-									<label class="form-check-label" for="radio1">
-										<input type="radio" class="form-check-input" id="radio1" name="contratacao" value="fixo">Fixo
-									</label>
-								</div>
-								<div class="form-check">
-									<label class="form-check-label" for="radio2">
-										<input type="radio" class="form-check-input" id="radio2" name="contratacao" value="temporario">Temporario
-									</label>
-								</div>
-							</div>
-
-
-
-							@error('quantidade_vaga')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-
-							<div class="form-group row">
-								<label for="example-number-input" class="col col-form-label"><b>Quantidade de vaga:</b></label>
-								<div class="col">
-									<input name="quantidade_vaga" class="form-control w-50" min="1" max="99" type="number" value="1" id="example-number-input">
-								</div>
-							</div>
-
-
-							@error('descricao')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-							<div class="form-group">
-								<label for="email"><b>Descrição:</b></label>
-								<textarea name="descricao" placeholder='Conte um pouco sobre a empresa, fale sobre a vaga e as habilidades que procura no candidato. Ex: A empresa "Exemplo" está procurando de pessoas que se identificam  com os valores da empresa para compor nossa equipe. As principais atividades realizadas são...'  class="form-control" rows="5" id="comment"></textarea>
-							</div>
-
-							@error('requisitos')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-							<div class="form-group">
-								<label for="pwd"><b>Requisitos:</b></label>
-								<textarea name="requisitos" placeholder="Descreva aqui todas as habilidades e experiencias necessarias para ocupar a vaga." class="form-control" rows="5" id="comment"></textarea>
-							</div>
-
-							@error('desejavel')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-							<div class="form-group">
-								<label for="comment"><b>Desejável:</b></label>
-								<textarea name="desejavel" placeholder="Descreva aqui habilidades que não são obrigatórias para a vaga mas seriam consideradas um diferencialcaso o candidato possua."class="form-control" rows="5" id="comment"></textarea>
-							</div> 
-
-
-							@error('beneficios')
-							<span style="color: red">{{ $message }}</span>
-							@enderror
-							<div class="form-group">
-								<label for="comment"><b>Beneficios:</b></label>
-								<textarea name="beneficios" placeholder="Descreva os beneficios da vaga."class="form-control" rows="5" id="comment"></textarea>
-							</div> 
-
-							<div class="form-check mb-5">
-								@if($utrapassou_limite_destaque == true)
-								<label class="form-check-label" for="check1">
-									<input name="vaga_em_destaque" type="checkbox" class="form-check-input" disabled>Deixar vaga em destaque?<br>
-									<small>Atualize seu plano para poder destacar esta vaga nas primeiras páginas.</small>
-								</label>
-								@else
-								<label class="form-check-label" for="check1">
-									<input name="vaga_em_destaque" type="checkbox" class="form-check-input">Deixar vaga em destaque?
-								</label>
-								@endif 
-							</div>
-
-							<button type="submit" class="btn btn-primary mb-3">Salvar</button>
+							<button type="submit" class="btn btn-primary mb-5">Prosseguir</button>
 						</form>
+
 					</div>
 
-					<div class="col-md-5">
+					<div class="col-md-3">
 						<div class="w-100 bg-dark" style="height: 200px">
 							<p class="text-center">
 								Banner
@@ -566,6 +489,20 @@ $(document).ready(function () {
 	create_custom_dropdowns();
 });
 </script>
+
+
+
+<script src="{{asset('/js/formularioContratante-2.js')}}"></script>
+
+
+<script type="text/javascript">
+	$('#id_segmento').one('change', function (e) {
+    // Executa somente essa vez, não mais que isso
+    confirm('Ao trocar o segmento da sua empresa, todas as vagas relacionadas a categoria anterior serão excluidas. Deseja continuar?');
+});
+
+</script>
+
 
 </body>
 </html>

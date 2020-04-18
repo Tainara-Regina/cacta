@@ -53,15 +53,15 @@ class VagaController extends Controller
 			->where('vaga_id',$id)
 			->count() > 0){
 			$candidatou_se = 'sim';
-		//dd('rola');
+		
 	}else{
 		$candidatou_se = 'não';
 	}
 
-$total_cadidaturas = Candidaturas::all()->count();
+$total_cadidaturas = Candidaturas::where('vaga_id',$id)->count();
 
 //dd($total_cadidaturas);
-
+//dd($vaga);
 	return view('site.vaga',compact('contratar','fundo_vaga','procurar_vaga','vaga','id_candidato','candidatou_se','total_cadidaturas'));
 
 }

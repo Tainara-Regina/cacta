@@ -20,6 +20,7 @@ class CactaCandidatos extends Migration
           $table->string('email')->unique()->nullable();
           $table->timestamp('email_verified_at')->nullable();
           $table->string('telefone')->nullable();
+          $table->string('whatsapp')->nullable();
           $table->string('password');
           $table->string('id_segmento_enterece')->nullable();
           $table->string('data_nascimento')->nullable();
@@ -27,8 +28,11 @@ class CactaCandidatos extends Migration
           $table->string('verificado')->default(false);
           $table->string('completou_cadastro')->default(false);
           $table->string('key_verificacao')->nullable();
+          $table->string('apresentacao')->nullable();
+          $table->string('escolariedade')->nullable();
           $table->string('sonhos_objetivos')->nullable();
-          $table->string('sua_hitoria')->nullable();
+          $table->string('sua_historia')->nullable();
+          $table->string('sexo')->nullable();
           $table->string('livros')->nullable();
           $table->string('hobbies')->nullable();
           $table->string('cursos_gostaria')->nullable();
@@ -58,6 +62,8 @@ class CactaCandidatos extends Migration
           $table->string('expira_cartao')->nullable();
           $table->string('codigo_seguranca_cartao')->nullable();
           $table->timestamp('ultimo_acesso')->nullable();
+          $table->boolean('disponivel_banco_candidatos')->default(true);
+          $table->boolean('cadastro_ativo')->default(false);
           $table->timestamps();
       });
     }

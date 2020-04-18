@@ -22,7 +22,7 @@
 			<i class="fas fa-bars"></i>
 		</a>
 
-		@include('adminContratante.includes.menu-contratante')
+		@include('adminCandidato.includes.menu-candidatos')
 
 		<!-- sidebar-wrapper  -->
 		<main class="page-content">
@@ -30,8 +30,8 @@
 
 				<div class="row text-center">
 					<div class="col my-3">
-						<h2>VAGAS DIVULGADAS</h2>
-						<p>Veja os detalhes de todos os candidatos das suas vagas e edite a vaga se for preciso.</p>
+						<h2>VAGAS QUE ME CANDIDATEI</h2>
+						
 					</div>
 				</div>
 
@@ -47,26 +47,19 @@
 									<i class="fa fa-share fa-5x"></i>
 								</div>
 								<h4 class="text-uppercase">{{$vaga->titulo}}</h4>
-
-								<p><i>Disponivel de {{ Carbon\Carbon::parse($vaga->data_de_criacao)->format('d/m/Y')}} de até {{ Carbon\Carbon::parse($vaga->data_de_expiracao)->format('d/m/Y') }} </i></p>
-
-								
-								<!-- <h6 class="text-uppercase mb-3">3 Pessoas se cadidtaram</h6> -->
-								
-
+								<h6 class="text-uppercase mb-3">{{$vaga->nome_empresa}}</h6>
+								<p><i>Você se candidatou em: {{ Carbon\Carbon::parse($vaga->canditatura_em)->format('d/m/Y') }} </i></p>
 								<ul class="p-0" style="/*position: absolute;*/bottom: 0px;list-style: none;">
-									<a href="{{route('site.ver-candidatos',$vaga->id)}}"><li> Ver candidatos</li></a>
-									<li><a href="{{route('site.ver-vaga',$vaga->id)}}"> Ver vaga</a></li>
-									<li><a href="{{route('site.editar-vaga',$vaga->id)}}">Editar vaga</a></li>
-									<li><a href="{{route('site.deleta-vaga',$vaga->id)}}">Deletar vaga</a></li>
+									<li><a href="{{route('ver-vaga',$vaga->id)}}"> Ver vaga</a></li>
+									<li><a href="{{route('deleta-candidatura',$vaga->id)}}">Remover candidatura</a></li>
 
 								</ul>
 							</div>
 						</div>
 					</div>
-						
+					
 					@endforeach
-				
+					
 		<!-- 			<div class="col">
 						<div class="card card-inverse mh-100 h-100">
 							<div class="card-block bg-dark">

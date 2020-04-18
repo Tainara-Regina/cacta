@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Candidaturas extends Migration
+class CursosCandidatos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class Candidaturas extends Migration
      */
     public function up()
     {
-      Schema::create('candidaturas', function (Blueprint $table) {
+      Schema::create('cursos_candidatos', function (Blueprint $table) {
           $table->bigIncrements('id');
           $table->string('candidato_id')->nullable();
-          $table->string('vaga_id')->nullable();
-           $table->boolean('visualizado_pela_empresa')->default(false);
-          $table->timestamp('canditatura_em')->nullable();
+          $table->string('nome_instituicao')->nullable();
+          $table->string('grau')->nullable();
+          $table->string('nome_curso')->nullable();
+          $table->timestamp('inicio')->nullable();
+          $table->timestamp('conclusao')->nullable();
+           $table->string('observacao')->nullable();
           $table->timestamps();
       });
   }
@@ -30,7 +33,7 @@ class Candidaturas extends Migration
      */
     public function down()
     {
-       Schema::dropIfExists('candidaturas');
-    }
+     Schema::dropIfExists('cursos_candidatos');
+ }
 }
 
