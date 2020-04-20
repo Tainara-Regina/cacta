@@ -74,3 +74,66 @@ font-size: 22px;
 .b .total span{
 font-size: 18px
 }
+
+
+
+.b a{
+ color: #754026;
+ font-weight: 600;
+}
+
+
+.b a:hover{
+ color: green;
+ font-weight: 600;
+}
+
+
+.b .titulo{
+   color: #754026;
+    font-size: 22px;
+    font-weight: 600;
+}
+   
+
+
+  .btn-file {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;   
+    cursor: inherit;
+    display: block;
+  }
+
+
+.form label{
+font-weight: 700;
+color: #4CAF50;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #795548;
+    border-color: #795548;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: green;
+    border-color:  green;
+}
+
+.form-control {
+    color: #757575;  
+}

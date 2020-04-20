@@ -184,6 +184,18 @@ public function cadastrarVaga(Request $request){
  $request['vaga_em_destaque'] = "on";
 };
 
+
+
+
+//bloqueia a criação de vagas indevidas 
+$quantidade_vagas_permitido = $this->verificaPlano(Auth::user()->id_plano)->quantidade_vagas;
+ $quantidade_de_vagas_cadastradas = CadastrarVaga::where('id_usuario',Auth::user()->id)->count();
+ 
+if ($quantidade_de_vagas_cadastradas >=  $quantidade_vagas_permitido) {
+  return back();
+}
+
+
 // caso o usuario tente modifirar o valor do campo destaque disable para enable, esta pagina de advertencia é acionada
 $quantidade_maxima_destaque_permitido = $this->verificaPlano(Auth::user()->id_plano)->vagas_em_destaque;
 

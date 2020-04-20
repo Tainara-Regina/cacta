@@ -6,11 +6,8 @@
 	<meta name="description" content="">
 	<meta name="author" content="cacta">
 	@yield('titulo')
-	<!-- Bootstrap core CSS -->
-
-
-
-@yield('css')
+	
+	@yield('css')
 	
 </head>
 
