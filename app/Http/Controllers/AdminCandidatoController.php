@@ -75,11 +75,11 @@ class AdminCandidatoController extends Controller
     ->join('cadastrar_vaga', 'cadastrar_vaga.id', '=', 'candidaturas.vaga_id')
     ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
     ->join('cacta_users', 'cacta_users.id', '=', 'cadastrar_vaga.id_usuario')
-    ->select('cadastrar_vaga.*','cacta_users.nome_empresa','titulo_vaga.titulo','candidaturas.canditatura_em','candidaturas.id')
+    ->select('cadastrar_vaga.*','cacta_users.nome_empresa','titulo_vaga.titulo','candidaturas.canditatura_em','candidaturas.id','candidaturas.visualizado_pela_empresa')
     ->where('candidaturas.candidato_id',Auth::user()->id)
     ->get();
 
-    // dd($vagas);
+    //dd($vagas);
 
     return view('adminCandidato.vagas-que-me-candidatei',compact('vagas'));
   }

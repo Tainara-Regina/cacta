@@ -49,6 +49,15 @@
 								<h4 class="text-uppercase">{{$vaga->titulo}}</h4>
 								<h6 class="text-uppercase mb-3">{{$vaga->nome_empresa}}</h6>
 								<p><i>Você se candidatou em: {{ Carbon\Carbon::parse($vaga->canditatura_em)->format('d/m/Y') }} </i></p>
+
+
+								@if($vaga->visualizado_pela_empresa == 1)
+								<p>A empresa visualisou seu perfil: sim</p>
+								@else
+								<p>A empresa visualisou seu perfil: não</p>
+								
+
+								@endif
 								<ul class="p-0" style="/*position: absolute;*/bottom: 0px;list-style: none;">
 									<li><a href="{{route('ver-vaga',$vaga->id)}}"> Ver vaga</a></li>
 									<li><a href="{{route('deleta-candidatura',$vaga->id)}}">Remover candidatura</a></li>
@@ -57,9 +66,9 @@
 							</div>
 						</div>
 					</div>
-					
+
 					@endforeach
-					
+
 		<!-- 			<div class="col">
 						<div class="card card-inverse mh-100 h-100">
 							<div class="card-block bg-dark">

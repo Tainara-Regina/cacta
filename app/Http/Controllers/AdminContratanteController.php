@@ -189,8 +189,8 @@ public function cadastrarVaga(Request $request){
 
 //bloqueia a criação de vagas indevidas 
 $quantidade_vagas_permitido = $this->verificaPlano(Auth::user()->id_plano)->quantidade_vagas;
- $quantidade_de_vagas_cadastradas = CadastrarVaga::where('id_usuario',Auth::user()->id)->count();
- 
+$quantidade_de_vagas_cadastradas = CadastrarVaga::where('id_usuario',Auth::user()->id)->count();
+
 if ($quantidade_de_vagas_cadastradas >=  $quantidade_vagas_permitido) {
   return back();
 }
@@ -266,12 +266,13 @@ return redirect()->back()->with('message', 'Vaga cadastrada com sucesso!');
 
 
 public function verCandidatos($id){
+
  $vagas = cadastrarVaga::find($id);
  $autorizacao = $this->authorize('permissao_vagas',$vagas);
 
  $vaga_nome = DB::table('cadastrar_vaga')
  ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
- ->select('titulo_vaga.titulo','titulo_vaga.id')
+ ->select('titulo_vaga.titulo','titulo_vaga.id','cadastrar_vaga.id As id_vaga')
  ->where('cadastrar_vaga.id',$id)
  ->first();
 
@@ -294,12 +295,24 @@ public function verCandidatos($id){
 
 public function detalhesCandidato($id_candidato,$id_vaga){
 
+  //dd($id_vaga);
+
+  Candidaturas::where('candidato_id', $id_candidato)
+  ->where('vaga_id', $id_vaga)
+  ->where('visualizado_pela_empresa', 0)
+  ->update(['visualizado_pela_empresa' => 1]);
+
+
+
+
   $candidatura = Candidaturas::where('candidato_id',$id_candidato)
   ->where('vaga_id',$id_vaga)->count();
 
   if ($candidatura > 0) {
 
-    $candidato = CactaCandidatos::select('nome','sobrenome','email','telefone','data_nascimento','sonhos_objetivos',
+
+
+    $candidato = CactaCandidatos::select('nome','sobrenome','email','telefone','data_nascimento','sonhos_objetivos','sexo','whatsapp','escolariedade',
       'sua_historia','livros','hobbies','cursos_gostaria','cep','logradouro','bairro','localidade','uf','numero','complemento','endereco','facebook','instagram','twitter','site')->where('id',$id_candidato)->first();
 
     return view('adminContratante.detalhes-candidato',compact('candidato'));
@@ -456,7 +469,7 @@ public function preferencias(){
 public function cadastrarPreferencias(Request $request){
   CactaUsers::where('id',\Auth::user()->id)->update(request()->except(['_token']));
 
- return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
+  return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
 }
 
 
