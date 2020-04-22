@@ -12,6 +12,16 @@
 
 
 
+.slider-vagas a{
+ color: #754026;
+}
+
+
+.slider-vagas a:hover{
+ color:green;
+}
+
+
 .slider-cursos{
   max-width: 700px;
   margin: 0 auto;

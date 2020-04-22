@@ -75,19 +75,14 @@ crossorigin="anonymous">
 			</div>
 		</div>
 
-
-
-
 	</div>
 
 
-	<div class="row mt-3">
-		<div class="col mb-3">
+	<div class="row mt-4">
+		<div class="col mb-2">
 			<p class="text-left  title-page">Candidatos</p>
 		</div>
 	</div>
-
-
 
 
 
@@ -118,10 +113,6 @@ crossorigin="anonymous">
 									</td>
 								</tr>
 								@endforeach
-
-
-
-
 							</tbody>
 						</table>
 					</div>
