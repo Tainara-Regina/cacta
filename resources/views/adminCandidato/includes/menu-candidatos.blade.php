@@ -1,15 +1,43 @@
 <nav id="sidebar" class="sidebar-wrapper">
 	<div class="sidebar-content">
 		<div class="sidebar-brand text-center py-4">
-			<a href="#">{{\Auth::user()->nome}}</a>
+			<!-- <a href="#">{{\Auth::user()->nome_empresa}}</a> -->
+
+			<a class="navbar-brand mx-auto text-center" href="#"> <img class="animated rubberBand cacto" style="height: 45px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
+				<p class="text-center mb-0 pb-0 logo">Cacta Vagas</p>
+			</a>
+
+
+
+
 			<div id="close-sidebar">
 				<i class="fas fa-arrow-circle-left"></i> </div>
 			</div>
 
 
+
 			<!-- sidebar-search  -->
 			<div class="sidebar-menu">
 				<ul>
+
+
+
+
+					<li class="header-menu">
+						<span>DASHBOARD</span>
+					</li>
+					<li>
+						<a href="{{route('site.admin-candidato')}}">
+							<i class="fa fa-book"></i>
+							<span>Dashboard</span>
+						</a>
+					</li>
+
+
+
+
+
+
 
 					<li class="header-menu">
 						<span>MEUS DADOS</span>
@@ -26,9 +54,10 @@
 						<a href="{{route('preferencias')}}">
 							<i class="fa fa-book"></i>
 							<span>Preferências</span>
-							<span class="badge badge-pill badge-primary">novo</span>
 						</a>
 					</li>
+
+
 
 					<li>
 						<a href="{{route('meu-perfil')}}">
@@ -42,23 +71,20 @@
 					<li class="header-menu">
 						<span>VAGAS</span>
 					</li>
-
 					<li>
 						<a href="{{route('site.lista-vaga')}}">
 							<i class="fa fa-book"></i>
 							<span>Encontrar vagas</span>
-
 						</a>
 					</li>
-
 					<li>
 						<a href="{{route('minhas-vagas')}}">
-							<i class="fa fa-book"></i>
+							<i class="fa fa-tachometer-alt"></i>
 							<span>Vagas que me candidatei</span>
-
 						</a>
 					</li>
 
+					
 
 
 					<li class="header-menu">
@@ -68,9 +94,13 @@
 						<a href="#">
 							<i class="fa fa-book"></i>
 							<span>Materiais</span>
-
+							<span>
+								<i class="fas fa-lock"></i>
+							</span>
 						</a>
 					</li>
+
+
 
 
 
@@ -81,7 +111,9 @@
 						<a href="#">
 							<i class="fa fa-book"></i>
 							<span>Aperfeiçoamentos</span>
-
+							<span>
+								<i class="fas fa-lock"></i>
+							</span>
 						</a>
 					</li>
 
@@ -90,7 +122,9 @@
 						<a href="#">
 							<i class="fa fa-book"></i>
 							<span>cursos</span>
-
+							<span>
+								<i class="fas fa-lock"></i>
+							</span>
 						</a>
 					</li>
 
@@ -100,7 +134,9 @@
 						<a href="#">
 							<i class="fa fa-book"></i>
 							<span>workshop</span>
-
+							<span >
+								<i class="fas fa-lock"></i>
+							</span>
 						</a>
 					</li>
 				</ul>
@@ -108,21 +144,9 @@
 			<!-- sidebar-menu  -->
 		</div>
 		<!-- sidebar-content  -->
-		<div class="sidebar-footer">
+		<div class="link text-center">
 			<a href="#">
-				<i class="fa fa-bell"></i>
-				<span class="badge badge-pill badge-warning notification">3</span>
-			</a>
-			<a href="#">
-				<i class="fa fa-envelope"></i>
-				<span class="badge badge-pill badge-success notification">7</span>
-			</a>
-			<a href="#">
-				<i class="fa fa-cog"></i>
-				<span class="badge-sonar"></span>
-			</a>
-			<a href="{{route('cactalogout')}}">
-				<i class="fa fa-power-off"></i>
+				<span class="cacta">Cacta </span> 2019 - <span style="font-size: 22px"> ∞</span> <span style="color: red">♥</span>.
 			</a>
 		</div>
 	</nav>

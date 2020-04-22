@@ -1,5 +1,4 @@
-@extends('adminContratante.base')
-
+@extends('adminCandidato.base')
 
 @section('titulo')
 <title>Cacta - Admin Home</title>
@@ -35,7 +34,7 @@ crossorigin="anonymous"></script>
 <div class="container-fluid">
 	<div class="row  p-0 m-0">
 		<div class="col w p-0 m-0">
-			<span class="text-right nome-empresa" style="">{{\Auth::user()->nome_empresa}}</span><br>
+			<span class="text-right nome-empresa" style="">{{\Auth::user()->nome}}</span><br>
 			<i> <span class="text-center staticText" id = "staticText" >"Ser empreendedor é <span style="color: green" id="typeline" ></span>"</span></i> <br>
 			-<span class="cacta"> Cacta</span>
 		</div>
@@ -82,11 +81,13 @@ crossorigin="anonymous"></script>
 		<div class="col-sm-12">
 			<div class="row b m-1">
 				<div class="col p-3">
-					<p class=""><b>Titúlo da vaga:</b> {{$vagas->titulo}}</p>
-					<p class=""><b>Total de candidatos cadastrados:</b> {{$total}}</p>
+					
+					<p class=""><b>Nome empresa:</b> {{$vagas->nome_empresa}}</p>
+					<p><b>Faixa salarial: </b>De: {{$vagas->faixa_salarial_de}} até: {{$vagas->faixa_salarial_ate}}</p>
 				</div>
 				<div class="col p-3">
-					<p><b>Faixa salarial: </b>De: {{$vagas->faixa_salarial_de}} até: {{$vagas->faixa_salarial_ate}}</p>
+					<p class=""><b>Titúlo da vaga:</b> {{$vagas->titulo}}</p>
+					
 
 					<p><b>Contratação: </b>{{$vagas->contratacao}}</p>
 
@@ -106,19 +107,9 @@ crossorigin="anonymous"></script>
 			<div class="row b m-1">
 				<div class="col p-3">
 					<p class=""><b>Quantidade de vagas:</b> {{$vagas->quantidade_vaga}}</p>
-					
 				</div>
-				<div class="col p-3">
-					<p class=""><b>A vaga está em destaque:</b>
+				
 
-						@if($vagas->vaga_em_destaque == 'off')
-						Não
-						@elseif($vagas->vaga_em_destaque == 'on')
-						Sim
-						@endif
-					</p>
-
-				</div>
 			</div>
 		</div>
 	</div>
@@ -165,7 +156,7 @@ crossorigin="anonymous"></script>
 
 
 
-<div class="row">
+	<div class="row">
 		<div class="col-sm-12">
 			<div class="row b m-1">
 				<div class="col p-3">

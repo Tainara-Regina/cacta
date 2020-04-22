@@ -53,6 +53,17 @@ crossorigin="anonymous">
 		</div>	
 	</div>
 
+<div class="row">
+		<div class="col ">
+			<a href="{{ URL::previous() }}">
+				<div class="col text-left btn-sair  p-0 m-0">
+					<i class="fa fa-reply" style="">
+					</i>
+					<p class="w">Voltar</p>
+				</div>
+			</a>
+		</div>
+	</div>
 
 	<div class="row p-0 m-0">
 		<div class="col mb-3">

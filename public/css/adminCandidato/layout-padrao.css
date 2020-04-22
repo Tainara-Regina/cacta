@@ -1,0 +1,139 @@
+  body{
+      background-color: #fafafa;
+      font-family: 'Kulim Park', sans-serif;
+  }
+  .b{
+      box-shadow:0 2px 6px rgba(0, 0, 0, 0.4);
+      -webkit-box-shadow:0 2px 6px rgba(0, 0, 0, 0.4);
+      -moz-box-shadow:0 2px 6px rgba(0, 0, 0, 0.4);
+      border-radius: 5px;
+  }
+
+  .w{
+   color: rgba(67, 66, 93, 0.5);
+}
+
+.g{
+   font-size: 50px;
+   background: -webkit-linear-gradient(#eee, green);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+
+.carousel-inner{
+    border-radius: 10px;
+}
+
+.carousel-item{
+    height: 200px;
+}
+
+
+.cacta {
+    font-size: 20px;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+
+.w .bem-vindo{
+    font-size: 22px;
+    color:#754026;
+    font-weight: 600
+}
+
+
+
+.w .nome-empresa{
+    font-size: 28px;
+    color:#754026;
+    font-weight: 600
+}
+
+.btn-sair i{
+font-size: 22px;
+                color: #754026;
+}
+
+.title-page{
+        font-size: 28px;
+        color: #43425D;
+}
+
+.line{
+     border-top: 2px solid #754026
+}
+
+.b .total{
+    font-weight: bold; 
+    font-size: 28px;
+    color: #754026
+}
+
+
+.b .total span{
+font-size: 18px
+}
+
+
+
+.b a{
+ color: #754026;
+ font-weight: 600;
+}
+
+
+.b a:hover{
+ color: green;
+ font-weight: 600;
+}
+
+
+.b .titulo{
+   color: #754026;
+    font-size: 22px;
+    font-weight: 600;
+}
+   
+
+
+  .btn-file {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;   
+    cursor: inherit;
+    display: block;
+  }
+
+
+.form label{
+font-weight: 700;
+color: #4CAF50;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #795548;
+    border-color: #795548;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: green;
+    border-color:  green;
+}
+
+.form-control {
+    color: #757575;  
+}

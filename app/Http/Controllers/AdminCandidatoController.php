@@ -41,77 +41,92 @@ class AdminCandidatoController extends Controller
 
 
     public function home(){
-    	return view('adminCandidato.home-admin');
-    }
 
 
-    public function candidatarVaga($id){
+     $segmento_enterece = \Auth::user()->id_segmento_enterece;
 
-      $vagas_candidatura = Candidaturas::where('vaga_id',$id)
-      ->where('candidato_id',Auth::user()->id)
-      ->count();
 
-      if ($vagas_candidatura > 0) {
-        exit();
-      }else{
-       $candidatura = new Candidaturas;
-       $candidatura->vaga_id = $id;
-       $candidatura->canditatura_em = Carbon\Carbon::now();
-       $candidatura->candidato_id  = Auth::user()->id;
-       $candidatura->save();
-     }
+     $ultimas_vagas = DB::table('cadastrar_vaga')
+     ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
+     ->join('cacta_users', 'cadastrar_vaga.id_usuario', '=', 'cacta_users.id')
+     ->select('cadastrar_vaga.id',
+      'titulo_vaga.titulo','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade','cacta_users.uf')
+     ->where('cacta_users.id_segmento',$segmento_enterece)
+     ->limit(5)
+     ->get();
 
-     return redirect()->back()->with('message', 'Vaga cadastrada com sucesso!');
+     return view('adminCandidato.home-admin',compact('ultimas_vagas'));
    }
 
 
+   public function candidatarVaga($id){
 
+    $vagas_candidatura = Candidaturas::where('vaga_id',$id)
+    ->where('candidato_id',Auth::user()->id)
+    ->count();
 
+    if ($vagas_candidatura > 0) {
+      exit();
+    }else{
+     $candidatura = new Candidaturas;
+     $candidatura->vaga_id = $id;
+     $candidatura->canditatura_em = Carbon\Carbon::now();
+     $candidatura->candidato_id  = Auth::user()->id;
+     $candidatura->save();
+   }
 
-   public function minhasVagas(){
-//faz um join para trazer o nome das vagas no model
-
-    $vagas = DB::table('candidaturas')
-    ->join('cadastrar_vaga', 'cadastrar_vaga.id', '=', 'candidaturas.vaga_id')
-    ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
-    ->join('cacta_users', 'cacta_users.id', '=', 'cadastrar_vaga.id_usuario')
-    ->select('cadastrar_vaga.*','cacta_users.nome_empresa','titulo_vaga.titulo','candidaturas.canditatura_em','candidaturas.id','candidaturas.visualizado_pela_empresa')
-    ->where('candidaturas.candidato_id',Auth::user()->id)
-    ->get();
-
-    //dd($vagas);
-
-    return view('adminCandidato.vagas-que-me-candidatei',compact('vagas'));
-  }
-
-
-
-
-
-
-  public function verVaga($id){
-   $vagas_candidatura = Candidaturas::find($id);
-    // dd($id);
-   $autorizacao = $this->authorize('permissao_candidato_vagas',$vagas_candidatura);
-
-   $vagas = DB::table('candidaturas')
-   ->join('cadastrar_vaga', 'cadastrar_vaga.id', '=', 'candidaturas.vaga_id')
-   ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
-   ->select('cadastrar_vaga.*','titulo_vaga.titulo','candidaturas.canditatura_em')
-   ->where('candidaturas.candidato_id',Auth::user()->id)
-   ->where('candidaturas.id',$id)
-   ->first();
-
-
-   return view('adminContratante.ver-vaga',compact('vagas'));
-
+   return redirect()->back()->with('message', 'Vaga cadastrada com sucesso!');
  }
 
 
 
 
 
- public function deletaVaga($id){
+ public function minhasVagas(){
+//faz um join para trazer o nome das vagas no model
+
+  $vagas = DB::table('candidaturas')
+  ->join('cadastrar_vaga', 'cadastrar_vaga.id', '=', 'candidaturas.vaga_id')
+  ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
+  ->join('cacta_users', 'cacta_users.id', '=', 'cadastrar_vaga.id_usuario')
+  ->select('cadastrar_vaga.*','cacta_users.nome_empresa','titulo_vaga.titulo','candidaturas.canditatura_em','candidaturas.id','candidaturas.visualizado_pela_empresa')
+  ->where('candidaturas.candidato_id',Auth::user()->id)
+  ->get();
+
+    //dd($vagas);
+
+  return view('adminCandidato.vagas-que-me-candidatei',compact('vagas'));
+}
+
+
+
+
+
+
+public function verVaga($id){
+ $vagas_candidatura = Candidaturas::find($id);
+    // dd($id);
+ $autorizacao = $this->authorize('permissao_candidato_vagas',$vagas_candidatura);
+
+ $vagas = DB::table('candidaturas')
+ ->join('cadastrar_vaga', 'cadastrar_vaga.id', '=', 'candidaturas.vaga_id')
+ ->join('cacta_users', 'cadastrar_vaga.id_usuario', '=', 'cacta_users.id')
+ ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
+ ->select('cadastrar_vaga.*','titulo_vaga.titulo','candidaturas.canditatura_em', 'cacta_users.nome_empresa')
+ ->where('candidaturas.candidato_id',Auth::user()->id)
+ ->where('candidaturas.id',$id)
+ ->first();
+//dd( $vagas);
+
+ return view('adminCandidato.ver-vaga',compact('vagas'));
+
+}
+
+
+
+
+
+public function deletaVaga($id){
   $vagas_candidatura = Candidaturas::find($id);
   $autorizacao = $this->authorize('permissao_candidato_vagas',$vagas_candidatura);
 
@@ -231,16 +246,16 @@ public function preferencias(){
 
 //Cadastrar Preferencias
 public function cadastrarPreferencias(Request $request){
-if ($request->disponivel_banco_candidatos == 'on') {
- $request['disponivel_banco_candidatos'] = 1;
-} else{
+  if ($request->disponivel_banco_candidatos == 'on') {
+   $request['disponivel_banco_candidatos'] = 1;
+ } else{
   $request['disponivel_banco_candidatos'] = 0;
 }
 
 
-  CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token']));
+CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token']));
 
-  return redirect()->back()->with('message', 'Dados atualizados com sucesso!');
+return redirect()->back()->with('message', 'Dados atualizados com sucesso!');
 }
 
 

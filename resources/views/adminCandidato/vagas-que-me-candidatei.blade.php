@@ -1,174 +1,97 @@
-<!DOCTYPE html>
-<html lang="pt">
-
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>Cacta - Admin Vagas</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-
-	<link rel="stylesheet" href="{{asset('/css/adminContrate/menu-admin.css')}}">
-	<link rel="stylesheet" href="{{asset('/css/adminContrate/home-admin.css')}}">
-</head>
+@extends('adminCandidato.base')
 
 
-<body>
-	<div class="page-wrapper chiller-theme toggled">
-		<a id="show-sidebar" class="btn btn-sm btn-dark py-3" href="#">
-			<i class="fas fa-bars"></i>
-		</a>
+@section('titulo')
+<title>Cacta - Admin Home</title>
+@stop
 
-		@include('adminCandidato.includes.menu-candidatos')
-
-		<!-- sidebar-wrapper  -->
-		<main class="page-content">
-			<div class="container-fluid">
-
-				<div class="row text-center">
-					<div class="col my-3">
-						<h2>VAGAS QUE ME CANDIDATEI</h2>
-						
-					</div>
-				</div>
-
-				<div class="row my-3 mb-5">
+@section('css')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+crossorigin="anonymous">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('/css/adminContrate/menu-admin.css')}}">
+<link rel="stylesheet" href="{{asset('/css/layout-padrao.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
+@stop
 
 
-					@foreach($vagas as $vaga)
-					
-					<div class="col">
-						<div class="card card-inverse mh-100 h-100">
-							<div class="card-block bg-secondary">
-								<div class="rotate">
-									<i class="fa fa-share fa-5x"></i>
-								</div>
-								<h4 class="text-uppercase">{{$vaga->titulo}}</h4>
-								<h6 class="text-uppercase mb-3">{{$vaga->nome_empresa}}</h6>
-								<p><i>Você se candidatou em: {{ Carbon\Carbon::parse($vaga->canditatura_em)->format('d/m/Y') }} </i></p>
-
-
-								@if($vaga->visualizado_pela_empresa == 1)
-								<p>A empresa visualisou seu perfil: sim</p>
-								@else
-								<p>A empresa visualisou seu perfil: não</p>
-								
-
-								@endif
-								<ul class="p-0" style="/*position: absolute;*/bottom: 0px;list-style: none;">
-									<li><a href="{{route('ver-vaga',$vaga->id)}}"> Ver vaga</a></li>
-									<li><a href="{{route('deleta-candidatura',$vaga->id)}}">Remover candidatura</a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					@endforeach
-
-		<!-- 			<div class="col">
-						<div class="card card-inverse mh-100 h-100">
-							<div class="card-block bg-dark">
-								<div class="rotate">
-									<i class="fa fa-share fa-5x"></i>
-								</div>
-								<h4 class="text-uppercase">vaga para recepcionista</h4>
-
-								<p><i>Disponivel até 02/04/2020</i></p>
-								<h6 class="text-uppercase mb-5">3 Pessoas se cadidtaram</h6>
-
-								<ul class="p-0" style="position: absolute;bottom: 0px;list-style: none;">
-									<li>Ver todos candidatos</li>
-									<li>Editar</li>
-								</ul>
-
-							</div>
-						</div>
-					</div> -->
-
-
-				<!-- 	<div class="col">
-						<div class="card card-inverse mh-100 h-100">
-							<div class="card-block bg-dark">
-								<div class="rotate">
-									<i class="fa fa-share fa-5x"></i>
-								</div>
-								<h4 class="text-uppercase">vaga para recepcionista</h4>
-
-								<p><i>Disponivel até 02/04/2020</i></p>
-								<h6 class="text-uppercase mb-5">3 Pessoas se cadidtaram</h6>
-								
-								<ul class="p-0" style="position: absolute;bottom: 0px;list-style: none;">
-									<li>Ver todos candidatos</li>
-									<li>Editar</li>
-								</ul>
-
-							</div>
-						</div>
-					</div> -->
-				</div>
-
-
-
-	<!-- 			<div class="row">
-					<div class="col">
-						<table class="table mb-3 mt-5">
-							<thead class="thead-dark">
-								<tr>
-									<th scope="col">Vaga</th>
-									<th scope="col">Nome</th>
-									<th scope="col">Avaliação</th>
-									<th scope="col">Opções</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>vaga para barbeiro</td>
-									<td>Mark</td>
-									<td>5</td>
-									<td>
-										<button type="button" data-toggle="modal" data-target="#contratanteModal" class="btn btn-info">Ver perfil completo</button>
-									</td>
-								</tr>
-								<tr>
-									<td>vaga para barbeiro</td>
-									<td>Jacob</td>
-									<td>3</td>
-									<td>
-										<button type="button" data-toggle="modal" data-target="#contratanteModal" class="btn btn-info">Ver perfil completo</button>
-									</td>
-								</tr>
-								<tr>
-									<td>vaga para barbeiro</td>
-									<td>Larry</td>
-									<td>2</td>
-									<td>
-										<button type="button" data-toggle="modal" data-target="#contratanteModal" class="btn btn-info">Ver perfil completo</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-
-					</div>
-				</div> -->
+@section('conteudo')
+<div class="container-fluid">
+	<div class="row  p-0 m-0">
+		<div class="col w p-0 m-0">
+			<span class="text-right nome-empresa" style="">{{\Auth::user()->nome}}</span><br>
+			<i> <span class="text-center staticText" id = "staticText" >"Ser empreendedor é <span style="color: green" id="typeline" ></span>"</span></i> <br>
+			-<span class="cacta"> Cacta</span>
+		</div>
+		<a href="{{route('cactalogout')}}">
+			<div class="col text-right btn-sair  p-0 m-0">
+				<i class="fas fa-sign-out-alt" style="">
+				</i>
+				<p class="w">Sair</p>
 			</div>
-		</main>
-
-		<!-- page-content" -->
+		</a>
 	</div>
-	<!-- page-wrapper -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
+</div>
 
 
-	@include('adminContratante.includes.modal-contratante')
-	<script type="text/javascript" src="{{asset('/js/admin/admin-menu.js')}}"></script>
+<div class="container-fluid  py-0 my-0">
+	<div class="row p-0 m-0">
+		<div class="col mb-3">
+			<p class="text-left title-page" >Vagas que me candidatei</p>
+			<hr class="line" style="">
+		</div>
+	</div>
 
-</body>
-</html>
+
+	<div class="row mb-5">
+
+
+		@foreach($vagas as $vaga)
+		<div class="col-sm-4">
+			<div class="row b m-1">
+				<div class="col p-3">
+					<p class="titulo">{{$vaga->titulo}}</p>
+					<p class="w">{{$vaga->nome_empresa}}</p>
+					<p class="w"><i>Você se candidatou em: {{ Carbon\Carbon::parse($vaga->canditatura_em)->format('d/m/Y') }} </i></p>
+
+					@if($vaga->visualizado_pela_empresa == 1)
+					<p class="w">A empresa visualisou seu perfil</p>
+					@endif
+
+					<ul class="p-0" style="/*position: absolute;*/bottom: 0px;list-style: none;">
+						<li><a href="{{route('ver-vaga',$vaga->id)}}"> Ver vaga</a></li>
+						<li><a href="{{route('deleta-candidatura',$vaga->id)}}">Remover candidatura</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4 p-0 m-0  d-none d-md-block">
+					<div class="h-100 w-100">
+						<div class="mx-auto w-50">
+							<i class="fa fa-share g mt-2"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		@endforeach
+
+	</div>
+
+
+
+</div>
+@stop
+
+
+
+
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{asset('/js/admin/admin-menu.js')}}"></script>
+<script type="text/javascript" src="{{asset('/js/admin/adminContratante/home-admin.js')}}"></script>
+@stop
+
