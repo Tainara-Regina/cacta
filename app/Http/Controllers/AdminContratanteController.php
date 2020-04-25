@@ -423,10 +423,6 @@ public function cadastrarMeusDadosPessoais(Request $request){
    'telefone' => 'required',
    'password_confirmation' =>'same:password_atualizar',
    'id_plano' => 'required',
-   'nome_cartao' => 'required',
-   'numero_cartao' => 'required',
-   'expira_cartao' => 'required',
-   'codigo_seguranca_cartao' => 'required',
  ],
  [
       // 'logo.required' => 'Insira o logo da sua em presa.',
@@ -453,6 +449,35 @@ public function verificaPlano($id_plano){
   $quantidade = PlanosContratante::select('plano','quantidade_vagas','vagas_em_destaque','tempo_disponivel_vaga')->where('id',$id_plano)->first();
   return $quantidade;
 }
+
+
+
+
+
+
+public function atualizarCartao(){
+ return view('adminContratante.meu-cartao');
+}
+
+
+public function gravarAtualizarCartao(Request $request){
+  $validator = $request->validate([
+   'nome_cartao' => 'required',
+   'numero_cartao' => 'required',
+   'expira_cartao' => 'required',
+   'codigo_seguranca_cartao' => 'required',
+ ],
+ [
+      // 'logo.required' => 'Insira o logo da sua em presa.',
+      // 'segmento.required'  => 'Selecione o segmento da sua empresa.',  
+      // 'descricao.required' => 'Preencha a descrição da vaga.',
+      // 'sobre.required' => 'Escreva sobre sua empresa.',
+ ]);
+
+  CactaUsers::where('id',\Auth::user()->id)->update(request()->except(['_token','password_atualizar','password_confirmation']));
+  return redirect()->back()->with('message', 'Dados atualizados com sucesso!');
+}
+
 
 
 

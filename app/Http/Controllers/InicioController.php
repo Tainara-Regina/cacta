@@ -7,6 +7,7 @@ use App\ContratarHome;
 use App\FundoVagaHome;
 use App\ProcurarVagaHome;
 use App\Segmento;
+use App\Posts;
 use DB;
 use Auth;
 
@@ -24,13 +25,21 @@ class InicioController extends Controller
 
 
 
+		$ultimos_posts = DB::table('posts')
+		->join('categories', 'posts.category_id', '=', 'categories.id')
+		->select('posts.title','posts.image','posts.slug','categories.name')
+		->take(7)->orderByDesc('posts.id')
+		->get();
+
+
+
 		$contratar     = ContratarHome::select()->first();
 		$fundo_vaga    = DB::table('fundo_vaga_home')
 		->inRandomOrder()
 		->where('disponivel', 1)
 		->first();
 		$procurar_vaga = ProcurarVagaHome::select()->first();
-		return view('site.inicio',compact('contratar','fundo_vaga','procurar_vaga','ultimas_vagas'));
+		return view('site.inicio',compact('contratar','fundo_vaga','procurar_vaga','ultimas_vagas','ultimos_posts'));
 	}
 
 
@@ -43,7 +52,7 @@ class InicioController extends Controller
 
 
 
-public function formularioCandidato(){
+	public function formularioCandidato(){
 		$segmentos = Segmento::select('id','segmento')->get();
 		return view('site.formularioCandidato-1',compact('segmentos'));
 	}

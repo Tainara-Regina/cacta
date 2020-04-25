@@ -12,6 +12,41 @@
 */
 
 
+
+
+Route::get('/blog', 'BlogController@home')->name('blog-home');
+Route::get('/blog/{id}', 'BlogController@post')->name('post');
+Route::get('/busca', 'BlogController@busca')->name('busca');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/vaga/{id}', 'VagaController@vaga')->name('site.vaga');
 
@@ -155,7 +190,15 @@ Route::post('/admin-contratante/meus-dados', 'AdminContratanteController@cadastr
 
 
 Route::post('/admin-contratante/meus-dados-pessoais', 'AdminContratanteController@cadastrarMeusDadosPessoais')->name('site.cadastrar-meus-dados-pessoais');
+//============================================================
 
+
+Route::get('/admin-contratante/dados-cartao', 'AdminContratanteController@atualizarCartao')->name('site.dados-cartao');
+
+
+
+Route::post('/admin-contratante/gravar-atualizar-cartao', 'AdminContratanteController@gravarAtualizarCartao')->name('site.gravar-atualizar-cartao');
+//=============================================================
 
 
 

@@ -10,7 +10,7 @@ crossorigin="anonymous">
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('/css/adminContrate/menu-admin.css')}}">
 <link rel="stylesheet" href="{{asset('/css/layout-padrao.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/adminContrate/meus-dados-pessoais.css')}}">
+<link rel="stylesheet" href="{{asset('/css/adminContrate/meus-dados-pessoais.css')}}">
 <link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
 @stop
@@ -127,38 +127,19 @@ crossorigin="anonymous"></script>
 
 
 
-			@error('nome_cartao')
-			<span style="color: red">{{ $message }}</span>
-			@enderror
-			<div class="form-group">
-				<input name="nome_cartao" placeholder="Nome" value="{{ $cadastro->nome_cartao }}" type="text" class="form-control name">
-			</div>
-
-			@error('numero_cartao')
-			<span style="color: red">{{ $message }}</span>
-			@enderror
-			<div class="form-group">
-				<input name="numero_cartao" placeholder="Número do cartão" value="{{$cadastro->numero_cartao}}" maxlength="20" type="text" class="form-control cartao">
-			</div>
-
-
-			@error('expira_cartao')
-			<span style="color: red">{{ $message }}</span>
-			@enderror
-			<div class="form-group">
-				<input name="expira_cartao" placeholder="Data de expiração do cartão" value="{{$cadastro->expira_cartao}}" type="text" class="form-control selectonfocus">
-			</div>
-
-
-			@error('codigo_seguranca_cartao')
-			<span style="color: red">{{ $message }}</span>
-			@enderror
-			<div class="form-group">
-				<input name="codigo_seguranca_cartao" placeholder="Código de segurança do cartão" value="{{$cadastro->codigo_seguranca_cartao}}" type="text" class="form-control cvv">
+			<div class="form-group b w p-3" style="background-color: #fff">
+				<p>Números finais do cartão atual {{substr("$cadastro->numero_cartao",-4)}}</p>
+				<p>Vencimento: {{$cadastro->expira_cartao}}</p>
 			</div>
 
 
 
+
+
+			<div class="form-group">
+				<h4 class="title-page">Atualizar dados do cartão</h4>
+				<a class="btn-primary btn" href="{{route('site.dados-cartao')}}">Atualizar</a>
+			</div>
 
 
 			<div class="row">
