@@ -24,7 +24,7 @@ class CactaLoginCandidatoController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
- 
+
 
     public function login(Request $request){
        //Validar o formulario
@@ -37,12 +37,20 @@ class CactaLoginCandidatoController extends Controller
     	
     	if (Auth::guard('candidatos')->attempt(['email'=> $request->email_login,'password'=> $request->password_login,'cadastro_ativo'=> true,'completou_cadastro'=> 1], $request->remember)) {
           $request->session()->put('menu_candidato', true);
-            
-    		// se sucesso redirecionar para o lugar certo 
-    		return redirect()->intended(route('site.admin-candidato'));
-    	}
+
+
+
+      //se existir o input vaga, vai redirecionar para fazer a candidatura na vaga
+          if(isset($request->vaga) && $request->vaga != "null"){
+             return redirect()->route('candidatar-se', ['id' => $request->vaga]);
+         }
+
+
+     // se sucesso redirecionar para o lugar certo 
+         return redirect()->intended(route('site.admin-candidato'));
+     }
     	// se falhar, redirect back
-    	return redirect()->back()->withImput($request->only('email','remember'))->with('message', 'Verifique se digitou os dados corretamente');
-    }
+     return redirect()->back()->withImput($request->only('email','remember'))->with('message', 'Verifique se digitou os dados corretamente');
+ }
 
 }

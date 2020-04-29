@@ -33,29 +33,35 @@ class BlogController extends Controller
 
 	public function post($slug){
 
-		$fundo_vaga    = DB::table('fundo_vaga_home')
-		->inRandomOrder()
-		->where('disponivel', 1)
-		->first();
 
 		$post =  Posts::where('slug',$slug)->first();
+		if(empty($post)){
 
-		$visualizacoes = Posts::select('visualizacoes')->where('slug',$slug)->first();
-		$visualizacoes_atualizada = $visualizacoes->visualizacoes + 1;
+			return redirect('/blog',301);
+		}else{
+
+			$fundo_vaga    = DB::table('fundo_vaga_home')
+			->inRandomOrder()
+			->where('disponivel', 1)
+			->first();
+
+			$visualizacoes = Posts::select('visualizacoes')->where('slug',$slug)->first();
+			$visualizacoes_atualizada = $visualizacoes->visualizacoes + 1;
 
 
 
-		Posts::where('slug',$slug)
-		->update(['visualizacoes' => $visualizacoes_atualizada]);
+			Posts::where('slug',$slug)
+			->update(['visualizacoes' => $visualizacoes_atualizada]);
 
-		$ultimos_posts = DB::table('posts')
-		->join('categories', 'posts.category_id', '=', 'categories.id')
-		->select('posts.title','posts.image','posts.slug','categories.name')
-		->where('posts.slug','!=',$slug)->take(7)->orderByDesc('posts.id')
-		->get();
+			$ultimos_posts = DB::table('posts')
+			->join('categories', 'posts.category_id', '=', 'categories.id')
+			->select('posts.title','posts.image','posts.slug','categories.name')
+			->where('posts.slug','!=',$slug)->take(7)->orderByDesc('posts.id')
+			->get();
 
-		return view('blog.post',compact('fundo_vaga','post','ultimos_posts'));
+			return view('blog.post',compact('fundo_vaga','post','ultimos_posts'));
 
+		}
 	}
 
 

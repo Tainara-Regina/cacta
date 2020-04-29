@@ -367,7 +367,7 @@
   <div class="slider-vagas">
 
     @foreach($ultimas_vagas as $vagas)
-    <a href="/vaga/{{$vagas->id}}">
+    <a href="/vaga/{{$vagas->id}}/{{$vagas->slug}}">
       <div class="text-center vaga">
 
        <div class="img" style="background-image: url('storage/{{$vagas->logo}}');">

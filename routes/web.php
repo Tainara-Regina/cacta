@@ -48,7 +48,7 @@ Route::get('/busca', 'BlogController@busca')->name('busca');
 
 
 Route::get('/', 'InicioController@inicio')->name('site.inicio');
-Route::get('/vaga/{id}', 'VagaController@vaga')->name('site.vaga');
+Route::get('/vaga/{id}/{slug}', 'VagaController@vaga')->name('site.vaga');
 
 
 
@@ -225,6 +225,9 @@ Route::get('/cacta-logout', 'Auth\CactaLogoutController@logout')->name('cactalog
 
 Route::post('/vagas-inicio', 'AdminContratanteControllerAjax@vagasInicio')->name('vagasInicio');
 
+
+
+Route::post('/vagas-ajax', 'AdminContratanteControllerAjax@vagas')->name('vagas-ajax');
 
 
 

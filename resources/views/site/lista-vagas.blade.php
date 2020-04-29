@@ -211,177 +211,71 @@
 				</div>
 			</div>
 
-			<div class="container-fluid vagas">
+			<div class="container-fluid ">
 				<div class="row">
 
 
-				<!-- 	<div class="col-md-2 d-none d-sm-block" style="padding-top: 100px"> -->
-						<div class="col-md-2" style="padding-top: 100px">
-						<div class=" w-100 bg-danger sticky-top">
-							<p class="p-5 my-5">Publicidade aqui</p>
+					<!-- 	<div class="col-md-2 d-none d-sm-block" style="padding-top: 100px"> -->
+						<div class="col-md-2 d-none d-sm-block" style="padding-top: 100px">
+							<div class=" w-100 bg-danger sticky-top">
+								<p class="p-5 my-5">Publicidade pppppaqui</p>
+							</div>
 						</div>
-					</div>
+						
+						<div class="col-md-6 col-sm-12 vagas">
 
-					<div class="col-md-6 col-sm-12">
-						<a href="#">
-							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
+							@foreach($vagas as $vaga)
+
+							<a href="/vaga/{{$vaga->id}}">
+								<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
+									<div class="col d-none d-sm-block"><img width="125px" src="storage/{{$vaga->logo}}">  
+									</div>
+
+									<div class="col">
+										<p><b>{{$vaga->titulo}}</b></p>
+										<p>{{$vaga->nome_empresa}}</p>  
+									</div>
+
+									<div class="col">
+										<p><b>{{$vaga->contratacao}}</b></p>
+										<p>{{$vaga->localidade}}</p> 
+									</div>
+
+									<div class="col mt-4">
+										@if($vaga->vaga_em_destaque == "on")
+										<p class="vaga-destaque">Destaque</p>
+										@else
+										<p> Divulgada em {{ Carbon\Carbon::parse($vaga->data_de_criacao)->format('d/m/Y')}}</p>
+										@endif
+
+
+
+									</div>
 								</div>
+							</a>
+							@endforeach
 
-								<div class="col">
-									<p><b>Barbeiro</b></p>
-									<p>Barbearia Dona Navalha</p>  
-								</div>
-
-								<div class="col">
-									<p><b>Fixo</b></p>
-									<p>São Paulo</p> 
-								</div>
-
-								<div class="col mt-4">
-									<p class="vaga-destaque">Destaque</p>
-								</div>
-							</div>
-						</a>
+						</div>
 
 
-
-						<a href="#">
-							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-								</div>
-
-								<div class="col">
-									<p><b>Barbeiro</b></p>
-									<p>Barbearia Dona Navalha</p>  
-								</div>
-
-								<div class="col">
-									<p><b>Fixo</b></p>
-									<p>São Paulo</p> 
-								</div>
-
-								<div class="col mt-4">
-									<p class="vaga-destaque">Destaque</p>
+						<!-- <div class="col-md-4 d-none d-sm-block" style="padding-top: 100px"> -->
+							<div class="col-md-4" style="padding-top: 100px">
+								<div class="w-100 bg-danger sticky-top">
+									<p class="p-5 my-5">Publicidade aqui</p>
 								</div>
 							</div>
-						</a>
-
-
-
-
-
-						<a href="#">
-							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-								</div>
-
-								<div class="col">
-									<p><b>Barbeiro</b></p>
-									<p>Barbearia Dona Navalha</p>  
-								</div>
-
-								<div class="col">
-									<p><b>Fixo</b></p>
-									<p>São Paulo</p> 
-								</div>
-
-								<div class="col mt-4">
-									<p class="vaga-destaque">Destaque</p>
-								</div>
-							</div>
-						</a>
-
-
-						<a href="#">
-							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-								</div>
-
-								<div class="col">
-									<p><b>Barbeiro</b></p>
-									<p>Barbearia Dona Navalha</p>  
-								</div>
-
-								<div class="col">
-									<p><b>Fixo</b></p>
-									<p>São Paulo</p> 
-								</div>
-
-								<div class="col mt-4">
-									<p class="vaga-destaque">Destaque</p>
-								</div>
-							</div>
-						</a>
-
-
-
-						<a href="#">
-							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-								</div>
-
-								<div class="col">
-									<p><b>Barbeiro</b></p>
-									<p>Barbearia Dona Navalha</p>  
-								</div>
-
-								<div class="col">
-									<p><b>Fixo</b></p>
-									<p>São Paulo</p> 
-								</div>
-
-								<div class="col mt-4">
-									<p class="vaga-destaque">Destaque</p>
-								</div>
-							</div>
-						</a>
-						<a href="#">
-							<div class="row text-center py-3" style="border-bottom: 1px solid #bdbdbd">
-								<div class="col d-none d-sm-block"><img width="125px" src="https://cdn.pixabay.com/photo/2018/04/05/02/52/room-3291779__340.jpg">  
-								</div>
-
-								<div class="col">
-									<p><b>Barbeiro</b></p>
-									<p>Barbearia Dona Navalha</p>  
-								</div>
-
-								<div class="col">
-									<p><b>Fixo</b></p>
-									<p>São Paulo</p> 
-								</div>
-
-								<div class="col mt-4">
-									<p class="vaga-destaque">Destaque</p>
-								</div>
-							</div>
-						</a>
-					</div>
-
-
-					<!-- <div class="col-md-4 d-none d-sm-block" style="padding-top: 100px"> -->
-						<div class="col-md-4" style="padding-top: 100px">
-						<div class="w-100 bg-danger sticky-top">
-							<p class="p-5 my-5">Publicidade aqui</p>
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="col text-center">
-				<a class="btn my-3 cadastre animated rubberBand btn-cadastre-se" href="">Carregar mais vagas</a>
-			</div>
-
-		</div>
-	</section>
+			</section>
 
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<script src="{{asset('js/slick.js')}}"></script>
-	<script src="{{asset('js/lista-vagas.js')}}"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+			<script src="{{asset('js/slick.js')}}"></script>
+			<script src="{{asset('js/lista-vagas.js')}}"></script>
 
 
 
@@ -389,8 +283,8 @@
 
 
 
-</body>
-</html>
+		</body>
+		</html>
 
 
 

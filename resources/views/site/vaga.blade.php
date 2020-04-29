@@ -154,7 +154,7 @@
 				<h1 class="titulo">{{$vaga->titulo}}
 				</h1>
 				<p class="address">
-				<span style="font-size: 20px; font-weight: bold"> {{$vaga->nome_empresa}}</span> | {{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}
+					<span style="font-size: 20px; font-weight: bold"> {{$vaga->nome_empresa}}</span> | {{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}
 				</p>
 
 
@@ -179,8 +179,8 @@
 				<div class="row">
 					<div class="col">
 						<div class="w-75 bg-danger">
-					<p class="p-5 my-3">Publicidade aquiii</p>
-				</div>
+							<p class="p-5 my-3">Publicidade aquiii</p>
+						</div>
 					</div>
 				</div>
 
@@ -215,7 +215,7 @@
 					@if($candidatou_se == "não")
 					<p class="m-0 p-0">Se identificou com a vaga?</p>
 
-					<a class="btn btn-primary"  href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-seei</a>
+					<a class="btn btn-primary" id="vaga"  href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
 					@else
 					<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
 					@endif
@@ -225,7 +225,7 @@
 
 
 					@if($candidatou_se == "não")
-					<a class="btn btn-primary"  data-toggle="modal" data-target="#modalCandidato" href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-seei</a>
+					<a class="btn btn-primary" id="vaga" data-toggle="modal" data-target="#modalCandidato" href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
 					@else
 					<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
 					@endif
@@ -293,6 +293,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="{{asset('js/slick.js')}}"></script>
 <script src="{{asset('js/home.js')}}"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#vaga").click(function(){
+
+var url_atual = window.location.href;
+
+var id_vaga = url_atual.split("/");	
+
+ $("#vaga_candidato").val(id_vaga[4]);
+			
+//  $('#vaga_candidato').val() = id_vaga[4] ;
+
+alert($("#vaga_candidato").val());
+
+		});
+	});
+</script>
 
 </body>
 </html>

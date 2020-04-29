@@ -46,8 +46,9 @@
 			<div class="row" style="color: #fff">
 				<div class="col-md-8 mt-4 ">
 					<h2>Blog Cacta </h2>
-					<h4>Evoluindo com o "pequeno GRANDE" empresário.</h4>
-					<p><i>- "Vamo junto?"</i>👊</p>
+					<h4>Evoluindo com o "pequeno GRANDE" emprendedor.</h4>
+					<p><i>"Pensamos sempre em soluções para ajudar no sucesso do pequeno empreendedor.<br> Vamos juntos?" </i>👊 <br><span>- Cacta</span></p>
+
 				</div>
 
 				<div class="col mt-5 mb-3">

@@ -18,7 +18,7 @@ class InicioController extends Controller
 		$ultimas_vagas = DB::table('cadastrar_vaga')
 		->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
 		->join('cacta_users', 'cadastrar_vaga.id_usuario', '=', 'cacta_users.id')
-		->select('cadastrar_vaga.id',
+		->select('cadastrar_vaga.id','titulo_vaga.slug',
 			'titulo_vaga.titulo','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade','cacta_users.uf')
 		->get();
 
