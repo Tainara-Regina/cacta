@@ -39,7 +39,43 @@ class AdminContratanteController extends Controller
      */
 
     public function home(){
-    	return view('adminContratante.home-admin');
+
+      $vagas_total = CadastrarVaga::where('id_usuario',Auth::user()->id)->count();
+
+      $total_vaga_plano = PlanosContratante::select('quantidade_vagas')->where('id',Auth::user()->id_plano)->first();
+
+
+      $total_destaque_plano = PlanosContratante::select('vagas_em_destaque')->where('id',Auth::user()->id_plano)->first();
+
+      $candidatos_total = DB::table('candidaturas')
+      ->join('cadastrar_vaga', 'cadastrar_vaga.id', '=', 'candidaturas.vaga_id')
+      ->where('cadastrar_vaga.id_usuario',Auth::user()->id)
+      ->count();
+
+
+      $vagas_em_destaque = DB::table('candidaturas')
+      ->join('cadastrar_vaga', 'cadastrar_vaga.id', '=', 'candidaturas.vaga_id')
+      ->where('cadastrar_vaga.id_usuario',Auth::user()->id)
+      ->where('cadastrar_vaga.vaga_em_destaque','on')
+      ->count();
+
+
+
+
+      $candidatos_das_vagas = DB::table('candidaturas')
+      ->join('cadastrar_vaga', 'cadastrar_vaga.id', '=', 'candidaturas.vaga_id')
+      ->join('cacta_candidatos', 'cacta_candidatos.id', '=', 'candidaturas.candidato_id')
+     ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
+      ->select('cacta_candidatos.nome','cacta_candidatos.email','candidaturas.canditatura_em','titulo_vaga.titulo','candidaturas.vaga_id','cacta_candidatos.id As candidato_id')
+      ->where('cadastrar_vaga.id_usuario',Auth::user()->id)
+      ->limit(3)
+      ->get();
+
+
+//dd($candidatos_das_vagas);
+
+
+      return view('adminContratante.home-admin',compact('vagas_total','total_vaga_plano','candidatos_total','vagas_em_destaque','total_destaque_plano','candidatos_das_vagas'));
     }
 
     public function candidatosVaga(){
@@ -475,7 +511,8 @@ public function gravarAtualizarCartao(Request $request){
  ]);
 
   CactaUsers::where('id',\Auth::user()->id)->update(request()->except(['_token','password_atualizar','password_confirmation']));
-  return redirect()->back()->with('message', 'Dados atualizados com sucesso!');
+  return redirect('admin-contratante/meus-dados-pessoais')->with('message', 'Dados atualizados com sucesso!');
+
 }
 
 
@@ -498,11 +535,28 @@ public function cadastrarPreferencias(Request $request){
 }
 
 
+
 //Excluir conta permanentemente
 public function excluirConta(){
  CactaUsers::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false]);
  return \Redirect::to('/cacta-logout');
 }
+
+
+
+
+
+
+
+public function planoExpirou(){
+  $cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
+  $segmentos = Segmento::select('id','segmento')->get();
+  $planos = PlanosContratante::where('id','!=',\Auth::user()->id_plano)->get();
+
+  return view('adminContratante.plano-expirou',compact('segmentos','planos','cadastro'));
+}
+
+
 
 
 

@@ -24,6 +24,7 @@ class PlanosContratante extends Migration
         $table->string('materiais_exclusivos');
         $table->string('tempo_disponivel_vaga');
         $table->string('tipo');
+        $table->string('duracao');
         $table->timestamps();
       });
     }

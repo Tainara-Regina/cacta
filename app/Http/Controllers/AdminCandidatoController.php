@@ -59,13 +59,14 @@ class AdminCandidatoController extends Controller
    }
 
 
+
    public function candidatarVaga($id){
     $vagas_candidatura = Candidaturas::where('vaga_id',$id)
     ->where('candidato_id',Auth::user()->id)
     ->count();
 
     if ($vagas_candidatura > 0) {
-    return  redirect()->back();
+      return  redirect()->back();
       exit();
     }else{
      $candidatura = new Candidaturas;

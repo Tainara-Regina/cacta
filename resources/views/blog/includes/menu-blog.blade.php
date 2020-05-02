@@ -1,4 +1,4 @@
-
+@inject('menu', 'App\Http\Controllers\BlogController')
 
 <nav id="topNav" class="navbar navbar-expand-lg navbar-light bg-light m-0 p-0 menu sticky-top">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -37,8 +37,10 @@
     </a>
 
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="#">Barbearia</a>
+      @foreach($menu->menu() as $menu)
+      <a class="dropdown-item" href="{{route('categoria',$menu->slug)}}">{{$menu->name}}</a>
       <div class="dropdown-divider"></div>
+      @endforeach
     </div>
   </li>
 

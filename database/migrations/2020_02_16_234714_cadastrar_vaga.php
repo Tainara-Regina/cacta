@@ -15,7 +15,8 @@ class CadastrarVaga extends Migration
     {
        Schema::create('cadastrar_vaga', function (Blueprint $table) {
         $table->bigIncrements('id');
-        $table->text('id_usuario');
+        $table->unsignedBigInteger('id_usuario');
+        $table->foreign('id_usuario')->references('id')->on('cacta_users') ->onDelete('cascade');
         $table->text('faixa_salarial_de');
         $table->text('faixa_salarial_ate');
         $table->text('contratacao');

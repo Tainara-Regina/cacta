@@ -8,6 +8,7 @@ use App\FundoVagaHome;
 use App\ProcurarVagaHome;
 use App\Segmento;
 use App\Posts;
+use App\Categories;
 use DB;
 use Auth;
 
@@ -66,7 +67,7 @@ class BlogController extends Controller
 
 
 
-	public function busca(Request  $request){
+	public function busca(Request $request){
 
 		$input = $request->input('s');
 
@@ -84,4 +85,40 @@ class BlogController extends Controller
 	}
 
 
-}
+
+
+
+	function categoria($slug){
+		//dd($categoria);
+
+		$title =  DB::table('posts')
+		->join('categories', 'posts.category_id', '=', 'categories.id')
+		->select('categories.name')
+		->where('categories.slug',$slug)
+		->first();
+
+		if(empty($title)){
+			return redirect('/blog',301);
+		}
+
+
+
+
+			$posts = DB::table('posts')
+			->join('categories', 'posts.category_id', '=', 'categories.id')
+			->select('posts.*','categories.slug')
+			->where('categories.slug',$slug)
+			->paginate(3);
+		//dd($posts->all());
+
+			return view('blog.categoria',compact('posts','title'));
+		}
+
+		function menu(){
+			$categories = Categories::select('name','slug')
+			->get();
+
+			return $categories;
+		}
+
+	}

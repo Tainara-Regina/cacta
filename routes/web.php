@@ -17,17 +17,70 @@
 Route::get('/blog', 'BlogController@home')->name('blog-home');
 Route::get('/blog/{id}', 'BlogController@post')->name('post');
 Route::get('/busca', 'BlogController@busca')->name('busca');
+Route::get('/categoria/{categoria}', 'BlogController@categoria')->name('categoria');
 
 
 
+//Rotas do admin contratante
+Route::middleware(['checkplan.duration'])->group(function () {
+
+	Route::prefix('admin-contratante')->group(function () {
+		Route::get('/', 'AdminContratanteController@home')->name('site.admin-contratante');
+
+		Route::get('candidatos-vaga', 'AdminContratanteController@candidatosVaga')->name('site.candidatos-vaga');
 
 
 
+		Route::get('preferencias', 'AdminContratanteController@preferencias')->name('site.preferencias');
+
+		Route::get('divulgar-vaga', 'AdminContratanteController@divulgarVaga')->name('site.divulgar-vaga');
+
+
+		Route::get('ver-candidatos/detalhes-candidato/{id_candidato}/{id_vaga}', 'AdminContratanteController@detalhesCandidato')->name('site.detalhes-candidato');
+
+
+		Route::post('cadastrar-vaga', 'AdminContratanteController@cadastrarVaga')->name('site.cadastrar-vaga');
 
 
 
+		Route::get('editar-vaga/{id}', 'AdminContratanteController@editarVaga')->name('site.editar-vaga');
 
 
+
+		Route::get('deleta-vaga/{id}', 'AdminContratanteController@deletaVaga')->name('site.deleta-vaga');
+
+
+		Route::get('ver-vaga/{id}', 'AdminContratanteController@verVaga')->name('site.ver-vaga');
+
+
+		Route::get('ver-candidatos/{id}', 'AdminContratanteController@verCandidatos')->name('site.ver-candidatos');
+
+
+
+		Route::post('update-vaga', 'AdminContratanteController@updateVaga')->name('site.update-vaga');
+
+
+		Route::get('meus-dados', 'AdminContratanteController@meusDados')->name('site.meus-dados');
+
+
+		Route::get('meus-dados-pessoais', 'AdminContratanteController@meusDadosPessoais')->name('site.meus-dados-pessoais');
+
+
+		Route::post('meus-dados', 'AdminContratanteController@cadastrarMeusDados')->name('site.cadastrar-meus-dados');
+
+
+		Route::post('meus-dados-pessoais', 'AdminContratanteController@cadastrarMeusDadosPessoais')->name('site.cadastrar-meus-dados-pessoais');
+
+		Route::get('dados-cartao', 'AdminContratanteController@atualizarCartao')->name('site.dados-cartao');
+
+
+		Route::post('gravar-atualizar-cartao', 'AdminContratanteController@gravarAtualizarCartao')->name('site.gravar-atualizar-cartao');
+
+
+		Route::get('excluir-conta', 'AdminContratanteController@excluirConta')->name('site.excluir-conta'); 
+
+	});
+});
 
 
 
@@ -61,10 +114,10 @@ Route::get('/admin-candidato/excluir-conta', 'AdminCandidatoController@excluirCo
 
 
 
+Route::get('/plano-expirou', 'AdminContratanteController@planoExpirou')->name('plano-expirou');
 
 
-Route::get('/admin-contratante/excluir-conta', 'AdminContratanteController@excluirConta')->name('site.excluir-conta'); 
-Route::get('/admin-candidato/preferencias', 'AdminContratanteController@preferencias')->name('site.preferencias');
+
 Route::post('/admin-candidato/cadastrar-preferencias', 'AdminContratanteController@cadastrarPreferencias')->name('site.cadastrar-preferencias');
 
 
@@ -119,9 +172,8 @@ Route::get('/candidatar-se/{id}', 'AdminCandidatoController@candidatarVaga')->na
 
 
 Route::get('/lista-vagas', 'VagaController@listaVaga')->name('site.lista-vaga');
-Route::get('/admin-contratante', 'AdminContratanteController@home')->name('site.admin-contratante');
 
-Route::get('/admin-contratante/candidatos-vaga', 'AdminContratanteController@candidatosVaga')->name('site.candidatos-vaga');
+
 
 
 
@@ -133,72 +185,6 @@ Route::get('/admin-candidato', 'AdminCandidatoController@home')->name('site.admi
 
 
 
-
-
-Route::get('/admin-contratante/divulgar-vaga', 'AdminContratanteController@divulgarVaga')->name('site.divulgar-vaga');
-
-
-
-
-
-Route::get('/admin-contratante/ver-candidatos/detalhes-candidato/{id_candidato}/{id_vaga}', 'AdminContratanteController@detalhesCandidato')->name('site.detalhes-candidato');
-
-
-
-
-
-
-
-
-Route::post('/admin-contratante/cadastrar-vaga', 'AdminContratanteController@cadastrarVaga')->name('site.cadastrar-vaga');
-
-
-
-Route::get('/admin-contratante/editar-vaga/{id}', 'AdminContratanteController@editarVaga')->name('site.editar-vaga');
-
-
-
-Route::get('/admin-contratante/deleta-vaga/{id}', 'AdminContratanteController@deletaVaga')->name('site.deleta-vaga');
-
-
-Route::get('/admin-contratante/ver-vaga/{id}', 'AdminContratanteController@verVaga')->name('site.ver-vaga');
-
-
-// tai
-
-Route::get('/admin-contratante/ver-candidatos/{id}', 'AdminContratanteController@verCandidatos')->name('site.ver-candidatos');
-
-
-
-
-
-
-Route::post('/admin-contratante/update-vaga', 'AdminContratanteController@updateVaga')->name('site.update-vaga');
-
-
-Route::get('/admin-contratante/meus-dados', 'AdminContratanteController@meusDados')->name('site.meus-dados');
-
-
-Route::get('/admin-contratante/meus-dados-pessoais', 'AdminContratanteController@meusDadosPessoais')->name('site.meus-dados-pessoais');
-
-
-
-
-Route::post('/admin-contratante/meus-dados', 'AdminContratanteController@cadastrarMeusDados')->name('site.cadastrar-meus-dados');
-
-
-
-
-Route::post('/admin-contratante/meus-dados-pessoais', 'AdminContratanteController@cadastrarMeusDadosPessoais')->name('site.cadastrar-meus-dados-pessoais');
-//============================================================
-
-
-Route::get('/admin-contratante/dados-cartao', 'AdminContratanteController@atualizarCartao')->name('site.dados-cartao');
-
-
-
-Route::post('/admin-contratante/gravar-atualizar-cartao', 'AdminContratanteController@gravarAtualizarCartao')->name('site.gravar-atualizar-cartao');
-//=============================================================
 
 
 
@@ -252,12 +238,12 @@ Route::post('/confirme-email-candidato','CadastrarCandidatoLoginController@formu
 
 Route::get('enviar-email',function(){
 
-$user = new stdClass();
-$user->name = 'Tainara Regina';
-$user->email = 'tainararegina20@gmail.com';
-$user->key = 'teste chave';
+	$user = new stdClass();
+	$user->name = 'Tainara Regina';
+	$user->email = 'tainararegina20@gmail.com';
+	$user->key = 'teste chave';
 
-return new \App\Mail\confirmacaoCadastroContratante($user);
+	return new \App\Mail\confirmacaoCadastroContratante($user);
 
 //  \Illuminate\Support\Facades\Mail::send(new \App\Mail\confirmacaoCadastroContratante($user));	
 });

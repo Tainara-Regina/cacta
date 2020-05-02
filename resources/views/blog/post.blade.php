@@ -37,7 +37,7 @@
 	<section class="" style="background-color: #000;" >
 		<div class="container" style="background-color: #000;" >
 			<div class="row">
-				<div style="color: #fff" class="col p-5 mt-5  text-center">
+				<div style="color: #fff" class="col p-5 mt-3  text-center">
 					<h1>{{$post->title}}
 					</h1>
 				</div>
