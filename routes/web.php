@@ -29,6 +29,16 @@ Route::middleware(['checkplan.duration'])->group(function () {
 
 		Route::get('candidatos-vaga', 'AdminContratanteController@candidatosVaga')->name('site.candidatos-vaga');
 
+		Route::get('banco-candidato', 'AdminContratanteController@bancoCandidato')->name('site.banco-candidato');
+
+
+
+
+
+		Route::get('banco-candidato-detalhes/{id_candidato}', 'AdminContratanteController@bancoCandidatoDetalhe')->name('site.banco-candidato-detalhes');
+
+
+
 
 
 		Route::get('preferencias', 'AdminContratanteController@preferencias')->name('site.preferencias');

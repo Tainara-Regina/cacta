@@ -65,7 +65,7 @@ class AdminContratanteController extends Controller
       $candidatos_das_vagas = DB::table('candidaturas')
       ->join('cadastrar_vaga', 'cadastrar_vaga.id', '=', 'candidaturas.vaga_id')
       ->join('cacta_candidatos', 'cacta_candidatos.id', '=', 'candidaturas.candidato_id')
-     ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
+      ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
       ->select('cacta_candidatos.nome','cacta_candidatos.email','candidaturas.canditatura_em','titulo_vaga.titulo','candidaturas.vaga_id','cacta_candidatos.id As candidato_id')
       ->where('cadastrar_vaga.id_usuario',Auth::user()->id)
       ->limit(3)
@@ -555,6 +555,38 @@ public function planoExpirou(){
 
   return view('adminContratante.plano-expirou',compact('segmentos','planos','cadastro'));
 }
+
+
+
+
+public function bancoCandidato(){
+  $autorizacao = $this->authorize('banco_de_candidatos');
+  $total = CactaCandidatos::where('id_segmento_enterece',\Auth::user()->id_plano)->count();
+  $candidatos = CactaCandidatos::where('id_segmento_enterece',\Auth::user()->id_plano)->paginate(3);
+
+  return view('adminContratante.banco-candidato',compact('total','candidatos'));
+}
+
+
+
+
+
+public function bancoCandidatoDetalhe($id_candidato){
+ $autorizacao = $this->authorize('banco_de_candidatos');
+
+
+
+ $candidato = CactaCandidatos::select('nome','sobrenome','email','telefone','data_nascimento','sonhos_objetivos','sexo','whatsapp','escolariedade',
+  'sua_historia','livros','hobbies','cursos_gostaria','cep','logradouro','bairro','localidade','uf','numero','complemento','endereco','facebook','instagram','twitter','site')
+ ->where('id',$id_candidato)
+ ->where('id_segmento_enterece',\Auth::user()->id_plano)
+ ->first();
+
+ return view('adminContratante.banco-candidato-detalhes',compact('candidato'));
+
+
+}
+
 
 
 

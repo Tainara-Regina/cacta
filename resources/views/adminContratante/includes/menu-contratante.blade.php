@@ -84,6 +84,7 @@
 						</a>
 					</li>
 
+					@can('banco_de_candidatos')
 					<li class="sidebar-dropdown">
 						<a href="#">
 							<i class="fa fa-shopping-cart"></i>
@@ -92,23 +93,17 @@
 						<div class="sidebar-submenu">
 							<ul>
 								<li>
-									<a href="#">Encontrar por área
+									<a href="{{route('site.banco-candidato')}}">Melhores cadastros
 									</a>
-								</li>
-
-								<li>
-									<a href="#">Mais bem avaliados
-
-									</a>
-								</li>
-								<li>
-									<a href="#">Temporários</a>
 								</li>
 							</ul>
 						</div>
 					</li>
+					@endcan
 
 
+
+					@can('materiais_exclusivos')
 					<li class="header-menu">
 						<span>MATERIAIS EXCLUSIVOS</span>
 					</li>
@@ -121,10 +116,6 @@
 							</span>
 						</a>
 					</li>
-
-
-
-
 
 					<li class="header-menu">
 						<span>APERFEIÇOAMENTOS E CURSOS</span>
@@ -139,7 +130,6 @@
 						</a>
 					</li>
 
-
 					<li>
 						<a href="#">
 							<i class="fa fa-book"></i>
@@ -150,8 +140,6 @@
 						</a>
 					</li>
 
-
-
 					<li>
 						<a href="#">
 							<i class="fa fa-book"></i>
@@ -161,6 +149,7 @@
 							</span>
 						</a>
 					</li>
+					@endcan
 				</ul>
 			</div>
 			<!-- sidebar-menu  -->

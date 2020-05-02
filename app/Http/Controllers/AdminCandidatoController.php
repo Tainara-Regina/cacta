@@ -138,10 +138,6 @@ public function deletaVaga($id){
 
 
 
-
-
-
-
 public function meusDadosPessoais(){
   $cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
 
