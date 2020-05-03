@@ -21,6 +21,7 @@ class AdminContratanteControllerAjax extends Controller
 			'cadastrar_vaga.vaga_em_destaque','cadastrar_vaga.id','cadastrar_vaga.data_de_criacao',
 			'titulo_vaga.titulo','titulo_vaga.slug','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade')
 		->where('titulo_vaga.titulo','LIKE', '%'.$request->buscar.'%')
+		->where('cadastrar_vaga.disponivel',1)
 		->orderBy('cadastrar_vaga.vaga_em_destaque', 'desc')
 		->limit(4)
 		->get();
@@ -47,6 +48,7 @@ class AdminContratanteControllerAjax extends Controller
 			'cadastrar_vaga.vaga_em_destaque','cadastrar_vaga.id','cadastrar_vaga.data_de_criacao',
 			'titulo_vaga.titulo','titulo_vaga.slug','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade')
 		->where('titulo_vaga.titulo','LIKE', '%'.$request->buscar.'%')
+		->where('cadastrar_vaga.disponivel',1)
 		->orderBy('cadastrar_vaga.vaga_em_destaque', 'desc')
 		->orderBy('cadastrar_vaga.id', 'desc')
 		->skip($skip)->take(4)
@@ -148,6 +150,7 @@ class AdminContratanteControllerAjax extends Controller
 						'titulo_vaga.titulo','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade')
 					->where('titulo_vaga.titulo','LIKE', '%'.$request->buscar.'%')
 					->where('cadastrar_vaga.id','<', $request->id)
+					->where('cadastrar_vaga.disponivel',1)
 					->orderBy('cadastrar_vaga.id', 'desc')
 					->orderBy('cadastrar_vaga.vaga_em_destaque', 'desc')
 					->limit(3)
@@ -160,6 +163,7 @@ class AdminContratanteControllerAjax extends Controller
 						'cadastrar_vaga.vaga_em_destaque','cadastrar_vaga.id','cadastrar_vaga.data_de_criacao',
 						'titulo_vaga.titulo','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade')
 					->where('titulo_vaga.titulo','LIKE', '%'.$request->buscar.'%')
+					->where('cadastrar_vaga.disponivel',1)
 					->orderBy('cadastrar_vaga.id', 'desc')
 					->orderBy('cadastrar_vaga.vaga_em_destaque', 'desc')
 					->limit(3)

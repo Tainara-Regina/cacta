@@ -52,6 +52,7 @@ class AdminCandidatoController extends Controller
      ->select('cadastrar_vaga.id',
       'titulo_vaga.titulo','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade','cacta_users.uf')
      ->where('cacta_users.id_segmento',$segmento_enterece)
+     ->where('cadastrar_vaga.disponivel',1)
      ->limit(5)
      ->get();
 
