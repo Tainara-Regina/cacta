@@ -100,8 +100,14 @@ Route::post('gravar-atualizar-cartao-candidato', 'AdminCandidatoController@grava
 
 
 Route::get('/redefinir-senha-candidato','RedefinirSenhaController@candidato')->name('redefinir-senha-candidato');
+Route::get('/redefinir-senha-contratante','RedefinirSenhaController@contratante')->name('redefinir-senha-contrantante');
+
+
+
 
 Route::post('/enviar-redefinir-senha-candidato','RedefinirSenhaController@candidatoEnviarRedefinicao')->name('enviar-redefinir-senha-candidato');
+
+Route::post('/enviar-redefinir-senha-contratante','RedefinirSenhaController@contratanteEnviarRedefinicao')->name('enviar-redefinir-senha-contratante');
 
 
 

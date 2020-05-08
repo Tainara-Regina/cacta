@@ -18,9 +18,60 @@ use Illuminate\Support\Facades\Hash;
 
 class RedefinirSenhaController extends Controller
 {
-	public function candidato(){
+	public function candidato()
+	{
 		return view('site.redefinicao-senha-candidato');
 	}
+
+
+	public function contratante()
+	{
+		return view('site.redefinicao-senha-contratante');
+	}
+
+	public function contratanteEnviarRedefinicao(Request $request){
+		$validator = $request->validate([
+			'email' => 'required|email',
+		],
+		[
+			'email.email' => 'Insira um e-mail valido.',
+      // 'segmento.required'  => 'Selecione o segmento da sua empresa.',  
+      // 'descricao.required' => 'Preencha a descrição da vaga.',
+      // 'sobre.required' => 'Escreva sobre sua empresa.',
+		]);
+
+		$input['email'] = $request->email;
+       // Must not already exist in the `email` column of `users` table
+		$rules = array('email' => 'unique:cacta_users,email');
+		$validator = Validator::make($input, $rules);
+		if ($validator->fails()) {
+
+			$token = md5(rand(10000000, 99999999));
+			$redefinicao = new PasswordResets;
+
+			$redefinicao->email = $request->email;
+			$redefinicao->token = $token;
+			$redefinicao->save();
+
+			$dados = new \stdClass();
+			$dados->email = $request->email;
+			$dados->token =  $token;
+			$dados->tipo_cadastro = 'contratante';
+
+			$this->enviarRedefinicao($dados);
+
+			return view('site.confirmacao-enviada');
+
+		}else{
+
+			return redirect()->back()->with('nao-cadastrado', 'E-mail não cadastrado.'); 
+		}
+	}
+
+//==================================================================
+//==================================================================
+
+
 
 	public function candidatoEnviarRedefinicao(Request $request){
 		$validator = $request->validate([
@@ -60,9 +111,6 @@ class RedefinirSenhaController extends Controller
 			return redirect()->back()->with('nao-cadastrado', 'E-mail não cadastrado.'); 
 		}
 	}
-
-
-
 
 	public function enviarRedefinicao($dados){
 
@@ -120,8 +168,8 @@ class RedefinirSenhaController extends Controller
 			break;
 
 			case 'contratante':
-			CactaUser::where('id',$request->id)->update(request()->except(['_token','tipo','id','password_confirmation']));
-			return redirect()->route('site.senha-alterada-sucesso');
+			CactaUsers::where('id',$request->id)->update(request()->except(['_token','tipo','id','password_confirmation']));
+			return redirect()->route('senha-alterada-sucesso');
 			break;
 
 			default:

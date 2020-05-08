@@ -37,13 +37,13 @@
 					</div>
 					@endif
 
-					<h5 class="text-h3 text-center"> <b>Informe seu e-mail para redefinir sua senha de candidato</b></h5>
+					<h5 class="text-h3 text-center"> <b>Informe seu e-mail para redefinir sua senha de contratante</b></h5>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-12 col-md-8 col-lg-8 col-xl-6 mx-auto mt-3">
 
-					<form action="{{route('enviar-redefinir-senha-candidato')}}" id="formDados" method="POST" enctype="multipart/form-data">
+					<form action="{{route('enviar-redefinir-senha-contratante')}}" method="POST" id="formDados" enctype="multipart/form-data">
 
 						@csrf
 
@@ -58,16 +58,16 @@
 						<button id="redefinir" type="submit" class="btn btn-primary mb-5">Redefinir</button>
 					</form>
 
-					
-<script type="text/javascript">
+					<script type="text/javascript">
 						$(document).ready(function(){
 							/*desabilita o submit do form*/
 							$("#formDados").submit(function(){
-								 $("#redefinir").attr("disabled", true);
-								// alert('ssdsdddf');
+								$("#redefinir").attr("disabled", true);
 							});
 						});
 					</script>
+
+
 
 				</div>
 			</div>
@@ -89,7 +89,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
 @stop
 
 
