@@ -56,10 +56,10 @@
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs mt-3" role="tablist">
 		<li class="nav-item">
-			<a class="nav-link active" data-toggle="tab" href="#home">DETALHES DA VAGA</a>
+			<a style="color: rgba(0,0,0,.5);" class="nav-link active" data-toggle="tab" href="#home">DETALHES DA VAGA</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#menu1">SOBRE A EMPRESA</a>
+			<a style="color: rgba(0,0,0,.5);" class="nav-link" data-toggle="tab" href="#menu1">SOBRE A EMPRESA</a>
 		</li>
 	</ul>
 
@@ -67,14 +67,45 @@
 	<div class="tab-content">
 		<div id="home" class="container tab-pane active"><br>
 
+
+			
+
+
+
+
+			<div class="row">
+				<div class="col-12">
+					<h1 class="name titulo">{{$vaga->titulo}}
+					</h1>
+					<p class="address">
+						{{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}
+					</p>
+				</div>
+			</div>
+		
+
+
+		<div class="row  mb-5">
+			<div class="col">
+				<p><b>faixa salarial</b></p>
+				<p>NÃO DIVULGADA</p>
+			</div>
+
+			<div class="col">
+				<p><b>Contratação</b></p>
+				<p>{{$vaga->contratacao}}</p>
+			</div>
+
+			<div class="col">
+				<p><b>Vagas</b></p>
+				<p>{{$vaga->quantidade_vaga}}</p>
+			</div>
+		</div>
+
+
+		<div class="row">
 			<div class="col-12">
-				<h1 class="name titulo">{{$vaga->titulo}}
-				</h1>
-				<p class="address">
-					{{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}
-				</p>
-
-
+				
 				<div class="w-100">
 					<h2 class="titulo">Descrição</h2>
 					<p>{{$vaga->descricao}}</p>
@@ -86,32 +117,63 @@
 				</div>
 
 				<div class="w-100">
-					<h2 class="titulo">Desejavel</h2>
+					<h2 class="titulo">Desejável</h2>
 					<p>{{$vaga->desejavel}} </p>
 				</div>
 
-				<div class="w-100 bg-secondary ">
-					<h2 class="titulo">Beneficios</h2>
+				<div class="w-100">
+					<h2 class="titulo">Benefícios</h2>
 					<p>{{$vaga->beneficios}}
 					</p>
 				</div>
 
 				<div class="w-100  py-5">
-					<p  class="m-0 p-0">Se identificou com a vaga?</p>
-					<a class="btn btn-primary" href="#">Candidate-se</a>
-					<p  class="m-0 p-0">13 pessoas se candidataram</p>
+
+
+					@if($id_candidato)
+					@if($candidatou_se == "não")
+					<p class="m-0 p-0">Se identificou com a vaga?</p>
+
+					<a class="btn  btn-success" id="vaga"  href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
+					@else
+					<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
+					@endif
+
+
+					@else
+
+
+					@if($candidatou_se == "não")
+					<a class="btn btn-success" id="vaga" data-toggle="modal" data-target="#modalCandidato" href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
+					@else
+					<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
+					@endif
+					@endif
+
+
+					@if($total_cadidaturas == 1)
+					<p class="m-0 p-0">{{$total_cadidaturas}} pessoa se candidatou</p>
+					@elseif($total_cadidaturas == 0)
+					<p class="m-0 p-0">Nenhuma pessoa se candidatou ainda, seja o primeiro e aumente sua chance!</p>
+					@else
+					<p class="m-0 p-0">{{$total_cadidaturas}} pessoas se candidataram</p>
+					@endif
 				</div>
 			</div>
 		</div>
 
 
-		<div id="menu1" class="container tab-pane fade"><br>
-			<div class="col-12">
-				<div class="w-100">
+
+	</div>
+
+
+	<div id="menu1" class="container tab-pane fade"><br>
+		<div class="col-12">
+				<!-- <div class="w-100">
 					<button type="button" class="btn btn-primary">comapartilhar no facebook</button>
 					<button type="button" class="btn btn-secondary">compartilhar no whatsapp</button>
 					<button type="button" class="btn btn-success">Enviar por email</button>
-				</div>
+				</div> -->
 
 				<div class="w-50 text-center">
 					<img class="img-responsive py-2" width="200" height="200" src="/storage/{{$vaga->logo}}">
@@ -125,16 +187,17 @@
 
 				<div class="w-100 mt-3">
 					<h4 class="titulo">Redes sociais</h4>
-					<button type="button" class="btn btn-primary">Primary</button>
-					<button type="button" class="btn btn-secondary">Secondary</button>
-					<button type="button" class="btn btn-success">Success</button>
+					<ul class="pl-0" style="list-style-type: none;font-size: 30px;">
+						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-instagram"></i></a></li>
+						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-facebook"></i></a></li>
+						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-twitter"></i></a></li>
+					</ul>
 				</div>
-
 
 				<div class="w-100 mt-3">
 					<h4 class="titulo">Onde?</h4>
 					<p>
-						<a target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;origin=&amp;destination={{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}&amp;travelmode=transit"> {{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}</a>
+						<a style="color: rgba(0,0,0,.5);" target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;origin=&amp;destination={{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}&amp;travelmode=transit"> {{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}</a>
 					</p>
 				</div>
 
@@ -160,17 +223,17 @@
 
 				<div class="row">
 					<div class="col">
-						<p>faixa salarial</p>
+						<p><b>faixa salarial</b></p>
 						<p>NÃO DIVULGADA</p>
 					</div>
 
 					<div class="col">
-						<p>Contratação</p>
+						<p><b>Contratação</b></p>
 						<p>{{$vaga->contratacao}}</p>
 					</div>
 
 					<div class="col">
-						<p>Vagas</p>
+						<p><b>Vagas</b></p>
 						<p>{{$vaga->quantidade_vaga}}</p>
 					</div>
 				</div>
@@ -198,12 +261,12 @@
 				</div>
 
 				<div class="w-100">
-					<h2 class="titulo">Desejavel</h2>
+					<h2 class="titulo">Desejável</h2>
 					<p>{{$vaga->desejavel}}</p>
 				</div>
 
-				<div class="w-100 bg-secondary ">
-					<h2 class="titulo">Beneficios</h2>
+				<div class="w-100">
+					<h2 class="titulo">Benefícios</h2>
 					<p>{{$vaga->beneficios}}
 					</p>
 				</div>
@@ -215,7 +278,7 @@
 					@if($candidatou_se == "não")
 					<p class="m-0 p-0">Se identificou com a vaga?</p>
 
-					<a class="btn btn-primary" id="vaga"  href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
+					<a class="btn  btn-success" id="vaga"  href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
 					@else
 					<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
 					@endif
@@ -225,7 +288,7 @@
 
 
 					@if($candidatou_se == "não")
-					<a class="btn btn-primary" id="vaga" data-toggle="modal" data-target="#modalCandidato" href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
+					<a class="btn  btn-success" id="vaga" data-toggle="modal" data-target="#modalCandidato" href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
 					@else
 					<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
 					@endif
@@ -235,7 +298,7 @@
 					@if($total_cadidaturas == 1)
 					<p class="m-0 p-0">{{$total_cadidaturas}} pessoa se candidatou</p>
 					@elseif($total_cadidaturas == 0)
-					<p class="m-0 p-0">Nenhuma pessoa se candidatou ainda, seja o primeiro e aumete sua chance!</p>
+					<p class="m-0 p-0">Nenhuma pessoa se candidatou ainda, seja o primeiro e aumente sua chance!</p>
 					@else
 					<p class="m-0 p-0">{{$total_cadidaturas}} pessoas se candidataram</p>
 					@endif
@@ -243,11 +306,11 @@
 			</div>
 
 			<div class="col-4">
-				<div class="w-100">
+				<!-- <div class="w-100">
 					<button type="button" class="btn btn-primary">comapartilhar no facebook</button>
 					<button type="button" class="btn btn-secondary">compartilhar no whatsapp</button>
 					<button type="button" class="btn btn-success">Enviar por email</button>
-				</div>
+				</div> -->
 
 				<div class="w-50 text-center">
 					<img class="img-responsive py-2" width="200" height="200" src="/storage/{{$vaga->logo}}">
@@ -262,16 +325,18 @@
 
 				<div class="w-100 mt-3">
 					<h4 class="titulo">Redes sociais</h4>
-					<button type="button" class="btn btn-primary">Primary</button>
-					<button type="button" class="btn btn-secondary">Secondary</button>
-					<button type="button" class="btn btn-success">Success</button>
+					<ul class="pl-0" style="list-style-type: none;font-size: 30px;">
+						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-instagram"></i></a></li>
+						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-facebook"></i></a></li>
+						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-twitter"></i></a></li>
+					</ul>
 				</div>
 
 
 				<div class="w-100 mt-3">
 					<h4 class="titulo">Onde?</h4>
 					<p>
-						<a target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;origin=&amp;destination={{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}&amp;travelmode=transit"> {{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}</a>
+						<a style="color: rgba(0,0,0,.5);"  target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;origin=&amp;destination={{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}&amp;travelmode=transit"> {{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}</a>
 					</p>
 				</div>
 
@@ -298,17 +363,17 @@
 	$(document).ready(function(){
 		$("#vaga").click(function(){
 
-var url_atual = window.location.href;
+			var url_atual = window.location.href;
 
-var id_vaga = url_atual.split("/");	
+			var id_vaga = url_atual.split("/");	
 
- $("#vaga_candidato").val(id_vaga[4]);
+			$("#vaga_candidato").val(id_vaga[4]);
 			
 //  $('#vaga_candidato').val() = id_vaga[4] ;
 
 alert($("#vaga_candidato").val());
 
-		});
+});
 	});
 </script>
 

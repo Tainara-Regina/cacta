@@ -89,7 +89,7 @@ crossorigin="anonymous">
 							<div class="form-group">
 								<div class="main">
 									<label for="pwd">Título da vaga:</label>
-									<select name="titulo">
+									<select name="titulo" id="titulo">
 
 										@foreach($titulos_vaga as $titulo_vaga)
 
@@ -248,6 +248,35 @@ crossorigin="anonymous">
 	</div> 
 
 </div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<p class="text-center"><b>Atenção!</b></p>
+				<p>Ao trocar o título e salvar a alteração, todos os candidatos cadastrados ateriormente serão excluídos automaticamente.</p>
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Ok, entendi</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
 @stop
 
 
@@ -261,5 +290,15 @@ crossorigin="anonymous"></script>
 crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{asset('/js/admin/admin-menu.js')}}"></script>
 <script type="text/javascript" src="{{asset('/js/admin/adminContratante/home-admin.js')}}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#titulo').one('change', function (e) {
+			$('#myModal').modal('show');
+		});
+
+	});
+
+
+</script>
 @stop
 

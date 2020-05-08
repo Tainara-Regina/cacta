@@ -56,7 +56,14 @@ class AdminCandidatoController extends Controller
      ->limit(5)
      ->get();
 
-     return view('adminCandidato.home-admin',compact('ultimas_vagas'));
+
+
+      $total_candidaturas = Candidaturas::where('candidato_id',\Auth::user()->id)->count();
+      $total_visualizado = Candidaturas::where('candidato_id',\Auth::user()->id)
+      ->where('visualizado_pela_empresa',1)
+      ->count();
+
+     return view('adminCandidato.home-admin',compact('ultimas_vagas','total_candidaturas','total_visualizado'));
    }
 
 
@@ -262,6 +269,36 @@ public function excluirConta(){
  CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false]);
  return \Redirect::to('/cacta-logout');
 }
+
+
+
+
+
+public function atualizarCartao(){
+ return view('adminCandidato.meu-cartao');
+}
+
+
+public function gravarAtualizarCartao(Request $request){
+  //dd('bateu');
+  $validator = $request->validate([
+   'nome_cartao' => 'required',
+   'numero_cartao' => 'required',
+   'expira_cartao' => 'required',
+   'codigo_seguranca_cartao' => 'required',
+ ],
+ [
+      // 'logo.required' => 'Insira o logo da sua em presa.',
+      // 'segmento.required'  => 'Selecione o segmento da sua empresa.',  
+      // 'descricao.required' => 'Preencha a descrição da vaga.',
+      // 'sobre.required' => 'Escreva sobre sua empresa.',
+ ]);
+  CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token','password_atualizar','password_confirmation']));
+  return redirect('meus-dados-pessoais')->with('message', 'Dados atualizados com sucesso!');
+
+}
+
+
 
 
 }

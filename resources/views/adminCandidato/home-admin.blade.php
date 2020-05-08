@@ -51,7 +51,7 @@ crossorigin="anonymous">
       <div class="row b m-1">
         <div class="col p-3">
           <p class="w">Perfil visualizado</p>
-          <p class="total">1888</p>
+          <p class="total">{{ $total_visualizado}}</p>
         </div>
         <div class="col-md-4 p-0 m-0  d-none d-md-block">
          <div class="h-100 w-100">
@@ -72,7 +72,7 @@ crossorigin="anonymous">
   <div class="row b m-1">
     <div class="col p-3">
       <p class="w">Suas candidaturas</p>
-      <p class="total">3</p>
+      <p class="total">{{$total_candidaturas}}</p>
     </div>
     <div class="col-md-4 p-0 m-0  d-none d-md-block">
      <div class="h-100 w-100">

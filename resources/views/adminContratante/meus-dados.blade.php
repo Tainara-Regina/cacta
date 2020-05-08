@@ -200,10 +200,6 @@ crossorigin="anonymous"></script>
 </div>
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-	Open modal
-</button>
-
 <!-- The Modal -->
 <div class="modal fade" id="myModal">
 	<div class="modal-dialog modal-sm">
@@ -217,7 +213,7 @@ crossorigin="anonymous"></script>
 			<!-- Modal body -->
 			<div class="modal-body">
 				<p class="text-center"><b>Atenção!</b></p>
-				<p>Ao trocar o segmento e salvar a alteração, todas as suas vagas cadastradas do segmento anterior serão excluidas.</p>
+				<p>Ao trocar o segmento e salvar a alteração, todas as suas vagas cadastradas e candidatos do segmento anterior serão excluidos.</p>
 			</div>
 
 			<!-- Modal footer -->

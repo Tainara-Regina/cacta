@@ -36,7 +36,7 @@
               <div class="row">
                 <div class="col text-center">
                   <h3>Oi {{$nome}}!</h3>
-                  <p class="text-h3">Você vai recerber uma confirmação por e-mail.</p>
+                  <p class="text-h3">Você vai receber uma confirmação por e-mail.</p>
                   <p>Clique no link do e-mail para confirmar seu o cadastro.</p>
               </div>
           </div>

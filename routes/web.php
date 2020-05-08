@@ -31,15 +31,7 @@ Route::middleware(['checkplan.duration'])->group(function () {
 
 		Route::get('banco-candidato', 'AdminContratanteController@bancoCandidato')->name('site.banco-candidato');
 
-
-
-
-
 		Route::get('banco-candidato-detalhes/{id_candidato}', 'AdminContratanteController@bancoCandidatoDetalhe')->name('site.banco-candidato-detalhes');
-
-
-
-
 
 		Route::get('preferencias', 'AdminContratanteController@preferencias')->name('site.preferencias');
 
@@ -83,12 +75,9 @@ Route::middleware(['checkplan.duration'])->group(function () {
 
 		Route::get('dados-cartao', 'AdminContratanteController@atualizarCartao')->name('site.dados-cartao');
 
-
 		Route::post('gravar-atualizar-cartao', 'AdminContratanteController@gravarAtualizarCartao')->name('site.gravar-atualizar-cartao');
 
-
 		Route::get('excluir-conta', 'AdminContratanteController@excluirConta')->name('site.excluir-conta'); 
-
 	});
 });
 
@@ -100,23 +89,25 @@ Route::middleware(['checkplan.duration'])->group(function () {
 
 
 
+Route::get('dados-cartao', 'AdminCandidatoController@atualizarCartao')->name('dados-cartao');
+
+Route::post('gravar-atualizar-cartao-candidato', 'AdminCandidatoController@gravarAtualizarCartao')->name('gravar-atualizar-cartao');
 
 
 
 
+// Route::get('/confirmacao-enviada','RedefinirSenhaController@confirmacaoEnviada')->name('confirmacao-enviada');
 
 
+Route::get('/redefinir-senha-candidato','RedefinirSenhaController@candidato')->name('redefinir-senha-candidato');
+
+Route::post('/enviar-redefinir-senha-candidato','RedefinirSenhaController@candidatoEnviarRedefinicao')->name('enviar-redefinir-senha-candidato');
 
 
 
 
 Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/vaga/{id}/{slug}', 'VagaController@vaga')->name('site.vaga');
-
-
-
-
-
 
 Route::get('/preferencias', 'AdminCandidatoController@preferencias')->name('preferencias');
 Route::post('/cadastrar-preferencias', 'AdminCandidatoController@cadastrarPreferencias')->name('cadastrar-preferencias');
@@ -154,22 +145,7 @@ Route::post('/admin-candidato/meus-dados-pessoais', 'AdminCandidatoController@ca
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 Route::get('/minhas-vagas/', 'AdminCandidatoController@minhasVagas')->name('minhas-vagas');
-
-
-
 
 
 Route::get('/ver-vaga/{id}', 'AdminCandidatoController@verVaga')->name('ver-vaga');
@@ -184,16 +160,7 @@ Route::get('/candidatar-se/{id}', 'AdminCandidatoController@candidatarVaga')->na
 Route::get('/lista-vagas', 'VagaController@listaVaga')->name('site.lista-vaga');
 
 
-
-
-
-
-
 Route::get('/admin-candidato', 'AdminCandidatoController@home')->name('site.admin-candidato');
-
-
-
-
 
 
 
@@ -208,8 +175,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::post('/cacta-login', 'Auth\CactaLoginController@login')->name('cactalogin');
-
-
 
 
 // login candidato
@@ -257,6 +222,20 @@ Route::get('enviar-email',function(){
 
 //  \Illuminate\Support\Facades\Mail::send(new \App\Mail\confirmacaoCadastroContratante($user));	
 });
+
+
+
+
+Route::get('/redefinir-senha/{key}/{tipo_cadastro}','RedefinirSenhaController@redefinir')->name('site.redefinir-senha');
+
+
+
+
+
+
+Route::get('/senha-alterada-sucesso/','RedefinirSenhaController@sucesso')->name('senha-alterada-sucesso');
+
+Route::post('/redefinir-update','RedefinirSenhaController@redefinirUpdate')->name('site.redefinir-update');
 
 
 

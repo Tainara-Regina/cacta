@@ -175,6 +175,35 @@ if($quantidade_destaque_cadastrado >= $quantidade_maxima_destaque_permitido){
 }
 
 
+
+
+
+//Ao trocar o titulo da vaga, esta query exclui todos candidatos cadastradas na vaga que não pertencem a este segmento
+
+// $vagas_diferente_do_novo_id = DB::table('cadastrar_vaga')
+// ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
+// ->select('*')
+// ->where('cadastrar_vaga.id_usuario',\Auth::user()->id)
+// ->where('titulo_vaga.id','!=',$request->titulo)
+// ->delete();
+
+
+
+$vagas_diferente_do_novo_id = Candidaturas::where('vaga_id', $request->id_vaga)
+->delete();
+
+
+
+
+
+if($vagas_diferente_do_novo_id){
+ return redirect()->route('site.candidatos-vaga'); 
+}
+
+
+
+
+
 $validator = $request->validate([
   'titulo' => 'required',
   'quantidade_vaga' => 'required|numeric',
@@ -429,6 +458,11 @@ public function cadastrarMeusDados(Request $request){
     $nome_imagem = implode('/',$teste);
     $request->merge(['logo' => $nome_imagem]);
 
+
+ //excluir logo antigo
+    //dd(\Auth::user()->logo);
+// Storage::delete("{\Auth::user()->logo}");
+ Storage::disk('public')->delete(\Auth::user()->logo);
   }
 
 }
