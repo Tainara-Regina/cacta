@@ -25,12 +25,55 @@ $(document).ready(function(){
 
 
 
+
+//aciona quando o filtro checkbox é selecionado
+$('input[type="checkbox"]').change(function(e) {
+ buscaVaga();
+});
+
+
 //faz busca de vagas no on focus e on change
 $(document).ready(function(){
   $('#buscar').on('keyup keypress blur change focus', function(e) {
-   $.post("/vagas-inicio",
-   {
+    buscaVaga(); 
+  });
+});
+
+
+
+$(document).ready(function(){
+  $('#local').on('keyup keypress blur change focus', function(e) {
+    buscaVaga(); 
+  });
+});
+
+
+
+
+
+
+
+function buscaVaga(){
+  var area = $('input[name^="area"]:checked').map(function(_, el) {
+    return $(el).val();
+  }).get();
+
+  var regime = $('input[name^="regime"]:checked').map(function(_, el) {
+    return $(el).val();
+  }).get();
+
+  var local = $('#local').val();
+
+  console.log(area);
+  console.log(regime);
+    console.log(local);
+
+  $.post("/vagas-inicio",
+  {
     buscar:  $("#buscar").val(),
+    area: area,
+    regime: regime,
+    local: local
   },
   function(data, status){
     $(".vagas").html("");
@@ -48,6 +91,4 @@ $(document).ready(function(){
       $(".vagas").append(top);   
     }
   });
- });
-});
-
+}

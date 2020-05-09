@@ -97,32 +97,16 @@ if (contem == -1) {
 // });
 
 
-
-
 $(document).ready(function(){
-
-	$.post("/vagas-ajax",
-	{
-		buscar:  $("#buscar").val(),
-	},
-	function(data, status){
-		$(".vagas").html("");
-		$(".vagas").append(data);
+  buscaVaga();  
+	$("#filtrar").change(function() {
+		if(this.checked) {
+			$("#filtro-mobile").css("display","block");
+		}
+		if(!this.checked) {
+			$("#filtro-mobile").css("display","none");
+		}
 	});
-
-	
-	$('#buscar').on('keyup keypress blur change focus', function(e) {
-  	//alert('testes');
-  	$.post("/vagas-ajax",
-  	{
-  		buscar:  $("#buscar").val(),
-  	},
-  	function(data, status){
-  		$(".vagas").html("");
-  		$(".vagas").append(data);
-  	});
-  });
-
 
 
 	$(document).on('click','#load_more_button',function(){
@@ -138,6 +122,94 @@ $(document).ready(function(){
 		});
 	});
 
-
-
 });
+
+
+
+
+// $(document).ready(function(){
+// 	$.post("/vagas-ajax",
+// 	{
+// 		buscar:  $("#buscar").val(),
+// 	},
+// 	function(data, status){
+// 		$(".vagas").html("");
+// 		$(".vagas").append(data);
+// 	});
+
+	
+// 	$('#buscar').on('keyup keypress blur change focus', function(e) {
+//   	//alert('testes');
+//   	$.post("/vagas-ajax",
+//   	{
+//   		buscar:  $("#buscar").val(),
+//   	},
+//   	function(data, status){
+//   		$(".vagas").html("");
+//   		$(".vagas").append(data);
+//   	});
+//   });
+
+
+
+// });
+
+
+
+
+//aciona quando o filtro checkbox é selecionado
+$('input[type="checkbox"]').change(function(e) {
+	alert("ff");
+ buscaVaga();
+});
+
+
+//faz busca de vagas no on focus e on change
+$(document).ready(function(){
+  $('#buscar').on('keyup keypress blur change focus', function(e) {
+    buscaVaga(); 
+  });
+});
+
+
+
+$(document).ready(function(){
+  $('#local').on('keyup keypress blur change focus', function(e) {
+    buscaVaga(); 
+  });
+});
+
+
+
+
+
+
+
+
+function buscaVaga(){
+	var area = $('input[name^="area"]:checked').map(function(_, el) {
+		return $(el).val();
+	}).get();
+
+	var regime = $('input[name^="regime"]:checked').map(function(_, el) {
+		return $(el).val();
+	}).get();
+
+	var local = $('#local').val();
+
+	console.log(area);
+	console.log(regime);
+	console.log(local);
+
+	$.post("/vagas-ajax",
+	{
+		buscar:  $("#buscar").val(),
+		area: area,
+		regime: regime,
+		local: local
+	},
+function(data, status){
+  		$(".vagas").html("");
+  		$(".vagas").append(data);
+  	});
+}

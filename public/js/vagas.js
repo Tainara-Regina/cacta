@@ -28,6 +28,8 @@ $(document).ready(function(){
 //faz busca de vagas no on focus e on change
 $(document).ready(function(){
   $('#buscar').on('keyup keypress blur change focus', function(e) {
+
+
    $.post("/vagas-ajax",
    {
     buscar:  $("#buscar").val(),

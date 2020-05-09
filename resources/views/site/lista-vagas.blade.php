@@ -53,7 +53,7 @@
 
 					<div class="col-md-2 text-center">
 						<p class="form-check-label mt-2 mt-sm-4 mb-2" for="inlineCheckbox1"><b>Onde?</b></p>
-						<input type="text" class="form-control" id="" placeholder="Ex: São Paulo, Zona Sul" name="">
+						<input type="text" class="form-control" placeholder="Ex: São Paulo, Zona Sul" id="local" name="local">
 						<div class="form-check-inline  d-sm-none">
 							<label class="form-check-label">
 								<input id="filtrar" type="checkbox" class="form-check-input my-3" value=""> <strong>Deseja filtrar a busca?</strong> 
@@ -69,13 +69,13 @@
 									<td style="line-height: 18px;"><b>Estou procurando:</b></td>
 									<td>
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-											<label class="form-check-label" for="inlineCheckbox1">Fixo</label>
+											<input class="form-check-input" type="checkbox" name="regime[]" id="inlineCheckbox1" value="fixo">
+											<label class="form-check-label"  for="inlineCheckbox1">Fixo</label>
 										</div>
 									</td>
 									<td>
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" name="regime[]" type="checkbox" id="inlineCheckbox1" value="temporario">
 											<label class="form-check-label" for="inlineCheckbox1">Temporario</label>
 										</div>
 									</td>
@@ -86,20 +86,20 @@
 									<td><b>Area:</b></td>
 									<td>
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="1">
 											<label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
 										</div>
 									</td>
 									<td>
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="2">
 											<label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
 										</div>
 									</td>
 
 									<td>
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="3">
 											<label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
 										</div>
 									</td>
@@ -108,19 +108,19 @@
 									<td style="border-top: unset;"></td>
 									<td style="border-top: unset;"> 
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="4">
 											<label class="form-check-label" for="inlineCheckbox1">Fotográfo(a)</label>
 										</div>
 									</td>
 									<td style="border-top: unset;">
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="5">
 											<label class="form-check-label" for="inlineCheckbox1">Bartender</label>
 										</div>
 									</td>
 									<td style="border-top: unset;">
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="6">
 											<label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
 										</div>
 									</td>
@@ -138,13 +138,13 @@
 									<td style="line-height: 18px;"><b>Estou procurando:</b></td>
 									<td>
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" name="regime[]" type="checkbox" id="inlineCheckbox1" value="fixo">
 											<label class="form-check-label" for="inlineCheckbox1">Fixo</label>
 										</div>
 									</td>
 									<td>
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" name="regime[]" type="checkbox" id="inlineCheckbox1" value="temporario">
 											<label class="form-check-label" for="inlineCheckbox1">Temporario</label>
 										</div>
 									</td>
@@ -154,13 +154,13 @@
 									<td><b>Area:</b></td>
 									<td>
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="1">
 											<label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
 										</div>
 									</td>
 									<td>
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" type="checkbox" name="area[]" id="inlineCheckbox1" value="2">
 											<label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
 										</div>
 									</td>
@@ -169,45 +169,40 @@
 									<td style="border-top: unset;"></td>
 									<td style="border-top: unset;"> 
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" type="checkbox" name="area[]" id="inlineCheckbox1" value="3">
 											<label class="form-check-label" for="inlineCheckbox1">Fotográfo(a)</label>
 										</div>
 									</td>
 									<td style="border-top: unset;">
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" type="checkbox" name="area[]" id="inlineCheckbox1" value="4">
 											<label class="form-check-label" for="inlineCheckbox1">Bartender</label>
 										</div>
 									</td>
 								</tr>
 
 
-
 								<tr>
 									<td style="border-top: unset;"></td>
 									<td style="border-top: unset;">
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="5">
 											<label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
 										</div>
 									</td>
 									<td style="border-top: unset;">
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<input class="form-check-input" type="checkbox" name="area[]" id="inlineCheckbox1" value="6">
 											<label class="form-check-label" for="inlineCheckbox1">Músico(a)</label>
 										</div>
 									</td>  
 								</tr>
 
-
-
 							</tbody>
 						</table>
 
 
-
 					</div>
-
 				</div>
 			</div>
 
