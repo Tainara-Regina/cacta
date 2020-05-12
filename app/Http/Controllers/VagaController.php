@@ -29,6 +29,7 @@ class VagaController extends Controller
 			,'cacta_users.bairro','cacta_users.uf','cacta_users.sobre','cadastrar_vaga.requisitos','cadastrar_vaga.desejavel','cadastrar_vaga.beneficios','cadastrar_vaga.contratacao','cadastrar_vaga.quantidade_vaga')
 		->where('cadastrar_vaga.id',$id)
 		->where('titulo_vaga.slug',$slug)
+		->where('cadastrar_vaga.disponivel',1)
 		->first();
 
 		if(empty($vaga)){

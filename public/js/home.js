@@ -66,7 +66,7 @@ function buscaVaga(){
 
   console.log(area);
   console.log(regime);
-    console.log(local);
+  console.log(local);
 
   $.post("/vagas-inicio",
   {
@@ -77,13 +77,16 @@ function buscaVaga(){
   },
   function(data, status){
     $(".vagas").html("");
+
+    $("#encontramos").html("Encontramos: <b>"+data[1]+"</b> vagas");
+    
     for (var i = 0; i < data.length; i++) {
 
-      var top = "<a href='/vaga/"+data[i].id+'/'+data[i].slug+"'><div class='row  text-center py-3' style='border-bottom: 1px solid #bdbdbd'><div class='col d-none d-sm-block'><img width='80px' src='storage/"+data[i].logo+"'></div><div class='col'><p><b>"+data[i].titulo+"</b></p><p>"+data[i].nome_empresa+"</p></div><div class='col'><p><b>"+data[i].contratacao+"</b></p><p>"+data[i].localidade+"</p></div>";
+      var top = "<a href='/vaga/"+data[0][i].id+'/'+data[0][i].slug+"'><div class='row  text-center py-3' style='border-bottom: 1px solid #bdbdbd'><div class='col d-none d-sm-block'><img width='80px' src='storage/"+data[0][i].logo+"'></div><div class='col'><p><b>"+data[0][i].titulo+"</b></p><p>"+data[0][i].nome_empresa+"</p></div><div class='col'><p><b>"+data[0][i].contratacao+"</b></p><p>"+data[0][i].localidade+"</p></div>";
 
-      var d = new Date(data[i].data_de_criacao);
+      var d = new Date(data[0][i].data_de_criacao);
 
-      if(data[i].vaga_em_destaque == 'on'){
+      if(data[0][i].vaga_em_destaque == 'on'){
         top += "<div class='col mt-4'><p><span class='vaga-destaque'>Destaque</span></p></div></div></a>";
       }else{
         top += "<div class='col mt-4'><p class=''>Divulgada em "+d.toLocaleDateString()+"</p></div></div></a>";

@@ -85,7 +85,7 @@ crossorigin="anonymous">
 </div>
 </div>
 
-
+<!-- 
 <div class="row mt-3">
   <div class="col mb-3">
     <p class="text-left  title-page">Novidades</p>
@@ -143,7 +143,7 @@ crossorigin="anonymous">
       </a>
     </div>
   </div>
-</div>
+</div> -->
 
 
 
@@ -154,7 +154,8 @@ crossorigin="anonymous">
 
   <div class="slider-vagas">
     @foreach($ultimas_vagas as $vagas)
-    <a href="/vaga/{{$vagas->id}}">
+
+    <a href="/vaga/{{$vagas->id}}/{{$vagas->slug}}">
       <div class="text-center vaga">
 
        <div class="img" style="height: 140px; background-image: url('/storage/{{$vagas->logo}}'); background-size: cover;
@@ -170,7 +171,7 @@ crossorigin="anonymous">
     @endforeach
   </div>
 
-  <p class="w text-center">Encontre mais vagas clicando <a href="#">aqui.</a></p>
+  <p class="w text-center">Encontre mais vagas clicando <a href="{{route('site.lista-vaga')}}">aqui.</a></p>
 </section>
 
 

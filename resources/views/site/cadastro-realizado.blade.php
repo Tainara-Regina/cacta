@@ -28,8 +28,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col mt-5 col-10 mx-auto py-5">
-					<h5 class="text-h3 text-center"> <b>E-mail de redefinição de senha enviado.</b></h5>
-					<h5 class="text-h3 text-center"> <b>Verifique seu e-mail e clique no link para redefinir sua senha.</b></h5>
+					<h5 class="text-h3 text-center"> <b>Cadastro realizado com sucesso!</b></h5>
+					<h5 class="text-h3 text-center"> <b>Acesse sua conta na opção "Entrar" do menu.</b></h5>
 				</div>
 			</div>
 		</div>

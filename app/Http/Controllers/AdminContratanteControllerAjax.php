@@ -68,7 +68,47 @@ class AdminContratanteControllerAjax extends Controller
 		->limit(4)
 		->get();
 
-		return $vaga;
+
+
+
+
+		$total = DB::table('cadastrar_vaga')
+		->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
+		->join('cacta_users', 'cadastrar_vaga.id_usuario', '=', 'cacta_users.id')
+		->select('cadastrar_vaga.contratacao',
+			'cadastrar_vaga.vaga_em_destaque','cadastrar_vaga.id','cadastrar_vaga.data_de_criacao',
+			'titulo_vaga.titulo','titulo_vaga.slug','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade')
+
+		->where(function($query) use ($area)  {
+			if(!empty($area)) {
+				$query->whereIn('titulo_vaga.id_segmento',$area);
+			}
+
+		})
+		->where(function($query) use ($regime)  {
+			if(!empty($regime)) {
+				$query->whereIn('cadastrar_vaga.contratacao',$regime);
+			}
+
+		})
+
+		->where(function($query) use ($local)  {
+			if(!is_null($local)) {
+				$query->orWhere('cacta_users.localidade','LIKE','%'.$local.'%')
+				->orWhere('cacta_users.logradouro','LIKE','%'.$local.'%')
+				->orWhere('cacta_users.bairro','LIKE','%'.$local.'%')
+				->orWhere('cacta_users.uf','LIKE','%'.$local.'%');
+			}
+		})
+
+		->where('titulo_vaga.titulo','LIKE', '%'.$request->buscar.'%')
+		->where('cacta_users.nome_empresa','LIKE', '%'.$request->buscar.'%')
+		
+		->where('cadastrar_vaga.disponivel',1)
+		->orderBy('cadastrar_vaga.vaga_em_destaque', 'desc')
+		->count();
+
+		return array($vaga,$total);
 	}
 
 
@@ -223,6 +263,49 @@ class AdminContratanteControllerAjax extends Controller
 			';
 		}
 		echo $output;
+
+
+
+$total = DB::table('cadastrar_vaga')
+		->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
+		->join('cacta_users', 'cadastrar_vaga.id_usuario', '=', 'cacta_users.id')
+		->select('cadastrar_vaga.contratacao',
+			'cadastrar_vaga.vaga_em_destaque','cadastrar_vaga.id','cadastrar_vaga.data_de_criacao',
+			'titulo_vaga.titulo','titulo_vaga.slug','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade')
+
+		->where(function($query) use ($area)  {
+			if(!empty($area)) {
+				$query->whereIn('titulo_vaga.id_segmento',$area);
+			}
+
+		})
+		->where(function($query) use ($regime)  {
+			if(!empty($regime)) {
+				$query->whereIn('cadastrar_vaga.contratacao',$regime);
+			}
+
+		})
+
+		->where(function($query) use ($local)  {
+			if(!is_null($local)) {
+				$query->orWhere('cacta_users.localidade','LIKE','%'.$local.'%')
+				->orWhere('cacta_users.logradouro','LIKE','%'.$local.'%')
+				->orWhere('cacta_users.bairro','LIKE','%'.$local.'%')
+				->orWhere('cacta_users.uf','LIKE','%'.$local.'%');
+			}
+		})
+
+		->where('titulo_vaga.titulo','LIKE', '%'.$request->buscar.'%')
+		
+		->where('cadastrar_vaga.disponivel',1)
+		->orderBy('cadastrar_vaga.vaga_em_destaque', 'desc')
+		->count();
+
+
+
+
+return "<input type='hidden' id='total_value' value='". $total."'>";
+
 	}
 
 

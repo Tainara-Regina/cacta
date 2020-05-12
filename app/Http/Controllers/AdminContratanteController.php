@@ -44,7 +44,6 @@ class AdminContratanteController extends Controller
 
       $total_vaga_plano = PlanosContratante::select('quantidade_vagas')->where('id',Auth::user()->id_plano)->first();
 
-
       $total_destaque_plano = PlanosContratante::select('vagas_em_destaque')->where('id',Auth::user()->id_plano)->first();
 
       $candidatos_total = DB::table('candidaturas')
@@ -52,15 +51,11 @@ class AdminContratanteController extends Controller
       ->where('cadastrar_vaga.id_usuario',Auth::user()->id)
       ->count();
 
-
       $vagas_em_destaque = DB::table('candidaturas')
       ->join('cadastrar_vaga', 'cadastrar_vaga.id', '=', 'candidaturas.vaga_id')
       ->where('cadastrar_vaga.id_usuario',Auth::user()->id)
       ->where('cadastrar_vaga.vaga_em_destaque','on')
       ->count();
-
-
-
 
       $candidatos_das_vagas = DB::table('candidaturas')
       ->join('cadastrar_vaga', 'cadastrar_vaga.id', '=', 'candidaturas.vaga_id')
@@ -70,10 +65,6 @@ class AdminContratanteController extends Controller
       ->where('cadastrar_vaga.id_usuario',Auth::user()->id)
       ->limit(3)
       ->get();
-
-
-//dd($candidatos_das_vagas);
-
 
       return view('adminContratante.home-admin',compact('vagas_total','total_vaga_plano','candidatos_total','vagas_em_destaque','total_destaque_plano','candidatos_das_vagas'));
     }
@@ -360,8 +351,6 @@ public function verCandidatos($id){
 
 public function detalhesCandidato($id_candidato,$id_vaga){
 
-  //dd($id_vaga);
-
   Candidaturas::where('candidato_id', $id_candidato)
   ->where('vaga_id', $id_vaga)
   ->where('visualizado_pela_empresa', 0)
@@ -399,7 +388,6 @@ public function detalhesCandidato($id_candidato,$id_vaga){
 
 public function meusDados(){
   $cadastro = CactaUsers::where('id',\Auth::user()->id)->first();
-//dd($cadastro);
   $segmentos = Segmento::select('id','segmento')->get();
   $planos = PlanosContratante::all();
 
@@ -427,7 +415,6 @@ public function meusDadosPessoais(){
 public function cadastrarMeusDados(Request $request){
 
  $validator = $request->validate([
-  // 'logo_atualizar' => 'required|image',
    'id_segmento' => 'required',
    'cep' => 'required',
    'numero' => 'required',
@@ -438,7 +425,6 @@ public function cadastrarMeusDados(Request $request){
  ],
  [
    'endereco.required' => 'Insira um CEP válido.',
-   //'logo_atualizar.required' => 'Insira o logo da sua em presa.',
    'id_segmento.required'  => 'Selecione o segmento da sua empresa.',  
    'sobre.required' => 'Escreva sobre sua empresa.',
    'cep.required' => 'insira o CEP.',
@@ -462,7 +448,7 @@ public function cadastrarMeusDados(Request $request){
  //excluir logo antigo
     //dd(\Auth::user()->logo);
 // Storage::delete("{\Auth::user()->logo}");
- Storage::disk('public')->delete(\Auth::user()->logo);
+    Storage::disk('public')->delete(\Auth::user()->logo);
   }
 
 }
@@ -555,9 +541,6 @@ public function gravarAtualizarCartao(Request $request){
 //Preferencias
 public function preferencias(){
   $preferencias = CactaUsers::where('id',\Auth::user()->id)->first();
-
-//dd($preferencias);
-
   return view('adminContratante.preferencias',compact($preferencias));
 }
 
@@ -595,8 +578,8 @@ public function planoExpirou(){
 
 public function bancoCandidato(){
   $autorizacao = $this->authorize('banco_de_candidatos');
-  $total = CactaCandidatos::where('id_segmento_enterece',\Auth::user()->id_plano)->count();
-  $candidatos = CactaCandidatos::where('id_segmento_enterece',\Auth::user()->id_plano)->paginate(3);
+  $total = CactaCandidatos::where('id_segmento_enterece',\Auth::user()->id_segmento)->count();
+  $candidatos = CactaCandidatos::where('id_segmento_enterece',\Auth::user()->id_segmento)->paginate(3);
 
   return view('adminContratante.banco-candidato',compact('total','candidatos'));
 }
@@ -607,24 +590,67 @@ public function bancoCandidato(){
 
 public function bancoCandidatoDetalhe($id_candidato){
  $autorizacao = $this->authorize('banco_de_candidatos');
-
-
-
  $candidato = CactaCandidatos::select('nome','sobrenome','email','telefone','data_nascimento','sonhos_objetivos','sexo','whatsapp','escolariedade',
   'sua_historia','livros','hobbies','cursos_gostaria','cep','logradouro','bairro','localidade','uf','numero','complemento','endereco','facebook','instagram','twitter','site')
  ->where('id',$id_candidato)
- ->where('id_segmento_enterece',\Auth::user()->id_plano)
+ ->where('id_segmento_enterece',\Auth::user()->id_segmento)
  ->first();
 
  return view('adminContratante.banco-candidato-detalhes',compact('candidato'));
+}
 
 
+public function deletaVaga($id){
+ $vagas = cadastrarVaga::find($id);
+ $autorizacao = $this->authorize('permissao_vagas',$vagas);
+ $vagas->delete();
+ return redirect()->back()->with('message', 'Vaga excluida com sucesso.');
+}
+
+
+
+public function renovarVaga($id){
+ $vagas = cadastrarVaga::find($id);
+ $autorizacao = $this->authorize('permissao_vagas',$vagas);
+
+ $mytime = \Carbon\Carbon::now();
+ $quantidade_dias_vaga_plano = $this->verificaPlano(Auth::user()->id_plano)->tempo_disponivel_vaga;
+
+// var_dump($mytime);
+// var_dump($mytime->addDays($quantidade_dias_vaga_plano));
+// dd();
+
+ cadastrarVaga::where('id',$id)
+ ->update(['disponivel' => 1,
+   'data_de_criacao' =>  \Carbon\Carbon::now(),
+  'data_de_expiracao' => $mytime->addDays($quantidade_dias_vaga_plano)
+]);
+ return redirect()->back()->with('message', 'Vaga renovada');
+}
+
+
+public function desativarVaga($id){
+ $vagas = cadastrarVaga::find($id);
+ $autorizacao = $this->authorize('permissao_vagas',$vagas);
+
+ cadastrarVaga::where('id',$id)
+ ->update(['disponivel' => 0,
+]);
+ return redirect()->back()->with('message', 'Vaga renovada');
 }
 
 
 
 
+public function ativarVaga($id){
+ $vagas = cadastrarVaga::find($id);
+ $autorizacao = $this->authorize('permissao_vagas',$vagas);
 
+ cadastrarVaga::where('id',$id)
+ ->update(['disponivel' => 1,
+]);
+ return redirect()->back()->with('message', 'Vaga renovada');
+}
 
 }
 

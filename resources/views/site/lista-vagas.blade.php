@@ -48,7 +48,7 @@
 				<div class="row">
 
 					<div class="col-md-2">
-						<h5 class="text-center mt-2 mt-sm-5">Encontramos: <b>332</b> vagas.</h5>
+						<h5 id="encontramos" class="text-center mt-2 mt-sm-5">Carregando...</h5>
 					</div>
 
 					<div class="col-md-2 text-center">

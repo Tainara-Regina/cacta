@@ -41,6 +41,7 @@ class CactaLoginCandidatoController extends Controller
 
 
       //se existir o input vaga, vai redirecionar para fazer a candidatura na vaga
+         
           if(isset($request->vaga) && $request->vaga != "null"){
              return redirect()->route('candidatar-se', ['id' => $request->vaga]);
          }
@@ -50,7 +51,7 @@ class CactaLoginCandidatoController extends Controller
          return redirect()->intended(route('site.admin-candidato'));
      }
     	// se falhar, redirect back
-     return redirect()->back()->withImput($request->only('email','remember'))->with('message', 'Verifique se digitou os dados corretamente');
+     return redirect()->back()->withImput($request->only('email','remember'))->with('message_candidato', 'Verifique se digitou seus dados corretamente');
  }
 
 }

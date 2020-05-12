@@ -23,7 +23,7 @@
 
 
 </div>
-<a class="navbar-brand mx-auto text-center" href="#"> <img class="animated rubberBand cacto" style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
+<a class="navbar-brand mx-auto text-center" href="{{route('site.inicio')}}"> <img class="animated rubberBand cacto" style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
  <p class="text-center mb-0 pb-0 logo">Cacta Vagas</p>
 </a>
 <div class="navbar-collapse collapse">

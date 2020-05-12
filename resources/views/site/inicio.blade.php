@@ -44,7 +44,7 @@
           <a class="nav-link"  href="{{route('formularioContratante')}}">Contrate</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Cacta blog</a>
+          <a class="nav-link" href="{{route('blog-home')}}">Cacta blog</a>
         </li>
 
 
@@ -112,7 +112,7 @@
       <div class="row">
 
         <div class="col-md-2">
-          <h5 class="text-center mt-2 mt-sm-5">Encontramos: <b>332</b> vagas.</h5>
+          <h5 id="encontramos" class="text-center mt-2 mt-sm-5">Carregando...</h5>
         </div>
 
         <div class="col-md-2 text-center">

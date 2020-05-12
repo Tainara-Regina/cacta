@@ -47,16 +47,72 @@ crossorigin="anonymous">
 	<div class="row mb-5">
 
 
+
+
+
+
+
 		@foreach($vagas as $vaga)
+
+
+
+		@if($vaga->disponivel == 0 &&   Carbon\Carbon::now() > $vaga->data_de_expiracao)
+
+		<div class="col-sm-4">
+			<div style="background-color: #75757521" class="row b m-1">
+				<div class="col p-3">
+					<p class="titulo">{{$vaga->titulo}} <span style="
+					font-size: 18px;color: #757575;">expirado</span></p>
+					<p class="w"><i>Ficou disponível de {{ Carbon\Carbon::parse($vaga->data_de_criacao)->format('d/m/Y')}} até {{ Carbon\Carbon::parse($vaga->data_de_expiracao)->format('d/m/Y') }} </i></p>
+
+					<ul class="p-0" style="/*position: absolute;*/bottom: 0px;list-style: none;">
+						<li><a style="color: green" href="{{route('site.renovar-vaga',$vaga->id)}}">Renovar (reativar)</a></li>
+						<li><a style="color: red" href="{{route('site.deleta-vaga',$vaga->id)}}">Deletar vaga</a></li>
+						<a href="{{route('site.ver-candidatos',$vaga->id)}}"><li> Ver candidatos</li></a>
+						<li><a href="{{route('site.ver-vaga',$vaga->id)}}"> Ver vaga</a></li>
+						
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+
+@elseif($vaga->disponivel == 0)
+
+<div class="col-sm-4">
+			<div style="background-color: #75757521" class="row b m-1">
+				<div class="col p-3">
+					<p class="titulo">{{$vaga->titulo}}
+						<span style="font-size: 18px;color: #757575;">desativado</span></p>
+					<p class="w"><i>Disponivel de {{ Carbon\Carbon::parse($vaga->data_de_criacao)->format('d/m/Y')}} até {{ Carbon\Carbon::parse($vaga->data_de_expiracao)->format('d/m/Y') }} </i></p>
+
+					<ul class="p-0" style="/*position: absolute;*/bottom: 0px;list-style: none;">
+						<a href="{{route('site.ver-candidatos',$vaga->id)}}"><li> Ver candidatos</li></a>
+						<li><a href="{{route('site.ver-vaga',$vaga->id)}}">Ver vaga</a></li>
+						<li><a href="{{route('site.ativar-vaga',$vaga->id)}}">Ativar vaga</a></li>
+						<li><a href="{{route('site.editar-vaga',$vaga->id)}}">Editar vaga</a></li>
+						<li><a href="{{route('site.deleta-vaga',$vaga->id)}}">Deletar vaga</a></li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		@else
+
 		<div class="col-sm-4">
 			<div class="row b m-1">
 				<div class="col p-3">
 					<p class="titulo">{{$vaga->titulo}}</p>
-					<p class="w"><i>Disponivel de {{ Carbon\Carbon::parse($vaga->data_de_criacao)->format('d/m/Y')}} de até {{ Carbon\Carbon::parse($vaga->data_de_expiracao)->format('d/m/Y') }} </i></p>
+					<p class="w"><i>Disponivel de {{ Carbon\Carbon::parse($vaga->data_de_criacao)->format('d/m/Y')}} até {{ Carbon\Carbon::parse($vaga->data_de_expiracao)->format('d/m/Y') }} </i></p>
 
 					<ul class="p-0" style="/*position: absolute;*/bottom: 0px;list-style: none;">
 						<a href="{{route('site.ver-candidatos',$vaga->id)}}"><li> Ver candidatos</li></a>
-						<li><a href="{{route('site.ver-vaga',$vaga->id)}}"> Ver vaga</a></li>
+						<li><a href="{{route('site.ver-vaga',$vaga->id)}}">Ver vaga</a></li>
+						<li><a href="{{route('site.desativar-vaga',$vaga->id)}}">Desativar vaga</a></li>
 						<li><a href="{{route('site.editar-vaga',$vaga->id)}}">Editar vaga</a></li>
 						<li><a href="{{route('site.deleta-vaga',$vaga->id)}}">Deletar vaga</a></li>
 
@@ -71,6 +127,9 @@ crossorigin="anonymous">
 				</div>
 			</div>
 		</div>
+
+
+		@endif
 		@endforeach
 
 	</div>

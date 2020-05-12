@@ -66,6 +66,27 @@ crossorigin="anonymous"></script>
 				@csrf
 
 
+
+	@error('id_segmento_enterece')
+					<span style="color: red">{{ $message }}</span>
+					@enderror
+					<div class="form-group my-5">
+						<div class="main">
+							<label for="pwd">Segmento de enterece para encontrar vagas relacionadas</label>
+							<select id="id_segmento" value="{{$cadastro->id_segmento_enterece}}" name="id_segmento_enterece">
+								@foreach ($segmentos as $segmento)
+								@if($segmento->id == $cadastro->id_segmento_enterece)
+								<option  value="{{ $cadastro->id_segmento }}" selected>{{ $segmento->segmento }}</option>
+								@else
+								<option  value="{{ $segmento->id }}">{{ $segmento->segmento }}</option>
+								@endif
+								@endforeach
+							</select>
+						</div>
+					</div>
+
+
+
 				<div class="form-group">
 					<label for="email"><b>Excluir permanentemente seu cadastro</b></label>
 					<a href="{{route('excluir-conta')}}">Excluir permanentemente sua conta?</a>

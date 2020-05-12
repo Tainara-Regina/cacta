@@ -31,6 +31,13 @@ Route::middleware(['checkplan.duration'])->group(function () {
 
 		Route::get('banco-candidato', 'AdminContratanteController@bancoCandidato')->name('site.banco-candidato');
 
+
+Route::get('renovar-vaga/{id}', 'AdminContratanteController@renovarVaga')->name('site.renovar-vaga');
+Route::get('desativar-vaga/{id}', 'AdminContratanteController@desativarVaga')->name('site.desativar-vaga');
+Route::get('ativar-vaga/{id}', 'AdminContratanteController@ativarVaga')->name('site.ativar-vaga');
+
+
+
 		Route::get('banco-candidato-detalhes/{id_candidato}', 'AdminContratanteController@bancoCandidatoDetalhe')->name('site.banco-candidato-detalhes');
 
 		Route::get('preferencias', 'AdminContratanteController@preferencias')->name('site.preferencias');
@@ -94,11 +101,6 @@ Route::get('dados-cartao', 'AdminCandidatoController@atualizarCartao')->name('da
 Route::post('gravar-atualizar-cartao-candidato', 'AdminCandidatoController@gravarAtualizarCartao')->name('gravar-atualizar-cartao');
 
 
-
-
-// Route::get('/confirmacao-enviada','RedefinirSenhaController@confirmacaoEnviada')->name('confirmacao-enviada');
-
-
 Route::get('/redefinir-senha-candidato','RedefinirSenhaController@candidato')->name('redefinir-senha-candidato');
 Route::get('/redefinir-senha-contratante','RedefinirSenhaController@contratante')->name('redefinir-senha-contrantante');
 
@@ -140,9 +142,6 @@ Route::post('/cadastrar-meus-perfil', 'AdminCandidatoController@cadastrarMeuPerf
 
 
 
-
-
-
 Route::get('/meus-dados-pessoais', 'AdminCandidatoController@meusDadosPessoais')->name('meus-dados-pessoais');
 
 
@@ -167,9 +166,6 @@ Route::get('/lista-vagas', 'VagaController@listaVaga')->name('site.lista-vaga');
 
 
 Route::get('/admin-candidato', 'AdminCandidatoController@home')->name('site.admin-candidato');
-
-
-
 
 Route::group(['prefix' => 'admin'], function () {
 	Voyager::routes();
@@ -197,25 +193,12 @@ Route::post('/vagas-inicio', 'AdminContratanteControllerAjax@vagasInicio')->name
 Route::post('/vagas-ajax', 'AdminContratanteControllerAjax@vagas')->name('vagas-ajax');
 
 
-
 Route::get('/cadastro-contratante', 'InicioController@formularioContratante')->name('formularioContratante');
 Route::get('/cadastro-candidato', 'InicioController@formularioCandidato')->name('formularioCandidato');
 
-
-
-
-
-
-
 Route::post('/confirme-email-cadastrante','CadastrarLoginController@formularioContratanteParte1')->name('site.formularioContratanteParte1');
 
-
-
 Route::post('/confirme-email-candidato','CadastrarCandidatoLoginController@formularioCandidatoParte1')->name('site.formularioCandidatoParte1');
-
-
-
-
 
 Route::get('enviar-email',function(){
 
@@ -230,20 +213,11 @@ Route::get('enviar-email',function(){
 });
 
 
-
-
 Route::get('/redefinir-senha/{key}/{tipo_cadastro}','RedefinirSenhaController@redefinir')->name('site.redefinir-senha');
-
-
-
-
-
 
 Route::get('/senha-alterada-sucesso/','RedefinirSenhaController@sucesso')->name('senha-alterada-sucesso');
 
 Route::post('/redefinir-update','RedefinirSenhaController@redefinirUpdate')->name('site.redefinir-update');
-
-
 
 
 Route::get('/confirmacao-contratante/{id}/{key}','CadastrarLoginController@validarCadastro')->name('site.confirmacaoContratante');
@@ -252,11 +226,16 @@ Route::get('/confirmacao-contratante/{id}/{key}','CadastrarLoginController@valid
 Route::get('/confirmacao-candidato/{id}/{key}','CadastrarCandidatoLoginController@validarCadastro')->name('site.confirmacaoCandidato');
 
 
-
-
-
 Route::post('/completando-cadastro','CadastrarLoginController@formularioContratanteParte2')->name('site.formularioContratanteParte2');
 
 
-
 Route::post('/completando-cadastro-candidato','CadastrarCandidatoLoginController@formularioCandidatoParte2')->name('site.formularioCandidatoParte2');
+
+
+
+
+
+
+Route::fallback(function() {
+   // return 'Hm, why did you land here somehow?';
+});

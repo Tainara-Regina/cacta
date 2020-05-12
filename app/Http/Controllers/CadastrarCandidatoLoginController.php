@@ -205,7 +205,7 @@ if ($request->disponivel_banco_candidatos == 'on') {
 
 CactaCandidatos::where('id',$request->id)->update(request()->except(['_token','password_atualizar']));
 
-dd('é nóiz manoo');
+return view('site.cadastro-realizado');
 }
 
 }

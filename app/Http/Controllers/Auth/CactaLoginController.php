@@ -42,7 +42,7 @@ class CactaLoginController extends Controller
     		return redirect()->intended(route('site.admin-contratante'));
     	}
     	// se falhar, redirect back
-    	return redirect()->back()->withImput($request->only('email','remember'))->with('message', 'Verifique se digitou os dados corretamente');
+    	return redirect()->back()->withImput($request->only('email','remember'))->with('message_contratante', 'Verifique se digitou seus dados corretamente');
     }
 
 }

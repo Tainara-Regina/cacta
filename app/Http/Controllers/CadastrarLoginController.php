@@ -190,7 +190,7 @@ $dados->codigo_seguranca_cartao = $request->codigo_seguranca_cartao;
 $dados->completou_cadastro = 1;
 $dados->save();
 
-dd($dados->logo);
+return view('site.cadastro-realizado');
 }
 
 

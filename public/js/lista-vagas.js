@@ -117,6 +117,7 @@ $(document).ready(function(){
 			skip:  $("#load_more_button").data("id"),
 		},
 		function(data, status){
+
 			$('#load_more_button').remove();
 			$(".vagas").append(data);
 		});
@@ -159,7 +160,6 @@ $(document).ready(function(){
 
 //aciona quando o filtro checkbox é selecionado
 $('input[type="checkbox"]').change(function(e) {
-	alert("ff");
  buscaVaga();
 });
 
@@ -211,5 +211,6 @@ function buscaVaga(){
 function(data, status){
   		$(".vagas").html("");
   		$(".vagas").append(data);
+	 $("#encontramos").html("Encontramos: <b>"+ $("#total_value").val() +"</b> vagas");
   	});
 }

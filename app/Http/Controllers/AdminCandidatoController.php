@@ -50,7 +50,7 @@ class AdminCandidatoController extends Controller
      ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
      ->join('cacta_users', 'cadastrar_vaga.id_usuario', '=', 'cacta_users.id')
      ->select('cadastrar_vaga.id',
-      'titulo_vaga.titulo','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade','cacta_users.uf')
+      'titulo_vaga.titulo','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade','cacta_users.uf','titulo_vaga.slug')
      ->where('cacta_users.id_segmento',$segmento_enterece)
      ->where('cadastrar_vaga.disponivel',1)
      ->limit(5)
@@ -140,7 +140,7 @@ public function deletaVaga($id){
   $autorizacao = $this->authorize('permissao_candidato_vagas',$vagas_candidatura);
 
   $vagas_candidatura->delete();
-  dd('deletou candidatura');
+ return redirect()->back()->with('message', 'Candidatura desfeita.');
 }
 
 
@@ -245,8 +245,13 @@ public function cadastrarMeusDadosPessoais(Request $request){
 //Preferencias
 public function preferencias(){
   $preferencias = CactaCandidatos::select('disponivel_banco_candidatos')->where('id',\Auth::user()->id)->first();
- // dd($preferencias);
-  return view('adminCandidato.preferencias',compact('preferencias'));
+
+
+ $preferencias = CactaCandidatos::where('id',\Auth::user()->id)->first();
+ $cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
+ $segmentos = Segmento::select('id','segmento')->get();
+
+  return view('adminCandidato.preferencias',compact('preferencias','cadastro','segmentos'));
 }
 
 //Cadastrar Preferencias
@@ -257,6 +262,7 @@ public function cadastrarPreferencias(Request $request){
   $request['disponivel_banco_candidatos'] = 0;
 }
 
+//dd($request->all());
 
 CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token']));
 
