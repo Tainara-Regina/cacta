@@ -33,9 +33,9 @@
       <!-- Links -->
       <ul class="navbar-nav"> 
 
-          <li class="nav-item active">
-            <a class="nav-link" href="{{route('site.lista-vaga')}}">Vagas</a>
-          </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{{route('site.lista-vaga')}}">Vagas</a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="{{route('formularioCandidato')}}">Cadastre-se </a>
@@ -44,7 +44,7 @@
           <a class="nav-link"  href="{{route('formularioContratante')}}">Contrate</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('blog-home')}}">Cacta blog</a>
+          <a class="nav-link" href="{{route('blog-home')}}">Blog do Cacta</a>
         </li>
 
 
@@ -127,147 +127,84 @@
 
         <div class="col-md-8 mt-2 table-responsive">
           <!-- desktop -->
-          <table class="table d-none d-sm-block">
-            <tbody>
-              <tr style="line-height: 67px;">
-                <td style="line-height: 18px;"><b>Estou procurando:</b></td>
-                <td>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="regime[]" id="inlineCheckbox1" value="fixo">
+          <div class="d-none d-sm-block filtro">
+            <div class="row py-3" style="line-height: 67px;">
+              <span style=""><b>Estou procurando:</b></span>
+              <div class="form-check form-check-inline col">
+                <ul>
+                  <li><input class="form-check-input" type="checkbox" name="regime[]" id="inlineCheckbox1" value="fixo">
                     <label class="form-check-label"  for="inlineCheckbox1">Fixo</label>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" name="regime[]" type="checkbox" id="inlineCheckbox1" value="temporario">
-                    <label class="form-check-label" for="inlineCheckbox1">Temporario</label>
-                  </div>
-                </td>
+                  </li>
+                  <li>
+                   <input class="form-check-input" name="regime[]" type="checkbox" id="inlineCheckbox1" value="temporario">
+                   <label class="form-check-label" for="inlineCheckbox1">Temporario</label>
+                 </li>
+               </ul>
+             </div>
+           </div>
 
-                <td></td>
-              </tr>
-              <tr>
-                <td><b>Area:</b></td>
-                <td>
-                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="1">
-                  <label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
-                </div>
-              </td>
-              <td>
-               <div class="form-check form-check-inline">
-                <input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="2">
-                <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
-              </div>
-            </td>
 
+           <div class="row py-3">
             <td>
-             <div class="form-check form-check-inline">
-              <input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="3">
-              <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
+              <b>Onde você quer trabalhar?</b>
+            </td>
+            <div class="form-check form-check-inline col-md-6 pb-3">
+
+              <ul class="flex-container">
+
+                @foreach($segmentos as $segmento)
+                <li class="pb-3">
+                  <input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="{{$segmento->id}}">
+                  <label class="form-check-label" for="inlineCheckbox1">{{$segmento->segmento}}</label>
+                </li>
+                @endforeach
+              </ul>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td style="border-top: unset;"></td>
-          <td style="border-top: unset;"> 
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="4">
-              <label class="form-check-label" for="inlineCheckbox1">Fotográfo(a)</label>
-            </div>
-          </td>
-          <td style="border-top: unset;">
-           <div class="form-check form-check-inline">
-            <input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="5">
-            <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
           </div>
-        </td>
-        <td style="border-top: unset;">
-         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="6">
-          <label class="form-check-label" for="inlineCheckbox1">Musico(a)</label>
         </div>
-      </td>
-
-    </tr>
-  </tbody>
-</table>
 
 
 
-<!-- mobile -->
-<table class="table  d-sm-none" style="display: none" id="filtro-mobile">
-  <tbody>
-    <tr style="line-height: 67px;">
-      <td style="line-height: 18px;"><b>Estou procurando:</b></td>
-      <td>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" name="regime[]" type="checkbox" id="inlineCheckbox1" value="fixo">
-          <label class="form-check-label" for="inlineCheckbox1">Fixo</label>
+        <!-- mobile -->
+          <div class="table pl-2 d-sm-none filtro" style="display: none" id="filtro-mobile">
+            <div class="row py-3" style="line-height: 15px;">
+              <span style=""><b>Estou procurando:</b></span>
+              <div class="form-check form-check-inline col">
+                <ul>
+                  <li><input class="form-check-input" type="checkbox" name="regime[]" id="inlineCheckbox1" value="fixo">
+                    <label class="form-check-label text-center"  for="inlineCheckbox1">Fixo</label>
+                  </li>
+                  <li>
+                   <input class="form-check-input  text-cente" name="regime[]" type="checkbox" id="inlineCheckbox1" value="temporario">
+                   <label class="form-check-label" for="inlineCheckbox1">Temporario</label>
+                 </li>
+               </ul>
+             </div>
+           </div>
+
+
+           <div class="row py-3">
+            <td>
+              <b>Onde você quer trabalhar?</b>
+            </td>
+            <div class="form-check form-check-inline col-md-6 pb-3 pt-3">
+
+              <ul class="flex-container">
+
+                @foreach($segmentos as $segmento)
+                <li class="pb-3">
+                  <input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="{{$segmento->id}}">
+                  <label class="form-check-label" for="inlineCheckbox1">{{$segmento->segmento}}</label>
+                </li>
+                @endforeach
+              </ul>
+            </div>
+          </div>
         </div>
-      </td>
-      <td>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" name="regime[]" type="checkbox" id="inlineCheckbox1" value="temporario">
-          <label class="form-check-label" for="inlineCheckbox1">Temporario</label>
-        </div>
-      </td>
+     
 
-    </tr>
-    <tr>
-      <td><b>Area:</b></td>
-      <td>
-       <div class="form-check form-check-inline">
-        <input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="1">
-        <label class="form-check-label" for="inlineCheckbox1">Barbeiro(a)</label>
-      </div>
-    </td>
-    <td>
-     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" name="area[]" id="inlineCheckbox1" value="2">
-      <label class="form-check-label" for="inlineCheckbox1">Tatuador(a)</label>
     </div>
-  </td>
-</tr>
-<tr>
-  <td style="border-top: unset;"></td>
-  <td style="border-top: unset;"> 
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" name="area[]" id="inlineCheckbox1" value="3">
-      <label class="form-check-label" for="inlineCheckbox1">Fotográfo(a)</label>
-    </div>
-  </td>
-  <td style="border-top: unset;">
-   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" name="area[]" id="inlineCheckbox1" value="4">
-    <label class="form-check-label" for="inlineCheckbox1">Bartender</label>
   </div>
-</td>
-</tr>
-
-
-<tr>
-  <td style="border-top: unset;"></td>
-  <td style="border-top: unset;">
-   <div class="form-check form-check-inline">
-    <input class="form-check-input" name="area[]" type="checkbox" id="inlineCheckbox1" value="5">
-    <label class="form-check-label" for="inlineCheckbox1">Cozinheiro(a)</label>
-  </div>
-</td>
-<td style="border-top: unset;">
- <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" name="area[]" id="inlineCheckbox1" value="6">
-  <label class="form-check-label" for="inlineCheckbox1">Músico(a)</label>
-</div>
-</td>  
-</tr>
-
-</tbody>
-</table>
-
-
-</div>
-</div>
 </div>
 
 <div class="container vagas"></div>
@@ -294,7 +231,7 @@
 
 
 
-<section class="contratando">
+<section class="contratando" id="contratar">
   <div class="container">
     <div class="row">
       <div class="col text-center py-4 titulo">
@@ -334,7 +271,7 @@
 
 <section class="blog text-center">
   <a class="navbar-brand mx-auto text-center" href="#"> <img style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
-   <p style="color:black;font-family: 'Shadows Into Light', cursive;" class="text-center mb-0 pb-0 logo">Cacta blog</p>
+   <p style="color:black;font-family: 'Shadows Into Light', cursive;" class="text-center mb-0 pb-0 logo">Blog do Cacta</p>
  </a>
 
 
@@ -344,20 +281,20 @@
 
 
 
- @foreach($ultimos_posts as $ultimo_post)
-            <div class="m-0 p-0" style='height: 338px;background-image: url("{{Voyager::image($ultimo_post->image)}}")'>
-              <a target="_blank"   href="{{route('post',$ultimo_post->slug)}}">
-                <div class="background" >
-                </div>
-                <div class="text">
-                  <span class="category">{{$ultimo_post->name}}</span>
-                  <h3>
-                    {{$ultimo_post->title}}
-                  </h3>
-                </div>
-              </a>
-            </div>
-            @endforeach  
+   @foreach($ultimos_posts as $ultimo_post)
+   <div class="m-0 p-0" style='height: 338px;background-image: url("{{Voyager::image($ultimo_post->image)}}")'>
+    <a target="_blank"   href="{{route('post',$ultimo_post->slug)}}">
+      <div class="background" >
+      </div>
+      <div class="text">
+        <span class="category">{{$ultimo_post->name}}</span>
+        <h3>
+          {{$ultimo_post->title}}
+        </h3>
+      </div>
+    </a>
+  </div>
+  @endforeach  
 </section>
 
 

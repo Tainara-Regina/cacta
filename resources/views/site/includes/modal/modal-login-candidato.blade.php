@@ -81,7 +81,7 @@
                         @endif
 
 
-                        <a class="btn btn-link" href="{{route('formularioContratante')}}">
+                        <a class="btn btn-link" href="{{route('formularioCandidato')}}">
                             Ainda não é cadastrado? Clique aqui.
                         </a>
 

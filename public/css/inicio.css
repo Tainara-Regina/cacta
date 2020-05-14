@@ -3,6 +3,43 @@ body{
  background-color: #f8f9fa!important;
 }
 
+
+.filtro  ul{
+              display: inline-flex;
+            }
+          .filtro  li {
+              list-style-type: none;
+              padding-left: 10px;
+            }
+
+           .filtro .flex-container {
+
+              display: flex;
+
+              flex-flow: row wrap;
+
+
+              /*  justify-content: space-around;*/
+
+              padding: 0;
+              margin: 0;
+              list-style: none;
+            }
+
+           .filtro .flex-item {
+              background: tomato;
+              padding: 5px;
+              width: 200px;
+              height: 150px;
+              margin-top: 10px;
+              line-height: 150px;
+              color: white;
+              font-weight: bold;
+              font-size: 3em;
+              text-align: center;
+            }
+
+
 .parallax {
   /* The image used */
   /*background-image: url("https://images.unsplash.com/photo-1540393866204-76e22cfcef22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80");*/

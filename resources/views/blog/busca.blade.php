@@ -45,7 +45,7 @@
 		<div class="container">
 			<div class="row" style="color: #fff">
 				<div class="col-md-8 mt-4 ">
-					<h2>Blog Cacta </h2>
+					<h2>Blog do Cacta </h2>
 					<h4>Evoluindo com o "pequeno GRANDE" empresário.</h4>
 					<p><i>- "Vamo junto?"</i>👊</p>
 				</div>

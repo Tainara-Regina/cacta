@@ -8,6 +8,7 @@ use App\ContratarHome;
 use App\FundoVagaHome;
 use App\ProcurarVagaHome;
 use App\Candidaturas;
+use App\Segmento;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
@@ -26,7 +27,18 @@ class VagaController extends Controller
 			'cadastrar_vaga.vaga_em_destaque','cadastrar_vaga.id','cadastrar_vaga.data_de_criacao',
 			'titulo_vaga.titulo','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade','cacta_users.nome_empresa',
 			'cacta_users.logradouro','cacta_users.numero','cadastrar_vaga.descricao'
-			,'cacta_users.bairro','cacta_users.uf','cacta_users.sobre','cadastrar_vaga.requisitos','cadastrar_vaga.desejavel','cadastrar_vaga.beneficios','cadastrar_vaga.contratacao','cadastrar_vaga.quantidade_vaga')
+			,'cacta_users.bairro','cacta_users.uf','cacta_users.sobre','cadastrar_vaga.requisitos','cadastrar_vaga.desejavel','cadastrar_vaga.beneficios','cadastrar_vaga.contratacao',
+			'cacta_users.facebook',
+			'cacta_users.instagram',
+			'cacta_users.instagram',
+			'cacta_users.twitter',
+			'faixa_salarial_de',
+			'faixa_salarial_ate',
+			
+
+
+
+			'cadastrar_vaga.quantidade_vaga')
 		->where('cadastrar_vaga.id',$id)
 		->where('titulo_vaga.slug',$slug)
 		->where('cadastrar_vaga.disponivel',1)
@@ -70,6 +82,7 @@ class VagaController extends Controller
 
 public function listaVaga(){
 
+	$segmentos = Segmento::all();
 	$vagas = DB::table('cadastrar_vaga')
 	->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
 	->join('cacta_users', 'cadastrar_vaga.id_usuario', '=', 'cacta_users.id')
@@ -86,7 +99,7 @@ public function listaVaga(){
 	->first();
 	$procurar_vaga = ProcurarVagaHome::select()->first();
 		//dd($contratar->all());
-	return view('site.lista-vagas',compact('contratar','fundo_vaga','procurar_vaga','vagas'));
+	return view('site.lista-vagas',compact('contratar','fundo_vaga','procurar_vaga','vagas','segmentos'));
 
 }
 

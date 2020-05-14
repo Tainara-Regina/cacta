@@ -17,8 +17,8 @@ class CadastrarVaga extends Migration
         $table->bigIncrements('id');
         $table->unsignedBigInteger('id_usuario');
         $table->foreign('id_usuario')->references('id')->on('cacta_users') ->onDelete('cascade');
-        $table->text('faixa_salarial_de');
-        $table->text('faixa_salarial_ate');
+        $table->string('faixa_salarial_de')->default(false);
+        $table->string('faixa_salarial_ate')->default(false);
         $table->text('contratacao');
         $table->text('quantidade_vaga');
         $table->text('titulo');

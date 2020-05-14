@@ -297,8 +297,10 @@ $quantidade_dias_vaga_plano = $this->verificaPlano(Auth::user()->id_plano)->temp
 $vaga = new cadastrarVaga;
 $vaga->id_usuario = Auth::user()->id;
 if(isset($request->a_combinar) || $request->faixa_salarial_de == null ||  $request->faixa_salarial_ate == null ){
-  $vaga->faixa_salarial = "a combinar";
+  //num faz nada não,segue o baile.
+  //$vaga->faixa_salarial = "a combinar";
 }else{
+  
  $vaga->faixa_salarial_de = $request->faixa_salarial_de;
  $vaga->faixa_salarial_ate = $request->faixa_salarial_ate;
 }

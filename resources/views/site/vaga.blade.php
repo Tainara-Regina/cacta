@@ -88,7 +88,11 @@
 			<div class="row  mb-5">
 				<div class="col">
 					<p><b>faixa salarial</b></p>
+					@if($vaga->faixa_salarial_de == false || $vaga->faixa_salarial_ate == false )
 					<p>NÃO DIVULGADA</p>
+					@else
+					<p>De ${{$vaga->faixa_salarial_de}} até ${{$vaga->faixa_salarial_ate}}</p>
+					@endif
 				</div>
 
 				<div class="col">
@@ -188,9 +192,9 @@
 				<div class="w-100 mt-3">
 					<h4 class="titulo">Redes sociais</h4>
 					<ul class="pl-0" style="list-style-type: none;font-size: 30px;">
-						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-instagram"></i></a></li>
-						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-facebook"></i></a></li>
-						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-twitter"></i></a></li>
+						<li style="display: inline-block;"><a class="nav-link" href="https://www.instagram.com/{{$vaga->instagram}}"><i style="color: rgba(0,0,0,.5);" class="fa fa-instagram"></i></a></li>
+						<li style="display: inline-block;"><a class="nav-link" href="https://pt-br.facebook.com/{{$vaga->facebook}}"><i style="color: rgba(0,0,0,.5);" class="fa fa-facebook"></i></a></li>
+						<li style="display: inline-block;"><a class="nav-link" href="https://twitter.com/{{$vaga->twitter}}"><i style="color: rgba(0,0,0,.5);" class="fa fa-twitter"></i></a></li>
 					</ul>
 				</div>
 
@@ -223,8 +227,12 @@
 
 				<div class="row">
 					<div class="col">
-						<p><b>faixa salarial</b></p>
+						<p><b>Faixa salarial</b></p>
+						@if($vaga->faixa_salarial_de == false || $vaga->faixa_salarial_ate == false )
 						<p>NÃO DIVULGADA</p>
+						@else
+						<p>De ${{$vaga->faixa_salarial_de}} até ${{$vaga->faixa_salarial_ate}}</p>
+						@endif
 					</div>
 
 					<div class="col">
@@ -326,9 +334,9 @@
 				<div class="w-100 mt-3">
 					<h4 class="titulo">Redes sociais</h4>
 					<ul class="pl-0" style="list-style-type: none;font-size: 30px;">
-						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-instagram"></i></a></li>
-						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-facebook"></i></a></li>
-						<li style="display: inline-block;"><a class="nav-link" href="#"><i style="color: rgba(0,0,0,.5);" class="fa fa-twitter"></i></a></li>
+						<li style="display: inline-block;"><a class="nav-link" href="https://www.instagram.com/{{$vaga->instagram}}"><i style="color: rgba(0,0,0,.5);" class="fa fa-instagram"></i></a></li>
+						<li style="display: inline-block;"><a class="nav-link" href="https://pt-br.facebook.com/{{$vaga->facebook}}"><i style="color: rgba(0,0,0,.5);" class="fa fa-facebook"></i></a></li>
+						<li style="display: inline-block;"><a class="nav-link" href="https://twitter.com/{{$vaga->twitter}}"><i style="color: rgba(0,0,0,.5);" class="fa fa-twitter"></i></a></li>
 					</ul>
 				</div>
 

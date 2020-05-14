@@ -23,7 +23,7 @@ class InicioController extends Controller
 		->where('cadastrar_vaga.disponivel',1)
 		->get();
 
-
+$segmentos = Segmento::all();
 
 
 		$ultimos_posts = DB::table('posts')
@@ -40,7 +40,7 @@ class InicioController extends Controller
 		->where('disponivel', 1)
 		->first();
 		$procurar_vaga = ProcurarVagaHome::select()->first();
-		return view('site.inicio',compact('contratar','fundo_vaga','procurar_vaga','ultimas_vagas','ultimos_posts'));
+		return view('site.inicio',compact('contratar','fundo_vaga','procurar_vaga','ultimas_vagas','ultimos_posts','segmentos'));
 	}
 
 

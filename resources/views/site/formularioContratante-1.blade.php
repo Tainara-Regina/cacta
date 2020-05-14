@@ -21,7 +21,6 @@
 @stop
 
 @section('conteudo')
-@include('site.includes.menu-mobile')
 <main role="main">
   @include('site.includes.menu')
   <section>

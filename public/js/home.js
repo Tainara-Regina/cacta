@@ -64,10 +64,6 @@ function buscaVaga(){
 
   var local = $('#local').val();
 
-  console.log(area);
-  console.log(regime);
-  console.log(local);
-
   $.post("/vagas-inicio",
   {
     buscar:  $("#buscar").val(),
@@ -80,9 +76,9 @@ function buscaVaga(){
 
     $("#encontramos").html("Encontramos: <b>"+data[1]+"</b> vagas");
     
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i <= data.length; i++) {
 
-      var top = "<a href='/vaga/"+data[0][i].id+'/'+data[0][i].slug+"'><div class='row  text-center py-3' style='border-bottom: 1px solid #bdbdbd'><div class='col d-none d-sm-block'><img width='80px' src='storage/"+data[0][i].logo+"'></div><div class='col'><p><b>"+data[0][i].titulo+"</b></p><p>"+data[0][i].nome_empresa+"</p></div><div class='col'><p><b>"+data[0][i].contratacao+"</b></p><p>"+data[0][i].localidade+"</p></div>";
+      var top = "<a href='/vaga/"+data[0][i].id+"/"+data[0][i].slug+"'><div class='row  text-center py-3' style='border-bottom: 1px solid #bdbdbd'><div class='col d-none d-sm-block'><img width='80px' src='storage/"+data[0][i].logo+"'></div><div class='col'><p><b>"+data[0][i].titulo+"</b></p><p>"+data[0][i].nome_empresa+"</p></div><div class='col'><p><b>"+data[0][i].contratacao+"</b></p><p>"+data[0][i].localidade+"</p></div>";
 
       var d = new Date(data[0][i].data_de_criacao);
 

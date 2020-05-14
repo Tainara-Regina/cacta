@@ -3,12 +3,12 @@
     if (i != sentence.length) {
       setTimeout(function () {
         i++
-        console.log('in timeout', i)
+       // console.log('in timeout', i)
         obj.innerHTML = sentence.substr(0, i+1) +' <em aria-hidden="true"></em>';
         write(obj, sentence, i, cb)
     }, 170)
   } else {
-      console.log(i)
+     // console.log(i)
       cb()
   }
 }
@@ -17,7 +17,7 @@ function erase (obj, cb,i) {
  if (sentence.length != 0) {
    setTimeout(function () {
      sentence = sentence.substr(0,sentence.length-1)
-     console.log('in timeout', i)
+//     console.log('in timeout', i)
      obj.innerText = sentence
      erase(obj, cb)
  }, 18/(i*(i/10000000)))

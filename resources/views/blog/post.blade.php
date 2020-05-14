@@ -85,7 +85,6 @@
 						<p>Propaganda aqui</p>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</section>
@@ -112,17 +111,6 @@
 						</div>
 						@endforeach
 					</section>
-				</div>
-			</div>
-		</div>
-
-
-
-
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h2 class="text-center"> Comentários</h2>
 				</div>
 			</div>
 		</div>

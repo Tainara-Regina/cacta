@@ -1,13 +1,13 @@
-
+@inject('menu', 'App\Http\Controllers\BlogController')
 <nav id="NavMobile" class="navbar navbar-expand-lg navbar-light bg-light menu p-0">
 
-	 <a class="navbar-brand px-3 text-center" href="#"> <img class="animated rubberBand cacto" style="height: 35px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
-		<p class="text-center mb-0 pb-0 logo">Cacta</p>
+	<a class="pl-2 text-center" href="#"> <img class="animated rubberBand cacto" style="height: 35px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
+		<p class="text-center mb-0 pb-0 logo">Blog do Cacta</p>
 	</a> 
 
 
 	<form class="form-inline" method="get" action="{{route('busca')}}">
-		<input style="width: 180px;" class="form-control  mr-sm-2" name="s" type="text" placeholder="Pesquisar">
+		<input style="width: 140px;" class="form-control  mr-sm-2" name="s" type="text" placeholder="Pesquisar">
 		<button class="btn btn-success mx-2" type="submit"><i style="font-size: 22px;" class="fa fa-search"></i></button>
 	</form>
 
@@ -19,27 +19,22 @@
 		<ul class="navbar-nav">
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<b style="color: green">Entrar</b>
+					<b style="color: black">Categorias</b>
 				</a>
+
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalCandidato">Área do candidato</a>
+					@foreach($menu->menu() as $menu)
+					<a class="dropdown-item" href="{{route('categoria',$menu->slug)}}">{{$menu->name}}</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalContratante">Área do contratante</a>
+					@endforeach
 				</div>
 			</li>
-			@if(!Request::session()->get('menu_candidato'))
+
+
 			<li class="nav-item active">
-				<a class="nav-link" href="{{route('formularioCandidato')}}">Cadastre-se</a>
+				<a class="nav-link" href="{{route('site.inicio')}}">Cacta Vagas</a>
 			</li>
-			@endif
-			@if(!Request::session()->get('menu_contratante'))
-			<li class="nav-item active">
-				<a class="nav-link"  href="{{route('formularioContratante')}}">Contrate</a>
-			</li>
-			@endif
-			<li class="nav-item">
-				<a class="nav-link" href="{{route('blog-home')}}">Cacta blog</a>
-			</li>
+
 		</ul>
 	</div>
 </nav>
