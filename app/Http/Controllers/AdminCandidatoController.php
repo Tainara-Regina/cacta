@@ -177,6 +177,8 @@ public function meuPerfil(){
 public function cadastrarMeuPerfil(Request $request){
 
  $validator = $request->validate([
+  'escolariedade' => 'required',
+   'id_segmento_enterece' => 'required',
 //   'nome' => 'required',
   // 'sobrenome' => 'required',
  //  'telefone' => 'required',
@@ -188,6 +190,8 @@ public function cadastrarMeuPerfil(Request $request){
   // 'codigo_seguranca_cartao' => 'required',
  ],
  [
+  'escolariedade.required' => 'Informe sua escolariedade.',
+   'id_segmento_enterece.required'  => 'Escolha o segmento.',
       // 'logo.required' => 'Insira o logo da sua em presa.',
       // 'segmento.required'  => 'Selecione o segmento da sua empresa.',  
       // 'descricao.required' => 'Preencha a descrição da vaga.',
@@ -211,30 +215,48 @@ public function cadastrarMeuPerfil(Request $request){
 
 public function cadastrarMeusDadosPessoais(Request $request){
 
- $validator = $request->validate([
+  $validator = $request->validate([
    'nome' => 'required',
    'sobrenome' => 'required',
- //  'telefone' => 'required',
-  // 'password_confirmation' =>'same:password_atualizar',
-  // 'id_plano' => 'required',
- //  'nome_cartao' => 'required',
-  // 'numero_cartao' => 'required',
-  // 'expira_cartao' => 'required',
+  // 'logo' => 'required|image',
+   'cep' => 'required',
+   'numero' => 'required',
+   //'sobre' => 'required',
+   'endereco' => 'required',
+   'telefone'  => 'required',
+   'data_nascimento' => 'required',
+   // 'plano' => 'required',
+   // 'nome_cartao' => 'required',
+   // 'numero_cartao' => 'required',
+   // 'expira_cartao' => 'required',
   // 'codigo_seguranca_cartao' => 'required',
+ //  'logo.image' => 'O logo precisa ser uma imagem.',
+ // 'escolariedade' => 'required',
+  // 'facebook' => 'required',
+  // 'instagram' => 'required',
+  // 'twitter' => 'required',
+  // 'site' => 'required',
  ],
  [
-      // 'logo.required' => 'Insira o logo da sua em presa.',
-      // 'segmento.required'  => 'Selecione o segmento da sua empresa.',  
-      // 'descricao.required' => 'Preencha a descrição da vaga.',
-      // 'sobre.required' => 'Escreva sobre sua empresa.',
- ]);
+  'nome.required' => 'O nome é obrigatório.',
+  'sobrenome.required' => 'O sobrenome é obrigatório.',
+  'telefone.required' => 'O número de telefone não pode ser vazio.',
+  'cep.required' => 'Verifique se inseriu o CEP.',
+  'endereco.required' => 'Insira um CEP válido.',
+  //'logo.required' => 'Insira o logo da sua em presa.',
+ // 'segmento.required'  => 'Selecione o segmento da sua empresa.',  
+ // 'sobre.required' => 'Escreva sobre sua empresa.',
+  'cep.required' => 'insira o CEP.',
+  'data_nascimento.required' => 'A data de nascimento não pode ser vazia.',
+  //'plano.required' => 'Escolha o plano que deseja.',
+ //  'escolariedade.required' => 'Informe sua escolariedade.',
+]);
 
 
  if(isset($request->password_atualizar)){
    $senha = Hash::make($request->password_atualizar);
    $request->merge(['password' => $senha]);
  }
-
  
  CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token','password_atualizar','password_confirmation']));
  return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 

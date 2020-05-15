@@ -24,7 +24,7 @@ class CursosCandidatos extends Migration
         $table->string('nome_curso')->nullable();
         $table->timestamp('inicio')->nullable();
         $table->timestamp('conclusao')->nullable();
-        $table->string('observacao')->nullable();
+        $table->text('observacao')->nullable();
         $table->timestamps();
       });
     }

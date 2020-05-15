@@ -26,6 +26,11 @@ crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{asset('/js/admin/admin-menu.js')}}"></script>
 <script type="text/javascript" src="{{asset('/js/admin/adminContratante/meus-dados.js')}}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="{{asset('/js/mascara.js')}}"></script>
+<script src="{{asset('/js/formularioContratante-2.js')}}"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#id_segmento').one('change', function (e) {
@@ -90,7 +95,7 @@ crossorigin="anonymous"></script>
 					<div class="form-group">
 						<label for="pwd">Logo da empresa</label>
 						<span class="btn btn-primary btn-file ml-5">
-							Trocar logo <input name="logo_atualizar" type='file' placeholder="Insira o logo da empresa" onchange="readURL(this);" />
+							Trocar logo <input name="logo_atualizar" accept="image/png, image/jpeg , image/jpg" type='file' placeholder="Insira o logo da empresa" onchange="readURL(this);" />
 						</span>
 
 						<img id="blah" style="max-width:180px; max-height: 180px; border-radius: 10px;    margin-left: 10px;" src="/storage/{{$cadastro->logo}}" alt="your image" />
@@ -127,7 +132,7 @@ crossorigin="anonymous"></script>
 						<label for="email">Endereço</label>
 						<input type="text" value="{{ $cadastro->cep }}" name="cep" placeholder="Digite o CEP" type="text" class="form-control cep">
 
-						<input name="endereco" value="{{ $cadastro->endereco }}" class="mt-2 form-control endereco"  rows="5" id="comment" >
+						<input name="endereco" value="{{ $cadastro->endereco }}" class="mt-2 form-control endereco"  rows="5" id="comment" readonly="readonly">
 
 						@error('numero')
 						<div class="mt-3">
@@ -150,6 +155,7 @@ crossorigin="anonymous"></script>
 					@enderror
 					<div class="form-group">
 						<label for="pwd">Fale sobre sua empresa</label>
+						<p>Faça um resumo sobre sua empresa.Tente falar sobre a tragetoria, missão, visão e valores.</p>
 						<textarea name="sobre" value="{{old('sobre')}}" placeholder="Faça um resumo sobre sua empresa.Tente falar sobre a tragetoria, missão, visão e valores." class="form-control" rows="5" id="comment"> {{ $cadastro->sobre }}</textarea>
 					</div>
 

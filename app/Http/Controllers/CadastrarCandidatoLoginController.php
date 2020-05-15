@@ -30,19 +30,34 @@ class CadastrarCandidatoLoginController extends Controller
     public function formularioCandidatoParte1(Request $request){
      // dd($request->all());
      $validator = $request->validate([
-       'nome' => 'required',
-       'sobrenome' => 'required',
-       'email' => 'required|unique:cacta_candidatos',
-       'telefone' => 'required',
-       'password' => 'required',
-       'password_confirmation' =>'required|same:password',
-     ],
-     [
+      'sexo' => 'required',
+      'data_nascimento' => 'required',
+      'nome' => 'required',
+      'sobrenome' => 'required',
+      'email' => 'required|unique:cacta_candidatos',
+      'telefone' => 'required',
+      'password' => 'required',
+      'password_confirmation' =>'required|same:password',
+      'uf' => 'required',      
+    ],
+    [
       // 'logo.required' => 'Insira o logo da sua em presa.',
       // 'segmento.required'  => 'Selecione o segmento da sua empresa.',	
       // 'descricao.required' => 'Preencha a descrição da vaga.',
-      // 'sobre.required' => 'Escreva sobre sua empresa.',
-     ]);
+
+
+     'telefone.required' => 'Insira o telefone.',
+     'password.required' => 'Defina uma senha.',
+     'email.required' => 'Insira seu e-mail.',
+     'sobrenome.required' => 'Insira seu sobrenome.',
+     'data_nascimento.required' => 'Insira sua data de nascimento.',
+     'nome.required' => 'Insira seu primeiro nome.',
+     'sexo.required' => 'Escolha o gênero.',
+     'data_nascimento.required' => 'Preencha a data de nascimento.',
+     'password_confirmation.required' => 'Confirme a senha.',
+     'uf.required' => 'Escolha seu estado.',
+
+   ]);
 
 
   //  if($request->file('logo')->isValid()){
@@ -58,8 +73,8 @@ class CadastrarCandidatoLoginController extends Controller
      $dados->uf = $request->uf;
      $dados->localidade = $request->localidade;
      $dados->telefone = $request->telefone;
-      $dados->data_nascimento = $request->data_nascimento;
-        $dados->sexo = $request->sexo;
+     $dados->data_nascimento = $request->data_nascimento;
+     $dados->sexo = $request->sexo;
      $dados->password = Hash::make($request->password);
      $dados->key_verificacao = $key;
 
@@ -130,6 +145,43 @@ class CadastrarCandidatoLoginController extends Controller
 
 
 public function formularioCandidatoParte2(Request $request){
+//dd($request->all());
+  $validator = $request->validate([
+  // 'logo' => 'required|image',
+   'id_segmento_enterece' => 'required',
+   'cep' => 'required',
+   'numero' => 'required',
+   //'sobre' => 'required',
+   'endereco' => 'required',
+   // 'plano' => 'required',
+   // 'nome_cartao' => 'required',
+   // 'numero_cartao' => 'required',
+   // 'expira_cartao' => 'required',
+  // 'codigo_seguranca_cartao' => 'required',
+ //  'logo.image' => 'O logo precisa ser uma imagem.',
+  'escolariedade' => 'required',
+  // 'facebook' => 'required',
+  // 'instagram' => 'required',
+  // 'twitter' => 'required',
+  // 'site' => 'required',
+ ],
+ [
+
+  'id_segmento_enterece.required'  => 'Escolha o segmento.',
+  'numero.required' => 'Insira o número.',
+  'cep.required' => 'Verifique se inseriu o CEP.',
+  'endereco.required' => 'Insira um CEP válido.',
+  //'logo.required' => 'Insira o logo da sua em presa.',
+ // 'segmento.required'  => 'Selecione o segmento da sua empresa.',  
+ // 'sobre.required' => 'Escreva sobre sua empresa.',
+  'cep.required' => 'insira o CEP.',
+  //'plano.required' => 'Escolha o plano que deseja.',
+   'escolariedade.required' => 'Informe sua escolariedade.',
+]);
+
+
+
+
 
  // $validator = $request->validate([
  //   'logo' => 'required|image',
@@ -192,13 +244,13 @@ public function formularioCandidatoParte2(Request $request){
 // $dados->completou_cadastro = 1;
 // $dados->save();
 
-$request->merge(['id_plano' => 1]);
-$request->merge(['completou_cadastro' => 1]);
-$request->merge(['cadastro_ativo' => 1]);
+  $request->merge(['id_plano' => 1]);
+  $request->merge(['completou_cadastro' => 1]);
+  $request->merge(['cadastro_ativo' => 1]);
 
-if ($request->disponivel_banco_candidatos == 'on') {
- $request['disponivel_banco_candidatos'] = 1;
-} else{
+  if ($request->disponivel_banco_candidatos == 'on') {
+   $request['disponivel_banco_candidatos'] = 1;
+ } else{
   $request['disponivel_banco_candidatos'] = 0;
 }
 

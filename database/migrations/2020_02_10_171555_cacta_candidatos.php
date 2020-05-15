@@ -28,10 +28,10 @@ class CactaCandidatos extends Migration
           $table->string('verificado')->default(false);
           $table->string('completou_cadastro')->default(false);
           $table->string('key_verificacao')->nullable();
-          $table->string('apresentacao')->nullable();
-          $table->string('escolariedade')->nullable();
-          $table->string('sonhos_objetivos')->nullable();
-          $table->string('sua_historia')->nullable();
+          $table->text('apresentacao')->nullable();
+          $table->text('escolariedade')->nullable();
+          $table->text('sonhos_objetivos')->nullable();
+          $table->text('sua_historia')->nullable();
           $table->string('sexo')->nullable();
           $table->string('livros')->nullable();
           $table->string('hobbies')->nullable();

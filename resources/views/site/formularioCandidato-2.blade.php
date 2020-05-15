@@ -1,7 +1,7 @@
 @extends('site.base')
 @section('titulo')
 <title>Cadastre-se contratante</title>
-@stop
+@stop 
 
 <!-- Bootstrap core CSS -->
 @section('css')
@@ -165,7 +165,7 @@
 							<label for="email"><b>Endereço</b></label>
 							<input type="text" value="{{old('cep')}}" name="cep" placeholder="Digite o CEP" type="text" class="form-control cep">
 
-							<input name="endereco" value="{{old('endereco')}}" class="mt-2 form-control endereco"  rows="5" id="comment">
+							<input name="endereco" value="{{old('endereco')}}" class="mt-2 form-control endereco"  rows="5" id="comment"  readonly="readonly">
 
 							@error('numero')
 							<div class="mt-3">

@@ -127,7 +127,6 @@ public function formularioContratanteParte2(Request $request){
    'segmento' => 'required',
    'cep' => 'required',
    'numero' => 'required',
-   'complemento' => 'required',
    'sobre' => 'required',
    'endereco' => 'required',
    'plano' => 'required',
@@ -136,12 +135,22 @@ public function formularioContratanteParte2(Request $request){
    'numero_cartao' => 'required',
    'expira_cartao' => 'required',
    'codigo_seguranca_cartao' => 'required',
+   'logo.image' => 'O logo precisa ser uma imagem.',
   // 'facebook' => 'required',
   // 'instagram' => 'required',
   // 'twitter' => 'required',
   // 'site' => 'required',
  ],
  [
+
+
+ 'nome_cartao.required' => 'Insira o nome que está no cartão.',
+   'numero_cartao.required' => 'Insira o número do cartão.',
+   'expira_cartao.required' => 'Insira a data de validade do cartão.',
+   'codigo_seguranca_cartao.required' => 'Insira o código de segurança do cartão.',
+
+   'numero.required' => 'Insira o número.',
+  'cep.required' => 'Verifique se inseriu o CEP.',
    'endereco.required' => 'Insira um CEP válido.',
    'logo.required' => 'Insira o logo da sua em presa.',
    'segmento.required'  => 'Selecione o segmento da sua empresa.',  

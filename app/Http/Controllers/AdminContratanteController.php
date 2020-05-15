@@ -416,21 +416,24 @@ public function meusDadosPessoais(){
 
 public function cadastrarMeusDados(Request $request){
 
+
  $validator = $request->validate([
+  'logo_atualizar' => 'image',
    'id_segmento' => 'required',
    'cep' => 'required',
    'numero' => 'required',
-   'complemento' => 'required',
    'sobre' => 'required',
    'endereco' => 'required',
+   
 
  ],
  [
+   'logo_atualizar.image' => 'O logo precisa ser uma imagem.',
+   'numero.required' => 'Insira o número.',
+  'cep.required' => 'Verifique se inseriu o CEP.',
    'endereco.required' => 'Insira um CEP válido.',
    'id_segmento.required'  => 'Selecione o segmento da sua empresa.',  
-   'sobre.required' => 'Escreva sobre sua empresa.',
-   'cep.required' => 'insira o CEP.',
-   
+   'sobre.required' => 'Escreva sobre sua empresa.',  
  ]);
 
 

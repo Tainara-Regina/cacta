@@ -19,11 +19,11 @@ class ExperienciasProfissionais extends Migration
         
         $table->foreign('candidato_id')->references('id')->on('cacta_candidatos') ->onDelete('cascade');
 
-        $table->string('nome_empresa')->nullable();
-        $table->string('cargo')->nullable();
+        $table->text('nome_empresa')->nullable();
+        $table->text('cargo')->nullable();
         $table->timestamp('inicio')->nullable();
         $table->timestamp('conclusao')->nullable();
-        $table->string('descricao')->nullable();
+        $table->text('descricao')->nullable();
         $table->timestamps();
       });
     }

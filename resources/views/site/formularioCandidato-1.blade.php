@@ -117,6 +117,7 @@
 						<div class="form-group">
 							<label for="estado"><b>Estado</b></label>
 							<select class="form-control" id="exampleFormControlSelect1" name="uf">
+								<option disabled selected>selecione seu estado</option>
 								<option value="AC">Acre</option>
 								<option value="AL">Alagoas</option>
 								<option value="AP">Amapá</option>

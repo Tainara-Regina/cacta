@@ -174,7 +174,7 @@ crossorigin="anonymous"></script>
 				<label for="email">Endereço</label>
 				<input type="text" value="{{ $cadastro->cep }}" name="cep" placeholder="Digite o CEP" type="text" class="form-control cep">
 
-				<input name="endereco" value="{{ $cadastro->endereco }}" class="mt-2 form-control endereco"  rows="5" id="comment">
+				<input name="endereco" value="{{ $cadastro->endereco }}" class="mt-2 form-control endereco"  rows="5" id="comment" readonly="readonly">
 
 				@error('numero')
 				<div class="mt-3">
@@ -230,7 +230,6 @@ crossorigin="anonymous"></script>
 				<label for="repetir_senha">Repita nova senha de login</label>
 				<input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control">
 			</div>
-
 
 
 			<div class="row">
