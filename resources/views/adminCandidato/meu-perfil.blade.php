@@ -25,6 +25,24 @@ crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{asset('/js/admin/admin-menu.js')}}"></script>
 <script type="text/javascript" src="{{asset('/js/admin/adminContratante/meus-dados.js')}}"></script>
 <script src="{{asset('/js/formularioContratante-2.js')}}"></script>
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$(".delete").hide();
+  //when the Add Field button is clicked
+  $("#add").click(function(e) {
+  	$(".delete").fadeIn("1500");
+    //Append a new row of code to the "#items" div
+    $("#items").append(
+    	'<div class="next-referral col-md-8 margin-bottom"><hr class="mb-5"><input type="hidden" name="experiencia" value=true><div class="form-group"><label class=" control-label" for="textinput">Nome da empresa</label><input class="form-control my-2" name="nome_empresa[]"  type="text" placeholder="Nome da empresa" class="form-control input-md"><label class=" control-label" for="textinput">Cargo</label><input class="form-control my-2" name="cargo[]"  type="text" placeholder="Cargo" class="form-control input-md"><label class=" control-label" for="textinput">Data de inicio</label><input class="form-control my-2" name="inicio[]"  type="date" placeholder="Data de inicio" class="form-control input-md"><label class=" control-label" for="textinput">Conclusão</label><input class="form-control my-2" name="conclusao[]"  type="date" placeholder="Datade termino" class="form-control input-md"><label class=" control-label" for="textinput">Descrição da vaga</label><textarea class="form-control my-2" name="descricao[]" placeholder="Descrição da vaga"></textarea></div></div>');
+});
+  $("body").on("click", ".delete", function(e) {
+  	$(".next-referral").last().remove();
+  });
+});
+
+</script>
 @stop
 
 
@@ -136,7 +154,118 @@ crossorigin="anonymous"></script>
 				<textarea class="mt-2 form-control" name="cursos_gostaria" placeholder='cursos que gostaria de fazer' rows="5" id="comment"> {{ $cadastro->cursos_gostaria}}</textarea>
 			</div>
 
-			<button type="submit" class="btn btn-primary mb-5">Prosseguir</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div class="form-horizontal">
+				<fieldset>
+
+					<!-- Form Name -->
+					<label for="hobbies" style="font-size: 22px">Experiências profissionais</label>
+
+					<!-- Text input-->
+					<div id="items" class="form-group">
+
+
+						@foreach($experiencias as $experiencia)
+						<div class="next-referral col-md-8 margin-bottom">
+							<hr class="mb-5">
+							<input type="hidden" name="experiencia" value=true>
+							<div class="form-group">
+								<label class=" control-label" for="textinput">Nome da empresa</label>
+								<input value="{{$experiencia->nome_empresa}}" class="form-control my-2"  type="text" placeholder="Nome da empresa" class="form-control input-md" readonly="readonly">
+								<label class=" control-label" for="textinput">Cargo</label>
+								<input value="{{$experiencia->cargo}}" class="form-control my-2"   type="text" placeholder="Cargo" class="form-control input-md" readonly="readonly">
+								<label class=" control-label" for="textinput">Data de inicio</label>
+								<input value="{{$experiencia->inicio}}" class="form-control my-2"   type="date" placeholder="Data de inicio" class="form-control input-md" readonly="readonly">
+								<label class=" control-label" for="textinput">Conclusão</label>
+								<input value="{{$experiencia->conclusao}}" class="form-control my-2"  type="date" placeholder="Datade termino" class="form-control input-md" readonly="readonly">
+								<label class=" control-label" for="textinput">Descrição da vaga</label>
+								<textarea class="form-control my-2" placeholder="Descrição da vaga" readonly="readonly">
+									{{$experiencia->descricao}}
+								</textarea>
+							</div>
+						</div>
+						@endforeach
+
+
+
+
+						@error('nome_empresa')
+						<span style="color: red">{{ $message }}</span>
+						@enderror
+
+
+						@error('cargo')
+						<span style="color: red">{{ $message }}</span>
+						@enderror
+
+
+
+
+						@error('inicio')
+						<span style="color: red">{{ $message }}</span>
+						@enderror
+
+
+						@error('conclusao')
+						<span style="color: red">{{ $message }}</span>
+						@enderror
+
+						
+						@error('descricao')
+						<span style="color: red">{{ $message }}</span>
+						@enderror
+
+
+					</div>
+
+				</fieldset>
+			</div>
+
+			<button id="add" class="btn add-more button-yellow uppercase" type="button"> + Adicione mais uma experiência</button>
+			<button class="delete btn button-white uppercase" type="button"> - Remova uma experiência</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div class="row">
+				<div class="col">
+					<button type="submit" class="btn btn-primary mb-5">Prosseguir</button>
+				</div>
+			</div>
+
+
+
+			
 		</form>
 
 	</div>

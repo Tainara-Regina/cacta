@@ -21,8 +21,8 @@ class ExperienciasProfissionais extends Migration
 
         $table->text('nome_empresa')->nullable();
         $table->text('cargo')->nullable();
-        $table->timestamp('inicio')->nullable();
-        $table->timestamp('conclusao')->nullable();
+        $table->date('inicio')->nullable();
+        $table->date('conclusao')->nullable();
         $table->text('descricao')->nullable();
         $table->timestamps();
       });

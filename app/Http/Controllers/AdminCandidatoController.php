@@ -11,6 +11,7 @@ use App\CadastrarVaga;
 use App\CactaUsers;
 use App\CactaCandidatos;
 use App\Segmento;
+use App\ExperienciasProfissionais;
 use App\TituloVaga;
 use App\PlanosContratante;
 use App\Candidaturas;
@@ -58,10 +59,10 @@ class AdminCandidatoController extends Controller
 
 
 
-      $total_candidaturas = Candidaturas::where('candidato_id',\Auth::user()->id)->count();
-      $total_visualizado = Candidaturas::where('candidato_id',\Auth::user()->id)
-      ->where('visualizado_pela_empresa',1)
-      ->count();
+     $total_candidaturas = Candidaturas::where('candidato_id',\Auth::user()->id)->count();
+     $total_visualizado = Candidaturas::where('candidato_id',\Auth::user()->id)
+     ->where('visualizado_pela_empresa',1)
+     ->count();
 
      return view('adminCandidato.home-admin',compact('ultimas_vagas','total_candidaturas','total_visualizado'));
    }
@@ -140,7 +141,7 @@ public function deletaVaga($id){
   $autorizacao = $this->authorize('permissao_candidato_vagas',$vagas_candidatura);
 
   $vagas_candidatura->delete();
- return redirect()->back()->with('message', 'Candidatura desfeita.');
+  return redirect()->back()->with('message', 'Candidatura desfeita.');
 }
 
 
@@ -167,8 +168,8 @@ public function meuPerfil(){
 
   $segmentos = Segmento::select('id','segmento')->get();
   $planos = PlanosContratante::all();
-
-  return view('adminCandidato.meu-perfil',compact('segmentos','planos','cadastro'));
+  $experiencias = ExperienciasProfissionais::all();
+  return view('adminCandidato.meu-perfil',compact('segmentos','planos','cadastro','experiencias'));
 }
 
 
@@ -176,9 +177,42 @@ public function meuPerfil(){
 
 public function cadastrarMeuPerfil(Request $request){
 
- $validator = $request->validate([
-  'escolariedade' => 'required',
-   'id_segmento_enterece' => 'required',
+  if ($request->experiencia == true) {
+ //dd($request->experiencia);
+    $validator = $request->validate([
+     'nome_empresa.*'  => 'required',
+     'cargo.*'  => 'required',
+     'inicio.*'  => 'required',
+     'conclusao.*'  => 'required',
+     'descricao.*'  => 'required',
+   ],
+   [
+     'nome_empresa.*'  => 'Insira o nome da empresa.',
+     'cargo.*'  => 'Insira o cargo.',
+     'inicio.*'  => 'Insira a data de inicio.',
+     'conclusao.*'  => 'Insira a data de conclusão.',
+     'descricao.*'  => 'Insira a descrição sobre a vaga.'
+   ]);
+
+
+    if($request->nome_empresa != null){
+      for ($x = 0; $x < count($request->nome_empresa); $x++) { 
+        $experiencia = new ExperienciasProfissionais;
+        $experiencia->candidato_id = \Auth::user()->id;
+        $experiencia->nome_empresa = $request->nome_empresa[$x];
+        $experiencia->inicio = $request->inicio[$x];
+        $experiencia->cargo = $request->cargo[$x];
+        $experiencia->conclusao = $request->conclusao[$x];
+        $experiencia->descricao = $request->descricao[$x];
+        $experiencia->save();
+      }
+    }
+  }
+
+
+  $validator = $request->validate([
+    'escolariedade' => 'required',
+    'id_segmento_enterece' => 'required',
 //   'nome' => 'required',
   // 'sobrenome' => 'required',
  //  'telefone' => 'required',
@@ -188,24 +222,26 @@ public function cadastrarMeuPerfil(Request $request){
   // 'numero_cartao' => 'required',
   // 'expira_cartao' => 'required',
   // 'codigo_seguranca_cartao' => 'required',
- ],
- [
-  'escolariedade.required' => 'Informe sua escolariedade.',
-   'id_segmento_enterece.required'  => 'Escolha o segmento.',
+  ],
+  [
+    'escolariedade.required' => 'Informe sua escolariedade.',
+    'id_segmento_enterece.required'  => 'Escolha o segmento.',
       // 'logo.required' => 'Insira o logo da sua em presa.',
       // 'segmento.required'  => 'Selecione o segmento da sua empresa.',  
       // 'descricao.required' => 'Preencha a descrição da vaga.',
       // 'sobre.required' => 'Escreva sobre sua empresa.',
- ]);
+  ]);
 
 
- if(isset($request->password_atualizar)){
+  if(isset($request->password_atualizar)){
    $senha = Hash::make($request->password_atualizar);
    $request->merge(['password' => $senha]);
  }
 
  
- CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token','password_atualizar','password_confirmation']));
+ 
+
+ CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token','password_atualizar','password_confirmation','nome_empresa','cargo','inicio','conclusao','descricao','experiencia']));
  return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
 }
 
@@ -253,7 +289,7 @@ public function cadastrarMeusDadosPessoais(Request $request){
 ]);
 
 
- if(isset($request->password_atualizar)){
+  if(isset($request->password_atualizar)){
    $senha = Hash::make($request->password_atualizar);
    $request->merge(['password' => $senha]);
  }
@@ -269,9 +305,9 @@ public function preferencias(){
   $preferencias = CactaCandidatos::select('disponivel_banco_candidatos')->where('id',\Auth::user()->id)->first();
 
 
- $preferencias = CactaCandidatos::where('id',\Auth::user()->id)->first();
- $cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
- $segmentos = Segmento::select('id','segmento')->get();
+  $preferencias = CactaCandidatos::where('id',\Auth::user()->id)->first();
+  $cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
+  $segmentos = Segmento::select('id','segmento')->get();
 
   return view('adminCandidato.preferencias',compact('preferencias','cadastro','segmentos'));
 }
