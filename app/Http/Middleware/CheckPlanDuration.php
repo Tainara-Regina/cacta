@@ -36,7 +36,9 @@ class CheckPlanDuration
 //se planos diferente de full, acrescentar a quantidade de dias a partir da data de criação do cadastro do 
 // usuario e ver se é igual a data atual ou se ultrapassa. Se sim, redirecionar para trocar de plano
 
-    if ($plano != 'plano') {
+   // dd($plano);
+
+    if ($plano->duracao != 'full') {
 
         $data_fim_plano = Carbon::parse($data_de_cadastro_usuario)->addDays($plano_duracao);
         $data_agora = Carbon::now();
@@ -48,7 +50,6 @@ class CheckPlanDuration
           // dd('sfhho');
           return  redirect()->route('plano-expirou');
         }
-
 
 
 

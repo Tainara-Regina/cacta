@@ -67,11 +67,11 @@ crossorigin="anonymous"></script>
 <div class="row">
 	<div class="col-md-9">
 
-		<form class="form" action="{{route('site.cadastrar-meus-dados-pessoais')}}" id="formPart1" method="POST" enctype="multipart/form-data">
+		<form class="form" action="{{route('site.cadastrar-plano-expirou')}}" id="formPart1" method="POST" enctype="multipart/form-data">
 			@csrf
 
 
-			<input type="hidden" value="{{$cadastro->id_plano}}" name="id_plano" id="plano" value="{{$cadastro->id_plano}}">
+			<input type="hidden" value="" name="id_plano" id="plano">
 
 
 
@@ -153,8 +153,6 @@ crossorigin="anonymous"></script>
 			</p>
 		</div>
 	</div>
-
-
 </div>
 
 @stop

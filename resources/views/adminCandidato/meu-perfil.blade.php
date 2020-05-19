@@ -184,11 +184,16 @@ crossorigin="anonymous"></script>
 
 
 						@foreach($experiencias as $experiencia)
+
+
+
 						<div class="next-referral col-md-8 margin-bottom">
 							<hr class="mb-5">
 							<input type="hidden" name="experiencia" value=true>
 							<div class="form-group">
+
 								<label class=" control-label" for="textinput">Nome da empresa</label>
+								<a class="btn btn-danger float-right mb-3" href="{{route('deletar.experiencia',$experiencia->candidato_id)}}">Deletar</a>
 								<input value="{{$experiencia->nome_empresa}}" class="form-control my-2"  type="text" placeholder="Nome da empresa" class="form-control input-md" readonly="readonly">
 								<label class=" control-label" for="textinput">Cargo</label>
 								<input value="{{$experiencia->cargo}}" class="form-control my-2"   type="text" placeholder="Cargo" class="form-control input-md" readonly="readonly">
@@ -239,27 +244,13 @@ crossorigin="anonymous"></script>
 				</fieldset>
 			</div>
 
-			<button id="add" class="btn add-more button-yellow uppercase" type="button"> + Adicione mais uma experiência</button>
-			<button class="delete btn button-white uppercase" type="button"> - Remova uma experiência</button>
+			<button id="add" class="add-more button-yellow uppercase btn btn-success m-2" type="button"> + Adicione mais uma experiência</button>
+			<button class="delete button-white uppercase btn btn-danger  m-2" type="button"> - Remova uma experiência</button>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<div class="row">
+			<div class="row mt-5">
 				<div class="col">
-					<button type="submit" class="btn btn-primary mb-5">Prosseguir</button>
+					<button type="submit" class="btn btn-primary mb-5">Salvar</button>
 				</div>
 			</div>
 

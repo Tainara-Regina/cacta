@@ -238,8 +238,6 @@ public function cadastrarMeuPerfil(Request $request){
    $request->merge(['password' => $senha]);
  }
 
- 
- 
 
  CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token','password_atualizar','password_confirmation','nome_empresa','cargo','inicio','conclusao','descricao','experiencia']));
  return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
@@ -247,6 +245,14 @@ public function cadastrarMeuPerfil(Request $request){
 
 
 
+
+public function deletarExperiencia($id){
+  $experiencia = ExperienciasProfissionais::where('candidato_id',$id)->first();
+ // dd($experiencia);
+  $autorizacao = $this->authorize('permissao_experiencia',$experiencia);
+  $experiencia->delete();
+  return redirect()->back()->with('message', 'Experiencia excluida.');
+}
 
 
 public function cadastrarMeusDadosPessoais(Request $request){

@@ -10,6 +10,7 @@ use App\CactaUsers;
 use App\Candidaturas;
 use App\CactaCandidatos;
 use App\PlanosContratante;
+use App\ExperienciasProfissionais;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,24 +30,30 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
+      $this->registerPolicies();
 
-        Gate::define('permissao_vagas',function(CactaUsers $user, CadastrarVaga $vagas){
+      Gate::define('permissao_vagas',function(CactaUsers $user, CadastrarVaga $vagas){
 
-         return  $user->id == $vagas->id_usuario;
-
-     });
-
-        Gate::define('permissao_candidato_vagas',function(CactaCandidatos $user, Candidaturas $vagas_candidatura){
-
-         return  $user->id == $vagas_candidatura->candidato_id;
+       return  $user->id == $vagas->id_usuario;
 
      });
 
+      Gate::define('permissao_candidato_vagas',function(CactaCandidatos $user, Candidaturas $vagas_candidatura){
 
-        Gate::define('permissao_contratante_visualizar_vagas',function(Candidaturas $candidatura, CactaCandidatos $candidatos){
+       return  $user->id == $vagas_candidatura->candidato_id;
+     });
 
-         return  $candidatura->candidato_id == $candidatos->id;
+
+
+
+      Gate::define('permissao_experiencia',function(CactaCandidatos $user,ExperienciasProfissionais $experiencia){
+       return  $user->id == $experiencia->candidato_id;
+     });
+
+
+      Gate::define('permissao_contratante_visualizar_vagas',function(Candidaturas $candidatura, CactaCandidatos $candidatos){
+
+       return  $candidatura->candidato_id == $candidatos->id;
 
      });
 
@@ -54,38 +61,38 @@ class AuthServiceProvider extends ServiceProvider
 //============================================
 //==========   Permissoes de planos    ======= 
 //============================================
-        $permissions = PlanosContratante::with('roles')->get();
+      $permissions = PlanosContratante::with('roles')->get();
 
 
-        foreach($permissions as $permission)
-        {
-           Gate::define('banco_de_candidatos',function(CactaUsers $user) use ($permission){
+      foreach($permissions as $permission)
+      {
+       Gate::define('banco_de_candidatos',function(CactaUsers $user) use ($permission){
              //dd($permission);
                 // return $user->id == $post->user_id;
 
-               if($permission->id == $user->id_plano){
+         if($permission->id == $user->id_plano){
                // dd($permission);
-                if ($permission->banco_de_candidatos == 1) {
-                   return true;
-               }else{
-                   return false;
-               }
-           }
-       });
-
-
-           Gate::define('materiais_exclusivos',function(CactaUsers $user) use ($permission){
-             //dd($permission);
-                // return $user->id == $post->user_id;
-
-             if($permission->id == $user->id_plano){
-               // dd($permission);
-                if ($permission->materiais_exclusivos == 1) {
-                 return true;
-             }else{
-                 return false;
-             }
+          if ($permission->banco_de_candidatos == 1) {
+           return true;
+         }else{
+           return false;
          }
+       }
+     });
+
+
+       Gate::define('materiais_exclusivos',function(CactaUsers $user) use ($permission){
+             //dd($permission);
+                // return $user->id == $post->user_id;
+
+         if($permission->id == $user->id_plano){
+               // dd($permission);
+          if ($permission->materiais_exclusivos == 1) {
+           return true;
+         }else{
+           return false;
+         }
+       }
      });
 //=========================================================
 //==========      Fim Permissoes de planos      ===========
@@ -96,7 +103,7 @@ class AuthServiceProvider extends ServiceProvider
 
 
 
-       }
+     }
    }
-}
+ }
 

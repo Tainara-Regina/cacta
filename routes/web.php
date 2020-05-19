@@ -62,6 +62,12 @@ Route::get('ativar-vaga/{id}', 'AdminContratanteController@ativarVaga')->name('s
 		Route::get('ver-vaga/{id}', 'AdminContratanteController@verVaga')->name('site.ver-vaga');
 
 
+
+
+
+
+
+
 		Route::get('ver-candidatos/{id}', 'AdminContratanteController@verCandidatos')->name('site.ver-candidatos');
 
 
@@ -91,6 +97,9 @@ Route::get('ativar-vaga/{id}', 'AdminContratanteController@ativarVaga')->name('s
 
 
 
+
+
+Route::post('cadastrar-plano-expirou', 'AdminContratanteController@cadastrarPlanoExpirou')->name('site.cadastrar-plano-expirou');
 
 
 
@@ -147,6 +156,13 @@ Route::get('/meus-dados-pessoais', 'AdminCandidatoController@meusDadosPessoais')
 
 
 Route::post('/admin-candidato/meus-dados-pessoais', 'AdminCandidatoController@cadastrarMeusDadosPessoais')->name('cadastrar-meus-dados-pessoais');
+
+
+
+
+Route::get('/deletar-experiencia/{id}', 'AdminCandidatoController@deletarExperiencia')->name('deletar.experiencia');
+
+
 
 
 

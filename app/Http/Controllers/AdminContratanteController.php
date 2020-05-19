@@ -14,6 +14,7 @@ use App\TituloVaga;
 use App\Candidaturas;
 use App\PlanosContratante;
 use App\CactaCandidatos;
+use App\ExperienciasProfissionais;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -300,7 +301,7 @@ if(isset($request->a_combinar) || $request->faixa_salarial_de == null ||  $reque
   //num faz nada não,segue o baile.
   //$vaga->faixa_salarial = "a combinar";
 }else{
-  
+
  $vaga->faixa_salarial_de = $request->faixa_salarial_de;
  $vaga->faixa_salarial_ate = $request->faixa_salarial_ate;
 }
@@ -371,7 +372,10 @@ public function detalhesCandidato($id_candidato,$id_vaga){
     $candidato = CactaCandidatos::select('nome','sobrenome','email','telefone','data_nascimento','sonhos_objetivos','sexo','whatsapp','escolariedade',
       'sua_historia','livros','hobbies','cursos_gostaria','cep','logradouro','bairro','localidade','uf','numero','complemento','endereco','facebook','instagram','twitter','site')->where('id',$id_candidato)->first();
 
-    return view('adminContratante.detalhes-candidato',compact('candidato'));
+    $experiencias = ExperienciasProfissionais::where('candidato_id',$id_candidato)->get();
+
+//dd($experiencias);
+    return view('adminContratante.detalhes-candidato',compact('candidato','experiencias'));
 
   }else{
    return back();
@@ -419,22 +423,22 @@ public function cadastrarMeusDados(Request $request){
 
  $validator = $request->validate([
   'logo_atualizar' => 'image',
-   'id_segmento' => 'required',
-   'cep' => 'required',
-   'numero' => 'required',
-   'sobre' => 'required',
-   'endereco' => 'required',
-   
+  'id_segmento' => 'required',
+  'cep' => 'required',
+  'numero' => 'required',
+  'sobre' => 'required',
+  'endereco' => 'required',
 
- ],
- [
-   'logo_atualizar.image' => 'O logo precisa ser uma imagem.',
-   'numero.required' => 'Insira o número.',
-  'cep.required' => 'Verifique se inseriu o CEP.',
-   'endereco.required' => 'Insira um CEP válido.',
-   'id_segmento.required'  => 'Selecione o segmento da sua empresa.',  
-   'sobre.required' => 'Escreva sobre sua empresa.',  
- ]);
+
+],
+[
+ 'logo_atualizar.image' => 'O logo precisa ser uma imagem.',
+ 'numero.required' => 'Insira o número.',
+ 'cep.required' => 'Verifique se inseriu o CEP.',
+ 'endereco.required' => 'Insira um CEP válido.',
+ 'id_segmento.required'  => 'Selecione o segmento da sua empresa.',  
+ 'sobre.required' => 'Escreva sobre sua empresa.',  
+]);
 
 
 
@@ -571,15 +575,49 @@ public function excluirConta(){
 
 
 public function planoExpirou(){
-  $cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
-  $segmentos = Segmento::select('id','segmento')->get();
-  $planos = PlanosContratante::where('id','!=',\Auth::user()->id_plano)->get();
+ $id_plano = auth()->user()->id_plano;
+ $plano = PlanosContratante::where('id',$id_plano)->first();
+ $plano_duracao = $plano->duracao;
 
-  return view('adminContratante.plano-expirou',compact('segmentos','planos','cadastro'));
+ $data_de_cadastro_usuario =  auth()->user()->created_at;
+
+
+  $data_fim_plano = \Carbon\Carbon::parse($data_de_cadastro_usuario)->addDays($plano_duracao);
+  $data_agora = \Carbon\Carbon::now();
+
+
+  if($data_agora < $data_fim_plano || $plano->duracao == 'full' )
+  {
+   return  redirect()->route('site.admin-contratante');
+  }
+
+
+
+$cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
+$segmentos = Segmento::select('id','segmento')->get();
+$planos = PlanosContratante::where('id','!=',\Auth::user()->id_plano)->get();
+
+return view('adminContratante.plano-expirou',compact('segmentos','planos','cadastro'));
 }
 
 
+public function cadastrarPlanoExpirou(Request $request){
+//dd( $request);
+ $validator = $request->validate([
+   'id_plano' => 'required',
+ ],
+ [
+      // 'logo.required' => 'Insira o logo da sua em presa.',
+      // 'segmento.required'  => 'Selecione o segmento da sua empresa.',  
+      // 'descricao.required' => 'Preencha a descrição da vaga.',
+      // 'sobre.required' => 'Escreva sobre sua empresa.',
+ ]);
 
+
+ 
+ CactaUsers::where('id',\Auth::user()->id)->update(request()->except(['_token']));
+ return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
+}
 
 public function bancoCandidato(){
   $autorizacao = $this->authorize('banco_de_candidatos');
@@ -628,8 +666,8 @@ public function renovarVaga($id){
  cadastrarVaga::where('id',$id)
  ->update(['disponivel' => 1,
    'data_de_criacao' =>  \Carbon\Carbon::now(),
-  'data_de_expiracao' => $mytime->addDays($quantidade_dias_vaga_plano)
-]);
+   'data_de_expiracao' => $mytime->addDays($quantidade_dias_vaga_plano)
+ ]);
  return redirect()->back()->with('message', 'Vaga renovada');
 }
 
