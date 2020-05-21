@@ -284,13 +284,13 @@ crossorigin="anonymous"></script>
 	</div>
 
 
-<div class="row">
-	<div class="col">
-		<h3>Experiências profissionais</h3>
+	<div class="row">
+		<div class="col">
+			<h3>Experiências profissionais</h3>
+		</div>
 	</div>
-</div>
 
-@foreach($experiencias as $experiencia)
+	@foreach($experiencias as $experiencia)
 	<div class="row">
 		<div class="col-sm-12 mt-3 mb-5">
 			<div class="row b m-1">
@@ -343,6 +343,138 @@ crossorigin="anonymous"></script>
 		</div>
 	</div>
 	@endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="row">
+		<div class="col">
+			<h3>Cursos/Workshops/Especializações</h3>
+		</div>
+	</div>
+
+	@foreach($cursos as $experiencia)
+	<div class="row">
+		<div class="col-sm-12 mt-3 mb-5">
+			<div class="row b m-1">
+				<div class="col p-3">
+					<p class=""><b>Curso</b></p>
+					
+					<div>
+						{{$experiencia->nome_curso}}
+					</div>
+
+				</div>
+
+
+
+
+				<div class="col p-3">
+					<p class=""><b>Nome da instituição</b></p>
+					
+					<div>
+						{{$experiencia->nome_instituicao}}
+					</div>
+
+				</div>
+
+
+
+
+
+				<div class="col p-3">
+					<p class=""><b>Grau</b></p>
+					<div>
+						{{$experiencia->grau}}
+					</div>
+
+				</div>
+
+
+				<div class="col-12 p-3">
+					<p class=""><b>Inicio</b></p>
+					<div>
+						{{ Carbon\Carbon::parse($experiencia->inicio)->format('d/m/Y')}}
+					</div>
+				</div>
+
+
+				<div class="col-12 p-3">
+					<p class=""><b>Conclusão</b></p>
+					<div>
+						{{ Carbon\Carbon::parse($experiencia->conclusao)->format('d/m/Y')}}
+						
+					</div>
+				</div>
+
+
+				<div class="col-12 p-3">
+					<p class=""><b>Observações</b></p>
+					
+					<div>
+						{{$experiencia->obsrvacao}}
+					</div>
+
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	@endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

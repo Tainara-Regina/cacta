@@ -14,6 +14,7 @@ use App\TituloVaga;
 use App\Candidaturas;
 use App\PlanosContratante;
 use App\CactaCandidatos;
+use App\CursosCandidatos;
 use App\ExperienciasProfissionais;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -170,29 +171,15 @@ if($quantidade_destaque_cadastrado >= $quantidade_maxima_destaque_permitido){
 
 
 
-//Ao trocar o titulo da vaga, esta query exclui todos candidatos cadastradas na vaga que não pertencem a este segmento
 
-// $vagas_diferente_do_novo_id = DB::table('cadastrar_vaga')
-// ->join('titulo_vaga', 'cadastrar_vaga.titulo', '=', 'titulo_vaga.id')
-// ->select('*')
-// ->where('cadastrar_vaga.id_usuario',\Auth::user()->id)
-// ->where('titulo_vaga.id','!=',$request->titulo)
-// ->delete();
-
-
-
-$vagas_diferente_do_novo_id = Candidaturas::where('vaga_id', $request->id_vaga)
-->delete();
-
-
-
-
-
-if($vagas_diferente_do_novo_id){
- return redirect()->route('site.candidatos-vaga'); 
+//verifica se o titulo foi realmente trocado
+$encontrou = CadastrarVaga::where('id',$request->id_vaga)
+->where('titulo','!=',$request->titulo)->count();
+if($encontrou > 0){
+  //Ao trocar o titulo da vaga, esta query exclui todos candidatos cadastradas na vaga que não pertencem a este segmento
+  $vagas_diferente_do_novo_id = Candidaturas::where('vaga_id', $request->id_vaga)
+  ->delete();
 }
-
-
 
 
 
@@ -374,8 +361,10 @@ public function detalhesCandidato($id_candidato,$id_vaga){
 
     $experiencias = ExperienciasProfissionais::where('candidato_id',$id_candidato)->get();
 
+    $cursos = CursosCandidatos::where('candidato_id',$id_candidato)->get();
+
 //dd($experiencias);
-    return view('adminContratante.detalhes-candidato',compact('candidato','experiencias'));
+    return view('adminContratante.detalhes-candidato',compact('candidato','experiencias','cursos'));
 
   }else{
    return back();
@@ -582,22 +571,22 @@ public function planoExpirou(){
  $data_de_cadastro_usuario =  auth()->user()->created_at;
 
 
-  $data_fim_plano = \Carbon\Carbon::parse($data_de_cadastro_usuario)->addDays($plano_duracao);
-  $data_agora = \Carbon\Carbon::now();
+ $data_fim_plano = \Carbon\Carbon::parse($data_de_cadastro_usuario)->addDays($plano_duracao);
+ $data_agora = \Carbon\Carbon::now();
 
 
-  if($data_agora < $data_fim_plano || $plano->duracao == 'full' )
-  {
+ if($data_agora < $data_fim_plano || $plano->duracao == 'full' )
+ {
    return  redirect()->route('site.admin-contratante');
-  }
+ }
 
 
 
-$cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
-$segmentos = Segmento::select('id','segmento')->get();
-$planos = PlanosContratante::where('id','!=',\Auth::user()->id_plano)->get();
+ $cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
+ $segmentos = Segmento::select('id','segmento')->get();
+ $planos = PlanosContratante::where('id','!=',\Auth::user()->id_plano)->get();
 
-return view('adminContratante.plano-expirou',compact('segmentos','planos','cadastro'));
+ return view('adminContratante.plano-expirou',compact('segmentos','planos','cadastro'));
 }
 
 
