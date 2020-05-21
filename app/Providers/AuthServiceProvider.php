@@ -11,6 +11,7 @@ use App\Candidaturas;
 use App\CactaCandidatos;
 use App\PlanosContratante;
 use App\ExperienciasProfissionais;
+use App\CursosCandidatos;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -49,6 +50,11 @@ class AuthServiceProvider extends ServiceProvider
       Gate::define('permissao_experiencia',function(CactaCandidatos $user,ExperienciasProfissionais $experiencia){
        return  $user->id == $experiencia->candidato_id;
      });
+
+
+      Gate::define('permissao_curso',function(CactaCandidatos $user,CursosCandidatos $curso){
+        return  $user->id == $curso->candidato_id;
+      });
 
 
       Gate::define('permissao_contratante_visualizar_vagas',function(Candidaturas $candidatura, CactaCandidatos $candidatos){

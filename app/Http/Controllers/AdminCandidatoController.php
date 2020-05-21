@@ -12,6 +12,7 @@ use App\CactaUsers;
 use App\CactaCandidatos;
 use App\Segmento;
 use App\ExperienciasProfissionais;
+use App\CursosCandidatos;
 use App\TituloVaga;
 use App\PlanosContratante;
 use App\Candidaturas;
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Carbon;
 use DB;
+use Validator;
 
 
 class AdminCandidatoController extends Controller
@@ -169,24 +171,26 @@ public function meuPerfil(){
   $segmentos = Segmento::select('id','segmento')->get();
   $planos = PlanosContratante::all();
   $experiencias = ExperienciasProfissionais::all();
-  return view('adminCandidato.meu-perfil',compact('segmentos','planos','cadastro','experiencias'));
+  $planos = PlanosContratante::all();
+  $cursos_candidatos = CursosCandidatos::all();
+
+  return view('adminCandidato.meu-perfil',compact('segmentos','planos','cadastro','experiencias','cursos_candidatos'));
 }
 
 
 
 
 public function cadastrarMeuPerfil(Request $request){
-
+//dd($request->all());
   if ($request->experiencia == true) {
- //dd($request->experiencia);
-    $validator = $request->validate([
-     'nome_empresa.*'  => 'required',
+$validator = Validator::make($request->all(), [
+    'nome_empresa.*'  => 'required',
      'cargo.*'  => 'required',
      'inicio.*'  => 'required',
      'conclusao.*'  => 'required',
      'descricao.*'  => 'required',
-   ],
-   [
+],
+[
      'nome_empresa.*'  => 'Insira o nome da empresa.',
      'cargo.*'  => 'Insira o cargo.',
      'inicio.*'  => 'Insira a data de inicio.',
@@ -194,6 +198,9 @@ public function cadastrarMeuPerfil(Request $request){
      'descricao.*'  => 'Insira a descrição sobre a vaga.'
    ]);
 
+if ($validator->fails()) {
+  return redirect()->back()->with('experiencia-fail', 'Preencha todos os campos da experiência profissional.');
+}
 
     if($request->nome_empresa != null){
       for ($x = 0; $x < count($request->nome_empresa); $x++) { 
@@ -208,6 +215,53 @@ public function cadastrarMeuPerfil(Request $request){
       }
     }
   }
+
+
+// ======================================================================================
+
+  if ($request->cursos == true) {
+$validator = Validator::make($request->all(), [
+    'nome_curso.*'  => 'required',
+    'nome_instituicao.*'  => 'required',
+     'grau.*'  => 'required',
+     'inicio.*'  => 'required',
+     'conclusao.*'  => 'required',
+     'observacao.*'  => 'required',
+],
+[
+     'nome_instituicao.*'  => 'Insira o nome da instituição.',
+    'nome_curso.*'  => 'Insira o curso.',
+     'grau.*'  => 'Insira o cargo.',
+     'inicio.*'  => 'Insira a data de inicio.',
+     'conclusao.*'  => 'Insira a data de conclusão.',
+     'descricao.*'  => 'Insira a descrição sobre a vaga.'
+   ]);
+
+if ($validator->fails()) {
+  return redirect()->back()->with('cursos-fail', 'Preencha todos os campos do curso.');
+}
+
+    if($request->nome_curso != null){
+      for ($x = 0; $x < count($request->nome_curso); $x++) { 
+        $curso = new CursosCandidatos;
+        $curso->candidato_id = \Auth::user()->id;
+        $curso->nome_curso = $request->nome_curso[$x];
+        $curso->nome_instituicao = $request->nome_instituicao[$x];
+        $curso->inicio = $request->inicio[$x];
+        $curso->grau = $request->grau[$x];
+        $curso->conclusao = $request->conclusao[$x];
+        $curso->observacao = $request->observacao[$x];
+        $curso->save();
+      }
+    }
+  }
+
+// ======================================================================================
+
+
+
+
+
 
 
   $validator = $request->validate([
@@ -233,13 +287,7 @@ public function cadastrarMeuPerfil(Request $request){
   ]);
 
 
-  if(isset($request->password_atualizar)){
-   $senha = Hash::make($request->password_atualizar);
-   $request->merge(['password' => $senha]);
- }
-
-
- CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token','password_atualizar','password_confirmation','nome_empresa','cargo','inicio','conclusao','descricao','experiencia']));
+ CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token','nome_empresa','cargo','inicio','conclusao','descricao','experiencia','cursos','nome_curso','nome_instituicao','grau','observacao']));
  return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
 }
 
@@ -247,12 +295,29 @@ public function cadastrarMeuPerfil(Request $request){
 
 
 public function deletarExperiencia($id){
-  $experiencia = ExperienciasProfissionais::where('candidato_id',$id)->first();
+  $experiencia = ExperienciasProfissionais::where('id',$id)->first();
  // dd($experiencia);
   $autorizacao = $this->authorize('permissao_experiencia',$experiencia);
   $experiencia->delete();
   return redirect()->back()->with('message', 'Experiencia excluida.');
 }
+
+
+
+
+
+
+
+public function deletarCurso($id){
+  $curso = CursosCandidatos::where('id',$id)->first();
+ //dd($curso);
+  $autorizacao = $this->authorize('permissao_curso',$curso);
+  $curso->delete();
+  return redirect()->back()->with('message', 'Curso excluido.');
+}
+
+
+
 
 
 public function cadastrarMeusDadosPessoais(Request $request){

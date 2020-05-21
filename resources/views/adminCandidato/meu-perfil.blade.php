@@ -43,6 +43,32 @@ crossorigin="anonymous"></script>
 });
 
 </script>
+
+
+
+
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$(".delete-2").hide();
+  //when the Add Field button is clicked
+  $("#add-2").click(function(e) {
+  	$(".delete-2").fadeIn("1500");
+    //Append a new row of code to the "#items" div
+    $("#items-2").append(
+    	'<div class="next-referral-2 col-md-8 margin-bottom"><hr class="mb-5"><input type="hidden" name="cursos" value=true><div class="form-group"><label class=" control-label" for="textinput">Curso</label><input class="form-control my-2" name="nome_curso[]"  type="text" placeholder="Curso" class="form-control input-md"><label class=" control-label" for="textinput">Nome da instituição</label><input class="form-control my-2" name="nome_instituicao[]"  type="text" placeholder="Nome da instituição" class="form-control input-md"><label class=" control-label" for="textinput">Grau</label><input class="form-control my-2" name="grau[]"  type="text" placeholder="Grau" class="form-control input-md"><label class=" control-label" for="textinput">Data de inicio</label><input class="form-control my-2" name="inicio[]"  type="date" placeholder="Data de inicio" class="form-control input-md"><label class=" control-label" for="textinput">Conclusão</label><input class="form-control my-2" name="conclusao[]"  type="date" placeholder="Datade termino" class="form-control input-md"><label class=" control-label" for="textinput">Observação</label><textarea class="form-control my-2" name="observacao[]" placeholder="Observação"></textarea></div></div>');
+});
+  $("body").on("click", ".delete-2", function(e) {
+  	$(".next-referral-2").last().remove();
+  });
+});
+
+</script>
+
+
+
 @stop
 
 
@@ -58,8 +84,29 @@ crossorigin="anonymous"></script>
 				<h4>{{ session()->get('message') }}</h4>
 			</div>
 			@endif
+
+			@if(session()->has('cursos-fail'))
+			<div class="alert alert-danger alert-dismissible py-3 mr-4">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<h5>{{ session()->get('cursos-fail') }}</h5>
+			</div>
+			@endif
+
+
+
+			@if(session()->has('experiencia-fail'))
+			<div class="alert alert-danger alert-dismissible py-3 mr-4">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<h5>{{ session()->get('experiencia-fail') }}</h5>
+			</div>
+			@endif
+
+
+
 		</div>
 
+
+		
 		<a href="{{route('cactalogout')}}">
 			<div class="col text-right btn-sair  p-0 m-0">
 				<i class="fas fa-sign-out-alt" style="">
@@ -156,96 +203,115 @@ crossorigin="anonymous"></script>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			@if(session()->has('experiencia-fail'))
+			<div class="alert alert-danger alert-dismissible py-3 mr-4">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<h5>{{ session()->get('experiencia-fail') }}</h5>
+			</div>
+			@endif
 
 			<div class="form-horizontal">
 				<fieldset>
-
 					<!-- Form Name -->
 					<label for="hobbies" style="font-size: 22px">Experiências profissionais</label>
-
 					<!-- Text input-->
 					<div id="items" class="form-group">
-
-
 						@foreach($experiencias as $experiencia)
-
-
-
-						<div class="next-referral col-md-8 margin-bottom">
+						<div class="col-md-8 margin-bottom">
 							<hr class="mb-5">
-							<input type="hidden" name="experiencia" value=true>
 							<div class="form-group">
 
 								<label class=" control-label" for="textinput">Nome da empresa</label>
-								<a class="btn btn-danger float-right mb-3" href="{{route('deletar.experiencia',$experiencia->candidato_id)}}">Deletar</a>
-								<input value="{{$experiencia->nome_empresa}}" class="form-control my-2"  type="text" placeholder="Nome da empresa" class="form-control input-md" readonly="readonly">
+								<a class="btn btn-danger float-right mb-3"  href="{{route('deletar.experiencia',$experiencia->id)}}">Deletar</a>
+								<p>{{$experiencia->nome_empresa}}</p>
+
 								<label class=" control-label" for="textinput">Cargo</label>
-								<input value="{{$experiencia->cargo}}" class="form-control my-2"   type="text" placeholder="Cargo" class="form-control input-md" readonly="readonly">
+								<p>{{ $experiencia->cargo}}</p>
+
 								<label class=" control-label" for="textinput">Data de inicio</label>
-								<input value="{{$experiencia->inicio}}" class="form-control my-2"   type="date" placeholder="Data de inicio" class="form-control input-md" readonly="readonly">
+								<p>{{ Carbon\Carbon::parse($experiencia->inicio)->format('d/m/Y') }}</p>
+
 								<label class=" control-label" for="textinput">Conclusão</label>
-								<input value="{{$experiencia->conclusao}}" class="form-control my-2"  type="date" placeholder="Datade termino" class="form-control input-md" readonly="readonly">
+								<p>{{ Carbon\Carbon::parse($experiencia->conclusao)->format('d/m/Y') }}</p>
+
 								<label class=" control-label" for="textinput">Descrição da vaga</label>
-								<textarea class="form-control my-2" placeholder="Descrição da vaga" readonly="readonly">
-									{{$experiencia->descricao}}
-								</textarea>
+								<p>{{$experiencia->descricao}}</p>
+
 							</div>
 						</div>
 						@endforeach
-
-
-
-
-						@error('nome_empresa')
-						<span style="color: red">{{ $message }}</span>
-						@enderror
-
-
-						@error('cargo')
-						<span style="color: red">{{ $message }}</span>
-						@enderror
-
-
-
-
-						@error('inicio')
-						<span style="color: red">{{ $message }}</span>
-						@enderror
-
-
-						@error('conclusao')
-						<span style="color: red">{{ $message }}</span>
-						@enderror
-
-						
-						@error('descricao')
-						<span style="color: red">{{ $message }}</span>
-						@enderror
-
-
 					</div>
-
 				</fieldset>
 			</div>
 
 			<button id="add" class="add-more button-yellow uppercase btn btn-success m-2" type="button"> + Adicione mais uma experiência</button>
 			<button class="delete button-white uppercase btn btn-danger  m-2" type="button"> - Remova uma experiência</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			@if(session()->has('cursos-fail'))
+			<div class="alert alert-danger alert-dismissible py-3 mr-4">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<h5>{{ session()->get('cursos-fail') }}</h5>
+			</div>
+			@endif
+
+			<div class="form-horizontal mt-5">
+				<fieldset>
+					<!-- Form Name -->
+					<label for="hobbies-2" style="font-size: 22px">Cursos/Workshops/Certicações</label>
+					<!-- Text input-->
+					<div id="items-2" class="form-group">
+						@foreach($cursos_candidatos as $experiencia)
+						<div class="col-md-8 margin-bottom">
+							<hr class="mb-5">
+							<div class="form-group">
+
+								<label class=" control-label" for="textinput">Curso</label>
+								<a class="btn btn-danger float-right mb-3"  href="{{route('deletar.curso',$experiencia->id)}}">Deletar</a>
+								<p>{{$experiencia->nome_curso}}</p>
+
+								<label class=" control-label" for="textinput">Nome da instituição</label>
+								<p>{{ $experiencia->nome_instituicao}}</p>
+
+								<label class=" control-label" for="textinput">Grau</label>
+								<p>{{ $experiencia->grau}}</p>
+
+
+								<label class=" control-label" for="textinput">Data de inicio</label>
+								<p>{{ Carbon\Carbon::parse($experiencia->inicio)->format('d/m/Y') }}</p>
+
+								<label class=" control-label" for="textinput">Conclusão</label>
+								<p>{{ Carbon\Carbon::parse($experiencia->conclusao)->format('d/m/Y') }}</p>
+
+								<label class=" control-label" for="textinput">Observação</label>
+								<p>{{$experiencia->observacao}}</p>
+
+							</div>
+						</div>
+						@endforeach
+					</div>
+				</fieldset>
+			</div>
+
+			<button id="add-2" class="add-more-2 button-yellow uppercase btn btn-success m-2" type="button"> + Adicione mais um curso</button>
+			<button class="delete-2 button-white uppercase btn btn-danger  m-2" type="button"> - Remova um curso</button>
+
+
 
 
 			<div class="row mt-5">

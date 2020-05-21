@@ -163,6 +163,10 @@ Route::post('/admin-candidato/meus-dados-pessoais', 'AdminCandidatoController@ca
 Route::get('/deletar-experiencia/{id}', 'AdminCandidatoController@deletarExperiencia')->name('deletar.experiencia');
 
 
+Route::get('/deletar-curso/{id}', 'AdminCandidatoController@deletarCurso')->name('deletar.curso');
+
+
+
 
 
 
