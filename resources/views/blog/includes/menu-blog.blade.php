@@ -60,7 +60,3 @@
 
 </div>
 </nav>
-
-@include('site.includes.modal.modal-login-contratante')
-
-@include('site.includes.modal.modal-login-candidato')

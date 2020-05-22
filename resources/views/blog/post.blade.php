@@ -74,11 +74,11 @@
 				</div>
 
 				<div class="col">
-					<div class="w-100" style="background-color: red;height: 200px">
-						<p>Propaganda aqui</p>
+					<div class="w-100" style="height: 200px">
+						<!-- anuncio -->
 					</div>
-					<div class="w-100 mt-5" style="background-color: red;height: 200px">
-						<p>Propaganda aqui</p>
+					<div class="w-100 mt-5" style="height: 200px">
+						<!-- anuncio -->
 					</div>
 				</div>
 			</div>

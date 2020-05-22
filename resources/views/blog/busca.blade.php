@@ -111,8 +111,8 @@
 
 
 			<div class="col-md-4">
-				<div class="w-100" style="background-color: red;height: 200px">
-					<p>Propaganda aqui</p>
+				<div class="w-100" style="height: 200px">
+					<!-- anuncio -->
 				</div>
 			</div>
 
@@ -120,7 +120,7 @@
 	</div>
 @stop
 
-@section('rodape')
+    @section('rodape')
 	@include('site.includes.rodape')
 	@stop
 
