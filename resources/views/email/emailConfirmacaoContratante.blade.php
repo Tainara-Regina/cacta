@@ -1,9 +1,8 @@
 @component('mail::message')
 <h2>Olá {{$user->name}}!</h2>
-<p>Clique no link abaixo para confirmar seu e continuar seu cadastro</p>
+<p>Seja muito bem vindo!</p>
+<p>Tenho certeza que vamos te ajudar a encontrar os melhores candidatos para sua equipe.</p>
+<p>Clique no botão abaixo para confirmar e continuar seu cadastro.</p>
 @component('mail::button',['url' => route('site.confirmacaoContratante',[$user->id,$user->key])])
-link de continuação
-@endcomponent
-
-
+Confirmar
 @endcomponent

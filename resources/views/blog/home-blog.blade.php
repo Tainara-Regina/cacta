@@ -1,103 +1,62 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="cacta">
-	<title>Vagas</title>
+@extends('blog.base')
 
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
-	<meta name="theme-color" content="#754026">
-	<link rel="stylesheet" href="{{asset('/css/inicio.css')}}">
-	<link rel="stylesheet" href="{{asset('/css/menu.css')}}">
-	<link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
-	<link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Kulim+Park&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-	<style type="text/css">
-		*{
-			font-family: 'Kulim Park', sans-serif;
-		}
+@section('titulo')
+<title>Blog do Cacta - Tudo para o empreendedor. Marketing digital, empreendedorismo, e muito mais.</title>
+@stop
 
-		a{
-			color: #555;
-		}
+@section('css')
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
+<meta name="theme-color" content="#754026">
+<link rel="stylesheet" href="{{asset('/css/inicio.css')}}">
+<link rel="stylesheet" href="{{asset('/css/menu.css')}}">
+<link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kulim+Park&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<style type="text/css">
+	*{
+		font-family: 'Kulim Park', sans-serif;
+	}
 
-		a:hover{
-			color: green;
-		}
+	a{
+		color: #555;
+	}
 
-	</style>
-</head>
+	a:hover{
+		color: green;
+	}
 
-
-<body>
-
-	@include('blog.includes.menu-blog-mobile')
-	@include('blog.includes.menu-blog')
-	
-	
-	<section class="mb-5 pb-5" style="background-color: #000;" >
-		<div class="container">
-			<div class="row" style="color: #fff">
-				<div class="col-md-8 mt-4 ">
-					<h2>Blog do Cacta </h2>
-					<h4>Evoluindo com o "pequeno GRANDE" emprendedor.</h4>
-					<p><i>"Pensamos sempre em soluções para ajudar no sucesso do pequeno empreendedor.<br> Vamos juntos?" </i>👊 <br><span>- Cacta</span></p>
-
-				</div>
-
-				<div class="col mt-5 mb-3">
-					<i> <span class="text-center staticText" id = "staticText" >"Ser empreendedor é <span style="color: green" id="typeline" ></span>"</span></i> <br>
-					-<span class="cacta"> Cacta</span>
-				</div>
-			</div>
-
-
-			<!-- <div class="row">
-				<div class="col" style="color: #fff">
-					<div class="col w pb-5">
-						<i> <span class="text-center staticText" id = "staticText" >"Ser empreendedor é <span style="color: green" id="typeline" ></span>"</span></i> <br>
-						-<span class="cacta"> Cacta</span>
-					</div>
-				</div>
-			</div> -->
-
-			<div class="row">
-				
-				<div  class="col-md-4 mb-2 text-center">
-					<div class="h-100  p-3" style="background-color: #fff;border-radius: 20px;box-shadow: 15px 11px 16px -8px rgba(0,0,0,0.25);">
-						<p><b>Calculadora do barbeiro</b></p>
-						<p>Fazer os calculos do seu lucro nunca foi tão fácil. Criamos uma calculadora para facilitar sua vida na hora de somar seus lucros.</p>
-						<button type="button" class="btn btn-warning">CONHECER</button>
-					</div>
-				</div>
+</style>
+@stop
 
 
 
-				<div  class="col-md-4 mb-2 text-center">
-					<div class="h-100  p-3" style="background-color: #fff;border-radius: 20px;box-shadow: 15px 11px 16px -8px rgba(0,0,0,0.25);">
-						<p><b>App para encontrar uma vaga de emprego</b></p>
-						<p>Está procurando uma vaga de emprego? Conheça nosso novo App e encontre<br> "aquela vaga". O App também oferece outras ferramentas importantes.</p>
-						<button type="button" class="btn btn-warning">CONHECER</button>
-					</div>
-				</div>
 
-
-
-				<div class="col-md-4 mb-2 text-center">
-					<div class="h-100  p-3" style="background-color: #fff;border-radius: 20px;box-shadow: 15px 11px 16px -8px rgba(0,0,0,0.25);">
-						<p><b>Para você ter a melhor equipe</b></p>
-						<p>Contrate as pessoas certas para sua equipe no Cacta Vagas</p>
-						<button type="button" class="btn btn-warning">CONHECER</button>
-					</div>
-				</div>
+@section('conteudo')
+<section class="mb-5 pb-5" style="background-color: #000;" >
+	<div class="container">
+		<div class="row" style="color: #fff">
+			<div class="col-md-8 mt-4 ">
+				<h2>Blog do Cacta </h2>
+				<h4>Evoluindo com o "pequeno GRANDE" emprendedor.</h4>
+				<p><i>"Pensamos sempre em soluções para ajudar no sucesso do pequeno empreendedor.<br> Vamos juntos?" </i>👊 <br><span>- Cacta</span></p>
 
 			</div>
+
+			<div class="col mt-5 mb-3">
+				<i> <span class="text-center staticText" id = "staticText" >"Ser empreendedor é <span style="color: green" id="typeline" ></span>"</span></i> <br>
+				-<span class="cacta"> Cacta</span>
+			</div>
+		</div>
+
+
+
+			<!-- Cards aqui -->
+
+
 		</div>
 	</section>
 
@@ -209,20 +168,21 @@
 
 		</div>
 	</div>
+	@stop
 
-
-
+	@section('rodape')
 	@include('site.includes.rodape')
+	@stop
+
+
+
+	@section('js')
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="{{asset('js/slick.js')}}"></script>
 	<script src="{{asset('js/home.js')}}"></script>
 	<script type="text/javascript" src="{{asset('/js/admin/adminContratante/home-admin.js')}}"></script>
-
-</body>
-</html>
-
-
+	@stop
 
 

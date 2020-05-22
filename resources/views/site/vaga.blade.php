@@ -1,30 +1,27 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="cacta">
-	<title>Vagas</title>
-
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
-	<meta name="theme-color" content="#754026">
-	<link rel="stylesheet" href="{{asset('/css/inicio.css')}}">
-	<link rel="stylesheet" href="{{asset('/css/menu.css')}}">
-	<link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
-	<link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Kulim+Park&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-</head>
+@extends('site.base')
 
 
-<body>
+
+@section('css')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
+<meta name="theme-color" content="#754026">
+<link rel="stylesheet" href="{{asset('/css/inicio.css')}}">
+<link rel="stylesheet" href="{{asset('/css/menu.css')}}">
+<link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kulim+Park&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+@stop
 
 
-	@include('site.includes.menu-mobile')
+@section('titulo')
+<title>Cacta Vagas - Vagas</title>
+@stop
+
+
+@section('conteudo')
 	@include('site.includes.menu')
 	<section class="jumbotron text-center parallax" 
 	@if(isset($fundo_vaga->imagem))
@@ -42,15 +39,11 @@
 	</i></p>
 </section>
 
-
-
-
 <div class="container">
 	<section class="p-3 voltar">
 		<a href="{{ URL::previous() }}"><i class="fa fa-reply"></i> VOLTAR </a>
 	</section>
 </div>
-
 
 <section class="d-sm-none vaga">
 	<!-- Nav tabs -->
@@ -67,12 +60,6 @@
 	<div class="tab-content">
 		<div id="home" class="container tab-pane active"><br>
 
-
-			
-
-
-
-
 			<div class="row">
 				<div class="col-12">
 					<h1 class="name titulo">{{$vaga->titulo}}
@@ -83,8 +70,6 @@
 				</div>
 			</div>
 			
-
-
 			<div class="row  mb-5">
 				<div class="col">
 					<p><b>faixa salarial</b></p>
@@ -166,10 +151,7 @@
 				</div>
 			</div>
 
-
-
 		</div>
-
 
 		<div id="menu1" class="container tab-pane fade"><br>
 			<div class="col-12">
@@ -352,12 +334,9 @@
 					<p class="p-5 my-5">Publicidade aqui</p>
 				</div>
 			</div>	
-
 		</div>
 	</div>
 </section>
-
-
 
 
 @include('site.includes.rodape')
@@ -381,10 +360,4 @@
 		});
 	});
 </script>
-
-</body>
-</html>
-
-
-
-
+@stop

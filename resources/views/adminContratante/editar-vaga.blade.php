@@ -2,7 +2,7 @@
 
 
 @section('titulo')
-<title>Cacta - Admin Home</title>
+<title>Cacta Vagas - Editar vaga</title>
 @stop
 
 @section('css')

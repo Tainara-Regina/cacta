@@ -1,6 +1,7 @@
 @extends('site.base')
+
 @section('titulo')
-<title>Cadastre-se contratante</title>
+<title>Cacta Vagas - Cadastre-se para começar a contratar</title>
 @stop
 
 <!-- Bootstrap core CSS -->

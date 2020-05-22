@@ -45,9 +45,9 @@
   </li>
 
 
-  <li class="nav-item active">
+  <!-- <li class="nav-item active">
     <a class="nav-link" href="{{route('site.inicio')}}">Cacta Vagas</a>
-  </li>
+  </li> -->
 
   <li class="nav-item active">
    <form class="form-inline" method="get" action="{{route('busca')}}">

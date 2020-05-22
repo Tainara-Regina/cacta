@@ -1,3 +1,52 @@
+<!-- Cards do blog -->
+
+
+<div class="row">
+        <div  class="col-md-4 mb-2 text-center">
+          <div class="h-100  p-3" style="background-color: #fff;border-radius: 20px;box-shadow: 15px 11px 16px -8px rgba(0,0,0,0.25);">
+            <p><b>Calculadora do barbeiro</b></p>
+            <p>Fazer os calculos do seu lucro nunca foi tão fácil. Criamos uma calculadora para facilitar sua vida na hora de somar seus lucros.</p>
+            <button type="button" class="btn btn-warning">CONHECER</button>
+          </div>
+        </div>
+
+
+
+        <div  class="col-md-4 mb-2 text-center">
+          <div class="h-100  p-3" style="background-color: #fff;border-radius: 20px;box-shadow: 15px 11px 16px -8px rgba(0,0,0,0.25);">
+            <p><b>App para encontrar uma vaga de emprego</b></p>
+            <p>Está procurando uma vaga de emprego? Conheça nosso novo App e encontre<br> "aquela vaga". O App também oferece outras ferramentas importantes.</p>
+            <button type="button" class="btn btn-warning">CONHECER</button>
+          </div>
+        </div>
+
+
+
+        <div class="col-md-4 mb-2 text-center">
+          <div class="h-100  p-3" style="background-color: #fff;border-radius: 20px;box-shadow: 15px 11px 16px -8px rgba(0,0,0,0.25);">
+            <p><b>Para você ter a melhor equipe</b></p>
+            <p>Contrate as pessoas certas para sua equipe no Cacta Vagas</p>
+            <button type="button" class="btn btn-warning">CONHECER</button>
+          </div>
+        </div>
+      </div>
+
+<!-- Fim Cards do blog -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @extends('site.base')
 
 @section('css')

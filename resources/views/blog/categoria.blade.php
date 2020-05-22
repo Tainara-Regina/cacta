@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="cacta">
-	<title>Vagas</title>
+@extends('blog.base')
 
+
+	@section('titulo')
+<title>Blog do Cacta - Tudo para o empreendedor. Marketing digital, empreendedorismo, e muito mais.</title>
+@stop
+
+@section('css')
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
@@ -32,15 +31,11 @@
 		}
 
 	</style>
-</head>
+	@stop
 
 
-<body>
 
-	@include('blog.includes.menu-blog-mobile')
-	@include('blog.includes.menu-blog')
-	
-	
+@section('conteudo')
 	<section style="background-color: #000;" >
 		<div class="container">
 			<div class="row" style="color: #fff">
@@ -120,19 +115,21 @@
 
 		</div>
 	</div>
+@stop
 
 
-
+	@section('rodape')
 	@include('site.includes.rodape')
+	@stop
+
+		@section('js')
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="{{asset('js/slick.js')}}"></script>
 	<script src="{{asset('js/home.js')}}"></script>
 	<script type="text/javascript" src="{{asset('/js/admin/adminContratante/home-admin.js')}}"></script>
-
-</body>
-</html>
+	@stop
 
 
 

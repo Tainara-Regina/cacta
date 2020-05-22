@@ -30,7 +30,7 @@ class confirmacaoCadastroContratante extends Mailable
     public function build()
     {
 
-       $this->subject('Cacta - Confirmação de cadastro');
+       $this->subject('Cacta Vagas - Confirmação de cadastro');
        $this->to($this->user->email,$this->user->name);
 
        return $this->markdown('email.emailConfirmacaoContratante',[

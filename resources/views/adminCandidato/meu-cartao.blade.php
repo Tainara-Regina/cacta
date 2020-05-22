@@ -1,7 +1,7 @@
 @extends('adminCandidato.base')
 
 @section('titulo')
-<title>Cacta - Admin Home</title>
+<title>Cacta Vagas - Cadastre seus dados</title>
 @stop
 
 @section('css')

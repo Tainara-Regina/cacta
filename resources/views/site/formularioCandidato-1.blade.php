@@ -17,7 +17,7 @@
 
 
 @section('titulo')
-<title>Cadastre-se contratante</title>
+<title>Cacta Vagas - Cadastre e encontre uma vaga</title>
 @stop
 
 @section('conteudo')

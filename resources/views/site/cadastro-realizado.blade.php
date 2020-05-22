@@ -17,7 +17,7 @@
 
 
 @section('titulo')
-<title>Cadastre-se contratante</title>
+<title>Cacta Vagas - Cadastro realizado com sucesso</title>
 @stop
 
 @section('conteudo')

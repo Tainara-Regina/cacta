@@ -17,7 +17,7 @@
 
 
 @section('titulo')
-<title>Cadastre-se contratante</title>
+<title>Cacta Vagas - E-mail de confirmação de senha enviado com sucesso</title>
 @stop
 
 @section('conteudo')

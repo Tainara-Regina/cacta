@@ -19,6 +19,18 @@ Route::get('/blog/{id}', 'BlogController@post')->name('post');
 Route::get('/busca', 'BlogController@busca')->name('busca');
 Route::get('/categoria/{categoria}', 'BlogController@categoria')->name('categoria');
 
+Route::group(['prefix' => 'cacta-sucesso-painel'], function () {
+	Voyager::routes();
+});
+
+
+//==================================================
+//====== Redirecionamento Pro blog ==========
+//==================================================
+Route::middleware(['redirect'])->group(function () {
+
+
+
 
 
 //Rotas do admin contratante
@@ -32,9 +44,9 @@ Route::middleware(['checkplan.duration'])->group(function () {
 		Route::get('banco-candidato', 'AdminContratanteController@bancoCandidato')->name('site.banco-candidato');
 
 
-Route::get('renovar-vaga/{id}', 'AdminContratanteController@renovarVaga')->name('site.renovar-vaga');
-Route::get('desativar-vaga/{id}', 'AdminContratanteController@desativarVaga')->name('site.desativar-vaga');
-Route::get('ativar-vaga/{id}', 'AdminContratanteController@ativarVaga')->name('site.ativar-vaga');
+		Route::get('renovar-vaga/{id}', 'AdminContratanteController@renovarVaga')->name('site.renovar-vaga');
+		Route::get('desativar-vaga/{id}', 'AdminContratanteController@desativarVaga')->name('site.desativar-vaga');
+		Route::get('ativar-vaga/{id}', 'AdminContratanteController@ativarVaga')->name('site.ativar-vaga');
 
 
 
@@ -187,9 +199,7 @@ Route::get('/lista-vagas', 'VagaController@listaVaga')->name('site.lista-vaga');
 
 Route::get('/admin-candidato', 'AdminCandidatoController@home')->name('site.admin-candidato');
 
-Route::group(['prefix' => 'admin'], function () {
-	Voyager::routes();
-});
+
 
 Auth::routes();
 
@@ -258,4 +268,9 @@ Route::post('/completando-cadastro-candidato','CadastrarCandidatoLoginController
 
 Route::fallback(function() {
    // return 'Hm, why did you land here somehow?';
+});
+
+//==================================================
+//====== Fim do redirecionamento Pro blog ==========
+//==================================================
 });

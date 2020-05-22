@@ -1,7 +1,7 @@
 @extends('adminContratante.base')
 
 @section('titulo')
-<title>Cacta - Admin Home</title>
+<title>Cacta Vagas - Meus dados pessoais</title>
 @stop
 
 @section('css')
