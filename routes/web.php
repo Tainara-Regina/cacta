@@ -12,8 +12,9 @@
 */
 
 
+Route::get('/', 'BlogController@home')->name('site.inicio');
 
-
+//Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/blog', 'BlogController@home')->name('blog-home');
 Route::get('/blog/{id}', 'BlogController@post')->name('post');
 Route::get('/busca', 'BlogController@busca')->name('busca');
@@ -135,7 +136,6 @@ Route::post('/enviar-redefinir-senha-contratante','RedefinirSenhaController@cont
 
 
 
-Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/vaga/{id}/{slug}', 'VagaController@vaga')->name('site.vaga');
 
 Route::get('/preferencias', 'AdminCandidatoController@preferencias')->name('preferencias');
