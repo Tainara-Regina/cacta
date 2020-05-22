@@ -100,13 +100,32 @@
 
 			@foreach($mais_visualizados as $ultimo_post)
 			<a href="{{route('post',$ultimo_post->slug)}}">
-				<div class="row m-0 mb-3 p-0">
+				<div style="border-bottom: 1px solid grey;" class="row m-0 mb-3 p-0">
 					<div class="col-5 m-0 p-0">
 						<img style="height: 100px;width: 120px"class="img-fluid img-thumbnail" src="{{Voyager::image($ultimo_post->image)}}">
 					</div>
 
 					<div class="col m-0 p-0 pt-3">
 						<p style="color: #754026;font-weight: 700;">{{$ultimo_post->title}}</p>
+
+
+						<p>
+							{{mb_strimwidth($ultimo_post->excerpt, 0, 50, "...")}}
+						</p>
+
+						@if($ultimo_post->created_at == $ultimo_post->updated_at)
+						<p>
+							{{ Carbon\Carbon::parse($ultimo_post->created_at)->format('d/m/Y H:i:s')}}
+						</p>
+						@else
+						<p>
+							{{ Carbon\Carbon::parse($ultimo_post->created_at)->format('d/m/Y H:i:s')}} | atualizado em {{ Carbon\Carbon::parse($ultimo_post->updated_at)->format('d/m/Y H:i:s')}}
+						</p>
+						@endif
+
+
+
+
 					</div>
 				</div>
 			</a>
