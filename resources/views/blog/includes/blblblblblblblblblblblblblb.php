@@ -1,3 +1,30 @@
+<!-- parte do rodapé -->
+
+    <li class="nav__item">
+      <h2 class="nav__title">Vagas e contratação</h2>
+
+      <ul class="nav__ul">
+        <li>
+          <a href="{{route('formularioCandidato')}}">Cadastre seu curriculo</a>
+        </li>
+
+        <li>
+          <a href="{{route('site.lista-vaga')}}">Procurando uma vaga?</a>
+        </li>
+
+        <li>
+          <a href="/#contratar">Quer contratar?</a>
+        </li>
+      </ul>
+    </li>
+
+
+
+
+
+
+
+
 <!-- Cards do blog -->
 
 
