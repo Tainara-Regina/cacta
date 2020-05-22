@@ -21,9 +21,22 @@ class BlogController extends Controller
 		->where('disponivel', 1)
 		->first();
 
-		$mais_visualizados =  Posts::take(3)->orderBy('visualizacoes', 'DESC')->get();
-		$ultimo_post =  Posts::orderByDesc('id')->first();
-		$ultimos_posts = Posts::where('slug','!=',$ultimo_post->slug)->take(7)->orderByDesc('posts.id')->skip(1)->take(3)->orderByDesc('id')->paginate(3);
+		$mais_visualizados =  Posts::take(3)
+		->where('status','PUBLISHED')
+		->orderBy('visualizacoes', 'DESC')->get();
+
+
+		$ultimo_post =  Posts::orderByDesc('id')
+		->where('status','PUBLISHED')
+		->first();
+
+
+		$ultimos_posts = Posts::where('slug','!=',$ultimo_post->slug)->take(7)
+		->where('status','PUBLISHED')
+		->orderByDesc('posts.id')->skip(1)->take(3)->orderByDesc('id')->paginate(3);
+
+
+
 
 		return view('blog.home-blog',compact('fundo_vaga','ultimos_posts','ultimo_post','mais_visualizados'));
 	}
@@ -35,7 +48,10 @@ class BlogController extends Controller
 	public function post($slug){
 
 
-		$post =  Posts::where('slug',$slug)->first();
+		$post =  Posts::where('slug',$slug)
+		->where('status','PUBLISHED')
+		->first();
+
 		if(empty($post)){
 
 			return redirect('/blog',301);
@@ -46,17 +62,21 @@ class BlogController extends Controller
 			->where('disponivel', 1)
 			->first();
 
-			$visualizacoes = Posts::select('visualizacoes')->where('slug',$slug)->first();
+			$visualizacoes = Posts::select('visualizacoes')
+			->where('status','PUBLISHED')
+			->where('slug',$slug)->first();
 			$visualizacoes_atualizada = $visualizacoes->visualizacoes + 1;
 
 
 
 			Posts::where('slug',$slug)
+			->where('status','PUBLISHED')
 			->update(['visualizacoes' => $visualizacoes_atualizada]);
 
 			$ultimos_posts = DB::table('posts')
 			->join('categories', 'posts.category_id', '=', 'categories.id')
 			->select('posts.title','posts.image','posts.slug','categories.name')
+			->where('posts.status','PUBLISHED')
 			->where('posts.slug','!=',$slug)->take(7)->orderByDesc('posts.id')
 			->get();
 
@@ -77,6 +97,7 @@ class BlogController extends Controller
 		$posts = Posts::where('title','LIKE', '%'.$input.'%')
 		->orWhere('body','LIKE', '%'.$input.'%')
 		->orWhere('excerpt','LIKE', '%'.$input.'%')
+		->where('status','PUBLISHED')
 		->paginate(5);
 
 		$total = $posts->count();
@@ -95,6 +116,7 @@ class BlogController extends Controller
 		->join('categories', 'posts.category_id', '=', 'categories.id')
 		->select('categories.name')
 		->where('categories.slug',$slug)
+		->where('posts.status','PUBLISHED')
 		->first();
 
 		if(empty($title)){
@@ -104,21 +126,22 @@ class BlogController extends Controller
 
 
 
-			$posts = DB::table('posts')
-			->join('categories', 'posts.category_id', '=', 'categories.id')
-			->select('posts.*','categories.slug')
-			->where('categories.slug',$slug)
-			->paginate(3);
+		$posts = DB::table('posts')
+		->join('categories', 'posts.category_id', '=', 'categories.id')
+		->select('posts.*','categories.slug')
+		->where('categories.slug',$slug)
+		->where('posts.status','PUBLISHED')
+		->paginate(3);
 		//dd($posts->all());
 
-			return view('blog.categoria',compact('posts','title'));
-		}
-
-		function menu(){
-			$categories = Categories::select('name','slug')
-			->get();
-
-			return $categories;
-		}
-
+		return view('blog.categoria',compact('posts','title'));
 	}
+
+	function menu(){
+		$categories = Categories::select('name','slug')
+		->get();
+
+		return $categories;
+	}
+
+}
