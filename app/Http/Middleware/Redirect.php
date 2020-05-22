@@ -15,7 +15,7 @@ class Redirect
      */
     public function handle($request, Closure $next)
     {
-    	return redirect('/blog',301);
+    	//return redirect('/blog',301);
 
  return $next($request);
     }
