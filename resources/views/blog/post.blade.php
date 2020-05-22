@@ -60,7 +60,7 @@
 			<div class="row pt-5">
 				<div class="col-md-8">
 					<section class="voltar">
-						<a href="{{ URL::previous() }}"><i class="fa fa-reply"></i> VOLTAR </a>
+						<a href="{{route('blog-home')}}"><i class="fa fa-reply"></i> VOLTAR </a>
 						<div class="text-center mb-3">
 							<img class="img-thumbnail" style="width: 50%;max-height: 367px;" src="{{Voyager::image($post->image)}}">
 						</div>
