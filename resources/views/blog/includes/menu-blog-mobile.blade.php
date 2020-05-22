@@ -1,7 +1,7 @@
 @inject('menu', 'App\Http\Controllers\BlogController')
 <nav id="NavMobile" class="navbar navbar-expand-lg navbar-light bg-light menu p-0">
 
-	<a class="pl-2 text-center" href="#"> <img class="animated rubberBand cacto" style="height: 35px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
+	<a class="pl-2 text-center" href="{{route('blog-home')}}"> <img class="animated rubberBand cacto" style="height: 35px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
 		<p class="text-center mb-0 pb-0 logo">Blog do Cacta</p>
 	</a> 
 

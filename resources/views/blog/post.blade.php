@@ -1,7 +1,6 @@
 @extends('blog.base')
 
 
-
 @section('titulo')
 <title>Blog do Cacta - Tudo para o empreendedor. Marketing digital, empreendedorismo, e muito mais.</title>
 @stop
@@ -20,10 +19,18 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
 	<style type="text/css">
-		body{
-			color: #424242f5;
-			font-family: 'Kulim Park', sans-serif;
-		}
+		*{
+		font-family: 'Kulim Park', sans-serif;
+	}
+
+	a{
+		color: #555;
+	}
+
+	a:hover{
+		color: green;
+	}
+
 
 	</style>
 	@stop

@@ -24,7 +24,7 @@
 
 
 </div>
-<a class="navbar-brand mx-auto pl-5 text-center" href="#"> <img class="animated rubberBand cacto" style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
+<a class="navbar-brand mx-auto pl-5 text-center" href="{{route('blog-home')}}"> <img class="animated rubberBand cacto" style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
  <p class="text-center mb-0 pb-0 logo">Blog do Cacta</p>
 </a>
 <div class="navbar-collapse collapse">
