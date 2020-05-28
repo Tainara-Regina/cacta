@@ -120,7 +120,7 @@
           <a class="nav-link"  href="{{route('formularioContratante')}}">Contrate</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Blog do Cacta</a>
+          <a class="nav-link" href="#">Cacta Vagas Blog</a>
         </li>
 
 
@@ -410,7 +410,7 @@
 
 <section class="blog text-center">
   <a class="navbar-brand mx-auto text-center" href="#"> <img style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
-   <p style="color:black;font-family: 'Shadows Into Light', cursive;" class="text-center mb-0 pb-0 logo">Blog do Cacta</p>
+   <p style="color:black;font-family: 'Shadows Into Light', cursive;" class="text-center mb-0 pb-0 logo">Cacta Vagas Blog</p>
  </a>
 
 

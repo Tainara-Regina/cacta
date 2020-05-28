@@ -2,7 +2,7 @@
 
 
 	@section('titulo')
-<title>Blog do Cacta - Tudo para o empreendedor. Marketing digital, empreendedorismo, e muito mais.</title>
+<title>Cacta Vagas Blog - Tudo para o empreendedor. Marketing digital, empreendedorismo, e muito mais.</title>
 @stop
 
 @section('css')

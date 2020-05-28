@@ -1,7 +1,7 @@
 @extends('blog.base')
 
 @section('titulo')
-<title>Blog do Cacta - Tudo para o empreendedor. Marketing digital, empreendedorismo, e muito mais.</title>
+<title>Cacta vagas | Cacta Vagas Blog - Tudo para o empreendedor. Marketing digital, empreendedorismo, e muito mais.</title>
 @stop
 
 @section('css')
@@ -40,7 +40,7 @@
 	<div class="container">
 		<div class="row" style="color: #fff">
 			<div class="col-md-8 mt-4 ">
-				<h2>Blog do Cacta </h2>
+				<h2>Cacta Vagas Blog </h2>
 				<h4>Evoluindo com o "pequeno GRANDE" emprendedor.</h4>
 				<p><i>"Pensamos sempre em soluções para ajudar no sucesso do pequeno empreendedor.<br> Vamos juntos?" </i>👊 <br><span>- Cacta</span></p>
 

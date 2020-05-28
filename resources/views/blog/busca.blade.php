@@ -2,7 +2,7 @@
 
 
 @section('titulo')
-<title>Blog do Cacta - Tudo para o empreendedor. Marketing digital, empreendedorismo, e muito mais.</title>
+<title>Cacta Vagas Blog - Tudo para o empreendedor. Marketing digital, empreendedorismo, e muito mais.</title>
 @stop
 
 
@@ -42,7 +42,7 @@
 		<div class="container">
 			<div class="row" style="color: #fff">
 				<div class="col-md-8 mt-4 ">
-					<h2>Blog do Cacta </h2>
+					<h2>Cacta Vagas Blog </h2>
 					<h4>Evoluindo com o "pequeno GRANDE" empresário.</h4>
 					<p><i>- "Vamo junto?"</i>👊</p>
 				</div>

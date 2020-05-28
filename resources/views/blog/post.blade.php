@@ -2,7 +2,7 @@
 
 
 @section('titulo')
-<title>Blog do Cacta - Tudo para o empreendedor. Marketing digital, empreendedorismo, e muito mais.</title>
+<title>{!!$post->title!!}</title>
 @stop
 
 @section('css')

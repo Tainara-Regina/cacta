@@ -88,7 +88,7 @@
   @endif
 
   <li class="nav-item active">
-    <a class="nav-link" href="{{route('blog-home')}}">Blog do Cacta</a>
+    <a class="nav-link" href="{{route('blog-home')}}">Cacta Vagas Blog</a>
   </li>
 
 
