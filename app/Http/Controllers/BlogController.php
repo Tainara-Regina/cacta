@@ -23,7 +23,7 @@ class BlogController extends Controller
 
 		$mais_visualizados =  Posts::take(3)
 		->where('status','PUBLISHED')
-		->orderBy('visualizacoes', 'ASC')->get();
+		->orderBy('visualizacoes', 'DESC')->get();
 
 
 		$ultimo_post =  Posts::orderByDesc('id')

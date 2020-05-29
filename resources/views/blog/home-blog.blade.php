@@ -110,7 +110,7 @@
 
 
 						<p>
-							{{mb_strimwidth($ultimo_post->excerpt, 0, 50, "...")}}
+							{{mb_strimwidth($ultimo_post->excerpt, 0, 70, "...")}}
 						</p>
 
 						@if($ultimo_post->created_at == $ultimo_post->updated_at)
@@ -148,7 +148,7 @@
 						<p  style="font-weight: 700;color: #754026;">{{$ultimo_post->title}}</p>
 
 						<p>
-							{{$ultimo_post->excerpt}}
+							{{mb_strimwidth($ultimo_post->excerpt, 0, 70, "...")}}
 						</p>
 
 						@if($ultimo_post->created_at == $ultimo_post->updated_at)
