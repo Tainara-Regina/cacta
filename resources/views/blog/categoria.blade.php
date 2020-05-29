@@ -73,7 +73,7 @@
 		<div class="row mt-5">
 			<div class="col-md-8">
 				@foreach($posts as $ultimo_post)
-				<a href="{{route('post',$ultimo_post->slug)}}">
+				<a href="{{route('post',$ultimo_post->slug_post)}}">
 					<div style="    border-bottom: 1px solid grey;" class="row m-0 mb-3 pb-3">
 						<div class="col-4 m-0 p-0">
 							<img class="img-fluid img-thumbnail" src="{{Voyager::image($ultimo_post->image)}}">

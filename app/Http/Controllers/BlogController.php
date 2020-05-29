@@ -33,7 +33,7 @@ class BlogController extends Controller
 
 		$ultimos_posts = Posts::where('slug','!=',$ultimo_post->slug)->take(7)
 		->where('status','PUBLISHED')
-		->orderByDesc('posts.id')->skip(1)->take(3)->orderByDesc('id')->paginate(3);
+		->orderByDesc('posts.id')->skip(1)->take(3)->orderByDesc('visualizacoes')->paginate(3);
 
 
 
@@ -128,7 +128,7 @@ class BlogController extends Controller
 
 		$posts = DB::table('posts')
 		->join('categories', 'posts.category_id', '=', 'categories.id')
-		->select('posts.*','categories.slug')
+		->select('posts.*','categories.slug','posts.slug As slug_post')
 		->where('categories.slug',$slug)
 		->where('posts.status','PUBLISHED')
 		->paginate(3);

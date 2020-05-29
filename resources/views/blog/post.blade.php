@@ -69,7 +69,7 @@
 					<section class="voltar">
 						<a href="{{route('blog-home')}}"><i class="fa fa-reply"></i> VOLTAR </a>
 						<div class="text-center mb-3">
-							<img class="img-thumbnail" style="width: 50%;max-height: 367px;" src="{{Voyager::image($post->image)}}">
+							<img alt="{{$post->alt}}" class="img-thumbnail" style="width: 50%;max-height: 367px;" src="{{Voyager::image($post->image)}}">
 						</div>
 					</section>
 
