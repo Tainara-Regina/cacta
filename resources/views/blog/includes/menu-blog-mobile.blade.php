@@ -1,14 +1,14 @@
 @inject('menu', 'App\Http\Controllers\BlogController')
 <nav id="NavMobile" class="navbar navbar-expand-lg navbar-light bg-light menu p-0">
 
-	<a class="pl-2 text-center" href="{{route('blog-home')}}"> <img class="animated rubberBand cacto" style="height: 35px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
+	<a class="pl-2 text-center my-2" href="{{route('blog-home')}}"> <img class="animated rubberBand cacto" style="height: 35px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
 		<p class="text-center mb-0 pb-0 logo">Cacta Vagas Blog</p>
 	</a> 
 
 
 	<form class="form-inline" method="get" action="{{route('busca')}}">
 		<input style="width: 120px;" class="form-control  mr-sm-2" name="s" type="text" placeholder="Pesquisar">
-		<button class="btn btn-success mx-2" type="submit"><i style="font-size: 17px;" class="fa fa-search"></i></button>
+		<button class="btn btn-success mx-2" style="background-color: #754026" type="submit"><i style="font-size: 17px;" class="fa fa-search"></i></button>
 	</form>
 
 

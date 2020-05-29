@@ -52,7 +52,7 @@
   <li class="nav-item active">
    <form class="form-inline" method="get" action="{{route('busca')}}">
     <input class="form-control mr-sm-2" name="s" type="text" placeholder="Pesquisar">
-    <button class="btn btn-success" type="submit"><i style="font-size: 22px;" class="fa fa-search"></i></button>
+    <button class="btn btn-success" style="background-color: #754026" type="submit"><i style="font-size: 22px;" class="fa fa-search"></i></button>
   </form>
 </li>
 
