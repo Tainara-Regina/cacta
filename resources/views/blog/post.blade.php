@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
 	<meta name="theme-color" content="#754026">
 	<link rel="stylesheet" href="{{asset('/css/inicio.css')}}">
+	<link rel="stylesheet" href="{{asset('/css/blog.css')}}">
 	<link rel="stylesheet" href="{{asset('/css/menu.css')}}">
 	<link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&display=swap" rel="stylesheet">
@@ -62,14 +63,14 @@
 		</div>
 	</section>
 
-	<section>
+	<section class="blog">
 		<div class="container" style="background-color: #fff;">
 			<div class="row pt-5">
 				<div class="col-md-8">
 					<section class="voltar">
 						<a href="{{route('blog-home')}}"><i class="fa fa-reply"></i> VOLTAR </a>
 						<div class="text-center mb-3">
-							<img alt="{{$post->alt}}" class="img-thumbnail" style="width: 50%;max-height: 367px;" src="{{Voyager::image($post->image)}}">
+							<img alt="{{$post->alt}}" class="img-thumbnail img-principal" src="{{Voyager::image($post->image)}}">
 						</div>
 					</section>
 
