@@ -94,11 +94,27 @@ class BlogController extends Controller
 
 //dd($input);
 
-		$posts = Posts::where('title','LIKE', '%'.$input.'%')
-		->orWhere('body','LIKE', '%'.$input.'%')
-		->orWhere('excerpt','LIKE', '%'.$input.'%')
-		->where('status','PUBLISHED')
+		// $posts = Posts::where('title','LIKE', '%'.$input.'%')
+		// ->where('status','PUBLISHED')
+		// ->orWhere('excerpt','LIKE', '%'.$input.'%')
+		// ->orWhere('body','LIKE', '%'.$input.'%')
+		// ->orWhere('title','LIKE', '%'.$input.'%')
+		// ->paginate(5);
+
+
+
+
+
+		$posts = DB::table('posts')
+		->where('status','=','PUBLISHED')
+		->where(function($query) use ($input)
+		{
+			$query->orWhere('excerpt','LIKE', '%'.$input.'%')
+			->orWhere('body','LIKE', '%'.$input.'%')
+			->orWhere('title','LIKE', '%'.$input.'%');
+		})
 		->paginate(5);
+
 
 		$total = $posts->count();
 

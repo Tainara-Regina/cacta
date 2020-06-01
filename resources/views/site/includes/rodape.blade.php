@@ -25,7 +25,7 @@
     <p>&copy; 2019 Cacta. Todos direitos reservados.</p>
     
     <div class="legal__links">
-      <span>Feito com <span class="heart">♥</span> por <span class="cacta">Cacta</span></span>
+      <span>Feito com <span class="heart">♥</span> por <span class="cacta">Cacta Vagas</span></span>
     </div>
   </div>
 </footer>
