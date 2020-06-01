@@ -193,8 +193,8 @@ class AdminContratanteControllerAjax extends Controller
 
 		$output .='<div class="row">
 		<div class="col">
-		<div class="w-100 bg-danger sticky-top">
-		<p class="p-5 my-2">Publicidade aqui</p>
+		<div class="w-100 sticky-top publicidade-aqui">
+		
 		</div>
 		</div>
 		</div>'; 
@@ -355,8 +355,8 @@ class AdminContratanteControllerAjax extends Controller
 
 				$output .='<div class="row">
 				<div class="col">
-				<div class="w-100 bg-danger sticky-top">
-				<p class="p-5 my-2">Publicidade aqui</p>
+				<div class="w-100 sticky-top publicidade-aqui">
+				
 				</div>
 				</div>
 				</div>'; 

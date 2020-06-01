@@ -77,32 +77,32 @@
 
 
 						<div class="form-group">
-							<label for="email"><b>Seus sonhos objetivos</b></label>
+							<label for="email"><b>Quer falar sobre seus objetivos de carreira? escreva aqui</b></label>
 							<textarea class="mt-2 form-control" name="sonhos_objetivos" placeholder='Descreva seus sonhos e objetivos' rows="5" id="comment"> {{old('sonhos_objetivos')}}</textarea>
 						</div>
 
 
 
 						<div class="form-group">
-							<label for="email"><b>Sua historia</b></label>
+							<label for="email"><b>Fale um pouco sobre você, sobre sua história.</b></label>
 							<textarea class="mt-2 form-control" name="sua_historia" placeholder='Sua historia' rows="5" id="comment">{{old('sua_historia')}}</textarea>
 						</div>
 
 						<div class="form-group">
-							<label for="livros"><b>Livros que gostou de ler</b></label>
+							<label for="livros"><b>Livros que gostou de ler.</b></label>
 							<textarea class="mt-2 form-control" name="livros" placeholder='livros' rows="5" id="comment"> {{old('livros')}}</textarea>
 						</div>
 
 
 						<div class="form-group">
-							<label for="hobbies"><b>hobbies</b></label>
+							<label for="hobbies"><b>O que gosta de fazer no seu tempo livre?</b></label>
 							<textarea class="mt-2 form-control" name="hobbies" placeholder='hobbies' rows="5" id="comment">  {{old('hobbies')}}</textarea>
 						</div>
 
 
 
 						<div class="form-group">
-							<label for="cursos_gostaria"><b>Cursos que gostaria de fazer</b></label>
+							<label for="cursos_gostaria"><b>Tem algum curso ou especialização que gostaria de fazer?</b></label>
 							<textarea class="mt-2 form-control" name="cursos_gostaria" placeholder='cursos que gostaria de fazer' rows="5" id="comment">  {{old('cursos_gostaria')}}</textarea>
 						</div>
 
@@ -110,7 +110,7 @@
 						<span style="color: red">{{ $message }}</span>
 						@enderror
 						<div class="form-group">
-							<label for="escolariedade"><b>escolariedade</b></label>
+							<label for="escolariedade"><b>Escolariedade</b></label>
 							<input type="text" value="{{old('escolariedade')}}" name="escolariedade" placeholder="escolariedade" type="text" class="form-control">
 						</div>
 
@@ -151,9 +151,6 @@
 
 
 
-
-
-
 						@error('cep')
 						<span style="color: red">{{ $message }}</span> <br>
 						@enderror
@@ -186,11 +183,6 @@
 							<label for="email"><b>Complemento</b></label>
 							<textarea class="mt-2 form-control" name="complemento" placeholder='Digite o complemento do endereço.' rows="5" id="comment"></textarea>
 						</div>
-
-
-
-
-
 
 
 

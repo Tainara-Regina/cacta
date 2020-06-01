@@ -157,47 +157,7 @@
               </div>
 
 
-              <div class="row">
-                <div class="col">
-                  <h2 class="text-center mb-3  mt-5">Dados do cartão</h2>
-                  <p><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preocupe.</p>
-
-                </div>
-              </div>
-
-
-
-              @error('nome_cartao')
-              <span style="color: red">{{ $message }}</span>
-              @enderror
-              <div class="form-group">
-                <input name="nome_cartao" placeholder="Nome" value="{{old('nome_cartao')}}" type="text" class="form-control name"></input>
-              </div>
-
-              @error('numero_cartao')
-              <span style="color: red">{{ $message }}</span>
-              @enderror
-              <div class="form-group">
-                <input name="numero_cartao" placeholder="Número do cartão" value="{{old('numero_cartao')}}" maxlength="20" type="text" class="form-control cartao"></input>
-              </div>
-
-
-              @error('expira_cartao')
-              <span style="color: red">{{ $message }}</span>
-              @enderror
-              <div class="form-group">
-                <input name="expira_cartao" placeholder="Data de expiração do cartão" value="{{old('expira_cartao')}}" type="text" class="form-control selectonfocus"></input>
-              </div>
-
-
-              @error('codigo_seguranca_cartao')
-              <span style="color: red">{{ $message }}</span>
-              @enderror
-              <div class="form-group">
-                <input name="codigo_seguranca_cartao" placeholder="Código de segurança do cartão" value="{{old('codigo_seguranca_cartao')}}" type="text" class="form-control cvv"></input>
-              </div>
-            </section>
-
+              
             <div class="row">
               <div class="col">
                 <h2 class="text-center mt-5 mb-3">Escolha o plano que deseja</h2>

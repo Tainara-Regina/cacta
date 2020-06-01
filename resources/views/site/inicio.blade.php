@@ -221,8 +221,8 @@
   <div class="container">
     <div class="row">
       <div class="col text-center pt-4 pb-5">
-       <a class="btn mb-3 cadastre animated rubberBand btn-experimente">Cadastre-se aqui</a>
-       <h4 class="text-center cadastre-se-mobile">Cadastre-se e fique disponivel para varias empresas. <strong>É de graça!</strong></h4>
+       <a class="btn mb-3 cadastre animated rubberBand btn-experimente" href="{{route('formularioCandidato')}}">Cadastre-se aqui</a>
+       <h4 class="text-center cadastre-se-mobile">Cadastre-se e fique disponível para várias empresas. <strong>É de graça!</strong></h4>
      </div>
    </div>
  </div>

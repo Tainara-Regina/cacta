@@ -187,8 +187,8 @@
 					</p>
 				</div>
 
-				<div class="w-100 bg-danger">
-					<p class="p-5 my-5">Publicidade aqui</p>
+				<div class="w-100">
+					<p class="p-5 my-5"><!-- Publicidade aqui --></p>
 				</div>
 			</div>
 		</div>
@@ -231,8 +231,8 @@
 
 				<div class="row">
 					<div class="col">
-						<div class="w-75 bg-danger">
-							<p class="p-5 my-3">Publicidade aquiii</p>
+						<div class="w-75">
+							<p class="p-5 my-3"><!-- Publicidade aquiii --></p>
 						</div>
 					</div>
 				</div>
@@ -330,8 +330,8 @@
 					</p>
 				</div>
 
-				<div class="w-100 bg-danger">
-					<p class="p-5 my-5">Publicidade aqui</p>
+				<div class="w-100">
+					<p class="p-5 my-5"><!-- Publicidade aqui --></p>
 				</div>
 			</div>	
 		</div>

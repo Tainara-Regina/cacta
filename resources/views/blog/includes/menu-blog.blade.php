@@ -7,17 +7,17 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown"  style="width:27%;">
    <ul class="nav navbar-nav logo-redes">
     <li class="nav-item">
-      <a class="nav-link" href="#"> <a class="nav-link" href="#">
+      <a class="nav-link" href="https://www.instagram.com/cactavagas/"> 
         <i class="fa fa-instagram"></i>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#"> <a class="nav-link" href="#"><i class="fa fa-facebook"></i>
+      <a class="nav-link" href="#"><i class="fa fa-facebook"></i>
       </a> 
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="#"> <a class="nav-link" href="#"><i class="fa fa-pinterest"></i>
+      <a class="nav-link" href="https://br.pinterest.com/cactavagas/"><i class="fa fa-pinterest"></i>
       </a>
     </li>
   </ul>

@@ -137,8 +137,8 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-2 d-none d-sm-block" style="padding-top: 100px">
-						<div class=" w-100 bg-danger sticky-top">
-							<p class="p-5 my-5">Publicidade aqui</p>
+						<div class=" w-100 sticky-top">
+							<p class="p-5 my-5"><!-- Publicidade aqui --></p>
 						</div>
 					</div>
 
@@ -177,8 +177,8 @@
 
 					<!-- <div class="col-md-4 d-none d-sm-block" style="padding-top: 100px"> -->
 						<div class="col-md-4" style="padding-top: 100px">
-							<div class="w-100 bg-danger sticky-top">
-								<p class="p-5 my-5">Publicidade aqui</p>
+							<div class="w-100  sticky-top">
+								<p class="p-5 my-5"><!-- Publicidade aqui --></p>
 							</div>
 						</div>
 					</div>
