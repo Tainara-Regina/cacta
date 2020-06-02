@@ -38,10 +38,13 @@ class CadastrarLoginController extends Controller
        'password_confirmation' =>'required|same:password',
      ],
      [
-      // 'logo.required' => 'Insira o logo da sua em presa.',
-      // 'segmento.required'  => 'Selecione o segmento da sua empresa.',	
-      // 'descricao.required' => 'Preencha a descrição da vaga.',
-      // 'sobre.required' => 'Escreva sobre sua empresa.',
+       'nome_contratante.required' => 'Insira seu nome completo.',
+       'nome_empresa.required' => 'Insira o nome da empresa.',
+       'email.required'  => 'E-mail obrigatório',	
+       'telefone.required' => 'Telefone obrigatório.',
+       'password.required' => 'Senha obrigatória.',
+       'password_confirmation.same' => 'A confirmação de senha precisa ser igual a senha.',
+       'password_confirmation.required' => 'Confirme a senha.',
      ]);
 
 
@@ -131,11 +134,11 @@ public function formularioContratanteParte2(Request $request){
    'endereco' => 'required',
    'plano' => 'required',
 
-   'nome_cartao' => 'required',
-   'numero_cartao' => 'required',
-   'expira_cartao' => 'required',
-   'codigo_seguranca_cartao' => 'required',
-   'logo.image' => 'O logo precisa ser uma imagem.',
+   // 'nome_cartao' => 'required',
+   // 'numero_cartao' => 'required',
+   // 'expira_cartao' => 'required',
+   // 'codigo_seguranca_cartao' => 'required',
+   // 'logo.image' => 'O logo precisa ser uma imagem.',
   // 'facebook' => 'required',
   // 'instagram' => 'required',
   // 'twitter' => 'required',
@@ -144,13 +147,13 @@ public function formularioContratanteParte2(Request $request){
  [
 
 
- 'nome_cartao.required' => 'Insira o nome que está no cartão.',
-   'numero_cartao.required' => 'Insira o número do cartão.',
-   'expira_cartao.required' => 'Insira a data de validade do cartão.',
-   'codigo_seguranca_cartao.required' => 'Insira o código de segurança do cartão.',
+   // 'nome_cartao.required' => 'Insira o nome que está no cartão.',
+   // 'numero_cartao.required' => 'Insira o número do cartão.',
+   // 'expira_cartao.required' => 'Insira a data de validade do cartão.',
+   // 'codigo_seguranca_cartao.required' => 'Insira o código de segurança do cartão.',
 
    'numero.required' => 'Insira o número.',
-  'cep.required' => 'Verifique se inseriu o CEP.',
+   'cep.required' => 'Verifique se inseriu o CEP.',
    'endereco.required' => 'Insira um CEP válido.',
    'logo.required' => 'Insira o logo da sua em presa.',
    'segmento.required'  => 'Selecione o segmento da sua empresa.',  

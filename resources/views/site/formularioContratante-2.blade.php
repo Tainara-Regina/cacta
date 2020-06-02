@@ -68,7 +68,7 @@
               @enderror
               <div class="form-group">
                 <label for="email"><b>Logo da empresa</b></label>
-                <input value="{{old('logo')}}" accept="image/png, image/jpeg , image/jpg" placeholder="Insira o logo da empresa" type="file" name="logo" class="form-control-file border">
+                <input value="{{old('logo')}}" accept="image/png, image/jpeg , image/jpg" placeholder="Insira o logo da empresa" type="file" name="logo" class="form-control-file border" required>
               </div>
 
 
@@ -80,7 +80,7 @@
                   <label for="pwd"><b>Selecione o segmento da sua empresa</b></label>
 
 
-                  <select value="{{old('segmento')}}" name="segmento">
+                  <select value="{{old('segmento')}}" name="segmento" required>
                     <option  value="" selected disabled>Selecione o segmento</option>
                     @foreach ($segmentos as $segmento)
                     <option  value="{{ $segmento->id }}">{{ $segmento->segmento }}</option>
@@ -100,9 +100,9 @@
 
               <div class="form-group">
                 <label for="email"><b>Endereço</b></label>
-                <input type="text" value="{{old('cep')}}" name="cep" placeholder="Digite o CEP" type="text" class="form-control cep">
+                <input type="text" value="{{old('cep')}}" name="cep" placeholder="Digite o CEP" type="text" class="form-control cep" required>
 
-                <input name="endereco" value="{{old('endereco')}}" class="mt-2 form-control endereco"  rows="5" id="comment" readonly="readonly">
+                <input name="endereco" value="{{old('endereco')}}" class="mt-2 form-control endereco"  rows="5" id="comment" readonly="readonly" required>
 
                 @error('numero')
                 <div class="mt-3">
@@ -110,7 +110,7 @@
                 </div>
                 @enderror
 
-                <input style="width: 100px!important" type="text" value="{{old('numero')}}" name="numero" placeholder="Número" type="text" class="form-control mt-3" maxlength="5">
+                <input style="width: 100px!important" type="text" value="{{old('numero')}}" name="numero" placeholder="Número" type="text" class="form-control mt-3" maxlength="5" required>
               </div>
 
               <div class="form-group">
@@ -132,7 +132,7 @@
               <div class="form-group">
                 <label for="pwd"><b>Fale sobre sua empresa</b></label>
                 <p>Faça um resumo sobre sua empresa. Tente falar sobre a tragetoria, missão, visão e valores.</p>
-                <textarea name="sobre" placeholder="Faça um resumo sobre sua empresa.Tente falar sobre a tragetoria, missão, visão e valores." class="form-control" rows="5" id="comment">
+                <textarea name="sobre" placeholder="Faça um resumo sobre sua empresa.Tente falar sobre a tragetoria, missão, visão e valores." class="form-control" rows="5" id="comment" required>
                   {{old('sobre')}}
                 </textarea>
               </div>
