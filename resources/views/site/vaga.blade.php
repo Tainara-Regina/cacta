@@ -65,7 +65,7 @@ style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
 					<h1 class="name titulo">{{$vaga->titulo}}
 					</h1>
 					<p class="address">
-						{{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}
+						<span style="font-size: 20px; font-weight: bold"> {{$vaga->nome_empresa}}</span> | {{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}
 					</p>
 				</div>
 			</div>
@@ -262,9 +262,11 @@ style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
 				</div>
 
 				<div class="w-100">
-					<h2 class="titulo">Benefícios</h2>
-					<p>{{$vaga->beneficios}}
-					</p>
+					@if(isset($vaga->beneficios))
+						<h2 class="titulo">Benefícios</h2>
+						<p>{{$vaga->beneficios}}
+						</p>
+						@endif
 				</div>
 
 				<div class="w-100  py-5">
