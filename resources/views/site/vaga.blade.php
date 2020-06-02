@@ -22,21 +22,21 @@
 
 
 @section('conteudo')
-	@include('site.includes.menu')
-	<section class="jumbotron text-center parallax" 
-	@if(isset($fundo_vaga->imagem))
-	style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
-	@endif
-	">
+@include('site.includes.menu')
+<section class="jumbotron text-center parallax" 
+@if(isset($fundo_vaga->imagem))
+style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
+@endif
+">
 
-	<div  class="container encontre-servico">
-		<h2 class="mb-3 py-2">{{$vaga->titulo}} - {{$vaga->nome_empresa}}</h2>
-	</div>
-	<p class="m-0 p-0 text-right d-none d-sm-block" style="color: #fff"><i>
-		@if(isset($fundo_vaga->imagem))
-		{!!$fundo_vaga->titulo!!}
-		@endif
-	</i></p>
+<div  class="container encontre-servico">
+	<h2 class="mb-3 py-2">{{$vaga->titulo}} - {{$vaga->nome_empresa}}</h2>
+</div>
+<p class="m-0 p-0 text-right d-none d-sm-block" style="color: #fff"><i>
+	@if(isset($fundo_vaga->imagem))
+	{!!$fundo_vaga->titulo!!}
+	@endif
+</i></p>
 </section>
 
 <div class="container">
@@ -111,50 +111,56 @@
 					</div>
 
 					<div class="w-100">
+
+
+						@if(isset($vaga->beneficios)){
 						<h2 class="titulo">Benefícios</h2>
-						<p>{{ isset($vaga->beneficios) ? $vaga->beneficios : '' }}
+						<p>{{$vaga->beneficios}}
 						</p>
-					</div>
+					}
 
-					<div class="w-100  py-5">
+					
+				</div>
 
-
-						@if($id_candidato)
-						@if($candidatou_se == "não")
-						<p class="m-0 p-0">Se identificou com a vaga?</p>
-
-						<a class="btn  btn-success btn-vaga" id="vaga"  href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
-						@else
-						<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
-						@endif
+				<div class="w-100  py-5">
 
 
-						@else
+					@if($id_candidato)
+					@if($candidatou_se == "não")
+					<p class="m-0 p-0">Se identificou com a vaga?</p>
+
+					<a class="btn  btn-success btn-vaga" id="vaga"  href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
+					@else
+					<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
+					@endif
 
 
-						@if($candidatou_se == "não")
-						<a class="btn btn-success btn-vaga" id="vaga" data-toggle="modal" data-target="#modalCandidato" href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
-						@else
-						<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
-						@endif
-						@endif
-						
+					@else
 
-						@if($total_cadidaturas == 1)
-						<p class="m-0 p-0">{{$total_cadidaturas}} pessoa se candidatou</p>
-						@elseif($total_cadidaturas == 0)
-						<p class="m-0 p-0">Nenhuma pessoa se candidatou ainda, seja o primeiro e aumente sua chance!</p>
-						@else
-						<p class="m-0 p-0">{{$total_cadidaturas}} pessoas se candidataram</p>
-						@endif
-					</div>
+
+					@if($candidatou_se == "não")
+					<a class="btn btn-success btn-vaga" id="vaga" data-toggle="modal" data-target="#modalCandidato" href="{{route('candidatar-se',['id' => $vaga->id])}}">Candidate-se</a>
+					@else
+					<p>Você já se candidatou para esta vaga. <a href="{{route('minhas-vagas')}}">Clique aqui para visualizar suas cadidaturas.</a></p>
+					@endif
+					@endif
+					
+
+					@if($total_cadidaturas == 1)
+					<p class="m-0 p-0">{{$total_cadidaturas}} pessoa se candidatou</p>
+					@elseif($total_cadidaturas == 0)
+					<p class="m-0 p-0">Nenhuma pessoa se candidatou ainda, seja o primeiro e aumente sua chance!</p>
+					@else
+					<p class="m-0 p-0">{{$total_cadidaturas}} pessoas se candidataram</p>
+					@endif
 				</div>
 			</div>
-
 		</div>
 
-		<div id="menu1" class="container tab-pane fade"><br>
-			<div class="col-12">
+	</div>
+
+	<div id="menu1" class="container tab-pane fade"><br>
+		<div class="col-12">
 				<!-- <div class="w-100">
 					<button type="button" class="btn btn-primary">comapartilhar no facebook</button>
 					<button type="button" class="btn btn-secondary">compartilhar no whatsapp</button>
