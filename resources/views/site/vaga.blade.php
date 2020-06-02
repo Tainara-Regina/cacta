@@ -112,7 +112,7 @@
 
 					<div class="w-100">
 						<h2 class="titulo">Benefícios</h2>
-						<p>{{$vaga->beneficios}}
+						<p>{{ isset($vaga->beneficios) ? $vaga->beneficios : '' }}
 						</p>
 					</div>
 

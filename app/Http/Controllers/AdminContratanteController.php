@@ -85,7 +85,7 @@ class AdminContratanteController extends Controller
 
 
     public function divulgarVaga(){
-
+ 
       $quantidade_maxima_vagas_permitidas = $this->verificaPlano(Auth::user()->id_plano)->quantidade_vagas;
 
       $quantidade_de_vagas_cadastradas = CadastrarVaga::where('id_usuario',Auth::user()->id)->count();
@@ -259,7 +259,7 @@ $validator = $request->validate([
   'quantidade_vaga' => 'required|numeric',
   'descricao' => 'required',
   'requisitos' => 'required',
-  'desejavel' => 'required',
+ // 'desejavel' => 'required',
   'beneficios' => 'required',
   'contratacao' => 'required',
   'titulo' => 'required',
@@ -271,7 +271,7 @@ $validator = $request->validate([
   'quantidade_vaga.numeric'  => 'Este campo só aceita números.',
   'descricao.required' => 'Preencha a descrição davaga.',
   'requisitos.required' => 'Preencha os requisitos.',
-  'desejavel.required' => 'Preencha os requisitos desejaveis',
+ // 'desejavel.required' => 'Preencha os requisitos desejaveis',
   'beneficios.required' => 'Preencha os beneficios.',
   'contratacao.required' => 'Preencha o tipo de contratação.',
 ]);
