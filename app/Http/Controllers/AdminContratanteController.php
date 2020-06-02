@@ -259,8 +259,8 @@ $validator = $request->validate([
   'quantidade_vaga' => 'required|numeric',
   'descricao' => 'required',
   'requisitos' => 'required',
- // 'desejavel' => 'required',
-  'beneficios' => 'required',
+  'desejavel' => 'required',
+ // 'beneficios' => 'required',
   'contratacao' => 'required',
   'titulo' => 'required',
   'vaga_em_destaque' => 'required'
@@ -271,8 +271,8 @@ $validator = $request->validate([
   'quantidade_vaga.numeric'  => 'Este campo só aceita números.',
   'descricao.required' => 'Preencha a descrição davaga.',
   'requisitos.required' => 'Preencha os requisitos.',
- // 'desejavel.required' => 'Preencha os requisitos desejaveis',
-  'beneficios.required' => 'Preencha os beneficios.',
+  'desejavel.required' => 'Preencha os requisitos desejaveis',
+  //'beneficios.required' => 'Preencha os beneficios.',
   'contratacao.required' => 'Preencha o tipo de contratação.',
 ]);
 
