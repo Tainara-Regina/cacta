@@ -183,6 +183,51 @@
 		</div>
 
 	</div>
+
+
+	<div class="row">
+		<div class="col">
+			<h2 style="font-weight: 700;color: #754026;">Importancia do Marketing</h2>
+			<p>É impossível ampliar um negócio se ele está fora da internet.</p>
+
+
+			<p>Como estudado no capítulo,vimos algumas estratégias existentes(inbound marketing,SEO,branding marketing,etc.),mas quem deve decidir quais serão utilizadas é quem está "gerenciando a campanha".</p>
+
+			<p>Converter clientes com o marketing digital tem o custo bem menor do que com o marketing tradicional, e com uma estratégia bem definida o sucesso é quase que garantido,pois no decorrer da campanha,a estratégia pode ser alterada para trazer melhores resultados de acordo com o objetivo pretendo.</p>
+		</div>
+	</div>
+
+
+
+
+	<div class="row">
+		<div class="col">
+			<h2 style="font-weight: 700;color: #754026;">Cultura e subcultura no comportamento do consumidor</h2>
+
+			<p>A cultura é determinada pelo local que vivemos, situações que passamos e tudo que esta a nossa volta. Ela molda nossa forma de pensar e agir.</p>
+
+			<p>Quando falamos de cultura estamos falando de forma ampla.</p>
+
+			<p>As subcultura podem ser consideradas grupos “dentro da cultura”.
+			Estudar a cultura e subcultura ajuda a entender as tendências dos consumidores, e sua forma de pensar. Isto é muito mais valioso do que dados superficiais como região, idade, sexo,etc.</p>
+		</div>
+	</div>
+
+
+
+	<div class="row">
+		<div class="col">
+			<h2 style="font-weight: 700;color: #754026;">Equipes de alto desempenho</h2>
+			<p>O fato dela permitir ter colaboradores preparados para diversas situações e não somente aquela que ele está acostumado a enfrentar. </p>
+			<p>Isto é possível por conta do estimulo de compartilhamento  das competências de cada individuo da equipe.</p>
+			<p>Ema característica também interessante é a capacidade de ter equipes altamente motivadas,que colaboram com a harmonia e transparência entre os demais colaboradores. Logo,a eficiência é conquistada,com colaboradores flexíveis, e com isso a redução de custos.</p>
+		</div>
+	</div>
+
+
+
+
+
 </div>
 @stop
 
