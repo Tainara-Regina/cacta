@@ -16,7 +16,9 @@
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-59TB33Z');</script>
 <!-- End Google Tag Manager -->
+
 <script data-ad-client="ca-pub-8212815034296736" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 
@@ -29,7 +31,7 @@
 		@yield('conteudo')
 		@yield('rodape')
 		@yield('js')
- <script src="https://www.google.com/recaptcha/api.js"></script>
+ 
 	</body>
 	</html>
 
