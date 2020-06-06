@@ -39,12 +39,12 @@
 
 						@csrf
 
-						@error('nome')
+					@error('nome')
 						<span style="color: red">{{ $message }}</span>
 						@enderror
 						<div class="form-group">
 							<label for="nome"><b>Insira nome</b></label>
-							<input placeholder="Qual o seu nome?" value="{{old('nome_contratante')}}" type="text" name="nome" class="form-control">
+							<input placeholder="Qual o seu nome?" value="{{old('nome_contratante')}}" type="text" name="nome" class="form-control" required>
 						</div>
 
 						@error('sobrenome')
@@ -52,7 +52,7 @@
 						@enderror
 						<div class="form-group">
 							<label for="email"><b>Sobrenome</b></label>
-							<input placeholder="Insira o seu sobrenome"  value="{{old('sobrenome')}}" type="text" name="sobrenome" class="form-control">
+							<input placeholder="Insira o seu sobrenome"  value="{{old('sobrenome')}}" type="text" name="sobrenome" class="form-control" required>
 						</div>
 
 
@@ -61,7 +61,7 @@
 						@enderror
 						<div class="form-group">
 							<label for="email"><b>E-mail da empresa</b></label>
-							<input placeholder="Insira o e-mail" type="text" value="{{old('email')}}" name="email" class="form-control">
+							<input placeholder="Insira o e-mail" type="text" value="{{old('email')}}" name="email" class="form-control" required>
 						</div>
 
 
@@ -70,7 +70,7 @@
 						@enderror
 						<div class="form-group">
 							<label for="email"><b>Data nascimento</b></label>
-							<input placeholder="Data de nascimento" type="date" value="{{old('data_nascimento')}}" name="data_nascimento" class="form-control">
+							<input placeholder="Data de nascimento" type="date" value="{{old('data_nascimento')}}" name="data_nascimento" class="form-control" required>
 						</div>
 
 
@@ -97,7 +97,7 @@
 						@enderror
 						<div class="form-group">
 							<label for="telefone"><b>Telefone</b></label>
-							<input type="text" value="{{old('telefone')}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control">
+							<input type="text" value="{{old('telefone')}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control" required>
 						</div>
 
 
@@ -107,7 +107,7 @@
 						@enderror
 						<div class="form-group">
 							<label for="telefone"><b>Cidade</b></label>
-							<input type="text" value="{{old('localidade')}}" name="localidade" placeholder="Cidade" type="text" class="form-control">
+							<input type="text" value="{{old('localidade')}}" name="localidade" placeholder="Cidade" type="text" class="form-control" required>
 						</div>
 
 						@error('uf')
@@ -116,7 +116,7 @@
 
 						<div class="form-group">
 							<label for="estado"><b>Estado</b></label>
-							<select class="form-control" id="exampleFormControlSelect1" name="uf">
+							<select class="form-control" id="exampleFormControlSelect1" name="uf" required>
 								<option disabled selected>selecione seu estado</option>
 								<option value="AC">Acre</option>
 								<option value="AL">Alagoas</option>
@@ -157,7 +157,7 @@
 						@enderror
 						<div class="form-group">
 							<label for="password"><b>Senha</b></label>
-							<input type="password" name="password" value="{{old('password')}}" placeholder="Defina uma senha" type="text" class="form-control">
+							<input type="password" name="password" value="{{old('password')}}" placeholder="Defina uma senha" type="text" class="form-control" required>
 						</div>
 
 						@error('password_confirmation')
@@ -165,9 +165,14 @@
 						@enderror
 						<div class="form-group">
 							<label for="repetir_senha"><b>Repetir senha</b></label>
-							<input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control">
+							<input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control" required>
 						</div>
-						<button type="submit" class="btn btn-primary mb-5">Prosseguir</button>
+
+
+ <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
+	
+
+						<button type="submit" class=" mt-3 btn btn-primary mb-5">Prosseguir</button>
 					</form>
 
 				</div>

@@ -1,4 +1,3 @@
-
    $(document).ready(function($){
      $('.name').mask('Z',{translation: {'Z': {pattern: /[a-zA-Z ]/, recursive: true}}});
      $('.date').mask('00/00/0000');

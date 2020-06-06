@@ -25,6 +25,10 @@ crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{asset('/js/admin/admin-menu.js')}}"></script>
 <script type="text/javascript" src="{{asset('/js/admin/adminContratante/meus-dados.js')}}"></script>
 <script src="{{asset('/js/formularioContratante-2.js')}}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script type="text/javascript" src="{{asset('/js/mascara.js')}}"></script>
 @stop
 
 
@@ -75,14 +79,14 @@ crossorigin="anonymous"></script>
 			<span style="color: red">{{ $message }}</span>
 			@enderror
 			<div class="form-group">
-				<input name="nome_cartao" placeholder="Nome" value="{{ old('nome_cartao')}}" type="text" class="form-control name">
+				<input name="nome_cartao" placeholder="Nome" value="{{ old('nome_cartao')}}" type="text" class="form-control name" required>
 			</div>
 
 			@error('numero_cartao')
 			<span style="color: red">{{ $message }}</span>
 			@enderror
 			<div class="form-group">
-				<input name="numero_cartao" placeholder="Número do cartão" value="{{old('numero_cartao')}}" maxlength="20" type="text" class="form-control cartao">
+				<input name="numero_cartao" placeholder="Número do cartão" value="{{old('numero_cartao')}}" maxlength="20" type="text" class="form-control cartao" required>
 			</div>
 
 
@@ -90,7 +94,7 @@ crossorigin="anonymous"></script>
 			<span style="color: red">{{ $message }}</span>
 			@enderror
 			<div class="form-group">
-				<input name="expira_cartao" placeholder="Data de expiração do cartão" value="{{old('expira_carta')}}" type="text" class="form-control selectonfocus">
+				<input name="expira_cartao" placeholder="Data de expiração do cartão" value="{{old('expira_carta')}}" type="text" class="form-control selectonfocus" required>
 			</div>
 
 
@@ -98,7 +102,7 @@ crossorigin="anonymous"></script>
 			<span style="color: red">{{ $message }}</span>
 			@enderror
 			<div class="form-group">
-				<input name="codigo_seguranca_cartao" placeholder="Código de segurança do cartão" value="{{old('codigo_seguranca_cartao')}}" type="text" class="form-control cvv">
+				<input name="codigo_seguranca_cartao" placeholder="Código de segurança do cartão" value="{{old('codigo_seguranca_cartao')}}" type="text" class="form-control cvv" required>
 			</div>
 
 

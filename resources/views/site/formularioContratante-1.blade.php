@@ -2,17 +2,17 @@
 
 @section('css')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
-  <meta name="theme-color" content="#754026">
-  <link rel="stylesheet" href="{{asset('/css/inicio.css')}}">
-  <link rel="stylesheet" href="{{asset('/css/menu.css')}}">
-  <link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
-  <link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Kulim+Park&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <script src="{{asset('/js/mascaras.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
+<meta name="theme-color" content="#754026">
+<link rel="stylesheet" href="{{asset('/css/inicio.css')}}">
+<link rel="stylesheet" href="{{asset('/css/menu.css')}}">
+<link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kulim+Park&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{{asset('/js/mascaras.js')}}"></script>
 @stop
 
 
@@ -51,7 +51,7 @@
             @enderror
             <div class="form-group">
               <label for="nome_contratante"><b>Insira seu nome completo</b></label>
-              <input placeholder="Qual o seu nome?" value="{{old('nome_contratante')}}" type="text" name="nome_contratante" class="form-control">
+              <input placeholder="Qual o seu nome?" value="{{old('nome_contratante')}}" type="text" name="nome_contratante" class="form-control" required>
             </div>
 
             @error('nome_empresa')
@@ -59,7 +59,7 @@
             @enderror
             <div class="form-group">
               <label for="email"><b>Nome da empresa</b></label>
-              <input placeholder="Insira o nome da sua empresa"  value="{{old('nome_empresa')}}" type="text" name="nome_empresa" class="form-control">
+              <input placeholder="Insira o nome da sua empresa"  value="{{old('nome_empresa')}}" type="text" name="nome_empresa" class="form-control" required>
             </div>
 
 
@@ -68,7 +68,7 @@
             @enderror
             <div class="form-group">
               <label for="email"><b>E-mail da empresa</b></label>
-              <input placeholder="Insira o e-mail" type="text" value="{{old('email')}}" name="email" class="form-control">
+              <input placeholder="Insira o e-mail" type="text" value="{{old('email')}}" name="email" class="form-control" required>
             </div>
 
 
@@ -77,7 +77,7 @@
             @enderror
             <div class="form-group">
               <label for="telefone"><b>Telefone</b></label>
-              <input type="text" value="{{old('telefone')}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control">
+              <input type="text" value="{{old('telefone')}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control" required>
             </div>
 
             @error('password')
@@ -85,7 +85,7 @@
             @enderror
             <div class="form-group">
               <label for="password"><b>Senha</b></label>
-              <input type="password" name="password" value="{{old('password')}}" placeholder="Defina uma senha" type="text" class="form-control">
+              <input type="password" name="password" value="{{old('password')}}" placeholder="Defina uma senha" type="text" class="form-control" required>
             </div>
 
             @error('password_confirmation')
@@ -93,9 +93,12 @@
             @enderror
             <div class="form-group">
               <label for="repetir_senha"><b>Repetir senha</b></label>
-              <input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control">
+              <input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary mb-5">Prosseguir</button>
+
+            <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
+
+            <button type="submit" class="mt-5 btn btn-primary mb-5">Prosseguir</button>
           </form>
 
         </div>

@@ -219,11 +219,12 @@
             </div>
             @endforeach
 
+ <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
 
           </div>
           <div class="row"> 
             <div class="col text-center"> 
-              <button type="submit" class="btn btn-success my-5 text-center py-3 px-5 text-uppercase"> <b>Concluir e começar a contratar!</b></button>
+              <button type="submit" class="btn btn-success my-5 mt-3 text-center py-3 px-5 text-uppercase"> <b>Concluir e começar a contratar!</b></button>
             </div>
           </div>
         </form>

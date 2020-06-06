@@ -64,7 +64,7 @@
 								<label for="pwd"><b>Selecione o segmento e enterece</b></label>
 
 
-								<select id="id_segmento_enterece" value="{{old('id_segmento_enterece')}}" name="id_segmento_enterece">
+								<select id="id_segmento_enterece" value="{{old('id_segmento_enterece')}}" name="id_segmento_enterece" required>
 
 									@foreach ($segmentos as $segmento)
 
@@ -161,7 +161,7 @@
 
 						<div class="form-group">
 							<label for="email"><b>Endereço</b></label>
-							<input type="text" value="{{old('cep')}}" name="cep" placeholder="Digite o CEP" type="text" class="form-control cep">
+							<input type="text" value="{{old('cep')}}" name="cep" placeholder="Digite o CEP" type="text" class="form-control cep" required>
 
 							<input name="endereco" value="{{old('endereco')}}" class="mt-2 form-control endereco"  rows="5" id="comment"  readonly="readonly">
 
@@ -171,30 +171,24 @@
 							</div>
 							@enderror
 
-							<input style="width: 100px!important" type="text" value="{{old('numero')}}" name="numero" placeholder="Número" type="text" class="form-control mt-3" maxlength="5">
+							<input style="width: 100px!important" type="text" value="{{old('numero')}}" name="numero" placeholder="Número" type="text" class="form-control mt-3" maxlength="5" required>
 						</div>
 
-						<div class="form-group">
-
-						</div>
-
-
+					
 						<div class="form-group">
 							<label for="email"><b>Complemento</b></label>
 							<textarea class="mt-2 form-control" name="complemento" placeholder='Digite o complemento do endereço.' rows="5" id="comment"></textarea>
 						</div>
 
 
-
-
-
 						<label class="form-check-label" for="check1">
 							<input name="disponivel_banco_candidatos" type="checkbox" class="form-check-input" checked>Deseja ficar disponível no banco de candidatos?
 						</label>
 
-						<button type="submit" class="btn btn-primary mb-5">Prosseguir</button>
-					</form>
+ <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
 
+						<button type="submit" class="mt-3 btn btn-primary mb-5">Prosseguir</button>
+					</form>
 
 				</div>
 			</div>
