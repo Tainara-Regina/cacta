@@ -28,8 +28,8 @@ class CadastrarCandidatoLoginController extends Controller
 
 
     public function formularioCandidatoParte1(Request $request){
-     // dd($request->all());
      $validator = $request->validate([
+      'g-recaptcha-response' => 'required',
       'sexo' => 'required',
       'data_nascimento' => 'required',
       'nome' => 'required',
@@ -45,7 +45,7 @@ class CadastrarCandidatoLoginController extends Controller
       // 'segmento.required'  => 'Selecione o segmento da sua empresa.',	
       // 'descricao.required' => 'Preencha a descrição da vaga.',
 
-
+     'g-recaptcha-response.required' => 'Selecione o recapcha',
      'telefone.required' => 'Insira o telefone.',
      'password.required' => 'Defina uma senha.',
      'email.required' => 'Insira seu e-mail.',
@@ -60,9 +60,23 @@ class CadastrarCandidatoLoginController extends Controller
    ]);
 
 
-  //  if($request->file('logo')->isValid()){
-  //     $nome_imagem =$request->file('logo')->store('contratante/logo');
-  // }
+$secret="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP";
+$response= $_POST["g-recaptcha-response"];
+
+
+
+ $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secret}&response={$response}");
+     $captcha_success=json_decode($verify);
+     if ($captcha_success->success==false) {
+  //This user was not verified by recaptcha.
+ dd('falha');
+     }
+
+     else if ($captcha_success->success==true) {
+ echo 'sucesso!';
+     };
+
+
 
      $key = md5(rand(10000000, 99999999));
 
@@ -159,7 +173,7 @@ public function formularioCandidatoParte2(Request $request){
    // 'expira_cartao' => 'required',
   // 'codigo_seguranca_cartao' => 'required',
  //  'logo.image' => 'O logo precisa ser uma imagem.',
-  'escolariedade' => 'required',
+   'escolariedade' => 'required',
   // 'facebook' => 'required',
   // 'instagram' => 'required',
   // 'twitter' => 'required',
@@ -176,7 +190,7 @@ public function formularioCandidatoParte2(Request $request){
  // 'sobre.required' => 'Escreva sobre sua empresa.',
   'cep.required' => 'insira o CEP.',
   //'plano.required' => 'Escolha o plano que deseja.',
-   'escolariedade.required' => 'Informe sua escolariedade.',
+  'escolariedade.required' => 'Informe sua escolariedade.',
 ]);
 
 

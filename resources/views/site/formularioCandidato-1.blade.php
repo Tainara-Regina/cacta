@@ -39,12 +39,12 @@
 
 						@csrf
 
-					@error('nome')
+						@error('nome')
 						<span style="color: red">{{ $message }}</span>
 						@enderror
 						<div class="form-group">
 							<label for="nome"><b>Insira nome</b></label>
-							<input placeholder="Qual o seu nome?" value="{{old('nome_contratante')}}" type="text" name="nome" class="form-control" required>
+							<input placeholder="Qual o seu nome?" value="{{old('nome')}}" type="text" name="nome" class="form-control" required>
 						</div>
 
 						@error('sobrenome')
@@ -168,9 +168,11 @@
 							<input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control" required>
 						</div>
 
-
- <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
-	
+						@error('g-recaptcha-response')
+						<span style="color: red">{{ $message }}</span>
+						@enderror
+						<div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
+						
 
 						<button type="submit" class=" mt-3 btn btn-primary mb-5">Prosseguir</button>
 					</form>
