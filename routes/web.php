@@ -28,7 +28,7 @@ Route::group(['prefix' => 'cacta-sucesso-painel'], function () {
 //==================================================
 //====== Redirecionamento Pro blog ==========
 //==================================================
-//Route::middleware(['redirect'])->group(function () {
+Route::middleware(['redirect'])->group(function () {
 
 
 
@@ -273,4 +273,4 @@ Route::fallback(function() {
 //==================================================
 //====== Fim do redirecionamento Pro blog ==========
 //==================================================
-//});
+});
