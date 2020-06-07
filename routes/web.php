@@ -14,7 +14,7 @@
 
 //Route::get('/', 'BlogController@home')->name('site.inicio');
 
-Route::get('/', 'InicioController@iniciso')->name('site.inicio');
+Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/blog', 'BlogController@home')->name('blog-home');
 Route::get('/blog/{id}', 'BlogController@post')->name('post');
 Route::get('/busca', 'BlogController@busca')->name('busca');
