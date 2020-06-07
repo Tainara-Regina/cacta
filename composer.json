@@ -10,7 +10,10 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "jeremykenedy/slack-laravel": "^2.4",
         "laravel/framework": "^6.2",
+        "laravel/slack-notification-channel": "^2.0",
         "laravel/tinker": "^2.0",
         "tcg/voyager": "1.3.*"
     },
