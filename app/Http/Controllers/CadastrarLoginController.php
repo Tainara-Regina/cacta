@@ -59,7 +59,6 @@ class CadastrarLoginController extends Controller
 
 
      $captcha_success=json_decode($verify);
-     var_dump($captcha_success);
      if ($captcha_success->success==false) {
   //This user was not verified by recaptcha.
       return view('erro.nao-burle-o-sistema');
@@ -183,6 +182,26 @@ public function formularioContratanteParte2(Request $request){
    'plano.required' => 'Escolha o plano que deseja.'
  ]);
 
+
+//=================== reCapcha ==================================
+
+     $secret="6Ld2DwEVAAAAAPruSPTxHcI1dS8C1sh7Ui0XKqXZ";
+     $response= $_POST["g-recaptcha-response"];
+
+     $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".urlencode($secret)."&response=".urlencode($response));
+
+
+     $captcha_success=json_decode($verify);
+     if ($captcha_success->success==false) {
+  //This user was not verified by recaptcha.
+      return view('erro.nao-burle-o-sistema');
+      exit();
+    }
+
+    else if ($captcha_success->success==true) {
+     //sucesso
+    };
+//=================== reCapcha ==================================
 
 
  if($request->file('logo')->isValid())

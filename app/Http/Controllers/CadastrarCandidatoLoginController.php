@@ -49,6 +49,7 @@ class CadastrarCandidatoLoginController extends Controller
      'telefone.required' => 'Insira o telefone.',
      'password.required' => 'Defina uma senha.',
      'email.required' => 'Insira seu e-mail.',
+     'email.unique' => 'Utilize outro e-mail.',
      'sobrenome.required' => 'Insira seu sobrenome.',
      'data_nascimento.required' => 'Insira sua data de nascimento.',
      'nome.required' => 'Insira seu primeiro nome.',
@@ -67,7 +68,6 @@ class CadastrarCandidatoLoginController extends Controller
 
 
      $captcha_success=json_decode($verify);
-     var_dump($captcha_success);
      if ($captcha_success->success==false) {
   //This user was not verified by recaptcha.
       return view('erro.nao-burle-o-sistema');
@@ -206,7 +206,6 @@ public function formularioCandidatoParte2(Request $request){
 
 
      $captcha_success=json_decode($verify);
-     var_dump($captcha_success);
      if ($captcha_success->success==false) {
   //This user was not verified by recaptcha.
       return view('erro.nao-burle-o-sistema');
