@@ -60,28 +60,26 @@ class CadastrarCandidatoLoginController extends Controller
    ]);
 
 
+     $secret="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP";
+     $response= $_POST["g-recaptcha-response"];
 
-$url = 'https://www.google.com/recaptcha/api/siteverify';
-  $data = array(
-    'secret' => '6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP',
-    'response' => $_POST["g-recaptcha-response"]
-  );
-  $options = array(
-    'http' => array (
-      'method' => 'POST',
-      'content' => http_build_query($data)
-    )
-  );
-  $context  = stream_context_create($options);
-  $verify = file_get_contents($url, false, $context);
-  $captcha_success=json_decode($verify);
 
-  if ($captcha_success->success==false) {
-    dd("You are a bot! Go away!");
-    echo "<p>You are a bot! Go away!</p>";
-  } else if ($captcha_success->success==true) {
-    echo "<p>You are not not a bot!</p>";
-  }
+
+     $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".urlencode($secret)."&response=".urlencode($response));
+
+
+     $captcha_success=json_decode($verify);
+      var_dump($captcha_success);
+     if ($captcha_success->success==false) {
+  //This user was not verified by recaptcha.
+       dd('falha');
+     }
+
+     else if ($captcha_success->success==true) {
+       echo 'sucesso!';
+     };
+
+
 
      $key = md5(rand(10000000, 99999999));
 
