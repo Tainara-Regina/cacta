@@ -36,6 +36,7 @@ class CadastrarLoginController extends Controller
        'telefone' => 'required',
        'password' => 'required',
        'password_confirmation' =>'required|same:password',
+       'g-recaptcha-response' => 'required',
      ],
      [
        'nome_contratante.required' => 'Insira seu nome completo.',
@@ -45,37 +46,57 @@ class CadastrarLoginController extends Controller
        'password.required' => 'Senha obrigatória.',
        'password_confirmation.same' => 'A confirmação de senha precisa ser igual a senha.',
        'password_confirmation.required' => 'Confirme a senha.',
+       'g-recaptcha-response.required' => 'Selecione o recapcha',
      ]);
 
 
-  //  if($request->file('logo')->isValid()){
-  //     $nome_imagem =$request->file('logo')->store('contratante/logo');
-  // }
+//=================== reCapcha ==================================
 
-     $key = md5(rand(10000000, 99999999));
+     $secret="6Ld2DwEVAAAAAPruSPTxHcI1dS8C1sh7Ui0XKqXZ";
+     $response= $_POST["g-recaptcha-response"];
 
-     $dados = new CactaUsers;
-     $dados->nome_contratante = $request->nome_contratante;
-     $dados->nome_empresa = $request->nome_empresa;
-     $dados->email = $request->email;
-     $dados->telefone = $request->telefone;
-     $dados->password = Hash::make($request->password);
-     $dados->key_verificacao = $key;
+     $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".urlencode($secret)."&response=".urlencode($response));
 
-     $dados->save();
 
-     $nome = explode(' ',$request->nome_contratante);
-     $nome = $nome[0];
-     
+     $captcha_success=json_decode($verify);
+     var_dump($captcha_success);
+     if ($captcha_success->success==false) {
+  //This user was not verified by recaptcha.
+      return view('erro.nao-burle-o-sistema');
+      exit();
+    }
 
-     $this->enviarConfirmacao($dados);
-
-     return view('site.confirmeEmailContratante',compact('nome'));	
-   }
+    else if ($captcha_success->success==true) {
+     //sucesso
+    };
+//=================== reCapcha ==================================
 
 
 
-   public function enviarConfirmacao($dados){
+    $key = md5(rand(10000000, 99999999));
+
+    $dados = new CactaUsers;
+    $dados->nome_contratante = $request->nome_contratante;
+    $dados->nome_empresa = $request->nome_empresa;
+    $dados->email = $request->email;
+    $dados->telefone = $request->telefone;
+    $dados->password = Hash::make($request->password);
+    $dados->key_verificacao = $key;
+
+    $dados->save();
+
+    $nome = explode(' ',$request->nome_contratante);
+    $nome = $nome[0];
+
+
+    $this->enviarConfirmacao($dados);
+
+    return view('site.confirmeEmailContratante',compact('nome'));	
+  }
+
+
+
+  public function enviarConfirmacao($dados){
 
     $user = new \stdClass();
     $user->name = $dados->nome_contratante;
@@ -133,7 +154,7 @@ public function formularioContratanteParte2(Request $request){
    'sobre' => 'required',
    'endereco' => 'required',
    'plano' => 'required',
-
+   'g-recaptcha-response' => 'required',
    // 'nome_cartao' => 'required',
    // 'numero_cartao' => 'required',
    // 'expira_cartao' => 'required',
@@ -151,7 +172,7 @@ public function formularioContratanteParte2(Request $request){
    // 'numero_cartao.required' => 'Insira o número do cartão.',
    // 'expira_cartao.required' => 'Insira a data de validade do cartão.',
    // 'codigo_seguranca_cartao.required' => 'Insira o código de segurança do cartão.',
-
+   'g-recaptcha-response.required' => 'Selecione o recapcha',
    'numero.required' => 'Insira o número.',
    'cep.required' => 'Verifique se inseriu o CEP.',
    'endereco.required' => 'Insira um CEP válido.',

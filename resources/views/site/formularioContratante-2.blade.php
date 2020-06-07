@@ -158,82 +158,82 @@
 
 
               
-            <div class="row">
-              <div class="col">
-                <h2 class="text-center mt-5 mb-3">Escolha o plano que deseja</h2>
-                <p class="text-center"><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preocupe.</p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col text-center mb-3">
-               @error('plano')
-               <span style="color: red">{{ $message }}</span>
-               @enderror
-             </div>
-           </div>
-
-           <div class="row pricing">
-
-            @foreach($planos as $plano)
-
-            <div class="col-lg-4 col-8 mx-auto" >
-              <div class="card mb-5 mb-lg-0 plano" data-plano="{{$plano->id}}">
-                <div class="card-body">
-                  <h5 class="card-title text-muted text-uppercase text-center">{{$plano->plano}}</h5>
-                  <h6 class="card-price text-center">${{$plano->preco}}<!-- <span class="period">/periodo</span> --></h6>
-                  <hr>
-                  <ul class="fa-ul">
-
-                    <li><span class="fa-li"><i class="fa fa-check"></i></span> {{$plano->quantidade_vagas}} vaga(s) para divulgar por mês <small>(inclui renovar vagas existentes)</small></li>
-
-                    @if($plano->vagas_em_destaque == 0)
-                    <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Permite destacar suas vagas</li>
-
-                    @else
-                    <li><span class="fa-li"><i class="fa fa-check"></i></span> Permite destacar {{$plano->vagas_em_destaque}} de suas vagas </li>
-                    @endif
-
-
-                    @if($plano->banco_de_candidatos == 0)
-                    <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Banco de candidatos</li>
-
-                    @else
-                    <li><span class="fa-li"><i class="fa fa-check"></i></span> Banco de candidatos</li>
-                    @endif
-
-
-
-                    @if($plano->materiais_exclusivos == 0)
-                    <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre emprendedorismo</li>
-
-                    @else
-                    <li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre emprendedorismo</li>
-                    @endif
-
-
-                  </ul>
-                  <span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
+              <div class="row">
+                <div class="col">
+                  <h2 class="text-center mt-5 mb-3">Escolha o plano que deseja</h2>
+                  <p class="text-center"><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preocupe.</p>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col text-center mb-3">
+                 @error('plano')
+                 <span style="color: red">{{ $message }}</span>
+                 @enderror
+               </div>
+             </div>
+
+             <div class="row pricing">
+
+              @foreach($planos as $plano)
+
+              <div class="col-lg-4 col-8 mx-auto" >
+                <div class="card mb-5 mb-lg-0 plano" data-plano="{{$plano->id}}">
+                  <div class="card-body">
+                    <h5 class="card-title text-muted text-uppercase text-center">{{$plano->plano}}</h5>
+                    <h6 class="card-price text-center">${{$plano->preco}}<!-- <span class="period">/periodo</span> --></h6>
+                    <hr>
+                    <ul class="fa-ul">
+
+                      <li><span class="fa-li"><i class="fa fa-check"></i></span> {{$plano->quantidade_vagas}} vaga(s) para divulgar por mês <small>(inclui renovar vagas existentes)</small></li>
+
+                      @if($plano->vagas_em_destaque == 0)
+                      <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Permite destacar suas vagas</li>
+
+                      @else
+                      <li><span class="fa-li"><i class="fa fa-check"></i></span> Permite destacar {{$plano->vagas_em_destaque}} de suas vagas </li>
+                      @endif
+
+
+                      @if($plano->banco_de_candidatos == 0)
+                      <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Banco de candidatos</li>
+
+                      @else
+                      <li><span class="fa-li"><i class="fa fa-check"></i></span> Banco de candidatos</li>
+                      @endif
+
+
+
+                      @if($plano->materiais_exclusivos == 0)
+                      <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+
+                      @else
+                      <li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+                      @endif
+
+
+                    </ul>
+                    <span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
+                  </div>
+                </div>
+              </div>
+              @endforeach
+
+              <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
+
             </div>
-            @endforeach
-
- <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
-
-          </div>
-          <div class="row"> 
-            <div class="col text-center"> 
-              <button type="submit" class="btn btn-success my-5 mt-3 text-center py-3 px-5 text-uppercase"> <b>Concluir e começar a contratar!</b></button>
+            <div class="row"> 
+              <div class="col text-center"> 
+                <button type="submit" class="btn btn-success my-5 mt-3 text-center py-3 px-5 text-uppercase"> <b>Concluir e começar a contratar!</b></button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
 
 
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 </section>
 

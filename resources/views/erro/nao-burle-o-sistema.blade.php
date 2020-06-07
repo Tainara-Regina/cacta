@@ -36,8 +36,7 @@
 	<a href="https://www.jusbrasil.com.br/topicos/28004011/artigo-154a-do-decreto-lei-n-2848-de-07-de-dezembro-de-1940">
 		<error>
 			Foi identificada uma possível tentativa de burlar o sistema.<br>
-			Passivo a responder processo.
-			<br>A equipe do Cacta irá apurar com mais detalhes.<br>
+			<br>A equipe do Cacta Vagas irá apurar com mais detalhes.<br>
 			<br>Art. 154<br>
 
 		</error>

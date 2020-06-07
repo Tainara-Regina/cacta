@@ -56,57 +56,52 @@ class CadastrarCandidatoLoginController extends Controller
      'data_nascimento.required' => 'Preencha a data de nascimento.',
      'password_confirmation.required' => 'Confirme a senha.',
      'uf.required' => 'Escolha seu estado.',
-
    ]);
 
+//=================== reCapcha ==================================
 
      $secret="6Ld2DwEVAAAAAPruSPTxHcI1dS8C1sh7Ui0XKqXZ";
      $response= $_POST["g-recaptcha-response"];
-
- var_dump($response);
-
 
      $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".urlencode($secret)."&response=".urlencode($response));
 
 
      $captcha_success=json_decode($verify);
-      var_dump($captcha_success);
+     var_dump($captcha_success);
      if ($captcha_success->success==false) {
   //This user was not verified by recaptcha.
-       dd('falha');
-     }
+      return view('erro.nao-burle-o-sistema');
+      exit();
+    }
 
-     else if ($captcha_success->success==true) {
-       echo 'sucesso!';
-     };
+    else if ($captcha_success->success==true) {
+     //sucesso
+    };
+//=================== reCapcha ==================================
 
+    $key = md5(rand(10000000, 99999999));
 
+    $dados = new CactaCandidatos;
+    $dados->nome = $request->nome;
+    $dados->sobrenome = $request->sobrenome;
+    $dados->email = $request->email;
+    $dados->uf = $request->uf;
+    $dados->localidade = $request->localidade;
+    $dados->telefone = $request->telefone;
+    $dados->data_nascimento = $request->data_nascimento;
+    $dados->sexo = $request->sexo;
+    $dados->password = Hash::make($request->password);
+    $dados->key_verificacao = $key;
 
-     $key = md5(rand(10000000, 99999999));
+    $dados->save();
 
-     $dados = new CactaCandidatos;
-     $dados->nome = $request->nome;
-     $dados->sobrenome = $request->sobrenome;
-     $dados->email = $request->email;
-     $dados->uf = $request->uf;
-     $dados->localidade = $request->localidade;
-     $dados->telefone = $request->telefone;
-     $dados->data_nascimento = $request->data_nascimento;
-     $dados->sexo = $request->sexo;
-     $dados->password = Hash::make($request->password);
-     $dados->key_verificacao = $key;
-
-     $dados->save();
-
-     $nome = $dados->nome;
-     
-
-     $this->enviarConfirmacao($dados);
-
-     return view('site.confirmeEmailCandidato',compact('nome'));	
-   }
+    $nome = $dados->nome;
 
 
+    $this->enviarConfirmacao($dados);
+
+    return view('site.confirmeEmailCandidato',compact('nome'));	
+  }
 
 
 
@@ -115,7 +110,9 @@ class CadastrarCandidatoLoginController extends Controller
 
 
 
-   public function enviarConfirmacao($dados){
+
+
+  public function enviarConfirmacao($dados){
 
     $user = new \stdClass();
     $user->name = $dados->nome_contratante;
@@ -182,6 +179,7 @@ public function formularioCandidatoParte2(Request $request){
   // 'instagram' => 'required',
   // 'twitter' => 'required',
   // 'site' => 'required',
+    'g-recaptcha-response' => 'required',
  ],
  [
 
@@ -195,72 +193,30 @@ public function formularioCandidatoParte2(Request $request){
   'cep.required' => 'insira o CEP.',
   //'plano.required' => 'Escolha o plano que deseja.',
   'escolariedade.required' => 'Informe sua escolariedade.',
+   'g-recaptcha-response.required' => 'Selecione o recapcha',
 ]);
 
 
+//=================== reCapcha ==================================
+
+     $secret="6Ld2DwEVAAAAAPruSPTxHcI1dS8C1sh7Ui0XKqXZ";
+     $response= $_POST["g-recaptcha-response"];
+
+     $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".urlencode($secret)."&response=".urlencode($response));
 
 
+     $captcha_success=json_decode($verify);
+     var_dump($captcha_success);
+     if ($captcha_success->success==false) {
+  //This user was not verified by recaptcha.
+      return view('erro.nao-burle-o-sistema');
+      exit();
+    }
 
- // $validator = $request->validate([
- //   'logo' => 'required|image',
- //   'segmento' => 'required',
- //   'cep' => 'required',
- //   'numero' => 'required',
- //   'complemento' => 'required',
- //   'sobre' => 'required',
- //   'endereco' => 'required',
- //   'plano' => 'required',
-
- //   'nome_cartao' => 'required',
- //   'numero_cartao' => 'required',
- //   'expira_cartao' => 'required',
- //   'codigo_seguranca_cartao' => 'required',
- //  // 'facebook' => 'required',
- //  // 'instagram' => 'required',
- //  // 'twitter' => 'required',
- //  // 'site' => 'required',
- // ],
- // [
- //   'endereco.required' => 'Insira um CEP válido.',
- //   'logo.required' => 'Insira o logo da sua em presa.',
- //   'segmento.required'  => 'Selecione o segmento da sua empresa.',  
- //   'sobre.required' => 'Escreva sobre sua empresa.',
- //   'cep.required' => 'insira o CEP.',
- //   'plano.required' => 'Escolha o plano que deseja.'
- // ]);
-
-
-
-
-// $dados = CactaCandidatos::find($request->id);
-// $dados->id_segmento = $request->segmento;
-// $dados->logo =  $nome_imagem;
-
-
-// $dados->cep = $request->cep;
-// $dados->numero = $request->numero;
-// $dados->complemento = $request->complemento;
-// $dados->logradouro = $request->logradouro;
-// $dados->bairro = $request->bairro;
-// $dados->localidade = $request->localidade;
-// $dados->uf = $request->uf;
-// $dados->uf = $request->endereco;
-
-// $dados->sobre = $request->sobre;
-// $dados->facebook = $request->facebook;
-// $dados->instagram = $request->instagram;
-// $dados->verificado = 1;
-// $dados->id_plano = $request->plano;
-// $dados->twitter = $request->twitter;
-// $dados->site = $request->site;
-
-
-// $dados->nome_cartao = $request->nome_cartao;
-// $dados->numero_cartao = $request->numero_cartao;
-// $dados->expira_cartao = $request->expira_cartao;
-// $dados->codigo_seguranca_cartao = $request->codigo_seguranca_cartao;
-// $dados->completou_cadastro = 1;
-// $dados->save();
+    else if ($captcha_success->success==true) {
+     //sucesso
+    };
+//=================== reCapcha ==================================
 
   $request->merge(['id_plano' => 1]);
   $request->merge(['completou_cadastro' => 1]);
