@@ -60,9 +60,10 @@ class CadastrarCandidatoLoginController extends Controller
    ]);
 
 
-     $secret="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP";
+     $secret="6Ld2DwEVAAAAAPruSPTxHcI1dS8C1sh7Ui0XKqXZ";
      $response= $_POST["g-recaptcha-response"];
 
+ var_dump($response);
 
 
      $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".urlencode($secret)."&response=".urlencode($response));
