@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use DB;
+use Slack;
 
 
 class CadastrarCandidatoLoginController extends Controller
@@ -229,6 +230,8 @@ public function formularioCandidatoParte2(Request $request){
 
 
 CactaCandidatos::where('id',$request->id)->update(request()->except(['_token','password_atualizar']));
+
+Slack::to('#cacta-vagas')->send('Um usuario acabou de se cadastrar como Candidato.');
 
 return view('site.cadastro-realizado');
 }

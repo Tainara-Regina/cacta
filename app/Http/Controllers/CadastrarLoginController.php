@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use DB;
+use Slack;
 
 
 class CadastrarLoginController extends Controller
@@ -241,6 +242,8 @@ $dados->expira_cartao = $request->expira_cartao;
 $dados->codigo_seguranca_cartao = $request->codigo_seguranca_cartao;
 $dados->completou_cadastro = 1;
 $dados->save();
+
+Slack::to('#cacta-vagas')->send('Um usuario acabou de se cadastrar como Contratante.');
 
 return view('site.cadastro-realizado');
 }
