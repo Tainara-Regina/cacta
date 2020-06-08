@@ -11,6 +11,12 @@
 |
 */
 
+Route::get('/foo', function () {
+    $exitCode = Artisan::call('desativar:vaga');
+
+    //
+});
+
 
 //Route::get('/', 'BlogController@home')->name('site.inicio');
 
