@@ -229,7 +229,7 @@ public function formularioCandidatoParte2(Request $request){
 }
 
 
-CactaCandidatos::where('id',$request->id)->update(request()->except(['_token','password_atualizar']));
+CactaCandidatos::where('id',$request->id)->update(request()->except(['_token','password_atualizar','g-recaptcha-response']));
 
 Slack::to('#cacta-vagas')->send('Um usuario acabou de se cadastrar como Candidato.');
 
