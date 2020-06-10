@@ -3,7 +3,7 @@
 		<div class="sidebar-brand text-center py-4">
 			<!-- <a href="#">{{\Auth::user()->nome_empresa}}</a> -->
 
-			<a class="navbar-brand mx-auto text-center" href="#"> <img class="animated rubberBand cacto" style="height: 45px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
+			<a class="navbar-brand mx-auto text-center" href="#"> <img class="animated rubberBand cacto" style="height: 45px;" src="{{asset('/img/logo_cacta.png')}}"> 
 				<p class="text-center mb-0 pb-0 logo">Cacta Vagas</p>
 			</a>
 

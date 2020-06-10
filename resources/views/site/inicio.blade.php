@@ -270,7 +270,7 @@
 </section>
 
 <section class="blog text-center">
-  <a class="navbar-brand mx-auto text-center" href="#"> <img style="height: 50px;" src="https://image.flaticon.com/icons/png/512/43/43369.png"> 
+  <a class="navbar-brand mx-auto text-center" href="#"> <img style="height: 50px;" src="{{asset('/img/logo_cacta.png')}}"> 
    <p style="color:black;font-family: 'Shadows Into Light', cursive;" class="text-center mb-0 pb-0 logo">Cacta Vagas Blog</p>
  </a>
 

@@ -161,10 +161,10 @@ crossorigin="anonymous">
 
 
 						@if($plano->materiais_exclusivos == 0)
-						<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+						<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre empreendedorismo</li>
 
 						@else
-						<li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+						<li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre empreendedorismo</li>
 						@endif
 
 
@@ -212,10 +212,10 @@ crossorigin="anonymous">
 
 
 						@if($plano_atual->materiais_exclusivos == 0)
-						<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+						<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre empreendedorismo</li>
 
 						@else
-						<li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre emprendedorismo</li>
+						<li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre empreendedorismo</li>
 						@endif
 
 
