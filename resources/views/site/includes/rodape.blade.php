@@ -13,7 +13,7 @@
         </li>
         
         <li>
-          <a href="#">Termo de uso</a>
+          <a href="{{route('site.termo-uso')}}">Termo de uso</a>
         </li>
         
         

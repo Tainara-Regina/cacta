@@ -88,7 +88,7 @@
     <div class="form-row">
       <div class="col px-5  has-search">
         <span class="fa fa-search form-control-feedback"></span>
-        <input id="buscar"  name="buscar"  type="text" class="form-control busca mx-auto" placeholder="Pesquise aqui. Ex: barbeiro, fotografo, barman,etc.">
+        <input id="buscar"  name="buscar"  type="text" class="form-control busca mx-auto" placeholder="Pesquise aqui">
         {!!$procurar_vaga->subtitulo_1!!}
         {!!$procurar_vaga->subtitulo_2!!}
       </div>

@@ -26,6 +26,12 @@ Route::get('/blog/{id}', 'BlogController@post')->name('post');
 Route::get('/busca', 'BlogController@busca')->name('busca');
 Route::get('/categoria/{categoria}', 'BlogController@categoria')->name('categoria');
 
+
+Route::get('/termo-uso', function () {
+ return view('site.termo-uso');	  
+})->name('site.termo-uso');
+
+
 Route::group(['prefix' => 'cacta-sucesso-painel'], function () {
 	Voyager::routes();
 });

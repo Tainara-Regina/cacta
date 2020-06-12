@@ -553,7 +553,8 @@ public function cadastrarPreferencias(Request $request){
 
 //Excluir conta permanentemente
 public function excluirConta(){
- CactaUsers::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false]);
+ //CactaUsers::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false]);
+   CactaUsers::where('id',\Auth::user()->id)->delete();
  return \Redirect::to('/cacta-logout');
 }
 
