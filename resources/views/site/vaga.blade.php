@@ -67,7 +67,7 @@ style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
 					<h1 class="name titulo">{{$vaga->titulo}}
 					</h1>
 					<p class="address">
-						<span style="font-size: 20px; font-weight: bold"> {{$vaga->nome_empresa}}</span> | {{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}
+						<span style="font-size: 20px; font-weight: bold"> {{$vaga->nome_empresa}}</span> | {{$vaga->logradouro}}, {{$vaga->numero}}, {{$vaga->localidade}} - {{$vaga->bairro}} , {{$vaga->uf}}
 					</p>
 				</div>
 			</div>
@@ -189,7 +189,7 @@ style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
 				<div class="w-100 mt-3">
 					<h4 class="titulo">Onde?</h4>
 					<p>
-						<a style="color: rgba(0,0,0,.5);" target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;origin=&amp;destination={{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}&amp;travelmode=transit"> {{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}</a>
+						<a style="color: rgba(0,0,0,.5);" target="_blank" href="https://www.google.com/maps/dir/?api=1&amp;origin=&amp;destination={{$vaga->logradouro}}, {{$vaga->numero}}, {{$vaga->localidade}} - {{$vaga->bairro}} , {{$vaga->uf}}&amp;travelmode=transit"> {{$vaga->logradouro}}, {{$vaga->numero}}, {{$vaga->localidade}} - {{$vaga->bairro}} , {{$vaga->uf}}</a>
 					</p>
 				</div>
 

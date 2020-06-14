@@ -29,7 +29,7 @@
               <p type="button" style="font-size: 46px;" class="close pr-3 text-right" ><span data-dismiss="modal">&times;</span></p>
 
               <h3 class="text-center">Área do contratante</h3>
-              <h6 class="text-center">Insira seue dados e faça login como contratante.</h6>
+              <h6 class="text-center">Insira seus dados e faça login como contratante.</h6>
 
               <div class="card-body">
                  <div class="row">
