@@ -268,7 +268,7 @@ Route::get('/confirmacao-contratante/{id}/{key}','CadastrarLoginController@valid
 Route::get('/confirmacao-candidato/{id}/{key}','CadastrarCandidatoLoginController@validarCadastro')->name('site.confirmacaoCandidato');
 
 
-Route::post('/completando-cadastro','CadastrarLoginController@formularioContratanteParte2')->name('site.formularioContratanteParte2');
+Route::post('/completando-cadastro-contratante','CadastrarLoginController@formularioContratanteParte2')->name('site.formularioContratanteParte2');
 
 
 Route::post('/completando-cadastro-candidato','CadastrarCandidatoLoginController@formularioCandidatoParte2')->name('site.formularioCandidatoParte2');
