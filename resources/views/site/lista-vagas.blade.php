@@ -27,7 +27,7 @@
 			<div class="row">
 				<div class="col px-5  has-search">
 					<span class="fa fa-search form-control-feedback"></span>
-					<input id="buscar"  type="text" class="form-control busca mx-auto" placeholder="Pesquise aqui. Ex: barbeiro, fotografo, barman,etc.">
+					<input id="buscar"  type="text" class="form-control busca mx-auto" placeholder="Pesquise aqui">
 					<h5 class="mt-3">Encontramos estas <strong>vagas</strong> listadas abaixo para você!</h5>
 
 				</div>
