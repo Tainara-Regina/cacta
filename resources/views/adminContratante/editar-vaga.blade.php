@@ -113,9 +113,9 @@ crossorigin="anonymous">
 							<div class="form-group">
 								<label for="pwd">Faixa salarial de:</label>
 
-								<input type="number" value="{{$vagas->faixa_salarial_de}}" name="faixa_salarial_de" class="form-control" min="1" max="10000" id="pwd" placeholder="Ex: 2.000">
+								<input type="number" value="{{$vagas->faixa_salarial_de}}" name="faixa_salarial_de" class="form-control" min="0" max="10000" id="pwd" placeholder="Ex: 2.000">
 								<label>até:</label>
-								<input type="number" value="{{$vagas->faixa_salarial_ate}}" name="faixa_salarial_ate" class="form-control"  min="1" max="10000" id="pwd" placeholder="Ex: 3.000">
+								<input type="number" value="{{$vagas->faixa_salarial_ate}}" name="faixa_salarial_ate" class="form-control"  min="0" max="10000" id="pwd" placeholder="Ex: 3.000">
 							</div>
 
 							<div class="form-group form-check">
