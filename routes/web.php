@@ -18,9 +18,9 @@ Route::get('/foo', function () {
 });
 
 
-Route::get('/', 'BlogController@home')->name('site.inicio');
+//Route::get('/', 'BlogController@home')->name('site.inicio');
 
-//Route::get('/', 'InicioController@inicio')->name('site.inicio');
+Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/blog', 'BlogController@home')->name('blog-home');
 Route::get('/blog/{id}', 'BlogController@post')->name('post');
 Route::get('/busca', 'BlogController@busca')->name('busca');
@@ -40,7 +40,7 @@ Route::group(['prefix' => 'cacta-sucesso-painel'], function () {
 //==================================================
 //====== Redirecionamento Pro blog ==========
 //==================================================
-Route::middleware(['redirect'])->group(function () {
+//Route::middleware(['redirect'])->group(function () {
 
 
 
@@ -285,4 +285,4 @@ Route::fallback(function() {
 //==================================================
 //====== Fim do redirecionamento Pro blog ==========
 //==================================================
-});
+//});
