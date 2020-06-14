@@ -225,7 +225,7 @@ $dados->logradouro = $request->logradouro;
 $dados->bairro = $request->bairro;
 $dados->localidade = $request->localidade;
 $dados->uf = $request->uf;
-$dados->uf = $request->endereco;
+$dados->endereco = $request->endereco;
 
 $dados->sobre = $request->sobre;
 $dados->facebook = $request->facebook;
