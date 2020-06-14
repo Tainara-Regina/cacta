@@ -209,7 +209,7 @@ style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
 				<h1 class="titulo">{{$vaga->titulo}}
 				</h1>
 				<p class="address">
-					<span style="font-size: 20px; font-weight: bold"> {{$vaga->nome_empresa}}</span> | {{$vaga->logradouro}}, {{$vaga->numero}}, - {{$vaga->bairro}} , {{$vaga->uf}}
+					<span style="font-size: 20px; font-weight: bold"> {{$vaga->nome_empresa}}</span> | {{$vaga->logradouro}}, {{$vaga->numero}}, {{$vaga->localidade}} - {{$vaga->bairro}} , {{$vaga->uf}}
 				</p>
 
 
