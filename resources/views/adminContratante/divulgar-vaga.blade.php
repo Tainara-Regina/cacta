@@ -188,9 +188,7 @@ crossorigin="anonymous">
 					@enderror
 					<div class="form-group">
 						<label for="email">Descrição:</label>
-						<textarea name="descricao" placeholder='Conte um pouco sobre a empresa, fale sobre a vaga e as habilidades que procura no candidato. Ex: A empresa "Exemplo" está procurando de pessoas que se identificam  com os valores da empresa para compor nossa equipe. As principais atividades realizadas são...'  class="form-control" rows="5" id="comment">
-							{{old('descricao')}}
-						</textarea>
+						<textarea name="descricao" placeholder='Conte um pouco sobre a empresa, fale sobre a vaga e as habilidades que procura no candidato. Ex: A empresa "Exemplo" está procurando de pessoas que se identificam  com os valores da empresa para compor nossa equipe. As principais atividades realizadas são...'  class="form-control" rows="5" id="comment">{{old('descricao')}}</textarea>
 					</div>
 
 					@error('requisitos')
