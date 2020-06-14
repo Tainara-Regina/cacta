@@ -41,7 +41,7 @@ style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
 
 <div class="container">
 	<section class="p-3 voltar">
-		<a href="{{ URL::previous() }}"><i class="fa fa-reply"></i> VOLTAR </a>
+		<a href="{{route('site.lista-vaga')}}"><i class="fa fa-reply"></i> VOLTAR A LISTA DE VAGAS </a>
 	</section>
 </div>
 
