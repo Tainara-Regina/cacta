@@ -9,15 +9,42 @@
 <div class="collapse navbar-collapse" id="navbarNav">
   <ul class="navbar-nav">
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <b style="color: green">Entrar</b>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalCandidato">Área do candidato</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalContratante">Área do contratante</a>
-      </div>
-    </li>
+
+    @if(Request::session()->get('menu_contratante'))
+    <a class="nav-link" href="{{route('site.admin-contratante')}}" id="navbarDropdown" >
+      <b style="color: green">Acessar painel</b>
+    </a>
+
+
+    @elseif(Request::session()->get('menu_candidato'))
+    <a class="nav-link" href="{{route('site.admin-candidato')}}" id="navbarDropdown" >
+      <b style="color: green">Acessar painel</b>
+    </a>
+
+
+    @elseif(Request::session()->get('menu_candidato') && Request::session()->get('menu_contratante'))
+    <a class="nav-link" href="{{route('site.admin-candidato')}}" id="navbarDropdown" >
+      <b style="color: green">Acessar painel candidato</b>
+    </a>
+
+    <a class="nav-link" href="{{route('site.admin-contratante')}}" id="navbarDropdown" >
+      <b style="color: green">Acessar painel contratante</b>
+    </a>
+
+    @else
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <b style="color: green">Entrar</b>
+    </a>
+
+
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalCandidato">Área do candidato</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalContratante">Área do contratante</a>
+    </div>
+    @endif
+  </li>
+
     @if(!Request::session()->get('menu_candidato'))
     <li class="nav-item active">
       <a class="nav-link" href="{{route('formularioCandidato')}}">Cadastre-se</a>
