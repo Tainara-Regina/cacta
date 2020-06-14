@@ -105,26 +105,24 @@ style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
 						<p>	{{$vaga->requisitos}} </p>
 					</div>
 
+
 					<div class="w-100">
+						@if(isset($vaga->desejavel))
 						<h2 class="titulo">Desejável</h2>
 						<p>{{$vaga->desejavel}} </p>
+						@endif
 					</div>
 
+
 					<div class="w-100">
-
-
 						@if(isset($vaga->beneficios))
 						<h2 class="titulo">Benefícios</h2>
 						<p>{{$vaga->beneficios}}
 						</p>
 						@endif
-
-
 					</div>
 
 					<div class="w-100  py-5">
-
-
 						@if($id_candidato)
 						@if($candidatou_se == "não")
 						<p class="m-0 p-0">Se identificou com a vaga?</p>
@@ -257,8 +255,10 @@ style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
 				</div>
 
 				<div class="w-100">
+					@if(isset($vaga->desejavel))
 					<h2 class="titulo">Desejável</h2>
 					<p>{{$vaga->desejavel}}</p>
+					@endif
 				</div>
 
 				<div class="w-100">

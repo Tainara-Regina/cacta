@@ -178,7 +178,7 @@ crossorigin="anonymous">
 					<div class="form-group row">
 						<label for="example-number-input" class="col col-form-label">Quantidade de vaga:</label>
 						<div class="col">
-							<input name="quantidade_vaga" class="form-control w-50" min="1" max="99" type="number" value="{{old('quantidade_vaga')}}" id="example-number-input">
+							<input name="quantidade_vaga" class="form-control w-50" min="1" max="99" type="number" value="{{old('quantidade_vaga')}}" id="example-number-input" required>
 						</div>
 					</div>
 
@@ -188,7 +188,7 @@ crossorigin="anonymous">
 					@enderror
 					<div class="form-group">
 						<label for="email">Descrição:</label>
-						<textarea name="descricao" placeholder='Conte um pouco sobre a empresa, fale sobre a vaga e as habilidades que procura no candidato. Ex: A empresa "Exemplo" está procurando de pessoas que se identificam  com os valores da empresa para compor nossa equipe. As principais atividades realizadas são...'  class="form-control" rows="5" id="comment">{{old('descricao')}}</textarea>
+						<textarea name="descricao" placeholder='Conte um pouco sobre a empresa, fale sobre a vaga e as habilidades que procura no candidato. Ex: A empresa "Exemplo" está procurando profissionais que se identificam  com a empresa para compor nossa equipe. As principais atividades realizadas da vaga são...'  class="form-control" rows="5" id="comment" required>{{old('descricao')}}</textarea>
 					</div>
 
 					@error('requisitos')
@@ -196,7 +196,7 @@ crossorigin="anonymous">
 					@enderror
 					<div class="form-group">
 						<label for="pwd">Requisitos:</label>
-						<textarea name="requisitos" placeholder="Descreva aqui todas as habilidades e experiencias necessarias para ocupar a vaga." class="form-control" rows="5" id="comment">{{old('requisitos')}}</textarea>
+						<textarea name="requisitos" placeholder="Descreva aqui todas as habilidades e experiencias necessarias para ocupar a vaga." class="form-control" rows="5" id="comment" required>{{old('requisitos')}}</textarea>
 					</div>
 
 					@error('desejavel')
@@ -204,7 +204,7 @@ crossorigin="anonymous">
 					@enderror
 					<div class="form-group">
 						<label for="comment">Desejável:</label>
-						<textarea name="desejavel" placeholder="Descreva aqui habilidades que não são obrigatórias para a vaga mas seriam consideradas um diferencialcaso o candidato possua."class="form-control" rows="5" id="comment">{{old('desejavel')}}</textarea>
+						<textarea name="desejavel" placeholder="Descreva aqui habilidades que não são obrigatórias para a vaga mas seriam consideradas um diferencial caso o candidato possua. Deixe em branco caso não queira preencher."class="form-control" rows="5" id="comment">{{old('desejavel')}}</textarea>
 					</div> 
 
 
@@ -213,7 +213,7 @@ crossorigin="anonymous">
 					@enderror
 					<div class="form-group">
 						<label for="comment">Beneficios:</label>
-						<textarea name="beneficios" placeholder="Descreva os beneficios da vaga."class="form-control" rows="5" id="comment">{{old('beneficios')}}</textarea>
+						<textarea name="beneficios" placeholder="Descreva os beneficios da vaga. Deixe em branco caso não queira preencher."class="form-control" rows="5" id="comment">{{old('beneficios')}}</textarea>
 					</div> 
 
 					<div class="form-check mb-5">
@@ -234,15 +234,15 @@ crossorigin="anonymous">
 			</div>
 
 			<div class="col-md-5">
-				<div class="w-100 bg-dark" style="height: 200px">
+				<div class="w-100" style="height: 200px">
 					<p class="text-center">
-						Banner
+						<!-- propaganda aqui -->
 					</p>
 				</div>
 
-				<div class="w-100 bg-dark mt-5" style="height: 200px">
+				<div class="w-100 mt-5" style="height: 200px">
 					<p class="text-center">
-						Banner
+						<!-- propaganda aqui -->
 					</p>
 				</div>
 
