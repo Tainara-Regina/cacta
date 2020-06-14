@@ -68,7 +68,7 @@
             @enderror
             <div class="form-group">
               <label for="email"><b>E-mail da empresa</b></label>
-              <input placeholder="Insira o e-mail" type="email" value="{{old('email')}}" name="email" class="form-control" required>
+              <input placeholder="Insira o e-mail" type="email" value="{{old('email')}}" name="email" class="form-control" >
             </div>
 
 
