@@ -262,7 +262,7 @@
 
 <div class="row">
   <div class="col text-center">
-    <a class="btn mb-5 cadastre animated rubberBand btn-experimente"  href="{{route('formularioContratante')}}">Clique aqui e comece a contratar grátis!</a>
+    <a class="btn mb-5 cadastre animated rubberBand btn-experimente"  href="{{route('formularioContratante')}}">Comece grátis a contratar!</a>
   </div>
 </div>
 

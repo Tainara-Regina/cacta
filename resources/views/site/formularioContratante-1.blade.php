@@ -68,7 +68,7 @@
             @enderror
             <div class="form-group">
               <label for="email"><b>E-mail da empresa</b></label>
-              <input placeholder="Insira o e-mail" type="email" value="{{old('email')}}" name="email" class="form-control" >
+              <input placeholder="Insira o e-mail" type="email" value="{{old('email')}}" name="email" class="form-control" required>
             </div>
 
 
@@ -77,7 +77,7 @@
             @enderror
             <div class="form-group">
               <label for="telefone"><b>Telefone</b></label>
-              <input type="text" value="{{old('telefone')}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control" required>
+              <input type="text" value="{{old('telefone')}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control telefone" required>
             </div>
 
             @error('password')

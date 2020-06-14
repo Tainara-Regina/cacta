@@ -6,6 +6,7 @@
      $('.cep').mask('00000-000');
      $('.cvv').mask('000');
      $('.cartao').mask('#');
+     $('.telefone').mask('#');
      $('.phone').mask('0000-0000');
      $('.phone_with_ddd').mask('(00) 0000-0000');
      $('.phone_us').mask('(000) 000-0000');
