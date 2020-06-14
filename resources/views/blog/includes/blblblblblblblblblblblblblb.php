@@ -193,7 +193,7 @@
 
         <div class="col-md-2 text-center">
           <p class="form-check-label mt-2 mt-sm-4 mb-2" for="inlineCheckbox1"><b>Onde?</b></p>
-          <input type="text" class="form-control" placeholder="Ex: São Paulo, Zona Sul" name="local">
+          <input type="text" class="form-control" placeholder="Procure por cidade ou bairro" name="local">
           <div class="form-check-inline  d-sm-none">
             <label class="form-check-label">
               <input id="filtrar" type="checkbox" class="form-check-input my-3" value=""> <strong>Deseja filtrar a busca?</strong> 
