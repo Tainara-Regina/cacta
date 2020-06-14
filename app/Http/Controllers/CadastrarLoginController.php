@@ -33,7 +33,7 @@ class CadastrarLoginController extends Controller
      $validator = $request->validate([
        'nome_contratante' => 'required',
        'nome_empresa' => 'required',
-       'email' => 'required|unique:cacta_users',
+       'email' => 'email|required|unique:cacta_users',
        'telefone' => 'required',
        'password' => 'required',
        'password_confirmation' =>'required|same:password',
@@ -43,6 +43,7 @@ class CadastrarLoginController extends Controller
        'nome_contratante.required' => 'Insira seu nome completo.',
        'nome_empresa.required' => 'Insira o nome da empresa.',
        'email.required'  => 'E-mail obrigatório',	
+       'email.email'  => 'insira um e-mail válido', 
        'telefone.required' => 'Telefone obrigatório.',
        'password.required' => 'Senha obrigatória.',
        'password_confirmation.same' => 'A confirmação de senha precisa ser igual a senha.',

@@ -59,7 +59,7 @@
             @enderror
             <div class="form-group">
               <label for="email"><b>Nome da empresa</b></label>
-              <input placeholder="Insira o nome da sua empresa"  value="{{old('nome_empresa')}}" type="text" name="nome_empresa" class="form-control" required>
+              <input placeholder="Insira o nome da sua empresa"  value="{{old('nome_empresa')}}" type="email" name="nome_empresa" class="form-control" required>
             </div>
 
 
