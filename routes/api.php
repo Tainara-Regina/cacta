@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\CactaUsers;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +15,14 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
 
 
 
 
 Route::post('/pagarme', function (Request $request) {
- Slack::to('#cacta-vagas')->send('Um postback foi enviado!');
+	Slack::to('#cacta-vagas')->send('Um postback foi enviado!');
 //Slack::to('#cacta-vagas')->send($request->id);
 
 
@@ -35,12 +36,14 @@ $transaction    = $request->transaction; //Possui todas as informações do obje
 
 
 
-
-
-
-
 Slack::to('#cacta-vagas')->send(" ID da transação: ".$id.". Status para o qual efetivamente mudou:  ".$current_status.". Status anterior da transação: ".$old_status.". Qual o tipo do objeto referido: ".$object);
-dd($request->id);
+
+$status = CactaUsers::where('id_assinatura',$id)->first();
+$status->status_assinatura = $current_status;
+$status->save();
+
+
+//dd($request->id);
 // $requestBody = file_get_contents("php://input"); 
 // $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
 
@@ -51,7 +54,7 @@ dd($request->id);
 return true;
 	//return view('site.pagarme');
   // echo 'banana';
-  
+
 
 // $pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
 

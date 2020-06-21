@@ -238,7 +238,9 @@ $subscription = $pagarme->subscriptions()->create([
   ],
 ]);
 
-dd($subscription);
+//dd($subscription);
+
+
 
 
 
@@ -281,6 +283,8 @@ $dados->numero_cartao = $request->numero_cartao;
 $dados->expira_cartao = $request->expira_cartao;
 $dados->codigo_seguranca_cartao = $request->codigo_seguranca_cartao;
 $dados->completou_cadastro = 1;
+$dados->id_assinatura = $subscription->id;
+$dados->status_assinatura = $subscription->status;
 $dados->save();
 
 Slack::to('#cacta-vagas')->send('Um usuario acabou de se cadastrar como Contratante.');
