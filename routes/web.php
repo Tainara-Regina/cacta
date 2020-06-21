@@ -66,7 +66,7 @@ Route::post('/pagarme', function () {
 
 
 
-Route::get('/', 'BlogController@home')->name('site.inicio');
+//Route::get('/', 'BlogController@home')->name('site.inicio');
 
 //Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/blog', 'BlogController@home')->name('blog-home');
@@ -88,7 +88,7 @@ Route::group(['prefix' => 'cacta-sucesso-painel'], function () {
 //==================================================
 //====== Redirecionamento Pro blog ==========
 //==================================================
-Route::middleware(['redirect'])->group(function () {
+//Route::middleware(['redirect'])->group(function () {
 
 
 
@@ -333,4 +333,4 @@ Route::fallback(function() {
 //==================================================
 //====== Fim do redirecionamento Pro blog ==========
 //==================================================
-});
+//});
