@@ -20,14 +20,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-Route::post('/pagarme', function () {
+Route::post('/pagarme', function (Request $request) {
  Slack::to('#cacta-vagas')->send('Um postback foi enviado!');
-$requestBody = file_get_contents("php://input"); 
-$signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
+
+ dd($request->all());
+// $requestBody = file_get_contents("php://input"); 
+// $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
 
 
-echo $requestBody;
-echo $signature;
+// echo $requestBody;
+// echo $signature;
 
 return true;
 	//return view('site.pagarme');
