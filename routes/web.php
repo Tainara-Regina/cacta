@@ -19,7 +19,7 @@ Route::get('/foo', function () {
 
 
 
-Route::get('/pagarme', function () {
+Route::post('/pagarme', function () {
 	Slack::to('#cacta-vagas')->send('Um postback foi enviado!');
 	//return view('site.pagarme');
   // echo 'banana';
