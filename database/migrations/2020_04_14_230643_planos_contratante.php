@@ -16,6 +16,7 @@ class PlanosContratante extends Migration
     {
       Schema::create('planos_contratante', function (Blueprint $table) {
         $table->bigIncrements('id');
+         $table->string('id_pagarme');
         $table->string('preco');
         $table->string('plano');
         $table->string('vagas_em_destaque');

@@ -155,11 +155,11 @@ public function formularioContratanteParte2(Request $request){
    'sobre' => 'required',
    'endereco' => 'required',
    'plano' => 'required',
-   'g-recaptcha-response' => 'required',
-   // 'nome_cartao' => 'required',
-   // 'numero_cartao' => 'required',
-   // 'expira_cartao' => 'required',
-   // 'codigo_seguranca_cartao' => 'required',
+   //'g-recaptcha-response' => 'required',
+   'nome_cartao' => 'required',
+   'numero_cartao' => 'required|unique:cacta_users',
+   'expira_cartao' => 'required',
+   'codigo_seguranca_cartao' => 'required',
    // 'logo.image' => 'O logo precisa ser uma imagem.',
   // 'facebook' => 'required',
   // 'instagram' => 'required',
@@ -169,11 +169,12 @@ public function formularioContratanteParte2(Request $request){
  [
 
 
-   // 'nome_cartao.required' => 'Insira o nome que está no cartão.',
-   // 'numero_cartao.required' => 'Insira o número do cartão.',
-   // 'expira_cartao.required' => 'Insira a data de validade do cartão.',
-   // 'codigo_seguranca_cartao.required' => 'Insira o código de segurança do cartão.',
-   'g-recaptcha-response.required' => 'Selecione o recapcha',
+    'nome_cartao.required' => 'Insira o nome que está no cartão.',
+    'numero_cartao.required' => 'Insira o número do cartão.',
+    'numero_cartao.required' => 'Número do cartão já utilizado. Utilize outro.',
+    'expira_cartao.required' => 'Insira a data de validade do cartão.',
+    'codigo_seguranca_cartao.required' => 'Insira o código de segurança do cartão.',
+   //'g-recaptcha-response.required' => 'Selecione o recapcha',
    'numero.required' => 'Insira o número.',
    'cep.required' => 'Verifique se inseriu o CEP.',
    'endereco.required' => 'Insira um CEP válido.',
@@ -186,35 +187,72 @@ public function formularioContratanteParte2(Request $request){
 
 
 //=================== reCapcha ==================================
+//  $secret="6Ld2DwEVAAAAAPruSPTxHcI1dS8C1sh7Ui0XKqXZ";
+//  $response= $_POST["g-recaptcha-response"];
 
-     $secret="6Ld2DwEVAAAAAPruSPTxHcI1dS8C1sh7Ui0XKqXZ";
-     $response= $_POST["g-recaptcha-response"];
-
-     $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".urlencode($secret)."&response=".urlencode($response));
+//  $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".urlencode($secret)."&response=".urlencode($response));
 
 
-     $captcha_success=json_decode($verify);
-     if ($captcha_success->success==false) {
-  //This user was not verified by recaptcha.
-      return view('erro.nao-burle-o-sistema');
-      exit();
-    }
+//  $captcha_success=json_decode($verify);
+//  if ($captcha_success->success==false) {
+//   //This user was not verified by recaptcha.
+//   return view('erro.nao-burle-o-sistema');
+//   exit();
+// }
 
-    else if ($captcha_success->success==true) {
-     //sucesso
-    };
+// else if ($captcha_success->success==true) {
+//      //sucesso
+// };
 //=================== reCapcha ==================================
 
 
- if($request->file('logo')->isValid())
- {
+//dd($request->all());
+
+ $pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
+// $canceledSubscription = $pagarme->subscriptions()->cancel([
+//   'id' => 499478
+// ]);
+// exit();
+
+
+$dados_plano = PlanosContratante::where('id',$request->plano)->first();
+$dados = CactaUsers::find($request->id);
+$subscription = $pagarme->subscriptions()->create([
+  'plan_id' => $dados_plano->id_pagarme,
+  'payment_method' => 'credit_card',
+  'card_number' => $request->numero_cartao,
+  'card_holder_name' => $request->nome_cartao,
+  'card_expiration_date' => str_replace("/","",$request->expira_cartao),  
+  'card_cvv' => $request->codigo_seguranca_cartao,
+  'customer' => [
+    'email' => $dados->email,
+    'name' => $dados->nome_contratante,
+    'address' => [
+      'street' => $request->logradouro,
+      'street_number' => $request->numero,
+      'complementary' => $request->complemento,
+      'neighborhood' => $request->bairro,
+      'zipcode' => $request->cep
+    ],
+  ],
+]);
+
+dd($subscription);
+
+
+
+
+
+
+if($request->file('logo')->isValid())
+{
   $upload =  Storage::put('public/logo_usuario', $request->file('logo'));
   $teste = explode('/',$upload);
   array_shift($teste);
   $nome_imagem = implode('/',$teste);
 }
 
-$dados = CactaUsers::find($request->id);
+
 $dados->id_segmento = $request->segmento;
 $dados->logo =  $nome_imagem;
 

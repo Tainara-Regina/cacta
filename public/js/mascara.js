@@ -1,6 +1,7 @@
    $(document).ready(function($){
      $('.name').mask('Z',{translation: {'Z': {pattern: /[a-zA-Z ]/, recursive: true}}});
      $('.date').mask('00/00/0000');
+     $('.date_cartao').mask('00/00');
      $('.time').mask('00:00:00');
      $('.date_time').mask('00/00/0000 00:00:00');
      $('.cep').mask('00000-000');
@@ -8,7 +9,7 @@
      $('.cartao').mask('#');
      $('.telefone').mask('#');
      $('.phone').mask('0000-0000');
-     $('.phone_with_ddd').mask('(00) 0000-0000');
+     $('.phone_with_ddd').mask('(00) 00000-0000');
      $('.phone_us').mask('(000) 000-0000');
      $('.mixed').mask('AAA 000-S0S');
      $('.cpf').mask('000.000.000-00', {reverse: true});

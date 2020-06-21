@@ -12,7 +12,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="{{asset('/js/mascaras.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="{{asset('/js/mascara.js')}}"></script>
 @stop
 
 
@@ -51,7 +53,7 @@
             @enderror
             <div class="form-group">
               <label for="nome_contratante"><b>Insira seu nome completo</b></label>
-              <input placeholder="Qual o seu nome?" value="{{old('nome_contratante')}}" type="text" name="nome_contratante" class="form-control" required>
+              <input placeholder="Qual o seu nome?" value="{{old('nome_contratante')}}" type="text" name="nome_contratante" class="form-control name" required>
             </div>
 
             @error('nome_empresa')
@@ -77,7 +79,7 @@
             @enderror
             <div class="form-group">
               <label for="telefone"><b>Telefone</b></label>
-              <input type="text" value="{{old('telefone')}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control telefone" required>
+              <input type="text" value="{{old('telefone')}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control phone_with_ddd" required>
             </div>
 
             @error('password')

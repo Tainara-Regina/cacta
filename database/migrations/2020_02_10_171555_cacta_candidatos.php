@@ -58,6 +58,7 @@ class CactaCandidatos extends Migration
 
 
         $table->string('id_plano')->nullable();
+        $table->string('id_assinatura')->nullable();
         $table->string('nome_cartao')->nullable();
         $table->string('numero_cartao')->nullable();
         $table->string('expira_cartao')->nullable();

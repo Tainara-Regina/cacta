@@ -160,8 +160,8 @@
               
               <div class="row">
                 <div class="col">
-                  <h2 class="text-center mt-5 mb-3">Escolha o plano que deseja</h2>
-                  <p class="text-center"><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preocupe.</p>
+                  <h2 class="text-center mt-5 mb-3">Escolha o plano</h2>
+                  <p class="text-center"><b>Obs: </b>Se desejar, você pode cancelar o plano após o período gratuito.</p>
                 </div>
               </div>
 
@@ -173,6 +173,8 @@
                </div>
              </div>
 
+
+
              <div class="row pricing">
 
               @foreach($planos as $plano)
@@ -180,8 +182,10 @@
               <div class="col-lg-4 col-8 mx-auto" >
                 <div class="card mb-5 mb-lg-0 plano" data-plano="{{$plano->id}}">
                   <div class="card-body">
-                    <h5 class="card-title text-muted text-uppercase text-center">{{$plano->plano}}</h5>
-                    <h6 class="card-price text-center">${{$plano->preco}}<!-- <span class="period">/periodo</span> --></h6>
+                    <h4 class="card-title text-muted text-uppercase text-center">{{$plano->plano}}</h5>
+                      <h6 class="text-center text-muted">Após periodo gratuito</h6>
+                    <h6 class="card-price text-center">${{$plano->preco}} <span class="period text-muted"><small>/mês</small> </span>
+                    </h6>
                     <hr>
                     <ul class="fa-ul">
 
@@ -219,9 +223,91 @@
               </div>
               @endforeach
 
-              <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="row">
+              <div class="col">
+                <h2 class="text-center mt-5 mb-3">Dados de pagamento</h2>
+                <p class="text-center">Insira os dados do cartão.</p>
+              </div>
+            </div>
+
+
+
+
+
+            <div class="row">
+              <div class="col-md-9 mx-auto">
+
+                @error('nome_cartao')
+                <span style="color: red">{{ $message }}</span>
+                @enderror
+                <div class="form-group">
+                  <input name="nome_cartao" placeholder="Nome" value="{{ old('nome_cartao')}}" type="text" class="form-control name" required>
+                </div>
+
+                @error('numero_cartao')
+                <span style="color: red">{{ $message }}</span>
+                @enderror
+                <div class="form-group">
+                  <input name="numero_cartao" placeholder="Número do cartão" value="{{old('numero_cartao')}}" maxlength="20" type="text" class="form-control cartao" required>
+                </div>
+
+
+                @error('expira_cartao')
+                <span style="color: red">{{ $message }}</span>
+                @enderror
+                <div class="form-group">
+                  <input name="expira_cartao" placeholder="Data de expiração do cartão" value="{{old('expira_cartao')}}" type="text" class="form-control date_cartao" required>
+                </div>
+
+
+                @error('codigo_seguranca_cartao')
+                <span style="color: red">{{ $message }}</span>
+                @enderror
+                <div class="form-group">
+                  <input name="codigo_seguranca_cartao" placeholder="Código de segurança do cartão" value="{{old('codigo_seguranca_cartao')}}" type="text" class="form-control cvv" required>
+                </div>
+
+
+              </div>
 
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row"> 
+              <div class="col-md-12 text-center"> 
+
+                <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP">
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
             <div class="row"> 
               <div class="col text-center"> 
                 <button type="submit" class="btn btn-success my-5 mt-3 text-center py-3 px-5 text-uppercase"> <b>Concluir e começar a contratar!</b></button>

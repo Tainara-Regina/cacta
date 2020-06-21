@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e16bddd1b72445cc296439e56420b98b",
+    "content-hash": "57b0d765465fa27d383558a03a1759f4",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -2235,6 +2235,50 @@
                 "serialize"
             ],
             "time": "2020-05-25T09:32:45+00:00"
+        },
+        {
+            "name": "pagarme/pagarme-php",
+            "version": "v4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pagarme/pagarme-php.git",
+                "reference": "aef493d9c56435467ea1518b36bb4de963b846d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pagarme/pagarme-php/zipball/aef493d9c56435467ea1518b36bb4de963b846d5",
+                "reference": "aef493d9c56435467ea1518b36bb4de963b846d5",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": ">=6.3",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7",
+                "squizlabs/php_codesniffer": "^3.3"
+            },
+            "type": "lib",
+            "autoload": {
+                "psr-4": {
+                    "PagarMe\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Pagar.Me PHP Library",
+            "homepage": "http://pagar.me",
+            "keywords": [
+                "api",
+                "pagamento brasil",
+                "pagamentos",
+                "pagar.me",
+                "pagarme",
+                "payments brazil"
+            ],
+            "time": "2020-06-16T17:06:15+00:00"
         },
         {
             "name": "paragonie/random_compat",
