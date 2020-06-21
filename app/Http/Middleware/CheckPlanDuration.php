@@ -20,9 +20,10 @@ class CheckPlanDuration
     public function handle($request, Closure $next)
     {
    // se não estiver logado redireciona para o inicio
-       if ( !auth()->check() ){
-        return redirect()->route('inicio');
+     if ( !auth()->check() ){
+      return redirect()->route('inicio');
     }
+    return $next($request);
 
     $id_plano = auth()->user()->id_plano;
     $plano = PlanosContratante::where('id',$id_plano)->first();
@@ -40,22 +41,22 @@ class CheckPlanDuration
 
     if ($plano->duracao != 'full') {
 
-        $data_fim_plano = Carbon::parse($data_de_cadastro_usuario)->addDays($plano_duracao);
-        $data_agora = Carbon::now();
+      $data_fim_plano = Carbon::parse($data_de_cadastro_usuario)->addDays($plano_duracao);
+      $data_agora = Carbon::now();
 
 
-        if($data_agora > $data_fim_plano)
-        {
+      if($data_agora > $data_fim_plano)
+      {
           //  redirect para a pagina de escolher os planos
           // dd('sfhho');
-          return  redirect()->route('plano-expirou');
-        }
+        return  redirect()->route('plano-expirou');
+      }
 
 
 
     }
 
 
-    return $next($request);
-}
+   // return $next($request);
+  }
 }
