@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/pagarme', function (Request $request) {
  Slack::to('#cacta-vagas')->send('Um postback foi enviado!');
-Slack::to('#cacta-vagas')->send($request->all());
+Slack::to('#cacta-vagas')->send($request->id);
 //dd($request->all());
 // $requestBody = file_get_contents("php://input"); 
 // $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
