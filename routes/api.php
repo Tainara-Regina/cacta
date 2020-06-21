@@ -27,7 +27,7 @@ $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
 
 
 echo $requestBody;
-echo $signature
+echo $signature;
 
 return true;
 	//return view('site.pagarme');
