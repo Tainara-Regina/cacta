@@ -65,7 +65,7 @@ Route::post('/pagarme', function () {
 
 Route::get('/', 'BlogController@home')->name('site.inicio');
 
-Route::get('/', 'InicioController@inicio')->name('site.inicio');
+//Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/blog', 'BlogController@home')->name('blog-home');
 Route::get('/blog/{id}', 'BlogController@post')->name('post');
 Route::get('/busca', 'BlogController@busca')->name('busca');
@@ -324,9 +324,9 @@ Route::post('/completando-cadastro-candidato','CadastrarCandidatoLoginController
 
 
 
-Route::fallback(function() {
-   // return 'Hm, why did you land here somehow?';
-});
+// Route::fallback(function() {
+//    // return 'Hm, why did you land here somehow?';
+// });
 
 //==================================================
 //====== Fim do redirecionamento Pro blog ==========
