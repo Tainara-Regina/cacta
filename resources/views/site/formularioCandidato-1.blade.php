@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="{{asset('/js/mascaras.js')}}"></script>
 @stop
 
 
@@ -29,7 +28,9 @@
 				<div class="col mt-5 col-10 mx-auto">
 					<h2 class="text-h3 text-center" >Olá!</h2>
 					<h5 class="text-h3 text-center"> <b>Seja muito bem vindo(a) ao Cacta vagas!</b></h5>
-					<h5 class="text-h3 text-center"> <b>Cadastre-se para se candidatar as vagas</b></h5>
+
+					 <p class="text-h3 mt-3 text-center" style="font-size: 20px;">Queremos te ajudar a encontrar a vaga de emprego que procura.
+					Cadastre-se para poder se candidatar as vagas disponíveis e ser encontrado por empresas cadastradas.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -60,8 +61,8 @@
 						<span style="color: red">{{ $message }}</span>
 						@enderror
 						<div class="form-group">
-							<label for="email"><b>E-mail da empresa</b></label>
-							<input placeholder="Insira o e-mail" type="text" value="{{old('email')}}" name="email" class="form-control" required>
+							<label for="email"><b>E-mail</b></label>
+							<input placeholder="Insira seu e-mail" type="email" value="{{old('email')}}" name="email" class="form-control" required>
 						</div>
 
 
@@ -97,7 +98,7 @@
 						@enderror
 						<div class="form-group">
 							<label for="telefone"><b>Telefone</b></label>
-							<input type="text" value="{{old('telefone')}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control" required>
+							<input type="text" value="{{old('telefone')}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control phone_with_ddd" required>
 						</div>
 
 
@@ -106,7 +107,7 @@
 						<span style="color: red">{{ $message }}</span>
 						@enderror
 						<div class="form-group">
-							<label for="telefone"><b>Cidade</b></label>
+							<label><b>Cidade</b></label>
 							<input type="text" value="{{old('localidade')}}" name="localidade" placeholder="Cidade" type="text" class="form-control" required>
 						</div>
 
@@ -197,6 +198,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="{{asset('/js/mascara.js')}}"></script>
 @stop
 
 

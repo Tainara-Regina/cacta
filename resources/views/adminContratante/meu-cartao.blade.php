@@ -13,6 +13,15 @@ crossorigin="anonymous">
 <link rel="stylesheet" href="{{asset('/css/adminContrate/meus-dados-pessoais.css')}}">
 <link href="https://fonts.googleapis.com/css?family=Francois+One|Indie+Flower|Quicksand|Shadows+Into+Light&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('/css/rodape.css')}}">
+<style type="text/css">
+	.falhou {
+		border: red solid 1px;
+	}
+
+	.acertou {
+		border: green solid 1px;
+	}
+</style>
 @stop
 
 
@@ -29,6 +38,7 @@ crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script type="text/javascript" src="{{asset('/js/mascara.js')}}"></script>
+<script type="text/javascript" src="{{asset('/js/validacao.js')}}"></script>
 @stop
 
 
@@ -71,7 +81,7 @@ crossorigin="anonymous"></script>
 <div class="row">
 	<div class="col-md-9">
 
-		<form class="form" action="{{route('site.gravar-atualizar-cartao')}}" id="formPart1" method="POST" enctype="multipart/form-data">
+		<form class="form" action="{{route('site.gravar-atualizar-cartao')}}" id="formPart1" method="POST" onsubmit="return tudo()" enctype="multipart/form-data">
 			@csrf
 
 
@@ -85,7 +95,7 @@ crossorigin="anonymous"></script>
 			@error('numero_cartao')
 			<span style="color: red">{{ $message }}</span>
 			@enderror
-			<div class="form-group">
+			<div class="form-group" id="cartao_id">
 				<input name="numero_cartao" placeholder="Número do cartão" value="{{old('numero_cartao')}}" maxlength="20" type="text" class="form-control cartao" required>
 			</div>
 
@@ -94,7 +104,7 @@ crossorigin="anonymous"></script>
 			<span style="color: red">{{ $message }}</span>
 			@enderror
 			<div class="form-group">
-				<input name="expira_cartao" placeholder="Data de expiração do cartão" value="{{old('expira_carta')}}" type="text" class="form-control selectonfocus" required>
+				<input name="expira_cartao" placeholder="Data de expiração do cartão" value="{{old('expira_carta')}}" type="text" class="form-control date_cartao" required>
 			</div>
 
 
@@ -110,7 +120,7 @@ crossorigin="anonymous"></script>
 				Voltar
 			</a>
 
-			<button type="submit" class="btn btn-primary my-5">Salvar</button>
+			<button  type="submit" class="btn btn-primary my-5">Salvar</button>
 		</form>
 	</div>
 

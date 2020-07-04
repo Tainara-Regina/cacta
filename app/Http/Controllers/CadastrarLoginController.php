@@ -203,17 +203,24 @@ public function formularioContratanteParte2(Request $request){
 // else if ($captcha_success->success==true) {
 //      //sucesso
 // };
-//=================== reCapcha ==================================
+//===================== reCapcha ==================================
 
 
-//dd($request->all());
 
+
+
+
+
+
+
+
+
+
+//====================== Pagarme ==================================
  $pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
 // $canceledSubscription = $pagarme->subscriptions()->cancel([
 //   'id' => 499478
 // ]);
-// exit();
-
 
 $dados_plano = PlanosContratante::where('id',$request->plano)->first();
 $dados = CactaUsers::find($request->id);
@@ -238,8 +245,7 @@ $subscription = $pagarme->subscriptions()->create([
   ],
 ]);
 
-//dd($subscription);
-
+//====================== Pagarme ==================================
 
 
 

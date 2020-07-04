@@ -65,6 +65,7 @@ class CactaCandidatos extends Migration
         $table->string('expira_cartao')->nullable();
         $table->string('codigo_seguranca_cartao')->nullable();
         $table->timestamp('ultimo_acesso')->nullable();
+        $table->timestamp('data_cancelamento')->nullable();
         $table->boolean('disponivel_banco_candidatos')->default(true);
         $table->boolean('cadastro_ativo')->default(false);
         $table->timestamps();

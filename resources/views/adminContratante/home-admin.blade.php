@@ -20,6 +20,12 @@ crossorigin="anonymous">
 <div class="container-fluid">
   <div class="row  p-0 m-0">
     <div class="col w p-0 m-0">
+      @if(session()->has('message'))
+      <div class="alert alert-success alert-dismissible py-3 mr-4">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>{{ session()->get('message') }}</h4>
+      </div>
+      @endif
       <span class="text-right bem-vindo">Bem vindo!</span><br>
       <span class="text-right nome-empresa" style="">{{\Auth::user()->nome_empresa}}</span><br>
       <i> <span class="text-center staticText" id = "staticText" >"Ser empreendedor é <span style="color: green" id="typeline" ></span>"</span></i> <br>

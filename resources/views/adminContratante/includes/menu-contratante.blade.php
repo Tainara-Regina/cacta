@@ -28,61 +28,58 @@
 					</li>
 					<li>
 						<a href="{{route('site.admin-contratante')}}">
-							<i class="fa fa-book"></i>
+							<i class="fa fa-tachometer-alt"></i>
 							<span>Dashboard</span>
 						</a>
 					</li>
 
-
-
-
-
-
-
-					<li class="header-menu">
-						<span>MINHA EMPRESA</span>
-					</li>
-					<li>
-						<a href="{{route('site.meus-dados')}}">
-							<i class="fa fa-book"></i>
-							<span>Meus dados</span>
-						</a>
-					</li>
-
-
 					<li>
 						<a href="{{route('site.meus-dados-pessoais')}}">
-							<i class="fa fa-book"></i>
+							<i class="fas fa-user"></i>
 							<span>Meus dados pessoais</span>
 						</a>
 					</li>
 
 
-
 					<li>
 						<a href="{{route('site.preferencias')}}">
-							<i class="fa fa-book"></i>
+							<i class="fas fa-cog"></i>
 							<span>Preferências</span>
 						</a>
 					</li>
 
-
-
 					<li class="header-menu">
 						<span>CONTRATE</span>
 					</li>
-					<li>
-						<a href="{{route('site.divulgar-vaga')}}">
-							<i class="fa fa-book"></i>
-							<span>Divulgar vaga</span>
-						</a>
-					</li>
+					
 					<li>
 						<a href="{{route('site.candidatos-vaga')}}">
-							<i class="fa fa-tachometer-alt"></i>
+							<i class="fas fa-briefcase"></i>
 							<span>Minhas vagas</span>
 						</a>
 					</li>
+
+
+					<li>
+						<a href="{{route('site.divulgar-vaga')}}">
+							<i class="fas fa-plus-circle"></i>
+							<span>Divulgar vaga</span>
+						</a>
+					</li>
+
+					<li class="header-menu">
+						<span>EMPRESA</span>
+					</li>
+
+					<li>
+						<a href="{{route('site.meus-dados')}}">
+							<i class="fas fa-address-book"></i>
+							<span>Dados da empresa</span>
+						</a>
+					</li>
+
+
+
 
 					@can('banco_de_candidatos')
 					<li class="sidebar-dropdown">

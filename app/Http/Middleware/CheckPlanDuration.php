@@ -25,49 +25,57 @@ class CheckPlanDuration
     }
 
 
-//============================================================================
-$usuario_assinatura = auth()->user()->status_assinatura;
-if ($usuario_assinatura == "canceled") {
-   return  redirect()->route('plano-expirou');
-}
 
+
+
+
+
+//============================================================================
+    $usuario_assinatura = auth()->user()->status_assinatura;
+    if ($usuario_assinatura == "canceled" || auth()->user()->cadastro_ativo == 0 ) {
+     return  redirect()->route('plano-expirou');
+   }
+
+   return $next($request);
 
 //===========================================================================
 
-    return $next($request);
 
-    $id_plano = auth()->user()->id_plano;
-    $plano = PlanosContratante::where('id',$id_plano)->first();
+
+
+
+   $id_plano = auth()->user()->id_plano;
+   $plano = PlanosContratante::where('id',$id_plano)->first();
 
 //dd(auth()->user()->id_plano);
 
-    $plano_duracao = $plano->duracao;
+   $plano_duracao = $plano->duracao;
 
-    $data_de_cadastro_usuario =  auth()->user()->created_at;
+   $data_de_cadastro_usuario =  auth()->user()->created_at;
 
 //se planos diferente de full, acrescentar a quantidade de dias a partir da data de criação do cadastro do 
 // usuario e ver se é igual a data atual ou se ultrapassa. Se sim, redirecionar para trocar de plano
 
    // dd($plano);
 
-    if ($plano->duracao != 'full') {
+   if ($plano->duracao != 'full') {
 
-      $data_fim_plano = Carbon::parse($data_de_cadastro_usuario)->addDays($plano_duracao);
-      $data_agora = Carbon::now();
+    $data_fim_plano = Carbon::parse($data_de_cadastro_usuario)->addDays($plano_duracao);
+    $data_agora = Carbon::now();
 
 
-      if($data_agora > $data_fim_plano)
-      {
+    if($data_agora > $data_fim_plano)
+    {
           //  redirect para a pagina de escolher os planos
           // dd('sfhho');
-        return  redirect()->route('plano-expirou');
-      }
-
-
-
+      return  redirect()->route('plano-expirou');
     }
 
 
-   // return $next($request);
+
   }
+
+
+   // return $next($request);
+}
 }

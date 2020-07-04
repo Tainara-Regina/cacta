@@ -28,10 +28,32 @@
 					</li>
 					<li>
 						<a href="{{route('site.admin-candidato')}}">
-							<i class="fa fa-book"></i>
+							<i class="fa fa-tachometer-alt"></i>
 							<span>Dashboard</span>
 						</a>
 					</li>
+
+
+
+
+
+	<li class="header-menu">
+						<span>VAGAS</span>
+					</li>
+					<li>
+						<a href="{{route('site.lista-vaga')}}">
+							<i class="fas fa-search"></i>
+							<span>Encontrar vagas</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{{route('minhas-vagas')}}">
+							<i class="fas fa-briefcase"></i>
+							<span>Vagas que me candidatei</span>
+						</a>
+					</li>
+
 
 
 
@@ -44,7 +66,7 @@
 					</li>
 					<li>
 						<a href="{{route('meus-dados-pessoais')}}">
-							<i class="fa fa-book"></i>
+							<i class="fas fa-user"></i>
 							<span>Meus dados pessoais</span>
 						</a>
 					</li>
@@ -52,7 +74,7 @@
 
 					<li>
 						<a href="{{route('preferencias')}}">
-							<i class="fa fa-book"></i>
+							<i class="fas fa-cog"></i>
 							<span>Preferências</span>
 						</a>
 					</li>
@@ -61,84 +83,18 @@
 
 					<li>
 						<a href="{{route('meu-perfil')}}">
-							<i class="fa fa-book"></i>
+							<i class="fas fa-address-book"></i>
 							<span>Meu perfil</span>
 						</a>
 					</li>
 
 
 
-					<li class="header-menu">
-						<span>VAGAS</span>
-					</li>
-					<li>
-						<a href="{{route('site.lista-vaga')}}">
-							<i class="fa fa-book"></i>
-							<span>Encontrar vagas</span>
-						</a>
-					</li>
-					<li>
-						<a href="{{route('minhas-vagas')}}">
-							<i class="fa fa-tachometer-alt"></i>
-							<span>Vagas que me candidatei</span>
-						</a>
-					</li>
+				
 
 					
 
 
-					<li class="header-menu">
-						<span>MATERIAIS EXCLUSIVOS</span>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fa fa-book"></i>
-							<span>Materiais</span>
-							<span>
-								<i class="fas fa-lock"></i>
-							</span>
-						</a>
-					</li>
-
-
-
-
-
-					<li class="header-menu">
-						<span>APERFEIÇOAMENTOS E CURSOS</span>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fa fa-book"></i>
-							<span>Aperfeiçoamentos</span>
-							<span>
-								<i class="fas fa-lock"></i>
-							</span>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="#">
-							<i class="fa fa-book"></i>
-							<span>cursos</span>
-							<span>
-								<i class="fas fa-lock"></i>
-							</span>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="#">
-							<i class="fa fa-book"></i>
-							<span>workshop</span>
-							<span >
-								<i class="fas fa-lock"></i>
-							</span>
-						</a>
-					</li>
 				</ul>
 			</div>
 			<!-- sidebar-menu  -->

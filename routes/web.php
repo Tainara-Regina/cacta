@@ -65,7 +65,7 @@ Route::post('/pagarme', function () {
 
 Route::get('/', 'BlogController@home')->name('site.inicio');
 
-//Route::get('/', 'InicioController@inicio')->name('site.inicio');
+Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/blog', 'BlogController@home')->name('blog-home');
 Route::get('/blog/{id}', 'BlogController@post')->name('post');
 Route::get('/busca', 'BlogController@busca')->name('busca');
@@ -164,6 +164,9 @@ Route::middleware(['checkplan.duration'])->group(function () {
 
 
 
+		Route::get('ativar-conta', 'AdminContratanteController@ativarCadastro')->name('site.ativar-conta'); 
+
+
 
 
 
@@ -199,7 +202,7 @@ Route::get('/admin-candidato/excluir-conta', 'AdminCandidatoController@excluirCo
 
 
 
-Route::get('/plano-expirou', 'AdminContratanteController@planoExpirou')->name('plano-expirou');
+Route::get('/reativacao-cadastro', 'AdminContratanteController@planoExpirou')->name('plano-expirou');
 
 
 

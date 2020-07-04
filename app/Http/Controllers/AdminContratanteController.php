@@ -85,7 +85,7 @@ class AdminContratanteController extends Controller
 
 
     public function divulgarVaga(){
- 
+
       $quantidade_maxima_vagas_permitidas = $this->verificaPlano(Auth::user()->id_plano)->quantidade_vagas;
 
       $quantidade_de_vagas_cadastradas = CadastrarVaga::where('id_usuario',Auth::user()->id)->count();
@@ -529,6 +529,31 @@ public function gravarAtualizarCartao(Request $request){
  ]);
 
   CactaUsers::where('id',\Auth::user()->id)->update(request()->except(['_token','password_atualizar','password_confirmation']));
+
+
+
+
+
+$dados_plano = PlanosContratante::where('id',auth()->user()->id_plano)->first();
+$dados = CactaUsers::find(auth()->user()->id);
+
+
+$pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
+
+$updatedSubscription = $pagarme->subscriptions()->update([
+  'id' => $dados->id_assinatura,
+  'plan_id' => $dados_plano->id_pagarme,
+  'payment_method' => 'credit_card',
+  'card_number' => $request->numero_cartao,
+  'card_holder_name' => $request->nome_cartao,
+  'card_expiration_date' => str_replace("/","",$request->expira_cartao),  
+  'card_cvv' => $request->codigo_seguranca_cartao,
+]);
+
+dd($updatedSubscription);
+
+
+
   return redirect('admin-contratante/meus-dados-pessoais')->with('message', 'Dados atualizados com sucesso!');
 
 }
@@ -551,11 +576,26 @@ public function cadastrarPreferencias(Request $request){
 
 
 
-//Excluir conta permanentemente
+//Desativa a conta
 public function excluirConta(){
- //CactaUsers::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false]);
-   CactaUsers::where('id',\Auth::user()->id)->delete();
- return \Redirect::to('/cacta-logout');
+ $pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
+ $subscription = $pagarme->subscriptions()->get([
+  'id' => auth()->user()->id_assinatura
+]);
+
+ if($subscription->status != "canceled"){
+
+  $canceledSubscription = $pagarme->subscriptions()->cancel([
+    'id' => auth()->user()->id_assinatura
+  ]);
+}
+
+
+$mytime = \Carbon\Carbon::now();
+CactaUsers::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false,'data_cancelamento' => $mytime]);
+
+//dd($mytime);
+return \Redirect::to('/cacta-logout');
 }
 
 
@@ -565,30 +605,87 @@ public function excluirConta(){
 
 
 public function planoExpirou(){
- $id_plano = auth()->user()->id_plano;
- $plano = PlanosContratante::where('id',$id_plano)->first();
- $plano_duracao = $plano->duracao;
+ // $id_plano = auth()->user()->id_plano;
+ // $plano = PlanosContratante::where('id',$id_plano)->first();
+ // $plano_duracao = $plano->duracao;
 
- $data_de_cadastro_usuario =  auth()->user()->created_at;
-
-
- $data_fim_plano = \Carbon\Carbon::parse($data_de_cadastro_usuario)->addDays($plano_duracao);
- $data_agora = \Carbon\Carbon::now();
+ // $data_de_cadastro_usuario =  auth()->user()->created_at;
 
 
- if($data_agora < $data_fim_plano || $plano->duracao == 'full' )
- {
-   return  redirect()->route('site.admin-contratante');
- }
+ // $data_fim_plano = \Carbon\Carbon::parse($data_de_cadastro_usuario)->addDays($plano_duracao);
+ // $data_agora = \Carbon\Carbon::now();
 
 
+ // if($data_agora < $data_fim_plano || $plano->duracao == 'full' )
+ // {
+ //   return  redirect()->route('site.admin-contratante');
+ // }
 
- $cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
- $segmentos = Segmento::select('id','segmento')->get();
- $planos = PlanosContratante::where('id','!=',\Auth::user()->id_plano)->get();
 
- return view('adminContratante.plano-expirou',compact('segmentos','planos','cadastro'));
+ // $cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
+ // $segmentos = Segmento::select('id','segmento')->get();
+ // $planos = PlanosContratante::where('id','!=',\Auth::user()->id_plano)->get();
+
+  $data_cancelamento = auth()->user()->data_cancelamento;
+  return view('adminContratante.plano-expirou',compact('data_cancelamento'));
 }
+
+
+
+public function ativarCadastro(){
+//criar nova assinatura 
+ $pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
+// $canceledSubscription = $pagarme->subscriptions()->cancel([
+//   'id' => 499478
+// ]);
+// exit();
+
+
+$dados_plano = PlanosContratante::where('id',auth()->user()->id_plano)->first();
+$dados = CactaUsers::find(auth()->user()->id);
+
+
+
+
+if($dados_plano->id_pagarme == 486590){
+   $idp = 488025;
+}else{
+  $idp = $dados_plano->id_pagarme;
+}
+
+$subscription = $pagarme->subscriptions()->create([
+  'plan_id' => $idp,
+  'payment_method' => 'credit_card',
+  'card_number' => $dados->numero_cartao,
+  'card_holder_name' => $dados->nome_cartao,
+  'card_expiration_date' => str_replace("/","",$dados->expira_cartao),  
+  'card_cvv' => $dados->codigo_seguranca_cartao,
+  'postback_url' => 'http://cactavagas.com/api/pagarme',
+  'customer' => [
+    'email' => $dados->email,
+    'name' => $dados->nome_contratante,
+    'address' => [
+      'street' => $dados->logradouro,
+      'street_number' => $dados->numero,
+      'complementary' => $dados->complemento,
+      'neighborhood' => $dados->bairro,
+      'zipcode' => $dados->cep
+    ],
+  ],
+]);
+
+$dados->cadastro_ativo = 1;
+$dados->id_assinatura = $subscription->id;
+$dados->save();
+
+
+return redirect('/admin-contratante')->with('message', 'Cadastro reativado com sucesso!');
+
+}
+
+
+
+
 
 
 public function cadastrarPlanoExpirou(Request $request){

@@ -88,7 +88,12 @@
     <div class="form-row">
       <div class="col px-5  has-search">
         <span class="fa fa-search form-control-feedback"></span>
-        <input id="buscar"  name="buscar"  type="text" class="form-control busca mx-auto" placeholder="Pesquise aqui">
+
+<form action="{{route('site.lista-vaga')}}">
+   <input id="buscar" name="buscar"  type="text" class="form-control busca mx-auto" placeholder="Pesquise aqui">
+</form>
+
+       
         {!!$procurar_vaga->subtitulo_1!!}
         {!!$procurar_vaga->subtitulo_2!!}
       </div>
@@ -221,7 +226,7 @@
   <div class="container">
     <div class="row">
       <div class="col text-center pt-4 pb-5">
-       <a class="btn mb-3 cadastre animated rubberBand btn-experimente" href="{{route('formularioCandidato')}}">Cadastre-se aqui</a>
+       <a class="btn mb-3 cadastre animated rubberBand btn-experimente" href="{{route('formularioCandidato')}}">Cadastre seu currículo</a>
        <h4 class="text-center cadastre-se-mobile">Cadastre-se e fique disponível para várias empresas. <strong>É de graça!</strong></h4>
      </div>
    </div>

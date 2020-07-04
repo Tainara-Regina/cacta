@@ -36,9 +36,13 @@ $transaction    = $request->transaction; //Possui todas as informações do obje
 
 Slack::to('#cacta-vagas')->send(" ID da transação: ".$id.". Status para o qual efetivamente mudou:  ".$current_status.". Status anterior da transação: ".$old_status.". Qual o tipo do objeto referido: ".$object);
 
-$status = CactaUsers::where('id_assinatura',$id)
-          ->update(['status_assinatura' =>$current_status]);
+$status = CactaUsers::where('id_assinatura',$id)->first();
+$status->status_assinatura = $current_status;
+$status->save();
 
+
+// $status = CactaUsers::where('id_assinatura',$id)
+//           ->update(['status_assinatura' =>$current_status]);
 
 
 });

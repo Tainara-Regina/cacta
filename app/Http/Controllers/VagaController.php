@@ -34,14 +34,12 @@ class VagaController extends Controller
 			'cacta_users.twitter',
 			'faixa_salarial_de',
 			'faixa_salarial_ate',
-			
-
-
-
 			'cadastrar_vaga.quantidade_vaga')
+
 		->where('cadastrar_vaga.id',$id)
 		->where('titulo_vaga.slug',$slug)
 		->where('cadastrar_vaga.disponivel',1)
+		->where('cacta_users.cadastro_ativo',1)
 		->first();
 
 		if(empty($vaga)){
@@ -90,19 +88,19 @@ public function listaVaga(){
 		'cadastrar_vaga.vaga_em_destaque','cadastrar_vaga.id','cadastrar_vaga.data_de_criacao',
 		'titulo_vaga.titulo','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade')
 	->orderBy('cadastrar_vaga.vaga_em_destaque', 'desc')
+	->where('cacta_users.cadastro_ativo',1)
+	->where('cadastrar_vaga.disponivel',1)
 	->get();
-
 
 	$contratar     = ContratarHome::select()->first();
 	$fundo_vaga    = DB::table('fundo_vaga_home')
-		->inRandomOrder()
-		->where('disponivel', 1)
-		->first();
-		
-	$procurar_vaga = ProcurarVagaHome::select()->first();
-		//dd($contratar->all());
-	return view('site.lista-vagas',compact('contratar','fundo_vaga','procurar_vaga','vagas','segmentos'));
+	->inRandomOrder()
+	->where('disponivel', 1)
+	->first();
 
+	$procurar_vaga = ProcurarVagaHome::select()->first();
+
+	return view('site.lista-vagas',compact('contratar','fundo_vaga','procurar_vaga','vagas','segmentos'));
 }
 
 

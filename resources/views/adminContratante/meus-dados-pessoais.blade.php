@@ -25,6 +25,9 @@ crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{asset('/js/admin/admin-menu.js')}}"></script>
 <script type="text/javascript" src="{{asset('/js/admin/adminContratante/meus-dados.js')}}"></script>
 <script src="{{asset('/js/formularioContratante-2.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="{{asset('/js/mascara.js')}}"></script>
 @stop
 
 
@@ -79,7 +82,7 @@ crossorigin="anonymous"></script>
 			@enderror
 			<div class="form-group">
 				<label for="nome_contratante">Insira seu nome completo</label>
-				<input placeholder="Qual o seu nome?" value="{{$cadastro->nome_contratante}}" type="text" name="nome_contratante" class="form-control">
+				<input placeholder="Qual o seu nome?" value="{{$cadastro->nome_contratante}}" type="text" name="nome_contratante" class="form-control" required>
 			</div>
 
 			@error('nome_empresa')
@@ -87,7 +90,7 @@ crossorigin="anonymous"></script>
 			@enderror
 			<div class="form-group">
 				<label for="email"><b>Nome da empresa</b></label>
-				<input placeholder="Insira o nome da sua empresa"  value="{{$cadastro->nome_empresa}}" type="text" name="nome_empresa" class="form-control">
+				<input placeholder="Insira o nome da sua empresa"  value="{{$cadastro->nome_empresa}}" type="text" name="nome_empresa" class="form-control" required>
 			</div>
 
 
@@ -96,7 +99,7 @@ crossorigin="anonymous"></script>
 			@enderror
 			<div class="form-group">
 				<label for="telefone"><b>Telefone</b></label>
-				<input type="text" value="{{$cadastro->telefone}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control">
+				<input type="text" value="{{$cadastro->telefone}}" name="telefone" placeholder="Insira o seu telefone" type="text" class="form-control phone_with_ddd" required>
 			</div>
 
 			@error('password_atualizar')
@@ -104,7 +107,7 @@ crossorigin="anonymous"></script>
 			@enderror
 			<div class="form-group">
 				<label for="password"><b>Atualizar senha de login</b></label>
-				<input type="password" name="password_atualizar" value="{{old('password')}}" placeholder="Defina uma nova senha" type="text" class="form-control">
+				<input type="password" name="password_atualizar" value="{{old('password')}}" placeholder="Defina uma nova senha" type="text" class="form-control" required>
 			</div>
 
 			@error('password_confirmation')
@@ -112,7 +115,7 @@ crossorigin="anonymous"></script>
 			@enderror
 			<div class="form-group">
 				<label for="repetir_senha"><b>Repita nova senha de login</b></label>
-				<input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control">
+				<input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control" required>
 			</div>
 
 
@@ -120,7 +123,8 @@ crossorigin="anonymous"></script>
 			<div class="row">
 				<div class="col">
 					<h2 class="text-center title-page mb-3  mt-5">Dados do cartão</h2>
-					<p class="w text-center"><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preocupe.</p>
+					<p class="w text-center"><b>Obs:</b> A cobrança do plano começará após o período gratuito. Cancele quando quiser.
+					</p>
 
 				</div>
 			</div>
@@ -145,7 +149,7 @@ crossorigin="anonymous"></script>
 			<div class="row">
 				<div class="col">
 					<h2 class="text-center title-page mt-5 mb-3">Escolha o plano que deseja</h2>
-					<p class="text-center w"><b>Obs:</b> No plano gratuito nenhuma cobrança será realizada, não se preocupe.</p>
+					<p class="text-center w"><b>Obs:</b> A cobrança do plano começará após o período gratuito. Cancele quando quiser.</p>
 				</div>
 			</div>
 

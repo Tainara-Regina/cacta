@@ -25,7 +25,7 @@
 
 		
 	<div class="page-wrapper chiller-theme toggled">
-		<a style="background-color: red" id="show-sidebar" class="btn btn-sm  py-3" href="#">
+		<a style="background-color: #9e9e9e85;color: black;" id="show-sidebar" class="btn btn-sm  py-3" href="#">
 			<i class="fas fa-bars"></i>
 		</a>
 

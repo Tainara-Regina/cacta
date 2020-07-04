@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Redirect;
-use App\CactaUser;
+use App\CactaUsers;
 
 class CactaLogoutController extends Controller
 {

@@ -197,9 +197,9 @@ function buscaVaga(){
 
 	var local = $('#local').val();
 
-	console.log(area);
-	console.log(regime);
-	console.log(local);
+	//console.log(area);
+	//console.log(regime);
+	//console.log(local);
 
 	$.post("/vagas-ajax",
 	{

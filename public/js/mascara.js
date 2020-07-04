@@ -1,3 +1,4 @@
+
    $(document).ready(function($){
      $('.name').mask('Z',{translation: {'Z': {pattern: /[a-zA-Z ]/, recursive: true}}});
      $('.date').mask('00/00/0000');
@@ -5,7 +6,7 @@
      $('.time').mask('00:00:00');
      $('.date_time').mask('00/00/0000 00:00:00');
      $('.cep').mask('00000-000');
-     $('.cvv').mask('000');
+     $('.cvv').mask('0000');
      $('.cartao').mask('#');
      $('.telefone').mask('#');
      $('.phone').mask('0000-0000');

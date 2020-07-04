@@ -1,7 +1,7 @@
 @extends('adminContratante.base')
 
 @section('titulo')
-<title>Cacta Vagas - Plano expirou</title>
+<title>Cacta Vagas - Reativação de cadastro</title>
 @stop
 
 @section('css')
@@ -56,87 +56,42 @@ crossorigin="anonymous"></script>
 <div class="container-fluid">
 	<div class="row p-0 m-0">
 		<div class="col mb-3">
-			<p class="text-left title-page p-0 m-0" >Seu plano expirou</p>
-			<p class="text-left w p-0 m-0" >Atualize seu plano para continuar a ter acesso aos melhores profissionais para sua equipe.</p>
+			<p class="text-left title-page p-0 m-0" >Você cancelou seu cadastro dia  {{ Carbon\Carbon::parse($data_cancelamento)->format('d/m/Y')}}</p>
+			<p class="text-left w p-0 m-0" >Você pode ativar seu cadastro novamente para continuar utilizando a plataforma.</p>
 			<hr class="line" style="">
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col">
+			<p class="title-page">Deseja reativar seu cadastro?</p>
+			<p class="text-left w p-0 m-0">A cobrança do plano continuará sendo realizada normalmente de acordo com o plano que foi selecionado.</p>
+			<a class="btn text-center btn-primary text-uppercase mt-5" href="{{ route('site.ativar-conta')}}">Ativar</a>
+		</div>
+	</div>
+
+
+
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <div class="row">
 	<div class="col-md-9">
 
-		<form class="form" action="{{route('site.cadastrar-plano-expirou')}}" id="formPart1" method="POST" enctype="multipart/form-data">
-			@csrf
 
-
-			<input type="hidden" value="" name="id_plano" id="plano">
-
-
-
-			<div class="row">
-				<div class="col">
-					<h2 class="text-center title-page mb-3">Planos disponíveis</h2>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col text-center mb-3">
-					@error('plano')
-					<span style="color: red">{{ $message }}</span>
-					@enderror
-				</div>
-			</div>
-
-			<div class="row pricing">
-
-				@foreach($planos as $plano)
-
-				<div class="col-lg-4 col-8 mx-auto" >
-					<div class="card mb-5 mb-lg-0 plano" data-plano="{{$plano->id}}">
-						<div class="card-body">
-							<h5 class="card-title text-muted text-uppercase text-center">{{$plano->plano}}</h5>
-							<h6 class="card-price text-center">${{$plano->preco}}<!-- <span class="period">/periodo</span> --></h6>
-							<hr>
-							<ul class="fa-ul">
-
-								<li><span class="fa-li"><i class="fa fa-check"></i></span> {{$plano->quantidade_vagas}} vaga(s) para divulgar por mês <small>(inclui renovar vagas existentes)</small></li>
-
-								@if($plano->vagas_em_destaque == 0)
-								<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Permite destacar suas vagas</li>
-
-								@else
-								<li><span class="fa-li"><i class="fa fa-check"></i></span> Permite destacar {{$plano->vagas_em_destaque}} de suas vagas </li>
-								@endif
-
-
-								@if($plano->banco_de_candidatos == 0)
-								<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Banco de candidatos</li>
-
-								@else
-								<li><span class="fa-li"><i class="fa fa-check"></i></span> Banco de candidatos</li>
-								@endif
-
-
-
-								@if($plano->materiais_exclusivos == 0)
-								<li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre empreendedorismo</li>
-
-								@else
-								<li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre empreendedorismo</li>
-								@endif
-
-
-							</ul>
-							<span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
-						</div>
-					</div>
-				</div>
-				@endforeach
-			</div>
-			<button type="submit" class="btn btn-primary my-5">Salvar</button>
-		</form>
 	</div>
 
 

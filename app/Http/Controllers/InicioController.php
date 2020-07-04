@@ -21,6 +21,7 @@ class InicioController extends Controller
 		->select('cadastrar_vaga.id','titulo_vaga.slug',
 			'titulo_vaga.titulo','cacta_users.nome_empresa','cacta_users.logo','cacta_users.localidade','cacta_users.uf')
 		->where('cadastrar_vaga.disponivel',1)
+		->where('cacta_users.cadastro_ativo',1)
 		->get();
 
 $segmentos = Segmento::all();

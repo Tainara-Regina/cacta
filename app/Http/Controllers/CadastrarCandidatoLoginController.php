@@ -56,7 +56,8 @@ class CadastrarCandidatoLoginController extends Controller
      'nome.required' => 'Insira seu primeiro nome.',
      'sexo.required' => 'Escolha o gênero.',
      'data_nascimento.required' => 'Preencha a data de nascimento.',
-     'password_confirmation.required' => 'Confirme a senha.',
+    'password_confirmation.same' => 'A confirmação de senha precisa ser igual a senha.',
+       'password_confirmation.required' => 'Confirme a senha.',
      'uf.required' => 'Escolha seu estado.',
    ]);
 

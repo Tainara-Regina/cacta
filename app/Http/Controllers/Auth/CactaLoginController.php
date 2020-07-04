@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
-use App\CactaUser;
+use App\CactaUsers;
 
 class CactaLoginController extends Controller
 {
@@ -27,22 +27,28 @@ class CactaLoginController extends Controller
 
 
     public function login(Request $request){
-       //Validar o formulario
+        //Validar o formulario
 
     	$validator = $request->validate([
     		'email_login' => 'required',
     		'password_login' => 'required|min:4',
     	]);
- 
+
     	
     	if (Auth::guard('cacta')->attempt(['email'=> $request->email_login,'password'=> $request->password_login,'completou_cadastro'=> 1], $request->remember)) {
           $request->session()->put('menu_contratante', true);
-            
+
+
+       //cadastra o horario
+          $mytime = \Carbon\Carbon::now();
+          CactaUsers::where('email',$request->email_login)->update(['ultimo_acesso' => $mytime]);
+
+
     		// se sucesso redirecionar para o lugar certo
-    		return redirect()->intended(route('site.admin-contratante'));
-    	}
+          return redirect()->intended(route('site.admin-contratante'));
+      }
     	// se falhar, redirect back
-    	return redirect()->back()->withImput($request->only('email','remember'))->with('message_contratante', 'Verifique se digitou seus dados corretamente');
-    }
+      return redirect()->back()->withImput($request->only('email','remember'))->with('message_contratante', 'Verifique se digitou seus dados corretamente');
+  }
 
 }
