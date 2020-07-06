@@ -689,6 +689,7 @@ public function planoExpirou(){
 
 public function ativarCadastro(){
 //criar nova assinatura 
+  dd('bateu');
  $pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
 // $canceledSubscription = $pagarme->subscriptions()->cancel([
 //   'id' => 499478
