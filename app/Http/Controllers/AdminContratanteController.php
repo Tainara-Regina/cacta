@@ -700,7 +700,7 @@ public function ativarCadastro(){
  $dados_plano = PlanosContratante::where('id',auth()->user()->id_plano)->first();
  $dados = CactaUsers::find(auth()->user()->id);
 
-dd('bateu1');
+
 
 
  if($dados_plano->id_pagarme == 486590){
@@ -709,6 +709,7 @@ dd('bateu1');
   $idp = $dados_plano->id_pagarme;
 }
 
+dd('bateu2');
 $subscription = $pagarme->subscriptions()->create([
   'plan_id' => $idp,
   'payment_method' => 'credit_card',
