@@ -121,8 +121,8 @@ crossorigin="anonymous"></script>
 <div class="container-fluid">
 	<div class="row p-0 m-0">
 		<div class="col mb-3">
-			<p class="text-left title-page p-0 m-0" >Meus dados pessoais</p>
-			<p class="text-left w p-0 m-0" >Atualize os dados pessoais.</p>
+			<p class="text-left title-page p-0 m-0" >Meu perfil</p>
+			<p class="text-left w p-0 m-0" ></p>
 			<hr class="line" style="">
 		</div>
 	</div>
@@ -273,7 +273,7 @@ crossorigin="anonymous"></script>
 			<div class="form-horizontal mt-5">
 				<fieldset>
 					<!-- Form Name -->
-					<label for="hobbies-2" style="font-size: 22px">Cursos/Workshops/Certicações</label>
+					<label for="hobbies-2" style="font-size: 22px">Cursos/ Workshops/ Certicações</label>
 					<!-- Text input-->
 					<div id="items-2" class="form-group">
 						@foreach($cursos_candidatos as $experiencia)

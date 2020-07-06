@@ -64,6 +64,14 @@
 					<li class="header-menu">
 						<span>MEUS DADOS</span>
 					</li>
+
+					<li>
+						<a href="{{route('meu-perfil')}}">
+							<i class="fas fa-address-book"></i>
+							<span>Meu perfil de candidato</span>
+						</a>
+					</li>
+
 					<li>
 						<a href="{{route('meus-dados-pessoais')}}">
 							<i class="fas fa-user"></i>
@@ -78,22 +86,6 @@
 							<span>Preferências</span>
 						</a>
 					</li>
-
-
-
-					<li>
-						<a href="{{route('meu-perfil')}}">
-							<i class="fas fa-address-book"></i>
-							<span>Meu perfil</span>
-						</a>
-					</li>
-
-
-
-				
-
-					
-
 
 				</ul>
 			</div>

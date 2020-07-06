@@ -17,4 +17,13 @@ class PlanosContratante extends Model
 	}
 
 
+ public function roles_contratante(){
+          
+          return $this->belongsTo(\App\CactaUsers::class,'id','id_plano');
+    }
+
+
+
+
+
 }

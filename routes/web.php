@@ -22,19 +22,11 @@ Route::get('/foo', function () {
 Route::post('/pagarme', function () {
 	return Slack::to('#cacta-vagas')->send('Um postback foi enviado!');
 	//return view('site.pagarme');
-  // echo 'banana';
   
 
 // $pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
 
 // $subscription = $pagarme->subscriptions()->getList();
-
-// dd($subscription);
-
-
-
-
-
 
 
 // $transaction = $pagarme->transactions()->create([

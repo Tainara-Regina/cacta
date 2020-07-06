@@ -107,7 +107,7 @@ crossorigin="anonymous"></script>
 			@enderror
 			<div class="form-group">
 				<label for="password"><b>Atualizar senha de login</b></label>
-				<input type="password" name="password_atualizar" value="{{old('password')}}" placeholder="Defina uma nova senha" type="text" class="form-control" required>
+				<input type="password" name="password_atualizar" value="{{old('password')}}" placeholder="Defina uma nova senha" type="text" class="form-control" >
 			</div>
 
 			@error('password_confirmation')
@@ -115,7 +115,7 @@ crossorigin="anonymous"></script>
 			@enderror
 			<div class="form-group">
 				<label for="repetir_senha"><b>Repita nova senha de login</b></label>
-				<input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control" required>
+				<input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control" >
 			</div>
 
 

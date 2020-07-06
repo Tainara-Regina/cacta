@@ -68,38 +68,45 @@ class AuthServiceProvider extends ServiceProvider
 //==========   Permissoes de planos    ======= 
 //============================================
       $permissions = PlanosContratante::with('roles')->get();
-
-
-      foreach($permissions as $permission)
-      {
-       Gate::define('banco_de_candidatos',function(CactaUsers $user) use ($permission){
-             //dd($permission);
+   Gate::define('banco_de_candidatos',function(CactaUsers $user) use ($permissions){
                 // return $user->id == $post->user_id;
+       foreach ($permissions as $permission) {
 
          if($permission->id == $user->id_plano){
                // dd($permission);
           if ($permission->banco_de_candidatos == 1) {
+          //  echo 'sim';
            return true;
          }else{
+          // echo 'não';
            return false;
          }
        }
-     });
+     }
+
+   });
 
 
-       Gate::define('materiais_exclusivos',function(CactaUsers $user) use ($permission){
-             //dd($permission);
-                // return $user->id == $post->user_id;
 
-         if($permission->id == $user->id_plano){
+
+     Gate::define('materiais_exclusivos',function(CactaUsers $user) use ($permissions){
+
+      foreach ($permissions as $permission) {
+
+       if($permission->id == $user->id_plano){
                // dd($permission);
-          if ($permission->materiais_exclusivos == 1) {
-           return true;
-         }else{
-           return false;
-         }
+        if ($permission->materiais_exclusivos == 1) {
+          //  echo 'sim';
+         return true;
+       }else{
+          // echo 'não';
+         return false;
        }
-     });
+     }
+   }
+ });
+
+
 //=========================================================
 //==========      Fim Permissoes de planos      ===========
 //=========================================================
@@ -109,7 +116,87 @@ class AuthServiceProvider extends ServiceProvider
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//============================================
+//==========   Permissoes de planos    ======= 
+//============================================
+     $permissions = PlanosContratante::with('roles_contratante')->get();
+
+
+     Gate::define('banco_de_candidatos',function(CactaUsers $user) use ($permissions){
+                // return $user->id == $post->user_id;
+       foreach ($permissions as $permission) {
+
+         if($permission->id == $user->id_plano){
+               // dd($permission);
+          if ($permission->banco_de_candidatos == 1) {
+          //  echo 'sim';
+           return true;
+         }else{
+          // echo 'não';
+           return false;
+         }
+       }
      }
+
+   });
+
+
+
+
+     Gate::define('materiais_exclusivos',function(CactaUsers $user) use ($permissions){
+
+      foreach ($permissions as $permission) {
+
+       if($permission->id == $user->id_plano){
+               // dd($permission);
+        if ($permission->materiais_exclusivos == 1) {
+          //  echo 'sim';
+         return true;
+       }else{
+          // echo 'não';
+         return false;
+       }
+     }
+   }
+ });
+
+
+//=========================================================
+//==========      Fim Permissoes de planos      ===========
+//=========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    }
  }
 

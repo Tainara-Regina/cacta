@@ -54,7 +54,7 @@ crossorigin="anonymous"></script>
 <div class="container-fluid">
 	<div class="row p-0 m-0">
 		<div class="col mb-3">
-			<p class="text-left title-page p-0 m-0" >Preferencias</p>
+			<p class="text-left title-page p-0 m-0" >Preferências</p>
 			<p class="text-left w p-0 m-0" >Atualize suas preferências.</p>
 			<hr class="line" style="">
 		</div>

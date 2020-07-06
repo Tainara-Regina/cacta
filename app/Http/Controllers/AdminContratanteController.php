@@ -471,7 +471,7 @@ return redirect()->back()->with('message', 'Dados atualizados com sucesso!');
 
 public function cadastrarMeusDadosPessoais(Request $request){
 
- $validator = $request->validate([
+  $validator = $request->validate([
    'nome_contratante' => 'required',
    'nome_empresa' => 'required',
    'telefone' => 'required',
@@ -486,12 +486,67 @@ public function cadastrarMeusDadosPessoais(Request $request){
  ]);
 
 
- if(isset($request->password_atualizar)){
+  if(isset($request->password_atualizar)){
    $senha = Hash::make($request->password_atualizar);
    $request->merge(['password' => $senha]);
  }
 
- 
+
+
+ if ($request->id_plano != \Auth::user()->id_plano) {
+
+
+    $pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
+
+   $canceledSubscription = $pagarme->subscriptions()->cancel([
+    'id' => \Auth::user()->id_assinatura
+  ]);
+
+
+   $dados_plano = PlanosContratante::where('id',$request->id_plano)->first();
+   $dados = CactaUsers::find(\Auth::user()->id);
+
+
+
+
+
+if($dados_plano->id_pagarme == 486590){
+   $idp = 488025;
+ }else{
+  $idp = $dados_plano->id_pagarme;
+}
+
+
+
+
+   $subscription = $pagarme->subscriptions()->create([
+    'plan_id' => $idp,
+    'payment_method' => 'credit_card',
+    'card_number' => $dados->numero_cartao,
+    'card_holder_name' => $dados->nome_cartao,
+    'card_expiration_date' => str_replace("/","",$dados->expira_cartao),  
+    'card_cvv' => $dados->codigo_seguranca_cartao,
+    'postback_url' => 'http://cactavagas.com/api/pagarme',
+    'customer' => [
+      'email' => $dados->email,
+      'name' => $dados->nome_contratante,
+      'address' => [
+        'street' => $dados->logradouro,
+        'street_number' => $dados->numero,
+        'complementary' => $dados->complemento,
+        'neighborhood' => $dados->bairro,
+        'zipcode' => $dados->cep
+      ],
+    ],
+  ]);
+
+
+$request->merge(['id_assinatura' => $subscription->id]);
+
+
+ }
+//tai tai
+
  CactaUsers::where('id',\Auth::user()->id)->update(request()->except(['_token','password_atualizar','password_confirmation']));
  return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
 }
@@ -534,23 +589,23 @@ public function gravarAtualizarCartao(Request $request){
 
 
 
-$dados_plano = PlanosContratante::where('id',auth()->user()->id_plano)->first();
-$dados = CactaUsers::find(auth()->user()->id);
+  $dados_plano = PlanosContratante::where('id',auth()->user()->id_plano)->first();
+  $dados = CactaUsers::find(auth()->user()->id);
 
 
-$pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
+  $pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
 
-$updatedSubscription = $pagarme->subscriptions()->update([
-  'id' => $dados->id_assinatura,
-  'plan_id' => $dados_plano->id_pagarme,
-  'payment_method' => 'credit_card',
-  'card_number' => $request->numero_cartao,
-  'card_holder_name' => $request->nome_cartao,
-  'card_expiration_date' => str_replace("/","",$request->expira_cartao),  
-  'card_cvv' => $request->codigo_seguranca_cartao,
-]);
+  $updatedSubscription = $pagarme->subscriptions()->update([
+    'id' => $dados->id_assinatura,
+    'plan_id' => $dados_plano->id_pagarme,
+    'payment_method' => 'credit_card',
+    'card_number' => $request->numero_cartao,
+    'card_holder_name' => $request->nome_cartao,
+    'card_expiration_date' => str_replace("/","",$request->expira_cartao),  
+    'card_cvv' => $request->codigo_seguranca_cartao,
+  ]);
 
-dd($updatedSubscription);
+  dd($updatedSubscription);
 
 
 
@@ -641,15 +696,15 @@ public function ativarCadastro(){
 // exit();
 
 
-$dados_plano = PlanosContratante::where('id',auth()->user()->id_plano)->first();
-$dados = CactaUsers::find(auth()->user()->id);
+ $dados_plano = PlanosContratante::where('id',auth()->user()->id_plano)->first();
+ $dados = CactaUsers::find(auth()->user()->id);
 
 
 
 
-if($dados_plano->id_pagarme == 486590){
+ if($dados_plano->id_pagarme == 486590){
    $idp = 488025;
-}else{
+ }else{
   $idp = $dados_plano->id_pagarme;
 }
 
