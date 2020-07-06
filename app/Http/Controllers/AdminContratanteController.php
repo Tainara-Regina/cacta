@@ -709,7 +709,7 @@ public function ativarCadastro(){
   $idp = $dados_plano->id_pagarme;
 }
 
-dd('bateu2');
+
 $subscription = $pagarme->subscriptions()->create([
   'plan_id' => $idp,
   'payment_method' => 'credit_card',
@@ -730,6 +730,8 @@ $subscription = $pagarme->subscriptions()->create([
     ],
   ],
 ]);
+
+dd('bateu3');
 
 $dados->cadastro_ativo = 1;
 $dados->id_assinatura = $subscription->id;
