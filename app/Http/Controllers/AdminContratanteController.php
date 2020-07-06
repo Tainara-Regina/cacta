@@ -689,7 +689,7 @@ public function planoExpirou(){
 
 public function ativarCadastro(){
 //criar nova assinatura 
-  dd('bateu');
+
  $pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
 // $canceledSubscription = $pagarme->subscriptions()->cancel([
 //   'id' => 499478
@@ -700,7 +700,7 @@ public function ativarCadastro(){
  $dados_plano = PlanosContratante::where('id',auth()->user()->id_plano)->first();
  $dados = CactaUsers::find(auth()->user()->id);
 
-
+dd('bateu1');
 
 
  if($dados_plano->id_pagarme == 486590){
