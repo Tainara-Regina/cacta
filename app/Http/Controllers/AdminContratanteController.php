@@ -731,8 +731,9 @@ $subscription = $pagarme->subscriptions()->create([
   ],
 ]);
 
-dd('bateu3');
+//dd($subscription->status);
 
+$dados->status_assinatura = $subscription->status;
 $dados->cadastro_ativo = 1;
 $dados->id_assinatura = $subscription->id;
 $dados->save();
