@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::post('/pagarme', function (Request $request) {
-	Slack::to('#cacta-vagas')->send('Um postback foi enviado!');
+//	Slack::to('#cacta-vagas')->send('Um postback foi enviado!');
 //Slack::to('#cacta-vagas')->send($request->id);
 
 $id             = $request->id; //ID da transação.
