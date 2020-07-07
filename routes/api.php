@@ -34,7 +34,7 @@ $object         = $request->object; //Qual o tipo do objeto referido. No caso de
 $transaction    = $request->transaction; //Possui todas as informações do objeto. Para acessar objetos internos basta acessar a chave transaction[objeto1][objeto2]. Ex: para acessar o ddd: transaction[phone][ddd] Postback - transação
 
 
-Slack::to('#cacta-vagas')->send(" ID da transação: ".$id.". Status para o qual efetivamente mudou:  ".$current_status.". Status anterior da transação: ".$old_status.". Qual o tipo do objeto referido: ".$object);
+// Slack::to('#cacta-vagas')->send(" ID da transação: ".$id.". Status para o qual efetivamente mudou:  ".$current_status.". Status anterior da transação: ".$old_status.". Qual o tipo do objeto referido: ".$object);
 
 $status = CactaUsers::where('id_assinatura',$id)->first();
 $status->status_assinatura = $current_status;
