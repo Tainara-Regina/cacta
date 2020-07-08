@@ -235,7 +235,7 @@ Route::post('/confirme-email-candidato','CadastrarCandidatoLoginController@formu
 
 
 //===================== Site =======================
-Route::get('/', 'InicioController@inicio')->name('site.inicio');
+//Route::get('/', 'InicioController@inicio')->name('site.inicio');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
