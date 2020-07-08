@@ -404,12 +404,62 @@ public function excluirConta(){
 // CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false]);
  //CactaCandidatos::where('id',\Auth::user()->id)->delete();
 
+$mytime = \Carbon\Carbon::now();
+CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false,'data_cancelamento' => $mytime]);
 
-CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false]);
-dd('sfsfsfsf');
 
  return \Redirect::to('/cacta-logout');
 }
+
+
+
+
+
+
+
+public function planoExpirou(){
+ // $id_plano = auth()->user()->id_plano;
+ // $plano = PlanosContratante::where('id',$id_plano)->first();
+ // $plano_duracao = $plano->duracao;
+
+ // $data_de_cadastro_usuario =  auth()->user()->created_at;
+
+
+ // $data_fim_plano = \Carbon\Carbon::parse($data_de_cadastro_usuario)->addDays($plano_duracao);
+ // $data_agora = \Carbon\Carbon::now();
+
+
+ // if($data_agora < $data_fim_plano || $plano->duracao == 'full' )
+ // {
+ //   return  redirect()->route('site.admin-contratante');
+ // }
+
+
+ // $cadastro = CactaCandidatos::where('id',\Auth::user()->id)->first();
+ // $segmentos = Segmento::select('id','segmento')->get();
+ // $planos = PlanosContratante::where('id','!=',\Auth::user()->id_plano)->get();
+
+  $data_cancelamento = auth()->user()->data_cancelamento;
+  return view('adminCandidato.plano-expirou',compact('data_cancelamento'));
+}
+
+
+
+
+
+
+public function ativarCadastro(){
+CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>true]);
+
+return redirect('/admin-candidato')->with('message', 'Cadastro reativado com sucesso!');
+
+}
+
+
+
+
+
+
 
 
 

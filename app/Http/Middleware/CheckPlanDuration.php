@@ -31,9 +31,20 @@ class CheckPlanDuration
 
 
 //============================================================================
+
     $usuario_assinatura = auth()->user()->status_assinatura;
     if ($usuario_assinatura == "canceled" || auth()->user()->cadastro_ativo == 0 ) {
-     return  redirect()->route('plano-expirou');
+     
+
+
+if(auth()->user()->sobrenome){
+  // dd( auth()->user());
+return  redirect()->route('site.plano-expirou');
+}else{
+return  redirect()->route('plano-expirou');
+}
+
+     
    }
 
    return $next($request);

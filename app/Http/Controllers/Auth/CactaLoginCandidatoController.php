@@ -35,7 +35,7 @@ class CactaLoginCandidatoController extends Controller
     	]);
 
     	
-    	if (Auth::guard('candidatos')->attempt(['email'=> $request->email_login,'password'=> $request->password_login,'cadastro_ativo'=> true,'completou_cadastro'=> 1], $request->remember)) {
+    	if (Auth::guard('candidatos')->attempt(['email'=> $request->email_login,'password'=> $request->password_login,'completou_cadastro'=> 1], $request->remember)) {
           $request->session()->put('menu_candidato', true);
 
 
