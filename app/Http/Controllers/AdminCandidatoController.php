@@ -402,7 +402,12 @@ return redirect()->back()->with('message', 'Dados atualizados com sucesso!');
 //Excluir conta permanentemente
 public function excluirConta(){
 // CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false]);
- CactaCandidatos::where('id',\Auth::user()->id)->delete();
+ //CactaCandidatos::where('id',\Auth::user()->id)->delete();
+
+
+CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false]);
+dd('sfsfsfsf');
+
  return \Redirect::to('/cacta-logout');
 }
 
