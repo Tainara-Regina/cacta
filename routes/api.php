@@ -38,7 +38,7 @@ $transaction    = $request->transaction; //Possui todas as informações do obje
 
 $status = CactaUsers::where('id_assinatura',$id)->first();
 
-if($status->status_assinatura){
+if($current_status){
 	$status->status_assinatura = $current_status;	
 }
 

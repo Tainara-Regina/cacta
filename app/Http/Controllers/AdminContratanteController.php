@@ -639,7 +639,6 @@ public function excluirConta(){
 ]);
 
  if($subscription->status != "canceled"){
-
   $canceledSubscription = $pagarme->subscriptions()->cancel([
     'id' => auth()->user()->id_assinatura
   ]);
@@ -695,12 +694,9 @@ public function ativarCadastro(){
 //   'id' => 499478
 // ]);
 // exit();
-
-
+ 
  $dados_plano = PlanosContratante::where('id',auth()->user()->id_plano)->first();
  $dados = CactaUsers::find(auth()->user()->id);
-
-
 
 
  if($dados_plano->id_pagarme == 486590){
