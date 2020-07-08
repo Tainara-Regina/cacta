@@ -39,6 +39,7 @@ $transaction    = $request->transaction; //Possui todas as informações do obje
 $status = CactaUsers::where('id_assinatura',$id)->first();
 
 if($current_status){
+	Slack::to('#cacta-vagas')->send($current_status);
 	$status->status_assinatura = $current_status;	
 }
 
