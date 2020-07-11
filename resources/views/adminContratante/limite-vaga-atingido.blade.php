@@ -126,6 +126,7 @@ crossorigin="anonymous">
 		<div class="col mt-5">
 			<hr class="line" style="">
 			<p class="text-left title-page" >Outros planos disponiveis</p>
+			<h5><a href="{{route('site.cadastrar-meus-dados-pessoais')}}#planos">Clique aqui</a> para visualizar outros planos disponíveis e suas vantagens.</h5>
 		</div>
 	</div>
 

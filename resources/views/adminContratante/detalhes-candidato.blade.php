@@ -193,6 +193,27 @@ crossorigin="anonymous"></script>
 	</div>
 
 
+
+
+<div class="row">
+		<div class="col-sm-12 mt-3">
+			<div class="row b m-1">
+				<div class="col p-3">
+					<p class=""><b>Habilidade ou especialidade</b></p>
+					
+					<div>
+						{{$candidato->especialidades}}
+					</div>
+
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+
+
 	<div class="row">
 		<div class="col-sm-12 mt-3">
 			<div class="row b m-1">
@@ -370,7 +391,7 @@ crossorigin="anonymous"></script>
 
 	<div class="row">
 		<div class="col">
-			<h3>Cursos/Workshops/Especializações</h3>
+			<h3>Cursos/ Workshops/ Especializações</h3>
 		</div>
 	</div>
 
@@ -380,15 +401,11 @@ crossorigin="anonymous"></script>
 			<div class="row b m-1">
 				<div class="col p-3">
 					<p class=""><b>Curso</b></p>
-					
 					<div>
 						{{$experiencia->nome_curso}}
 					</div>
 
 				</div>
-
-
-
 
 				<div class="col p-3">
 					<p class=""><b>Nome da instituição</b></p>
@@ -396,11 +413,7 @@ crossorigin="anonymous"></script>
 					<div>
 						{{$experiencia->nome_instituicao}}
 					</div>
-
 				</div>
-
-
-
 
 
 				<div class="col p-3">
@@ -442,41 +455,6 @@ crossorigin="anonymous"></script>
 		</div>
 	</div>
 	@endforeach
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	<div class="row">
 		<div class="col my-3">

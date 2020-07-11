@@ -44,7 +44,7 @@
 					<li>
 						<a href="{{route('site.preferencias')}}">
 							<i class="fas fa-cog"></i>
-							<span>Preferências</span>
+							<span>Opções</span>
 						</a>
 					</li>
 
@@ -90,7 +90,7 @@
 						<div class="sidebar-submenu">
 							<ul>
 								<li>
-									<a href="{{route('site.banco-candidato')}}">Melhores cadastros
+									<a href="{{route('site.banco-candidato')}}">Pesquise candidatos
 									</a>
 								</li>
 							</ul>

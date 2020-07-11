@@ -171,8 +171,16 @@ crossorigin="anonymous"></script>
 
 
 
+
 			<div class="form-group">
-				<label for="email">Seus sonhos objetivos</label>
+				<label>Tem alguma habilidade que gostaria de resaltar? Algo que você faz bem na sua área? Alguma especialidade?</label>
+				<textarea class="mt-2 form-control" name="especialidades" placeholder='Especialidades' rows="5" id="comment">{{$cadastro->especialidades}}</textarea>
+			</div>
+
+
+
+			<div class="form-group">
+				<label>Seus sonhos objetivos</label>
 				<textarea class="mt-2 form-control" name="sonhos_objetivos" placeholder='Descreva seus sonhos e objetivos' rows="5" id="comment"> {{ $cadastro->sonhos_objetivos }}</textarea>
 			</div>
 

@@ -741,9 +741,6 @@ return redirect('/admin-contratante')->with('message', 'Cadastro reativado com s
 
 
 
-
-
-
 public function cadastrarPlanoExpirou(Request $request){
 //dd( $request);
  $validator = $request->validate([
@@ -762,10 +759,28 @@ public function cadastrarPlanoExpirou(Request $request){
  return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
 }
 
-public function bancoCandidato(){
+public function bancoCandidato(Request $request){
+
   $autorizacao = $this->authorize('banco_de_candidatos');
   $total = CactaCandidatos::where('id_segmento_enterece',\Auth::user()->id_segmento)->count();
+  
+
+if (!empty($request->pesquisa)) {
+
+$candidatos = DB::table('cacta_candidatos')
+->join('experiencias_profissionais', 'experiencias_profissionais.candidato_id', '=', 'cacta_candidatos.id')
+->leftJoin('cursos_candidatos', 'cursos_candidatos.candidato_id', '=', 'cacta_candidatos.id')
+->select('*','cacta_candidatos.id As id')
+->orWhere('cursos_candidatos.nome_curso','LIKE','%'.$request->pesquisa.'%')
+->orWhere('experiencias_profissionais.cargo','LIKE','%'.$request->pesquisa.'%')
+->orWhere('cacta_candidatos.especialidades','LIKE','%'.$request->pesquisa.'%')
+->orWhere('experiencias_profissionais.descricao','LIKE','%'.$request->pesquisa.'%')
+->where('cacta_candidatos.id_segmento_enterece',\Auth::user()->id_segmento)->paginate(3);
+   // dd($candidatos->all());
+}else{
+
   $candidatos = CactaCandidatos::where('id_segmento_enterece',\Auth::user()->id_segmento)->paginate(3);
+}
 
   return view('adminContratante.banco-candidato',compact('total','candidatos'));
 }
@@ -775,14 +790,20 @@ public function bancoCandidato(){
 
 
 public function bancoCandidatoDetalhe($id_candidato){
+
+
+  $experiencias = ExperienciasProfissionais::where('candidato_id',$id_candidato)->get();
+
+  $cursos = CursosCandidatos::where('candidato_id',$id_candidato)->get();
+
  $autorizacao = $this->authorize('banco_de_candidatos');
  $candidato = CactaCandidatos::select('nome','sobrenome','email','telefone','data_nascimento','sonhos_objetivos','sexo','whatsapp','escolariedade',
-  'sua_historia','livros','hobbies','cursos_gostaria','cep','logradouro','bairro','localidade','uf','numero','complemento','endereco','facebook','instagram','twitter','site')
+  'sua_historia','livros','hobbies','cursos_gostaria','cep','logradouro','bairro','localidade','uf','numero','complemento','endereco','facebook','instagram','twitter','site','especialidades')
  ->where('id',$id_candidato)
  ->where('id_segmento_enterece',\Auth::user()->id_segmento)
  ->first();
-
- return view('adminContratante.banco-candidato-detalhes',compact('candidato'));
+//dd($candidato->especialidades);
+ return view('adminContratante.banco-candidato-detalhes',compact('candidato','experiencias','cursos'));
 }
 
 

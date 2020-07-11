@@ -44,9 +44,9 @@
 
 
 //====================== Blog ========================
-Route::get('/', 'BlogController@home')->name('site.inicio');
+//Route::get('/', 'BlogController@home')->name('site.inicio');
 
-Route::get('/secret', 'InicioController@inicio')->name('site.inicio');
+Route::get('/', 'InicioController@inicio')->name('site.inicio');
 Route::get('/blog', 'BlogController@home')->name('blog-home');
 Route::get('/blog/{id}', 'BlogController@post')->name('post');
 Route::get('/busca', 'BlogController@busca')->name('busca');
@@ -79,9 +79,7 @@ Route::get('/foo', function () {
 //==================================================
 //====== Redirecionamento Pro blog ==========
 //==================================================
-
-
-Route::middleware(['redirect'])->group(function () {
+//Route::middleware(['redirect'])->group(function () {
 
 //=================  Rotas do admin contratante  ================
 Route::get('admin-contratante/ativar-conta', 'AdminContratanteController@ativarCadastro')->name('site.ativar-conta');
@@ -92,7 +90,7 @@ Route::middleware(['checkplan.duration'])->group(function () {
 	Route::prefix('admin-contratante')->group(function () {
 		Route::get('/', 'AdminContratanteController@home')->name('site.admin-contratante');
 
-		Route::get('candidatos-vaga', 'AdminContratanteController@candidatosVaga')->name('site.candidatos-vaga');
+		Route::get('vagas-cadastradas', 'AdminContratanteController@candidatosVaga')->name('site.candidatos-vaga');
 
 		Route::get('banco-candidato', 'AdminContratanteController@bancoCandidato')->name('site.banco-candidato');
 
@@ -278,4 +276,4 @@ Route::get('/cacta-logout', 'Auth\CactaLogoutController@logout')->name('cactalog
 //==================================================
 //====== Fim do redirecionamento Pro blog ==========
 //==================================================
-});
+//});

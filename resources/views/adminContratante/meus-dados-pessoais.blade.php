@@ -148,8 +148,8 @@ crossorigin="anonymous"></script>
 
 			<div class="row">
 				<div class="col">
-					<h2 class="text-center title-page mt-5 mb-3">Escolha o plano que deseja</h2>
-					<p class="text-center w"><b>Obs:</b> A cobrança do plano começará após o período gratuito. Cancele quando quiser.</p>
+					<h2 id="planos" class="text-center title-page mt-5 mb-3">Escolha o plano que deseja</h2>
+					<p class="text-center w"><b>Obs:</b> Caso já tenha utilizado o plano com dias gratuitos, não terá direito de usa-lo novamente.</p>
 				</div>
 			</div>
 

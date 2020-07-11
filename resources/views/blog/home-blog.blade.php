@@ -86,12 +86,50 @@
 				@endif
 				<hr>
 			</a>
+
+
+
+<div class="col-md-10 m-0 p-0">
+			<h2 style="color: #754026" class="my-3">Últimos Posts</h2>
+			@foreach($ultimos_posts as $ultimo_post)
+			<a href="{{route('post',$ultimo_post->slug)}}">
+				<div style="    border-bottom: 1px solid grey;" class="row m-0 mb-3 pb-3">
+					<div class="col-4 m-0 p-0">
+						<img class="img-fluid img-thumbnail" src="{{Voyager::image($ultimo_post->image)}}">
+					</div>
+
+					<div class="col m-0 p-0 pl-3">
+						<p  style="font-weight: 700;color: #754026;">{{$ultimo_post->title}}</p>
+
+						<p>
+							{{mb_strimwidth($ultimo_post->excerpt, 0, 70, "...")}}
+						</p>
+
+						@if($ultimo_post->created_at == $ultimo_post->updated_at)
+						<p>
+							{{ Carbon\Carbon::parse($ultimo_post->created_at)->format('d/m/Y H:i:s')}}
+						</p>
+						@else
+						<p>
+							{{ Carbon\Carbon::parse($ultimo_post->created_at)->format('d/m/Y H:i:s')}} | atualizado em {{ Carbon\Carbon::parse($ultimo_post->updated_at)->format('d/m/Y H:i:s')}}
+						</p>
+						@endif
+
+					</div>
+					<hr>
+				</div>
+			</a>
+			@endforeach
+
+			<div>
+				{!! $ultimos_posts->links()!!}
+			</div>
+
+
 		</div>
 
 
-
-
-
+		</div>
 
 
 
@@ -135,55 +173,12 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-8">
-			<h2 style="color: #754026" class="my-3">Últimos Posts</h2>
-			@foreach($ultimos_posts as $ultimo_post)
-			<a href="{{route('post',$ultimo_post->slug)}}">
-				<div style="    border-bottom: 1px solid grey;" class="row m-0 mb-3 pb-3">
-					<div class="col-4 m-0 p-0">
-						<img class="img-fluid img-thumbnail" src="{{Voyager::image($ultimo_post->image)}}">
-					</div>
-
-					<div class="col m-0 p-0 pl-3">
-						<p  style="font-weight: 700;color: #754026;">{{$ultimo_post->title}}</p>
-
-						<p>
-							{{mb_strimwidth($ultimo_post->excerpt, 0, 70, "...")}}
-						</p>
-
-						@if($ultimo_post->created_at == $ultimo_post->updated_at)
-						<p>
-							{{ Carbon\Carbon::parse($ultimo_post->created_at)->format('d/m/Y H:i:s')}}
-						</p>
-						@else
-						<p>
-							{{ Carbon\Carbon::parse($ultimo_post->created_at)->format('d/m/Y H:i:s')}} | atualizado em {{ Carbon\Carbon::parse($ultimo_post->updated_at)->format('d/m/Y H:i:s')}}
-						</p>
-						@endif
-
-					</div>
-					<hr>
-				</div>
-			</a>
-			@endforeach
-
-			<div>
-				{!! $ultimos_posts->links()!!}
-			</div>
-
-
-		</div>
-
-
-
 		<div class="col-md-4">
 			<div class="w-100" style="height: 200px">
 				<!-- anuncio -->
 			</div>
 		</div>
-
 	</div>
-
 </div>
 @stop
 

@@ -101,10 +101,20 @@
 
 
 
+
+						<div class="form-group">
+							<label><b>Tem alguma habilidade que gostaria de resaltar? Algo que você faz bem na sua área? Alguma especialidade?</b></label>
+							<textarea class="mt-2 form-control" name="especialidades" placeholder='Especialidades' rows="5" id="comment">{{old('especialidades')}}</textarea>
+						</div>
+
+
+
 						<div class="form-group">
 							<label for="cursos_gostaria"><b>Tem algum curso ou especialização que gostaria de fazer?</b></label>
 							<textarea class="mt-2 form-control" name="cursos_gostaria" placeholder='cursos que gostaria de fazer' rows="5" id="comment">  {{old('cursos_gostaria')}}</textarea>
 						</div>
+
+						
 
 						@error('escolariedade')
 						<span style="color: red">{{ $message }}</span>
@@ -131,6 +141,7 @@
 
 
 						<label for="comment"><b>Redes sociais:</b></label>
+						<label for="comment"><b>É importante incluir suas redes sociais para que seus trabalhos postados sejam visulizados pelo contratante. Isso ajuda a aumentar suas chances de contratação.</b></label>
 
 						<div class="form-group">
 							<input name="facebook" value="{{old('facebook')}}" type="text" class="form-control" placeholder="Facebook"></input>

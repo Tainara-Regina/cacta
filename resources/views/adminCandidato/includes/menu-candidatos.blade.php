@@ -83,7 +83,7 @@
 					<li>
 						<a href="{{route('preferencias')}}">
 							<i class="fas fa-cog"></i>
-							<span>Preferências</span>
+							<span>Opções</span>
 						</a>
 					</li>
 

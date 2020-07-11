@@ -51,13 +51,13 @@ crossorigin="anonymous">
 
 	<div class="row p-0 m-0">
 		<div class="col mb-3">
-			<p class="text-left title-page" >Lista</p>
+			<p class="text-left title-page" >Banco de candidatos</p>
 			<hr class="line" style="">
 		</div>
 	</div>
 
 
-	<div class="row">
+	<!-- <div class="row">
 
 		<div class="col-sm-4">
 			<div class="row b m-1">
@@ -76,19 +76,60 @@ crossorigin="anonymous">
 		</div>
 
 	</div>
+-->
 
-
-	<div class="row mt-4">
+	<!-- <div class="row mt-4">
 		<div class="col mb-2">
-			<p class="text-left  title-page">Banco de candidatos</p>
+			<p class="text-left  title-page">Candidatos disponíveis</p>
+		</div>
+	</div>
+-->
+
+
+
+<div class="row mt-4">
+	<div class="col-md-12">
+		<p class="text-left">Pesquise por especialidades, experiências ou cursos.</p></div>
+		<div class="input-group col-md-12  mb-2">
+			<form  style="display: inline-flex;">
+				<input class="form-control" type="search" name="pesquisa" placeholder="Ex: Dreads, corte na tesoura, etc.">
+				<span class="input-group-append">
+					<button class="btn btn-outline-secondary" type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+				</span>
+			</form>
 		</div>
 	</div>
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<div class="row mb-5">
 		<div class="col">
+
+			<div class="row">
+				<div class="col mt-3">
+					<p>Resultado da pesquisa:</p>
+				</div>
+
+			</div>
+
+
 			<div class="row b m-1">
 				<div class="col p-3">
 					<p class="w">Banco de candidatos</p>
@@ -104,21 +145,21 @@ crossorigin="anonymous">
 							@foreach($candidatos as $candidato)
 							<tr>
 								<td class="w">{{$candidato->nome}} {{$candidato->sobrenome}}</td>
-								<td class="w">{{ Carbon\Carbon::parse($candidato->canditatura_em)->format('d/m/Y')}}</td>
+								<td class="w">{{ Carbon\Carbon::parse($candidato->created_at)->format('d/m/Y')}}</td>
 								<td class="text-center">
 									<a href="{{route('site.banco-candidato-detalhes',['id_candidato' => $candidato->id])}}">
 										Ver detalhes
 										<i style="color: #754026" class="fas fa-arrow-right float-right"></i></a>
-										
+
 									</td>
 								</tr>
 								@endforeach
 							</tbody>
 						</table>
 						<div>
-					{!! $candidatos->links()!!}
-				</div>
-				
+							{!! $candidatos->links()!!}
+						</div>
+
 					</div>
 
 					<div class="col-md-4  p-3 m-0">
@@ -144,7 +185,7 @@ crossorigin="anonymous">
 				</a>
 			</div>
 		</div>
-		
+
 	</div>
 	@stop
 

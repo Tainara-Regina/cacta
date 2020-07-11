@@ -55,7 +55,7 @@ crossorigin="anonymous">
 
 <div class="row">
 		<div class="col ">
-			<a href="{{ URL::previous() }}">
+			<a href="{{ route('site.candidatos-vaga') }}">
 				<div class="col text-left btn-sair  p-0 m-0">
 					<i class="fa fa-reply" style="">
 					</i>
@@ -226,7 +226,7 @@ crossorigin="anonymous">
 							</div>
 
 							<button type="submit" class="btn btn-primary mb-3">Salvar</button>
-							<a class="btn btn-primary mb-3" href="{{ URL::previous() }}">Voltar</a>
+							<a class="btn btn-primary mb-3" href="{{ route('site.candidatos-vaga') }}">Voltar</a>
 						</form>
 			</div>
 
