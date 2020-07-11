@@ -572,7 +572,7 @@ public function atualizarCartao(){
 public function gravarAtualizarCartao(Request $request){
   $validator = $request->validate([
    'nome_cartao' => 'required',
-   'numero_cartao' => 'required',
+   'numero_cartao' => 'required|unique:cacta_users',
    'expira_cartao' => 'required',
    'codigo_seguranca_cartao' => 'required',
  ],

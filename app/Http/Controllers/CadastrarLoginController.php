@@ -34,6 +34,7 @@ class CadastrarLoginController extends Controller
        'nome_contratante' => 'required',
        'nome_empresa' => 'required',
        'email' => 'email|required|unique:cacta_users',
+        'termos' => 'required',
        'telefone' => 'required',
        'password' => 'required',
        'password_confirmation' =>'required|same:password',
@@ -81,6 +82,7 @@ class CadastrarLoginController extends Controller
     $dados->nome_empresa = $request->nome_empresa;
     $dados->email = $request->email;
     $dados->telefone = $request->telefone;
+    $dados->termos = $request->termos;
     $dados->password = Hash::make($request->password);
     $dados->key_verificacao = $key;
 

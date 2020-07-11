@@ -29,7 +29,7 @@
 					<h2 class="text-h3 text-center" >Olá!</h2>
 					<h5 class="text-h3 text-center"> <b>Seja muito bem vindo(a) ao Cacta vagas!</b></h5>
 
-					 <p class="text-h3 mt-3 text-center" style="font-size: 20px;">Queremos te ajudar a encontrar a vaga de emprego que procura.
+					<p class="text-h3 mt-3 text-center" style="font-size: 20px;">Queremos te ajudar a encontrar a vaga de emprego que procura.
 					Cadastre-se para poder se candidatar as vagas disponíveis e ser encontrado por empresas cadastradas.</p>
 				</div>
 			</div>
@@ -103,14 +103,6 @@
 
 
 
-						@error('localidade')
-						<span style="color: red">{{ $message }}</span>
-						@enderror
-						<div class="form-group">
-							<label><b>Cidade</b></label>
-							<input type="text" value="{{old('localidade')}}" name="localidade" placeholder="Cidade" type="text" class="form-control" required>
-						</div>
-
 						@error('uf')
 						<span style="color: red">{{ $message }}</span>
 						@enderror
@@ -151,7 +143,13 @@
 						</div>
 
 
-
+						@error('localidade')
+						<span style="color: red">{{ $message }}</span>
+						@enderror
+						<div class="form-group">
+							<label><b>Cidade</b></label>
+							<input type="text" value="{{old('localidade')}}" name="localidade" placeholder="Cidade" type="text" class="form-control" required>
+						</div>
 
 						@error('password')
 						<span style="color: red">{{ $message }}</span>
@@ -168,6 +166,17 @@
 							<label for="repetir_senha"><b>Repetir senha</b></label>
 							<input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control" required>
 						</div>
+
+
+
+
+						<div class="form-group form-check mb-5 mt-3">
+							<label class="form-check-label">
+								<input class="form-check-input" value="true" type="checkbox" name="termos" required> Aceito <a href="{{route('site.termo-uso')}}"> todos os termos do site.</a>
+							</label>
+						</div>
+
+
 
 						@error('g-recaptcha-response')
 						<span style="color: red">{{ $message }}</span>

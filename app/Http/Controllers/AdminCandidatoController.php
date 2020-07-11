@@ -474,7 +474,7 @@ public function gravarAtualizarCartao(Request $request){
   //dd('bateu');
   $validator = $request->validate([
    'nome_cartao' => 'required',
-   'numero_cartao' => 'required',
+  'numero_cartao' => 'required|unique:cacta_candidatos',
    'expira_cartao' => 'required',
    'codigo_seguranca_cartao' => 'required',
  ],

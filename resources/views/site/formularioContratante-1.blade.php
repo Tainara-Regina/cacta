@@ -98,6 +98,15 @@
               <input type="password" value="{{old('password_confirmation')}}" name="password_confirmation" placeholder="Repetir senha" type="text" class="form-control" required>
             </div>
 
+
+            
+            <div class="form-group form-check mb-5 mt-3">
+              <label class="form-check-label">
+                <input class="form-check-input" value="true" type="checkbox" name="termos" required> Aceito <a href="{{route('site.termo-uso')}}"> todos os termos do site.</a>
+              </label>
+            </div>
+
+
             <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
 
             <button type="submit" class="mt-5 btn btn-primary mb-5">Prosseguir</button>

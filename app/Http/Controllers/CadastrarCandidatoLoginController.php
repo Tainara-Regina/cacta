@@ -39,7 +39,8 @@ class CadastrarCandidatoLoginController extends Controller
       'telefone' => 'required',
       'password' => 'required',
       'password_confirmation' =>'required|same:password',
-      'uf' => 'required',      
+      'uf' => 'required', 
+       'termos' => 'required',      
     ],
     [
       // 'logo.required' => 'Insira o logo da sua em presa.',
@@ -92,6 +93,7 @@ class CadastrarCandidatoLoginController extends Controller
     $dados->telefone = $request->telefone;
     $dados->data_nascimento = $request->data_nascimento;
     $dados->sexo = $request->sexo;
+     $dados->termos = $request->termos;
     $dados->password = Hash::make($request->password);
     $dados->key_verificacao = $key;
 
@@ -172,7 +174,7 @@ public function formularioCandidatoParte2(Request $request){
    'endereco' => 'required',
    // 'plano' => 'required',
    // 'nome_cartao' => 'required',
-   // 'numero_cartao' => 'required',
+   // 'numero_cartao' => 'required|unique',
    // 'expira_cartao' => 'required',
   // 'codigo_seguranca_cartao' => 'required',
  //  'logo.image' => 'O logo precisa ser uma imagem.',
