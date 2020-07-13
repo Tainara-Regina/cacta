@@ -61,7 +61,7 @@
 						@enderror
 						<div class="form-group my-5">
 							<div class="main">
-								<label for="pwd"><b>Selecione o segmento pretende encontrar uma vaga?</b></label>
+								<label for="pwd"><b>Selecione o segmento pretende encontrar uma vaga.</b></label>
 								<label for="pwd">Obs: Você poderá se candidatar a vagas de outro seguimento.</label>
 
 
@@ -109,16 +109,18 @@
 						<div class="form-group">
 							<label for="cursos_gostaria"><b>Tem algum curso ou especialização que gostaria de fazer?</b></label>
 							<textarea class="mt-2 form-control" name="cursos_gostaria" placeholder='Cursos que gostaria de fazer.' rows="5" id="comment">{{old('cursos_gostaria')}}</textarea>
+							<label class="mt-3 mb-5" for="cursos_gostaria"><b>Você poderá preencher sua experiências e cursos realizados quando acessar seu perfil.</b></label>
 						</div>
 
-						<label class="mt-3 mb-5" for="cursos_gostaria"><b>Você vai poder preencher sua experiências e cursos realizados quando estiver logado.</b></label>
+						
 
-						@error('escolariedade')
-						<span style="color: red">{{ $message }}</span>
-						@enderror
+						
 						<div class="form-group">
+							@error('escolariedade')
+							<span style="color: red">{{ $message }}</span>
+							@enderror
 							<label for="escolariedade"><b>Escolariedade</b></label>
-							<input type="text" value="{{old('escolariedade')}}" name="escolariedade" placeholder="escolariedade" type="text" class="form-control">
+							<input type="text" value="{{old('escolariedade')}}" name="escolariedade" placeholder="escolariedade" type="text" class="form-control" required>
 						</div>
 
 
@@ -189,12 +191,12 @@
 
 
 						<label class="form-check-label" for="check1">
-							<input name="disponivel_banco_candidatos" type="checkbox" class="form-check-input" checked>Deseja ficar disponível no banco de candidatos?(Seu perfil ficará disponível para que os contratantes lhe encontre).
+							<input name="disponivel_banco_candidatos" type="checkbox" class="form-check-input" checked>Deseja ficar disponível no banco de candidatos? (seu perfil ficará disponível para que os contratantes lhe encontre).
 						</label>
 
 						<div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
 
-						<button type="submit" class="mt-3 btn btn-primary mb-5">Prosseguir</button>
+						<button type="submit" class="mt-5 btn btn-primary mb-5">Prosseguir</button>
 					</form>
 
 				</div>
