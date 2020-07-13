@@ -111,7 +111,7 @@
 							<textarea class="mt-2 form-control" name="cursos_gostaria" placeholder='Cursos que gostaria de fazer.' rows="5" id="comment">{{old('cursos_gostaria')}}</textarea>
 						</div>
 
-						<label class="my-3" for="cursos_gostaria"><b>Você vai poder preencher sua experiências e cursos realizados quando estiver logado.</b></label>
+						<label class="mt-3 mb-5" for="cursos_gostaria"><b>Você vai poder preencher sua experiências e cursos realizados quando estiver logado.</b></label>
 
 						@error('escolariedade')
 						<span style="color: red">{{ $message }}</span>
