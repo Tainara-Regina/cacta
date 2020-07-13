@@ -258,19 +258,6 @@ crossorigin="anonymous"></script>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 			@if(session()->has('cursos-fail'))
 			<div class="alert alert-danger alert-dismissible py-3 mr-4">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>

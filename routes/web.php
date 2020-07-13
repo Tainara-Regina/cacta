@@ -43,19 +43,6 @@
 
 
 
-Route::get('/emailt', function () {
-	return view('email.emailConfirmacaoCandidato');
-});
-
-
-
-
-
-
-
-
-
-
 //====================== Blog ========================
 Route::get('/', 'BlogController@home')->name('site.inicio');
 Route::get('/secret', 'InicioController@inicio')->name('site.inicio');
