@@ -9,14 +9,11 @@
       
       <ul class="nav__ul">
         <li>
-          <a href="#">Politica de privacidade</a>
-        </li>
-        
-        <li>
           <a href="{{route('site.termo-uso')}}">Termo de uso</a>
         </li>
-        
-        
+        <li>
+          <a href="{{route('site.termo-cancelamento')}}">Termo de cancelamento</a>
+        </li>       
       </ul>
     </li>
   </ul>
