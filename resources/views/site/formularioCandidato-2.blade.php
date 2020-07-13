@@ -40,7 +40,7 @@
 						<div class="col text-center">
 							<h2>Seja bem vindo(a) {{$nome}}!</h2>
 							<h4>Sua confirmação foi feita com sucesso!</h4>
-							<h5 class="text-h3 mt-3">Esta é a última etapa para você encontrar aquela vaga. Você precisa completar o cadastro para conseguir se candidatar as vagas.</h5>
+							<h5 class="text-h3 mt-3">Esta é a última etapa para você encontrar aquela vaga. Complete seu cadastro para poder se candidatar.</h5>
 						</div>
 					</div>
 
@@ -60,8 +60,8 @@
 						<span style="color: red">{{ $message }}</span>
 						@enderror
 						<div class="form-group my-5">
-							<div class="main">
-								<label for="pwd"><b>Selecione o segmento pretende encontrar uma vaga.</b></label>
+							<div>
+								<label><b>Selecione o segmento pretende encontrar uma vaga.</b></label>
 								<label for="pwd">Obs: Você poderá se candidatar a vagas de outro seguimento.</label>
 
 
@@ -78,15 +78,18 @@
 
 
 						<div class="form-group">
+							<label><b>Tem alguma habilidade que gostaria de ressaltar? Algo que você faz bem na sua área? Alguma especialidade?</b></label>
+							<textarea class="mt-2 form-control" name="especialidades" placeholder='É bom em algo na sua área? Escreva aqui.' rows="5" id="comment">{{old('especialidades')}}</textarea>
+						</div>
+
+
+
+<div class="form-group">
 							<label for="email"><b>Quer falar sobre seus objetivos de carreira? escreva aqui.</b></label>
 							<textarea class="mt-2 form-control" name="sonhos_objetivos" placeholder='Descreva seus sonhos e objetivos.' rows="5" id="comment">{{old('sonhos_objetivos')}}</textarea>
 						</div>
 
 
-						<div class="form-group">
-							<label><b>Tem alguma habilidade que gostaria de ressaltar? Algo que você faz bem na sua área? Alguma especialidade?</b></label>
-							<textarea class="mt-2 form-control" name="especialidades" placeholder='É bom em algo na sua área? Escreva aqui.' rows="5" id="comment">{{old('especialidades')}}</textarea>
-						</div>
 
 
 						<div class="form-group">
