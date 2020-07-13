@@ -109,17 +109,17 @@
 						<div class="form-group">
 							<label for="cursos_gostaria"><b>Tem algum curso ou especialização que gostaria de fazer?</b></label>
 							<textarea class="mt-2 form-control" name="cursos_gostaria" placeholder='Cursos que gostaria de fazer.' rows="5" id="comment">{{old('cursos_gostaria')}}</textarea>
-							<label class="mt-3 mb-5" for="cursos_gostaria"><b>Você poderá preencher sua experiências e cursos realizados quando acessar seu perfil.</b></label>
+							<label class="mt-5 mb-5" for="cursos_gostaria"><b>Você poderá preencher sua experiências e cursos realizados quando acessar seu perfil.</b></label>
 						</div>
 
 						
 
 						
 						<div class="form-group">
+							<label for="escolariedade"><b>Escolariedade</b></label>
 							@error('escolariedade')
 							<span style="color: red">{{ $message }}</span>
 							@enderror
-							<label for="escolariedade"><b>Escolariedade</b></label>
 							<input type="text" value="{{old('escolariedade')}}" name="escolariedade" placeholder="escolariedade" type="text" class="form-control" required>
 						</div>
 
@@ -191,7 +191,7 @@
 
 
 						<label class="form-check-label" for="check1">
-							<input name="disponivel_banco_candidatos" type="checkbox" class="form-check-input" checked>Deseja ficar disponível no banco de candidatos? (seu perfil ficará disponível para que os contratantes lhe encontre).
+							<input name="disponivel_banco_candidatos" type="checkbox" class="form-check-input" checked>Deseja ficar disponível no banco de candidatos? (seu perfil ficará disponível e os contratantes poderão encontrá-lo).
 						</label>
 
 						<div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
