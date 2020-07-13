@@ -82,7 +82,7 @@
 						<label for="email"><b>Gênero</b></label>
 						<div class="form-check">
 							<label class="form-check-label">
-								<input type="radio" class="form-check-input" value="feminino" name="sexo">Feminino
+								<input type="radio" class="form-check-input" value="feminino" name="sexo" required>Feminino
 							</label>
 						</div>
 						<div class="form-check">
