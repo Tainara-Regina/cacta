@@ -170,11 +170,12 @@
 
 
 
-						<div class="form-group form-check mb-5 mt-3">
-							<label class="form-check-label">
-								<input class="form-check-input" value="true" type="checkbox" name="termos" required> Aceito <a href="{{route('site.termo-uso')}}"> todos os termos do site.</a>
-							</label>
-						</div>
+					<div class="form-group form-check mb-5 mt-3">
+              <label class="form-check-label">
+                <input class="form-check-input" value="true" type="checkbox" name="termos" required> Aceito o 
+                 <a href="{{route('site.termo-uso')}}">termo de uso</a> e o de <a href="{{route('site.termo-cancelamento')}}">termo de cancelamento</a>.
+              </label>
+            </div>
 
 
 

@@ -62,6 +62,12 @@
 				<p>Ao deletar o cadastro, todos os dados relacionados ao usuário serão excluídos permanentemente sem chance de recuperação. 
 				</p>
 
+				<p>O cactavagas.com não tem a obrigação de abranger todas as categorias de vaga. </p>
+
+				<p>
+				As categorias de vagas disponíveis podem ser acrescentadas ou removidas a qualquer momento por seus criadores. 	
+				</p>
+<p>Os planos do cactavagas.com poderão, de tempos em tempo, ter alterações no valor. </p>
 			</div>
 		</div>
 	</div>
