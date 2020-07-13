@@ -62,7 +62,7 @@
 						<div class="form-group my-5">
 							<div class="main">
 								<label for="pwd"><b>Selecione o segmento pretende encontrar uma vaga?</b></label>
-								<label for="pwd">Obs:Você poderá se candidatar a vagas de outro seguimento.</label>
+								<label for="pwd">Obs: Você poderá se candidatar a vagas de outro seguimento.</label>
 
 
 								<select id="id_segmento_enterece" value="{{old('id_segmento_enterece')}}" name="id_segmento_enterece" required>
@@ -79,7 +79,7 @@
 
 						<div class="form-group">
 							<label for="email"><b>Quer falar sobre seus objetivos de carreira? escreva aqui.</b></label>
-							<textarea class="mt-2 form-control" name="sonhos_objetivos" placeholder='Descreva seus sonhos e objetivos' rows="5" id="comment">{{old('sonhos_objetivos')}}</textarea>
+							<textarea class="mt-2 form-control" name="sonhos_objetivos" placeholder='Descreva seus sonhos e objetivos.' rows="5" id="comment">{{old('sonhos_objetivos')}}</textarea>
 						</div>
 
 
@@ -108,10 +108,10 @@
 
 						<div class="form-group">
 							<label for="cursos_gostaria"><b>Tem algum curso ou especialização que gostaria de fazer?</b></label>
-							<textarea class="mt-2 form-control" name="cursos_gostaria" placeholder='Cursos que gostaria de fazer' rows="5" id="comment">{{old('cursos_gostaria')}}</textarea>
+							<textarea class="mt-2 form-control" name="cursos_gostaria" placeholder='Cursos que gostaria de fazer.' rows="5" id="comment">{{old('cursos_gostaria')}}</textarea>
 						</div>
 
-						
+						<label for="cursos_gostaria"><b>Você vai poder preencher sua experiências e cursos realizados quando estiver logado.</b></label>
 
 						@error('escolariedade')
 						<span style="color: red">{{ $message }}</span>
@@ -189,7 +189,7 @@
 
 
 						<label class="form-check-label" for="check1">
-							<input name="disponivel_banco_candidatos" type="checkbox" class="form-check-input" checked>Deseja ficar disponível no banco de candidatos?
+							<input name="disponivel_banco_candidatos" type="checkbox" class="form-check-input" checked>Deseja ficar disponível no banco de candidatos?(Seu perfil ficará disponível para que os contratantes lhe encontre).
 						</label>
 
 						<div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP"></div>
