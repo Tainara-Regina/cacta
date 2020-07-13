@@ -84,12 +84,14 @@ crossorigin="anonymous"></script>
 							</select>
 						</div>
 					</div>
-
+ 
 
 
 				<div class="form-group">
-					<label for="email"><b>Excluir permanentemente seu cadastro</b></label>
-					<a href="{{route('excluir-conta')}}">Excluir permanentemente sua conta?</a>
+					<label><b>Deseja excluir seu cadastro? </b></label>
+					<a href="{{route('excluir-conta')}}"> clique aqui.</a>
+
+					<label>Seu plano será cancelado e seu cadastro ficará inativo durante 60 dias. Após este período, caso o cadastro não seja reativado no intervalo de 60 dias, ele será excluído permanentemente.</label>
 				</div>
 
 
