@@ -40,7 +40,7 @@
 						<div class="col text-center">
 							<h2>Seja bem vindo(a) {{$nome}}!</h2>
 							<h4>Sua confirmação foi feita com sucesso!</h4>
-							<h5 class="text-h3 mt-3">Esta é a última etapa para você encontrar aquela vaga. Você precisa completar o cadastro conseguir se candidatar as vagas.</h5>
+							<h5 class="text-h3 mt-3">Esta é a última etapa para você encontrar aquela vaga. Você precisa completar o cadastro para conseguir se candidatar as vagas.</h5>
 						</div>
 					</div>
 
@@ -61,7 +61,8 @@
 						@enderror
 						<div class="form-group my-5">
 							<div class="main">
-								<label for="pwd"><b>Selecione o segmento e enterece</b></label>
+								<label for="pwd"><b>Selecione o segmento pretende encontrar uma vaga?</b></label>
+								<label for="pwd">Obs:Você poderá se candidatar a vagas de outro seguimento.</label>
 
 
 								<select id="id_segmento_enterece" value="{{old('id_segmento_enterece')}}" name="id_segmento_enterece" required>
@@ -77,41 +78,37 @@
 
 
 						<div class="form-group">
-							<label for="email"><b>Quer falar sobre seus objetivos de carreira? escreva aqui</b></label>
-							<textarea class="mt-2 form-control" name="sonhos_objetivos" placeholder='Descreva seus sonhos e objetivos' rows="5" id="comment"> {{old('sonhos_objetivos')}}</textarea>
-						</div>
-
-
-
-						<div class="form-group">
-							<label for="email"><b>Fale um pouco sobre você, sobre sua história.</b></label>
-							<textarea class="mt-2 form-control" name="sua_historia" placeholder='Sua historia' rows="5" id="comment">{{old('sua_historia')}}</textarea>
-						</div>
-
-						<div class="form-group">
-							<label for="livros"><b>Livros que gostou de ler.</b></label>
-							<textarea class="mt-2 form-control" name="livros" placeholder='livros' rows="5" id="comment"> {{old('livros')}}</textarea>
+							<label for="email"><b>Quer falar sobre seus objetivos de carreira? escreva aqui.</b></label>
+							<textarea class="mt-2 form-control" name="sonhos_objetivos" placeholder='Descreva seus sonhos e objetivos' rows="5" id="comment">{{old('sonhos_objetivos')}}</textarea>
 						</div>
 
 
 						<div class="form-group">
-							<label for="hobbies"><b>O que gosta de fazer no seu tempo livre?</b></label>
-							<textarea class="mt-2 form-control" name="hobbies" placeholder='hobbies' rows="5" id="comment">  {{old('hobbies')}}</textarea>
+							<label><b>Tem alguma habilidade que gostaria de ressaltar? Algo que você faz bem na sua área? Alguma especialidade?</b></label>
+							<textarea class="mt-2 form-control" name="especialidades" placeholder='É bom em algo na sua área? Escreva aqui.' rows="5" id="comment">{{old('especialidades')}}</textarea>
 						</div>
-
-
 
 
 						<div class="form-group">
-							<label><b>Tem alguma habilidade que gostaria de resaltar? Algo que você faz bem na sua área? Alguma especialidade?</b></label>
-							<textarea class="mt-2 form-control" name="especialidades" placeholder='Especialidades' rows="5" id="comment">{{old('especialidades')}}</textarea>
+							<label for="email"><b>Aqui você pode falar um pouco sobre você, fique a vontade.</b></label>
+							<textarea class="mt-2 form-control" name="sua_historia" placeholder='Fale sobre você. Fique a vontade.' rows="5" id="comment">{{old('sua_historia')}}</textarea>
 						</div>
 
+						<div class="form-group">
+							<label for="livros"><b>Quer falar sobre os livros que gostou de ler?</b></label>
+							<textarea class="mt-2 form-control" name="livros" placeholder='Gosta de ler? Fale sobre seus livros.' rows="5" id="comment">{{old('livros')}}</textarea>
+						</div>
+
+
+						<div class="form-group">
+							<label for="hobbies"><b>Quer falar sobre o que gosta de fazer no seu tempo livre?</b></label>
+							<textarea class="mt-2 form-control" name="hobbies" placeholder='O que gosta de fazer no seu tempo livre?' rows="5" id="comment">{{old('hobbies')}}</textarea>
+						</div>
 
 
 						<div class="form-group">
 							<label for="cursos_gostaria"><b>Tem algum curso ou especialização que gostaria de fazer?</b></label>
-							<textarea class="mt-2 form-control" name="cursos_gostaria" placeholder='cursos que gostaria de fazer' rows="5" id="comment">  {{old('cursos_gostaria')}}</textarea>
+							<textarea class="mt-2 form-control" name="cursos_gostaria" placeholder='Cursos que gostaria de fazer' rows="5" id="comment">{{old('cursos_gostaria')}}</textarea>
 						</div>
 
 						
@@ -136,7 +133,6 @@
 
 							<input style="width: 400px!important" type="text" value="{{old('whatsapp')}}" name="whatsapp" placeholder="whatsapp" type="text" class="form-control mt-3" maxlength="20">
 						</div>
-
 
 
 

@@ -103,7 +103,7 @@
             <div class="form-group form-check mb-5 mt-3">
               <label class="form-check-label">
                 <input class="form-check-input" value="true" type="checkbox" name="termos" required> Aceito o 
-                 <a target="_blank" href="{{route('site.termo-uso')}}">termo de uso</a> e o de <a target="_blank" href="{{route('site.termo-cancelamento')}}">termo de cancelamento</a>.
+                 <a target="_blank" href="{{route('site.termo-uso')}}">termo de uso</a> e o <a target="_blank" href="{{route('site.termo-cancelamento')}}">termo de cancelamento</a>.
               </label>
             </div>
 

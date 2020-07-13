@@ -71,7 +71,7 @@
 						@enderror
 						<div class="form-group">
 							<label for="email"><b>Data nascimento</b></label>
-							<input placeholder="Data de nascimento" type="date" value="{{old('data_nascimento')}}" name="data_nascimento" class="form-control" required>
+							<input placeholder="Data de nascimento" type="text" value="{{old('data_nascimento')}}" name="data_nascimento" class="form-control date" required>
 						</div>
 
 
@@ -173,7 +173,7 @@
 					<div class="form-group form-check mb-5 mt-3">
               <label class="form-check-label">
                 <input class="form-check-input" value="true" type="checkbox" name="termos" required> Aceito o 
-                 <a target="_blank" href="{{route('site.termo-uso')}}">termo de uso</a> e o de <a target="_blank" href="{{route('site.termo-cancelamento')}}">termo de cancelamento</a>.
+                 <a target="_blank" href="{{route('site.termo-uso')}}">termo de uso</a> e o <a target="_blank" href="{{route('site.termo-cancelamento')}}">termo de cancelamento</a>.
               </label>
             </div>
 
