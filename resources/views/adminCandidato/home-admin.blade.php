@@ -38,7 +38,7 @@ crossorigin="anonymous">
 
 
 
-@if($cursos == 0 || $experiencias == 0)
+@if($cursos == 0 && $experiencias == 0)
 <div class="container-fluid  py-0 my-0">
   <section class="my-3 py-3 vagas-destaque b">
     <p class="text-center"><i style="font-size: 64px; color: #ff9800" class="fas fa-exclamation-triangle"></i></p>
