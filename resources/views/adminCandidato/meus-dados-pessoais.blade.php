@@ -153,7 +153,7 @@ jquery.mask/1.14.16/jquery.mask.js"></script>
 			@enderror
 			<div class="form-group">
 				<label for="email">Data nascimento</label>
-				<input placeholder="Data de nascimento" type="text" value="{{$cadastro->data_nascimento}}" name="data_nascimento" class="date" required>
+				<input placeholder="Data de nascimento" type="date" value="{{$cadastro->data_nascimento}}" name="data_nascimento" class="date" required>
 			</div>
 
 

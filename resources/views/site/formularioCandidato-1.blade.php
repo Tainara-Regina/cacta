@@ -71,7 +71,7 @@
 						@enderror
 						<div class="form-group">
 							<label for="email"><b>Data nascimento</b></label>
-							<input placeholder="Data de nascimento" type="text" value="{{old('data_nascimento')}}" name="data_nascimento" class="form-control date" required>
+							<input placeholder="Data de nascimento" type="date" value="{{old('data_nascimento')}}" name="data_nascimento" class="form-control date" required>
 						</div>
 
 
