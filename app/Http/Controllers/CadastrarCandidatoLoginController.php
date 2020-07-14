@@ -236,7 +236,7 @@ CactaCandidatos::where('id',$request->id)->update(request()->except(['_token','p
 
 Slack::to('#cacta-vagas')->send('Um usuario acabou de se cadastrar como Candidato.');
 
-return view('site.cadastro-realizado');
+return redirect()->route('site.cadastro-concluido');
 }
 
 }

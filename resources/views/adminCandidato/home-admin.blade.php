@@ -60,20 +60,22 @@ crossorigin="anonymous">
 
 
   <div class="row">
-    <div class="col-sm-4">
-      <div class="row b m-1">
-        <div class="col p-3">
-          <p class="w">Perfil visualizado</p>
-          <p class="total">{{ $total_visualizado}}</p>
-        </div>
-        <div class="col-md-4 p-0 m-0  d-none d-md-block">
-         <div class="h-100 w-100">
-          <div class="mx-auto w-50">
-           <i  class=" g fas fa-briefcase pt-5"></i>
+    <a href="{{route('meu-perfil')}}">
+      <div class="col-sm-4">
+        <div class="row b m-1">
+          <div class="col p-3">
+            <p class="w">Perfil visualizado</p>
+            <p class="total">{{ $total_visualizado}}</p>
+          </div>
+          <div class="col-md-4 p-0 m-0  d-none d-md-block">
+           <div class="h-100 w-100">
+            <div class="mx-auto w-50">
+             <i  class=" g fas fa-briefcase pt-5"></i>
+           </div>
          </div>
        </div>
      </div>
-   </div>
+   </a>
  </div>
 
 
@@ -82,19 +84,21 @@ crossorigin="anonymous">
 
 
  <div class="col-sm-4">
-  <div class="row b m-1">
-    <div class="col p-3">
-      <p class="w">Suas candidaturas</p>
-      <p class="total">{{$total_candidaturas}}</p>
-    </div>
-    <div class="col-md-4 p-0 m-0  d-none d-md-block">
-     <div class="h-100 w-100">
-      <div class="mx-auto w-50">
-       <i  class=" g fas fa-star pt-5"></i>
+  <a href="{{route('minhas-vagas')}}">
+    <div class="row b m-1">
+      <div class="col p-3">
+        <p class="w">Suas candidaturas</p>
+        <p class="total">{{$total_candidaturas}}</p>
+      </div>
+      <div class="col-md-4 p-0 m-0  d-none d-md-block">
+       <div class="h-100 w-100">
+        <div class="mx-auto w-50">
+         <i  class=" g fas fa-star pt-5"></i>
+       </div>
      </div>
    </div>
  </div>
-</div>
+</a>
 </div>
 </div>
 

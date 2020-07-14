@@ -57,6 +57,26 @@ Route::get('/categoria/{categoria}', 'BlogController@categoria')->name('categori
 
 
 
+//====================== Cadastro concluido ==========================
+
+Route::get('/cadastro-concluido', function () {
+	return view('site.cadastro-realizado');	  
+})->name('site.cadastro-concluido');
+
+
+//====================== Fim Cadastro concluíido =====================
+
+
+
+
+
+
+
+
+
+
+
+
 
 //======================= Voyager e Cron e API =======================
 Route::group(['prefix' => 'cacta-sucesso-painel'], function () {

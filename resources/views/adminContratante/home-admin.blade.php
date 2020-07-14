@@ -50,8 +50,8 @@ crossorigin="anonymous">
     </div>
   </div>
 
-
   <div class="row">
+    <a href="{{route('site.candidatos-vaga')}}">
     <div class="col-sm-4">
       <div class="row b m-1">
         <div class="col p-3">
@@ -66,14 +66,18 @@ crossorigin="anonymous">
        </div>
      </div>
    </div>
+    </a>
  </div>
 
 
 
+
+
  <div class="col-sm-4">
+   <a href="{{route('site.candidatos-vaga')}}">
   <div class="row b m-1">
     <div class="col p-3">
-      <p class="w">Total de candidaturas em suas vagas</p>
+      <p class="w">Total de interessados em suas vagas</p>
       <p class="total"> {{$candidatos_total}} </p>
     </div>
     <div class="col-md-4 p-0 m-0  d-none d-md-block">
@@ -84,11 +88,13 @@ crossorigin="anonymous">
    </div>
  </div>
 </div>
+</a>
 </div>
 
 
 
 <div class="col-sm-4">
+   <a href="{{route('site.candidatos-vaga')}}">
   <div class="row b m-1">
     <div class="col p-3">
       <p class="w">Total de vagas em destaque</p>
@@ -103,6 +109,7 @@ crossorigin="anonymous">
  </div>
 </div>
 </div>
+</a>
 </div>
 
 <!-- 

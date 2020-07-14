@@ -86,7 +86,7 @@ crossorigin="anonymous"></script>
 					<p class=""><b>Endereço:</b> {{$candidato->logradouro}}, {{$candidato->numero}}, {{$candidato->bairro}},  {{$candidato->localidade}}, {{$candidato->uf}}</p>
 				</div>
 				<div class="col p-3">
-					<p><b>Data de nascimento: </b>{{ Carbon\Carbon::parse($candidato->data_nascimento)->format('d/m/Y')}}</p>
+					<p><b>Data de nascimento: </b>{{$candidato->data_nascimento}}</p>
 					<p><b>Gênero:</b> {{$candidato->sexo}}</p>
 				</div>
 			</div>

@@ -297,7 +297,7 @@ $dados->save();
 
 Slack::to('#cacta-vagas')->send('Um usuario acabou de se cadastrar como Contratante.');
 
-return view('site.cadastro-realizado');
+return redirect()->route('site.cadastro-concluido');
 }
 
 

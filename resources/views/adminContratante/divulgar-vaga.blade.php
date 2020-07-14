@@ -138,9 +138,9 @@ crossorigin="anonymous">
 					<div class="form-group">
 						<label for="pwd">Faixa salarial de:</label>
 
-						<input type="number" name="faixa_salarial_de" class="form-control" min="1" max="10000" id="pwd" placeholder="Ex: 2.000">
+						<input type="number" name="faixa_salarial_de" class="form-control" min="1" max="50000" id="pwd" placeholder="Ex: 2000">
 						<label>até:</label>
-						<input type="number" name="faixa_salarial_ate" class="form-control"  min="1" max="10000" id="pwd" placeholder="Ex: 3.000">
+						<input type="number" name="faixa_salarial_ate" class="form-control"  min="1" max="50000" id="pwd" placeholder="Ex: 3000">
 					</div>
 
 					<div class="form-group form-check">
