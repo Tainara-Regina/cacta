@@ -43,7 +43,7 @@ crossorigin="anonymous">
   <section class="my-3 py-3 vagas-destaque b">
     <p class="text-center"><i style="font-size: 64px; color: #ff9800" class="fas fa-exclamation-triangle"></i></p>
     <h2 class="text-center mb-3 title-page">Insira suas experiências e cursos</h2>
-    <p class="text-left title-page">Insira suas experiência e cursos para aumentar suas chances. <a href="{{route('meu-perfil')}}/#add">Clique aqui.</a></p></p>
+    <p class="text-center title-page">Insira suas experiência e cursos para aumentar suas chances. <a href="{{route('meu-perfil')}}/#add">Clique aqui.</a></p></p>
   </section>
 </div>
 @endif

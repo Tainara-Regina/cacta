@@ -188,8 +188,8 @@ public function cadastrarMeuPerfil(Request $request){
     $validator = Validator::make($request->all(), [
       'nome_empresa.*'  => 'required',
       'cargo.*'  => 'required',
-      'inicio.*'  => 'required',
-      'conclusao.*'  => 'required',
+      'inicio.*'  => 'required|date',
+      'conclusao.*'  => 'required|date',
       'descricao.*'  => 'required',
     ],
     [
@@ -226,8 +226,8 @@ public function cadastrarMeuPerfil(Request $request){
       'nome_curso.*'  => 'required',
       'nome_instituicao.*'  => 'required',
       'grau.*'  => 'required',
-      'inicio.*'  => 'required',
-      'conclusao.*'  => 'required',
+      'inicio.*'  => 'required|date',
+      'conclusao.*'  => 'required|date',
       'observacao.*'  => 'required',
     ],
     [
