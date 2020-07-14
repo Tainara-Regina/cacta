@@ -38,17 +38,15 @@ crossorigin="anonymous">
 
 
 
-
-
-<section class="my-5 py-3 vagas-destaque b">
-  <h2 class="text-center mb-3 title-page">Insira suas experiência e cursos</h2>
-<p class="text-left title-page">Insira suas experiência e cursos para aumente suas chances. <a href="{{route('meu-perfil')}}/#add">Clique aqui.</a></p></p>
-  <div class="slider-vagas">
-  
-  </div>
-
-  <p class="w text-center">Encontre mais vagas clicando <a href="{{route('site.lista-vaga')}}">aqui.</a></p>
-</section>
+@if($cursos == 0 || $experiencias == 0)
+<div class="container-fluid  py-0 my-0">
+  <section class="my-3 py-3 vagas-destaque b">
+    <p class="text-center"><i style="font-size: 64px; color: #ff9800" class="fas fa-exclamation-triangle"></i></p>
+    <h2 class="text-center mb-3 title-page">Insira suas experiências e cursos</h2>
+    <p class="text-left title-page">Insira suas experiência e cursos para aumentar suas chances. <a href="{{route('meu-perfil')}}/#add">Clique aqui.</a></p></p>
+  </section>
+</div>
+@endif
 
 
 

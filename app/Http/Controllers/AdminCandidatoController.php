@@ -59,14 +59,16 @@ class AdminCandidatoController extends Controller
      ->limit(5)
      ->get();
 
+     $experiencias = ExperienciasProfissionais::where('candidato_id',\Auth::user()->id)->count();
 
+     $cursos = CursosCandidatos:::where('candidato_id',\Auth::user()->id)->count();
 
      $total_candidaturas = Candidaturas::where('candidato_id',\Auth::user()->id)->count();
      $total_visualizado = Candidaturas::where('candidato_id',\Auth::user()->id)
      ->where('visualizado_pela_empresa',1)
      ->count();
 
-     return view('adminCandidato.home-admin',compact('ultimas_vagas','total_candidaturas','total_visualizado'));
+     return view('adminCandidato.home-admin',compact('ultimas_vagas','total_candidaturas','total_visualizado','experiencias','cursos'));
    }
 
 
@@ -183,14 +185,14 @@ public function meuPerfil(){
 public function cadastrarMeuPerfil(Request $request){
 //dd($request->all());
   if ($request->experiencia == true) {
-$validator = Validator::make($request->all(), [
-    'nome_empresa.*'  => 'required',
-     'cargo.*'  => 'required',
-     'inicio.*'  => 'required',
-     'conclusao.*'  => 'required',
-     'descricao.*'  => 'required',
-],
-[
+    $validator = Validator::make($request->all(), [
+      'nome_empresa.*'  => 'required',
+      'cargo.*'  => 'required',
+      'inicio.*'  => 'required',
+      'conclusao.*'  => 'required',
+      'descricao.*'  => 'required',
+    ],
+    [
      'nome_empresa.*'  => 'Insira o nome da empresa.',
      'cargo.*'  => 'Insira o cargo.',
      'inicio.*'  => 'Insira a data de inicio.',
@@ -198,9 +200,9 @@ $validator = Validator::make($request->all(), [
      'descricao.*'  => 'Insira a descrição sobre a vaga.'
    ]);
 
-if ($validator->fails()) {
-  return redirect()->back()->with('experiencia-fail', 'Preencha todos os campos da experiência profissional.');
-}
+    if ($validator->fails()) {
+      return redirect()->back()->with('experiencia-fail', 'Preencha todos os campos da experiência profissional.');
+    }
 
     if($request->nome_empresa != null){
       for ($x = 0; $x < count($request->nome_empresa); $x++) { 
@@ -220,26 +222,26 @@ if ($validator->fails()) {
 // ======================================================================================
 
   if ($request->cursos == true) {
-$validator = Validator::make($request->all(), [
-    'nome_curso.*'  => 'required',
-    'nome_instituicao.*'  => 'required',
-     'grau.*'  => 'required',
-     'inicio.*'  => 'required',
-     'conclusao.*'  => 'required',
-     'observacao.*'  => 'required',
-],
-[
+    $validator = Validator::make($request->all(), [
+      'nome_curso.*'  => 'required',
+      'nome_instituicao.*'  => 'required',
+      'grau.*'  => 'required',
+      'inicio.*'  => 'required',
+      'conclusao.*'  => 'required',
+      'observacao.*'  => 'required',
+    ],
+    [
      'nome_instituicao.*'  => 'Insira o nome da instituição.',
-    'nome_curso.*'  => 'Insira o curso.',
+     'nome_curso.*'  => 'Insira o curso.',
      'grau.*'  => 'Insira o cargo.',
      'inicio.*'  => 'Insira a data de inicio.',
      'conclusao.*'  => 'Insira a data de conclusão.',
      'descricao.*'  => 'Insira a descrição sobre a vaga.'
    ]);
 
-if ($validator->fails()) {
-  return redirect()->back()->with('cursos-fail', 'Preencha todos os campos do curso.');
-}
+    if ($validator->fails()) {
+      return redirect()->back()->with('cursos-fail', 'Preencha todos os campos do curso.');
+    }
 
     if($request->nome_curso != null){
       for ($x = 0; $x < count($request->nome_curso); $x++) { 
@@ -287,8 +289,8 @@ if ($validator->fails()) {
   ]);
 
 
- CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token','nome_empresa','cargo','inicio','conclusao','descricao','experiencia','cursos','nome_curso','nome_instituicao','grau','observacao']));
- return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
+  CactaCandidatos::where('id',\Auth::user()->id)->update(request()->except(['_token','nome_empresa','cargo','inicio','conclusao','descricao','experiencia','cursos','nome_curso','nome_instituicao','grau','observacao']));
+  return redirect()->back()->with('message', 'Dados atualizados com sucesso!'); 
 }
 
 
@@ -404,11 +406,11 @@ public function excluirConta(){
 // CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false]);
  //CactaCandidatos::where('id',\Auth::user()->id)->delete();
 
-$mytime = \Carbon\Carbon::now();
-CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false,'data_cancelamento' => $mytime]);
+  $mytime = \Carbon\Carbon::now();
+  CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false,'data_cancelamento' => $mytime]);
 
 
- return \Redirect::to('/cacta-logout');
+  return \Redirect::to('/cacta-logout');
 }
 
 
@@ -449,9 +451,9 @@ public function planoExpirou(){
 
 
 public function ativarCadastro(){
-CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>true]);
+  CactaCandidatos::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>true]);
 
-return redirect('/admin-candidato')->with('message', 'Cadastro reativado com sucesso!');
+  return redirect('/admin-candidato')->with('message', 'Cadastro reativado com sucesso!');
 
 }
 
@@ -474,7 +476,7 @@ public function gravarAtualizarCartao(Request $request){
   //dd('bateu');
   $validator = $request->validate([
    'nome_cartao' => 'required',
-  'numero_cartao' => 'required|unique:cacta_candidatos',
+   'numero_cartao' => 'required|unique:cacta_candidatos',
    'expira_cartao' => 'required',
    'codigo_seguranca_cartao' => 'required',
  ],
