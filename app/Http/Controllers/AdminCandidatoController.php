@@ -61,7 +61,7 @@ class AdminCandidatoController extends Controller
 
      $experiencias = ExperienciasProfissionais::where('candidato_id',\Auth::user()->id)->count();
 
-     $cursos = CursosCandidatos:::where('candidato_id',\Auth::user()->id)->count();
+     $cursos = CursosCandidatos::where('candidato_id',\Auth::user()->id)->count();
 
      $total_candidaturas = Candidaturas::where('candidato_id',\Auth::user()->id)->count();
      $total_visualizado = Candidaturas::where('candidato_id',\Auth::user()->id)
