@@ -29,7 +29,7 @@
 				<div class="col px-5  has-search">
 					<span class="fa fa-search form-control-feedback"></span>
 					<input id="buscar"  type="text" class="form-control busca mx-auto" placeholder="Pesquise aqui">
-					<h5 class="mt-3">Encontre sua <strong>vagas</strong> abaixo</h5>
+					<h5 class="mt-3">Encontre sua <strong>vaga</strong> abaixo</h5>
 
 				</div>
 			</div>
