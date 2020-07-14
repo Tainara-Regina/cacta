@@ -25,7 +25,6 @@ crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{asset('/js/admin/admin-menu.js')}}"></script>
 <script type="text/javascript" src="{{asset('/js/admin/adminContratante/meus-dados.js')}}"></script>
 <script src="{{asset('/js/formularioContratante-2.js')}}"></script>
-jquery.mask/1.14.16/jquery.mask.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script src="{{asset('/js/mascara.js')}}"></script>
 @stop
