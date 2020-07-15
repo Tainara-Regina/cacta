@@ -67,7 +67,7 @@
               <span style="color: red">{{ $message }}</span>
               @enderror
               <div class="form-group">
-                <label for="email"><b>Logo da empresa</b></label>
+                <label for="email"><b>*Logo da empresa</b></label>
                 <input value="{{old('logo')}}" accept="image/png, image/jpeg , image/jpg" placeholder="Insira o logo da empresa" type="file" name="logo" class="form-control-file border" required>
               </div>
 
@@ -77,7 +77,7 @@
               @enderror
               <div class="form-group my-5">
                 <div class="main">
-                  <label for="pwd"><b>Selecione o segmento da sua empresa</b></label>
+                  <label for="pwd"><b>*Selecione o segmento da sua empresa</b></label>
 
 
                   <select value="{{old('segmento')}}" name="segmento" required>
@@ -99,7 +99,7 @@
               @enderror
 
               <div class="form-group">
-                <label for="email"><b>Endereço</b></label>
+                <label for="email"><b>*Endereço</b></label>
                 <input type="text" value="{{old('cep')}}" name="cep" placeholder="Digite o CEP" type="text" class="form-control cep" required>
 
                 <input name="endereco" value="{{old('endereco')}}" class="mt-2 form-control endereco"  rows="5" id="comment" readonly="readonly" required>
@@ -120,9 +120,7 @@
 
               <div class="form-group">
                 <label for="email"><b>Complemento</b></label>
-                <textarea class="mt-2 form-control" name="complemento" placeholder='Digite o complemento do endereço.' rows="5" id="comment">
-                  {{old('complemento')}}
-                </textarea>
+                <textarea class="mt-2 form-control" name="complemento" placeholder='Digite o complemento do endereço.' rows="5" id="comment">{{old('complemento')}}</textarea>
               </div>
 
 
@@ -130,15 +128,13 @@
               <span style="color: red">{{ $message }}</span>
               @enderror
               <div class="form-group">
-                <label for="pwd"><b>Fale sobre sua empresa</b></label>
-                <p>Faça um resumo sobre sua empresa. Tente falar sobre a tragetoria, missão, visão e valores.</p>
-                <textarea name="sobre" placeholder="Faça um resumo sobre sua empresa.Tente falar sobre a tragetoria, missão, visão e valores." class="form-control" rows="5" id="comment" required>
-                  {{old('sobre')}}
-                </textarea>
+                <label for="pwd"><b>*Fale sobre sua empresa</b></label>
+                <p>Apresente sua empresa para os candidatos. Tente falar sobre a trajetória, missão, visão e valores.</p>
+                <textarea name="sobre" placeholder="Faça um resumo sobre sua empresa.Tente falar sobre a tragetoria, missão, visão e valores." class="form-control" rows="5" id="comment" required>{{old('sobre')}}</textarea>
               </div>
 
 
-              <label for="comment"><b>Redes sociais:</b></label>
+              <label for="comment"><b>Redes sociais da empresa:</b></label>
 
               <div class="form-group">
                 <input name="facebook" value="{{old('facebook')}}" type="text" class="form-control" placeholder="Facebook"></input>
@@ -160,7 +156,7 @@
               
               <div class="row">
                 <div class="col">
-                  <h2 class="text-center mt-5 mb-3">Escolha o plano</h2>
+                  <h2 class="text-center mt-5 mb-3">*Escolha o plano</h2>
                   <p class="text-center"><b>Obs: </b>Se desejar, você pode cancelar o plano após o período gratuito.</p>
                 </div>
               </div>
@@ -172,7 +168,6 @@
                  @enderror
                </div>
              </div>
-
 
 
              <div class="row pricing">
