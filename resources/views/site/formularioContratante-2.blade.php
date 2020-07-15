@@ -262,7 +262,7 @@
                   <span style="color: red">{{ $message }}</span>
                   @enderror
                   <div class="form-group">
-                    <input name="expira_cartao" placeholder="Data de expiração do cartão" min="5" value="{{old('expira_cartao')}}" type="text" class="form-control date_cartao" required>
+                    <input name="expira_cartao" placeholder="Data de expiração / Mês e ano." min="5" value="{{old('expira_cartao')}}" type="text" class="form-control date_cartao" required>
                   </div>
 
 
