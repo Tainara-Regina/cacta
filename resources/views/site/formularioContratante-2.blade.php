@@ -51,7 +51,7 @@
           <form action="{{route('site.formularioContratanteParte2')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <section style="padding: 0 20%">
+            <section>
 
               <input type="hidden" name="id" value="{{$usuario->id}}">
               <input type="hidden" value="{{old('plano')}}" name="plano" id="plano" value="">
@@ -184,143 +184,143 @@
                   <div class="card-body">
                     <h4 class="card-title text-muted text-uppercase text-center">{{$plano->plano}}</h5>
                       <h6 class="text-center text-muted">Após periodo gratuito</h6>
-                    <h6 class="card-price text-center">${{$plano->preco}} <span class="period text-muted"><small>/mês</small> </span>
-                    </h6>
-                    <hr>
-                    <ul class="fa-ul">
+                      <h6 class="card-price text-center">${{$plano->preco}} <span class="period text-muted"><small>/mês</small> </span>
+                      </h6>
+                      <hr>
+                      <ul class="fa-ul">
 
-                      <li><span class="fa-li"><i class="fa fa-check"></i></span> {{$plano->quantidade_vagas}} vaga(s) para divulgar por mês <small>(inclui renovar vagas existentes)</small></li>
+                        <li><span class="fa-li"><i class="fa fa-check"></i></span> {{$plano->quantidade_vagas}} vaga(s) para divulgar por mês <small>(inclui renovar vagas existentes)</small></li>
 
-                      @if($plano->vagas_em_destaque == 0)
-                      <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Permite destacar suas vagas</li>
+                        @if($plano->vagas_em_destaque == 0)
+                        <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Permite destacar suas vagas</li>
 
-                      @else
-                      <li><span class="fa-li"><i class="fa fa-check"></i></span> Permite destacar {{$plano->vagas_em_destaque}} de suas vagas </li>
-                      @endif
-
-
-                      @if($plano->banco_de_candidatos == 0)
-                      <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Banco de candidatos</li>
-
-                      @else
-                      <li><span class="fa-li"><i class="fa fa-check"></i></span> Banco de candidatos</li>
-                      @endif
+                        @else
+                        <li><span class="fa-li"><i class="fa fa-check"></i></span> Permite destacar {{$plano->vagas_em_destaque}} de suas vagas </li>
+                        @endif
 
 
+                        @if($plano->banco_de_candidatos == 0)
+                        <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Banco de candidatos</li>
 
-                      @if($plano->materiais_exclusivos == 0)
-                      <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre empreendedorismo</li>
-
-                      @else
-                      <li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre empreendedorismo</li>
-                      @endif
+                        @else
+                        <li><span class="fa-li"><i class="fa fa-check"></i></span> Banco de candidatos</li>
+                        @endif
 
 
-                    </ul>
-                    <span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
+
+                        @if($plano->materiais_exclusivos == 0)
+                        <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Materiais exclusivos sobre empreendedorismo</li>
+
+                        @else
+                        <li><span class="fa-li"><i class="fa fa-check"></i></span>Materiais exclusivos sobre empreendedorismo</li>
+                        @endif
+
+
+                      </ul>
+                      <span class="btn btn-block btn-primary text-uppercase"> Selecionar</span>
+                    </div>
+                  </div>
+                </div>
+                @endforeach
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+              <div class="row">
+                <div class="col">
+                  <h2 class="text-center mt-5 mb-3">Dados de pagamento</h2>
+                  <p class="text-center">Insira os dados do cartão.</p>
+                </div>
+              </div>
+
+
+
+
+
+              <div class="row">
+                <div class="col-md-9 mx-auto">
+
+                  @error('nome_cartao')
+                  <span style="color: red">{{ $message }}</span>
+                  @enderror
+                  <div class="form-group">
+                    <input name="nome_cartao" placeholder="Nome" value="{{ old('nome_cartao')}}" type="text" class="form-control name" required>
+                  </div>
+
+                  @error('numero_cartao')
+                  <span style="color: red">{{ $message }}</span>
+                  @enderror
+                  <div class="form-group">
+                    <input name="numero_cartao" placeholder="Número do cartão" value="{{old('numero_cartao')}}" maxlength="20" type="text" class="form-control cartao" required>
+                  </div>
+
+
+                  @error('expira_cartao')
+                  <span style="color: red">{{ $message }}</span>
+                  @enderror
+                  <div class="form-group">
+                    <input name="expira_cartao" placeholder="Data de expiração do cartão" min="5" value="{{old('expira_cartao')}}" type="text" class="form-control date_cartao" required>
+                  </div>
+
+
+                  @error('codigo_seguranca_cartao')
+                  <span style="color: red">{{ $message }}</span>
+                  @enderror
+                  <div class="form-group">
+                    <input name="codigo_seguranca_cartao" placeholder="Código de segurança do cartão" value="{{old('codigo_seguranca_cartao')}}" type="text" class="form-control cvv" required>
+                  </div>
+
+
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row"> 
+                <div class="col-md-12 text-center"> 
+
+                  <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP">
+
                   </div>
                 </div>
               </div>
-              @endforeach
-
-            </div>
 
 
 
 
 
 
-
-
-
-
-            <div class="row">
-              <div class="col">
-                <h2 class="text-center mt-5 mb-3">Dados de pagamento</h2>
-                <p class="text-center">Insira os dados do cartão.</p>
-              </div>
-            </div>
-
-
-
-
-
-            <div class="row">
-              <div class="col-md-9 mx-auto">
-
-                @error('nome_cartao')
-                <span style="color: red">{{ $message }}</span>
-                @enderror
-                <div class="form-group">
-                  <input name="nome_cartao" placeholder="Nome" value="{{ old('nome_cartao')}}" type="text" class="form-control name" required>
-                </div>
-
-                @error('numero_cartao')
-                <span style="color: red">{{ $message }}</span>
-                @enderror
-                <div class="form-group">
-                  <input name="numero_cartao" placeholder="Número do cartão" value="{{old('numero_cartao')}}" maxlength="20" type="text" class="form-control cartao" required>
-                </div>
-
-
-                @error('expira_cartao')
-                <span style="color: red">{{ $message }}</span>
-                @enderror
-                <div class="form-group">
-                  <input name="expira_cartao" placeholder="Data de expiração do cartão" min="5" value="{{old('expira_cartao')}}" type="text" class="form-control date_cartao" required>
-                </div>
-
-
-                @error('codigo_seguranca_cartao')
-                <span style="color: red">{{ $message }}</span>
-                @enderror
-                <div class="form-group">
-                  <input name="codigo_seguranca_cartao" placeholder="Código de segurança do cartão" value="{{old('codigo_seguranca_cartao')}}" type="text" class="form-control cvv" required>
-                </div>
-
-
-              </div>
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="row"> 
-              <div class="col-md-12 text-center"> 
-
-                <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP">
-
+              <div class="row"> 
+                <div class="col text-center"> 
+                  <button type="submit" class="btn btn-success my-5 mt-3 text-center py-3 px-5 text-uppercase"> <b>Concluir e começar a contratar!</b></button>
                 </div>
               </div>
-            </div>
+            </form>
 
 
-
-
-
-
-            <div class="row"> 
-              <div class="col text-center"> 
-                <button type="submit" class="btn btn-success my-5 mt-3 text-center py-3 px-5 text-uppercase"> <b>Concluir e começar a contratar!</b></button>
-              </div>
-            </div>
-          </form>
-
-
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </section>
 
 </main>
