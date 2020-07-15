@@ -272,25 +272,14 @@
                   <div class="form-group">
                     <input name="codigo_seguranca_cartao" placeholder="Código de segurança do cartão" value="{{old('codigo_seguranca_cartao')}}" type="text" class="form-control cvv" required>
                   </div>
-
-
                 </div>
-
               </div>
 
 
 
 
-
-
-
-
-
-
-
-
               <div class="row"> 
-                <div class="col-md-12 text-center"> 
+                <div class="col-md-4 mx-auto text-center"> 
 
                   <div class="g-recaptcha" data-sitekey="6Ld2DwEVAAAAADI7nTlqa3owIG_ED_qxplTSQ9AP">
 
