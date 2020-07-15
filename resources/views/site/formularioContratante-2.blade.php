@@ -179,7 +179,7 @@
 
               @foreach($planos as $plano)
 
-              <div class="col-lg-4 col-8 mx-auto" >
+              <div class="col-lg-5 col-8 mx-auto" >
                 <div class="card mb-5 mb-lg-0 plano" data-plano="{{$plano->id}}">
                   <div class="card-body">
                     <h4 class="card-title text-muted text-uppercase text-center">{{$plano->plano}}</h5>
