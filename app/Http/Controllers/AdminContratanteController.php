@@ -642,11 +642,20 @@ public function excluirConta(){
   $canceledSubscription = $pagarme->subscriptions()->cancel([
     'id' => auth()->user()->id_assinatura
   ]);
-}
-
 
 $mytime = \Carbon\Carbon::now();
 CactaUsers::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false,'data_cancelamento' => $mytime]);
+
+
+}else{
+
+ $mytime = \Carbon\Carbon::now();
+CactaUsers::where('id',\Auth::user()->id)->update(['cadastro_ativo' =>false,'data_cancelamento' => $mytime,'status_assinatura' => $subscription->status]);
+
+}
+
+
+
 
 //dd($mytime);
 return \Redirect::to('/cacta-logout');
