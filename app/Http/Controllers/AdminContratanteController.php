@@ -597,8 +597,8 @@ public function gravarAtualizarCartao(Request $request){
 
   $updatedSubscription = $pagarme->subscriptions()->update([
     'id' => $dados->id_assinatura,
-    'plan_id' => $dados_plano->id_pagarme,
-    'payment_method' => 'credit_card',
+  //  'plan_id' => $dados_plano->id_pagarme,
+  //  'payment_method' => 'credit_card',
     'card_number' => $request->numero_cartao,
     'card_holder_name' => $request->nome_cartao,
     'card_expiration_date' => str_replace("/","",$request->expira_cartao),  
