@@ -102,7 +102,7 @@ crossorigin="anonymous"></script>
 			<span style="color: red">{{ $message }}</span>
 			@enderror
 			<div class="form-group" id="cartao_id">
-				<input name="numero_cartao" placeholder="Número do cartão" value="{{old('numero_cartao')}}" maxlength="20" type="text" class="form-control cartao" required>
+				<input name="numero_cartao" placeholder="Data de expiração / Mês e ano." value="{{old('numero_cartao')}}" maxlength="20" type="text" class="form-control cartao" required>
 			</div>
 
 
