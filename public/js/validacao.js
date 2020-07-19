@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $(document).on('focusout', '.cartao, .date_cartao', function() {
+    $(document).on('focusout', '.cartao, .date_cartao, .cvv', function() {
 
 
       var numero = $('#cartao_id');
