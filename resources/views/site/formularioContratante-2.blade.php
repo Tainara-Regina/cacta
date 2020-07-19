@@ -330,6 +330,9 @@
 <script src="{{asset('js/slick.js')}}"></script>
 <script src="{{asset('js/home.js')}}"></script>
 <script src="{{asset('/js/formularioContratante-2.js')}}"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://assets.pagar.me/pagarme-js/4.5/pagarme.min.js"></script>
 <script type="text/javascript" src="{{asset('/js/validacao.js')}}"></script>
 @stop
 
