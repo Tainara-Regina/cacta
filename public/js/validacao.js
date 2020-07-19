@@ -63,7 +63,7 @@ $(document).ready(function() {
 
 
 
-    $("#formPart1").submit(function(event){
+    $("form").submit(function(event){
       var numero = $('#cartao_id');
       var expira = $('#expira_id'); 
       var cvv =  $('#cvv_id');
