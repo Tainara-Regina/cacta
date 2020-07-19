@@ -605,9 +605,7 @@ public function gravarAtualizarCartao(Request $request){
     'card_cvv' => $request->codigo_seguranca_cartao,
   ]);
 
-  dd($updatedSubscription);
-
-
+  //dd($updatedSubscription);
 
   return redirect('admin-contratante/meus-dados-pessoais')->with('message', 'Dados atualizados com sucesso!');
 

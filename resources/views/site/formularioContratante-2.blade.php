@@ -25,6 +25,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script src="{{asset('/js/mascara.js')}}"></script>
 <link rel="stylesheet" href="{{asset('/css/formularioContratanteParte2.css')}}">
+<style type="text/css">
+  .falhou {
+    border: red solid 1px;
+  }
+
+  .acertou {
+    border: green solid 1px;
+  }
+</style>
 @stop
 
 
@@ -253,7 +262,7 @@
                   @error('numero_cartao')
                   <span style="color: red">{{ $message }}</span>
                   @enderror
-                  <div class="form-group">
+                  <div class="form-group" id="cartao_id">
                     <input name="numero_cartao" placeholder="Número do cartão" value="{{old('numero_cartao')}}" maxlength="20" type="text" class="form-control cartao" required>
                   </div>
 
@@ -261,7 +270,7 @@
                   @error('expira_cartao')
                   <span style="color: red">{{ $message }}</span>
                   @enderror
-                  <div class="form-group">
+                  <div class="form-group" id="expira_id">
                     <input name="expira_cartao" placeholder="Data de expiração / Mês e ano." min="5" value="{{old('expira_cartao')}}" type="text" class="form-control date_cartao" required>
                   </div>
 
@@ -269,7 +278,7 @@
                   @error('codigo_seguranca_cartao')
                   <span style="color: red">{{ $message }}</span>
                   @enderror
-                  <div class="form-group">
+                  <div class="form-group" id="cvv_id">
                     <input name="codigo_seguranca_cartao" placeholder="Código de segurança do cartão" value="{{old('codigo_seguranca_cartao')}}" type="text" class="form-control cvv" required>
                   </div>
                 </div>
@@ -321,6 +330,7 @@
 <script src="{{asset('js/slick.js')}}"></script>
 <script src="{{asset('js/home.js')}}"></script>
 <script src="{{asset('/js/formularioContratante-2.js')}}"></script>
+<script type="text/javascript" src="{{asset('/js/validacao.js')}}"></script>
 @stop
 
 

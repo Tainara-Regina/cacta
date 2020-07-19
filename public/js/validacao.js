@@ -1,84 +1,139 @@
-
-function validate(n){
-  var n = n.toString().split(''),
-      is_odd = n.length & 1;
-  
-  return !(n.map(function(el, i) {
-    var val = (is_odd) ? ((i & 1) ? parseInt(el) * 2 : el) : (!(i & 1) ? parseInt(el) * 2 : el);
-    return (val > 9) ? val - 9 : val;
-  }).reduce(function(p, c) {
-    return parseInt(p) + parseInt(c);
-  }) % 10);
-}
+$(document).ready(function() {
+    $(document).on('focusout', '.cartao, .date_cartao', function() {
 
 
+      var numero = $('#cartao_id');
+      var expira = $('#expira_id'); 
+      var cvv =  $('#cvv_id');
+      var form = $("#payment_form");
 
-function tudo(){
-  var cc = $('.cartao');
-  var ccWrapper = $('#cartao_id');
-   var ccVal = cc.val();
-   var isValid = true;
-  
-   ccVal = ccVal.replace(/[^0-9]/g, '');
-  
-  if (!(/^\d+$/.test(ccVal)) ||
-     (ccVal.length !== 16 && ccVal.length !== 15))
-  { // check length 15 or 16
-    isValid = false; 
-  }
-  
-  if (isValid) {
-    isValid = validate(ccVal);
-  }
-  
-  //ccWrapper[0].className = '';
-  
-  if (isValid) {
-  //  alert('ok');
-    ccWrapper.addClass('acertou');
-     return true;
-  } else {
-   // alert('falhou');
-    
-   ccWrapper.addClass('falhou');
-   return false;
-  }
-}
+      var passou = true;
 
-$('.cartao').focusout(function() {
- tudo();
+      var card = {} 
+      card.card_holder_name = $("#form #card_holder_name").val()
+      card.card_expiration_date = $(".date_cartao").val()
+      card.card_number = $(".cartao").val()
+      card.card_cvv = $(".cvv").val()
+
+        // pega os erros de validação nos campos do form e a bandeira do cartão
+        var cardValidations = pagarme.validate({card: card})
+
+        //Então você pode verificar se algum campo não é válido
+        if(!cardValidations.card.card_holder_name){
+          console.log('Oops, nome invalido');
+      }
+
+
+      if(!cardValidations.card.card_expiration_date){
+          console.log('Oops, Data de expiração invalida');
+          expira.removeClass('acertou');
+          expira.addClass('falhou');
+          passou = false;
+      }else{
+         expira.addClass('acertou');
+     }
+
+
+     if(!cardValidations.card.card_number){
+        console.log('Oops, número de cartão incorreto')
+        numero.removeClass('acertou');
+        numero.addClass('falhou');
+        passou = false;
+    }else{
+       numero.addClass('acertou');
+   }
+
+   if(!cardValidations.card.card_cvv){
+      console.log('Oops, número de cvv incorreto')
+      cvv.removeClass('acertou');
+      cvv.addClass('falhou');
+      passou = false;
+  }else{
+     cvv.addClass('acertou');
+ }
+ console.log(passou);
+ if (passou == true) {
+    return true;
+}else{
+    return false; 
+};
+
+
 });
 
 
-//=====================================================================
 
-// $('#val').click(function() {
-//   var cc = $('#cc');
-//   var ccWrapper = $('#cc-wrapper');
-//   var ccVal = cc.val();
-//   var isValid = true;
-  
-//   ccVal = ccVal.replace(/[^0-9]/g, '');
-  
-//   if (!(/^\d+$/.test(ccVal)) ||
-//      (ccVal.length !== 16 && ccVal.length !== 15))
-//   { // check length 15 or 16
-//     isValid = false; 
-//   }
-  
-//   if (isValid) {
-//     isValid = validate(ccVal);
-//   }
-  
-//   ccWrapper[0].className = '';
-  
-//   if (isValid) {
-//     ccWrapper.addClass('pass');
-//   } else {
-//     ccWrapper.addClass('fail animated shake');
-//   }
-  
-//   setTimeout(function() {
-//     ccWrapper.removeClass('animated shake');
-//   }, 500);
-// });
+    $("#formPart1").submit(function(event){
+      var numero = $('#cartao_id');
+      var expira = $('#expira_id'); 
+      var cvv =  $('#cvv_id');
+      var form = $("#payment_form");
+
+      var passou = true;
+
+      var card = {} 
+      card.card_holder_name = $("#form #card_holder_name").val()
+      card.card_expiration_date = $(".date_cartao").val()
+      card.card_number = $(".cartao").val()
+      card.card_cvv = $(".cvv").val()
+
+        // pega os erros de validação nos campos do form e a bandeira do cartão
+        var cardValidations = pagarme.validate({card: card})
+
+        //Então você pode verificar se algum campo não é válido
+        if(!cardValidations.card.card_holder_name){
+          console.log('Oops, nome invalido');
+      }
+
+
+      if(!cardValidations.card.card_expiration_date){
+          console.log('Oops, Data de expiração invalida');
+          expira.removeClass('acertou');
+          expira.addClass('falhou');
+          passou = false;
+      }else{
+         expira.addClass('acertou');
+     }
+
+
+     if(!cardValidations.card.card_number){
+        console.log('Oops, número de cartão incorreto')
+        numero.removeClass('acertou');
+        numero.addClass('falhou');
+        passou = false;
+    }else{
+       numero.addClass('acertou');
+   }
+
+   if(!cardValidations.card.card_cvv){
+      console.log('Oops, número de cvv incorreto')
+      cvv.removeClass('acertou');
+      cvv.addClass('falhou');
+      passou = false;
+  }else{
+     cvv.addClass('acertou');
+ }
+ console.log(passou);
+ if (passou == true) {
+    return true;
+}else{
+    event.preventDefault();
+    return false; 
+};
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+});

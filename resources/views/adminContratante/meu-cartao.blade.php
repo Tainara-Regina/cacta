@@ -26,6 +26,12 @@ crossorigin="anonymous">
 
 
 @section('js')
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://assets.pagar.me/pagarme-js/4.5/pagarme.min.js"></script>
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 crossorigin="anonymous"></script>
@@ -81,7 +87,7 @@ crossorigin="anonymous"></script>
 <div class="row">
 	<div class="col-md-9">
 
-		<form class="form" action="{{route('site.gravar-atualizar-cartao')}}" id="formPart1" method="POST" onsubmit="return tudo()" enctype="multipart/form-data">
+		<form class="form" action="{{route('site.gravar-atualizar-cartao')}}" id="formPart1" method="POST" onsubmit="return tudo2()" enctype="multipart/form-data">
 			@csrf
 
 
@@ -103,15 +109,15 @@ crossorigin="anonymous"></script>
 			@error('expira_cartao')
 			<span style="color: red">{{ $message }}</span>
 			@enderror
-			<div class="form-group">
-				<input name="expira_cartao" placeholder="Data de expiração do cartão" value="{{old('expira_carta')}}" type="text" class="form-control date_cartao" required>
+			<div class="form-group" id="expira_id">
+				<input name="expira_cartao"  placeholder="Data de expiração do cartão" value="{{old('expira_carta')}}" type="text" class="form-control date_cartao" required>
 			</div>
 
 
 			@error('codigo_seguranca_cartao')
 			<span style="color: red">{{ $message }}</span>
 			@enderror
-			<div class="form-group">
+			<div class="form-group" id="cvv_id">
 				<input name="codigo_seguranca_cartao" placeholder="Código de segurança do cartão" value="{{old('codigo_seguranca_cartao')}}" type="text" class="form-control cvv" required>
 			</div>
 

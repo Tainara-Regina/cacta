@@ -11,10 +11,10 @@
 |
 */
 
-// Route::post('/pagarme', function () {
-// 	return Slack::to('#cacta-vagas')->send('Um postback foi enviado!');
-// 	//return view('site.pagarme');
-
+ Route::get('/pagarme', function () {
+ 	//return Slack::to('#cacta-vagas')->send('Um postback foi enviado!');
+return view('site.pagarme');
+});
 
 // // $pagarme = new \PagarMe\Client('ak_test_aEZCKKiNyBscZ2DZ3qjy69LB6A46qs');
 
