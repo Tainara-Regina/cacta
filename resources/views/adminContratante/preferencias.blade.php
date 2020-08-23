@@ -62,17 +62,21 @@ crossorigin="anonymous"></script>
 
 	<div class="row">
 		<div class="col-md-9">
+			
+@if(Auth::user()->cadastro_ativo != 0)
+
 			<form action="{{route('site.cadastrar-preferencias')}}" id="formPart1" method="POST" enctype="multipart/form-data">
 				@csrf
+
 				<div class="form-group">
-					<label><b>Deseja excluir seu cadastro? </b></label>
+					<label><b>Deseja excluir seu cadastro?</b></label>
 					<a href="{{route('site.excluir-conta')}}"> clique aqui.</a>
 
 					<label>Seu plano será cancelado e seu cadastro ficará inativo durante 60 dias. Após este período, caso o cadastro não seja reativado no intervalo de 60 dias, ele será excluído permanentemente.</label>
 				</div>
 				<button type="submit" class="btn btn-primary mb-5">Salvar</button>
 			</form>
-			
+			@endif
 		</div>
 
 		<div class="col-md-3">

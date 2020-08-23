@@ -3,8 +3,22 @@
 
 
 @section('css')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta name="description" content="Vaga de Emprego: {{$vaga->titulo}}, em {{$vaga->localidade}}, {{$vaga->bairro}}, {{$vaga->uf}}, {{$vaga->descricao}}, {{$vaga->requisitos}}">
+<meta name="keywords" content="vagas, empregos, {{$vaga->titulo}}, {{$vaga->bairro}}, {{$vaga->uf}}, {{$vaga->nome_empresa}}, cacta vagas">
+<meta property="og:locale" content="pt_BR">
 
+<meta property="og:title" content="Vaga Emprego {{$vaga->titulo}} {{$vaga->bairro}} {{$vaga->localidade}} {{$vaga->uf}} | Cacta Vagas">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Vaga de Emprego: {{$vaga->titulo}}, em {{$vaga->localidade}}, {{$vaga->bairro}}, {{$vaga->uf}}, {{$vaga->descricao}}, {{$vaga->requisitos}}">
+<meta property="og:image" content='{{ url("storage/{$vaga->logo}") }}'>
+<meta property="og:url" content="{{Request::url()}}">
+<meta name="twitter:card" content="Vaga de Emprego: {{$vaga->titulo}}, em {{$vaga->localidade}}, {{$vaga->bairro}}, {{$vaga->uf}}, {{$vaga->descricao}}, {{$vaga->requisitos}}">
+<meta name="twitter:title" content="Vaga Emprego {{$vaga->titulo}} {{$vaga->bairro}} {{$vaga->localidade}} {{$vaga->uf}} | Cacta Vagas">
+<meta name="robots" content="index, follow">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
 <meta name="theme-color" content="#754026">
@@ -19,7 +33,7 @@
 
 
 @section('titulo')
-<title>Cacta Vagas - Vagas</title>
+<title>Vaga Emprego {{$vaga->titulo}} {{$vaga->bairro}} {{$vaga->localidade}} {{$vaga->uf}} | Cacta Vagas</title>
 @stop
 
 
@@ -265,10 +279,10 @@ style="background-image: url({{ Voyager::image( $fundo_vaga->imagem) }});
 
 				<div class="w-100">
 					@if(isset($vaga->beneficios))
-						<h2 class="titulo">Benefícios</h2>
-						<p>{{$vaga->beneficios}}
-						</p>
-						@endif
+					<h2 class="titulo">Benefícios</h2>
+					<p>{{$vaga->beneficios}}
+					</p>
+					@endif
 				</div>
 
 				<div class="w-100  py-5">

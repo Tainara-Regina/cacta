@@ -30,6 +30,7 @@
 				<div class="col mt-5 col-10 mx-auto py-5">
 					<h5 class="text-h3 text-center"> <b>E-mail de redefinição de senha enviado.</b></h5>
 					<h5 class="text-h3 text-center"> <b>Verifique seu e-mail e clique no link para redefinir sua senha.</b></h5>
+					<h5 class="text-h3 text-center"> <b>Obs: O e-mail pode demorar de 5 a 10 minutos para chegar.</b></h5>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,10 @@
 @extends('site.base')
 
 @section('css')
+<meta name="robots" content="index, Nofolow">
+<meta name="robots" content="noindex">
+<meta name="googlebot" content="noindex">
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="{{asset('css/slick.css')}}">
 <meta name="theme-color" content="#754026">
