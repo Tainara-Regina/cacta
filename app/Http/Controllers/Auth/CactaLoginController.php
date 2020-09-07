@@ -48,6 +48,18 @@ class CactaLoginController extends Controller
           return redirect()->intended(route('site.admin-contratante'));
       }
     	// se falhar, redirect back
+      //se completou_cadastro == 0
+
+
+
+//se compleotou cadastro igual a 0 redireciona para 
+     if (Auth::guard('cacta')->attempt(['email'=> $request->email_login,'password'=> $request->password_login,'completou_cadastro'=> 0], $request->remember)) {
+         return redirect()->back()->withImput($request->only('email','remember'))->with('message_contratante', 'Complete seu cadastro. Verifique sua caixa de email o e-mail de complete seu cadastro.');
+
+     }
+
+   
+
       return redirect()->back()->withImput($request->only('email','remember'))->with('message_contratante', 'Verifique se digitou seus dados corretamente');
   }
 
