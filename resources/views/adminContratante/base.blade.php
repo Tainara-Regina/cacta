@@ -24,7 +24,7 @@
 		<!-- End Google Tag Manager (noscript) -->
 
 		
-		<div class="page-wrapper chiller-theme toggled">
+		<div class="page-wrapper chiller-theme ">
 			<a style="background-color: #9e9e9e85;color: black;" id="show-sidebar" class="btn btn-sm  py-3" href="#">
 				<i class="fas fa-bars"></i>
 			</a>
@@ -33,7 +33,7 @@
 
 			<!-- sidebar-wrapper  -->
 			<main class="page-content">
-@if($faltam > 0 &&  Auth::user()->cadastro_ativo == 0)
+@if(isset($faltam) && $faltam > 0 &&  Auth::user()->cadastro_ativo == 0)
 
 				<div class="container">
 					<p class="text-left title-page" style="font-size: 24px">Você cancelou seu cadastro. <br>  Você tem {{$faltam}} dia(s) para acessar o painel.</p>
